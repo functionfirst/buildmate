@@ -25,15 +25,17 @@
 </ExpandCollapseColumn>
 
     <Columns>
-        <telerik:GridBoundColumn DataField="customerName" HeaderText="customerName" ReadOnly="True" SortExpression="customerName" UniqueName="customerName">
+        <telerik:GridBoundColumn DataField="customerName" HeaderText="Customer Name" ReadOnly="True" SortExpression="customerName" UniqueName="customerName">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="email" HeaderText="email" SortExpression="email" UniqueName="email">
+        <telerik:GridBoundColumn DataField="email" HeaderText="Email" SortExpression="email" UniqueName="email">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="company" HeaderText="company" SortExpression="company" UniqueName="company">
+        <telerik:GridBoundColumn DataField="company" HeaderText="Company Name" SortExpression="company" UniqueName="company">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="projectName" HeaderText="projectName" SortExpression="projectName" UniqueName="projectName">
+        <telerik:GridBoundColumn DataField="creationDate" HeaderText="Creation Date" SortExpression="creationDate" UniqueName="creationDate">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="subscription" DataType="System.DateTime" HeaderText="subscription" SortExpression="subscription" UniqueName="subscription">
+        <telerik:GridBoundColumn DataField="projectName" HeaderText="Project" SortExpression="projectName" UniqueName="projectName">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="subscription" DataType="System.DateTime" HeaderText="Subscription Expires" SortExpression="subscription" UniqueName="subscription">
         </telerik:GridBoundColumn>
     </Columns>
 
@@ -44,7 +46,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="
-            SELECT top 100 isNull(firstname + ' ' + surname, 'Unknown') AS customerName, email, company, projectName, subscription
+            SELECT top 100 isNull(firstname + ' ' + surname, 'Unknown') AS customerName, email, company, projectName, subscription, creationDate
             FROM Project
             LEFT JOIN UserProfile ON Project.userID = UserProfile.userid
             ORDER BY creationDate DESC">
