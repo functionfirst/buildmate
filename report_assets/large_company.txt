@@ -1,0 +1,25 @@
+<p>Re: {0}</p>
+
+<p>Dear {1},</p>
+
+<p>Thank you for allowing {2} the opportunity to provide you with our {6} in the amount of {3}, to undertake the above proposed project. Where applicable we have enclosed additional break-down and details.</p>
+
+<p>Considerations:</p>
+
+<p>1. The price includes for the work discussed and visible at the time of our visit.</p>
+
+<p>2. Please ensure that we have interpreted and covered your entire requirements.</p>
+
+<p>3. The {6} is valid for a period of 30 days from the above date.</p>
+
+<p>4. Offer subject to acceptance of payment terms together with our terms and conditions enclosed.</p>
+
+<p>The payment terms are as described:</p>
+
+<p>We hope that your requirements have been interpreted correctly and look forward to receiving your instruction to proceed with the project on your behalf. In the mean time please do not hesitate to contact me should you have any questions or queries.</p>
+
+<p style="text-indent: 40px">Yours sincerely</p>
+
+<p style="text-indent: 60px">{4},</p>
+
+<p style="text-indent: 60px">{2}</p>

@@ -1,0 +1,31 @@
+﻿Imports Microsoft.VisualBasic
+Imports System.Web.Routing
+Imports System.Web.Compilation
+
+Public Class CustomRouteHandler
+    Implements IRouteHandler
+
+    Private _virtualPath As String
+
+    Public Sub New(ByVal vPath As String)
+        _virtualPath = vPath
+    End Sub
+
+    Public Property VirtualPath() As String
+        Get
+            Return _virtualPath
+        End Get
+        Private Set(ByVal value As String)
+            _virtualPath = value
+        End Set
+    End Property
+
+    Public Function GetHttpHandler(ByVal requestContext As System.Web.Routing.RequestContext) As System.Web.IHttpHandler Implements System.Web.Routing.IRouteHandler.GetHttpHandler
+        Dim redirectPage As IHttpHandler
+        'For Each urlParm In requestContext.RouteData.Values
+        '    requestContext.HttpContext.Items(urlParm.Key) = urlParm.Value
+        'Next
+        redirectPage = BuildManager.CreateInstanceFromVirtualPath(VirtualPath, GetType(Page))
+        Return redirectPage
+    End Function
+End Class

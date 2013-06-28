@@ -1,0 +1,40 @@
+<center><p style="font-size: 18px; font-weight: bold">TERMS AND CONDITIONS</p></center>
+
+<p style="font-size: 14px; font-weight: bold; color: #666666">General</p>
+
+<p>The Customer must notify {0}  of any variation to the Proposal and {0}  (if it agrees the variation) reserves the right to adjust the price accordingly.</p>
+
+<p>By verbally accepting or returning the acceptance form you acknowledge agreement to these terms and conditions.</p>
+
+<p>Variation order – {0}  reserves the right to alter the amount of the estimate, quote and hence the final invoice, should the specification of the works be changed or increased, or if unforeseen problems are encountered and dealt with.</p>
+
+<p>Wherever possible, client approval will be sought in advance of any such work being undertaken. {0}  reserves the right to refuse extra work requested after acceptance of this estimate. If extra work is accepted by {0} , and carried out, extra costs will be incurred.</p>
+
+<p>Any plans drawn by the {0}  is and remains, its property and may not be reproduced in whole or in part without its previous written consent</p>
+
+<p>Where {0}  agrees to provide a specifically designed plan, the Customer agrees to check the accuracy and suitability of the plan.</p>
+
+<p>Title in the Goods and materials shall not pass to the Customer until {0}  has been paid in full in accordance with these Terms and Conditions</p>
+
+<p>Should payment not be made in accordance with these Terms and Conditions {0}  reserves the right (and shall be allowed access by the Customer) to remove any Goods or materials supplied or fitted by {0}.</p>
+
+<p>The cost of any damage caused by such removal will not be borne by {0}.</p>
+
+<p>This estimate assumes uninterrupted access (i.e. no other contractors on site) and free access to an adequate power supply, toilet facilities and warm running water etc:</p>
+
+<p>Unless specifically requested making good decorations has not been included..</p>
+
+<p>Certain smaller items such as empty paint tins, off-cuts of newly installed tiles, small sections of copper piping etc. will be removed as part of the standard service.</p>
+
+<p>{0} will not, unless otherwise stated, remove large rubbish (old bathroom suites, old kitchen units, old doors, old tiles, packing) from the property. Where requested the removal of all rubbish will be provided in the form of skips to be arranged by {0}  on request, and there will be an associated charge. </p>
+
+<p>{0}  will not be responsible for damage that may occur to existing fittings that are removed (for example skirting, dado rail etc). Where you would like them to be replaced we will use due care and attention as far as possible. </p>
+
+<p>Payment – refer to payment terms.</p>
+
+<p>Invoice terms are as stated. Where a deposit is required prior to the commencement of work deposits are non-refundable, except in cases where {0}  is unable to deliver the services agreed to, in which case a deposit would be refunded in full. </p>
+
+<p>If the Customer fails to make any payment on the day of it becoming due, {0}  shall be entitled to charge interest at the rate of 5.00% per month as well before as after judgment on the outstanding amounts from the due date to date of payment without any liability to the Customer to cease any uncompleted work.</p>
+
+
+

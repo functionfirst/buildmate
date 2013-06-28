@@ -1,0 +1,128 @@
+﻿<%@ Master Language="VB" CodeFile="admin.master.vb" AutoEventWireup="false" Inherits="Manager" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Untitled Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- css -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+    
+    <link id="Link1" runat="server" rel="stylesheet" type="text/css" href="~/css/manager.css" />
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!--fav and touch icons -->
+    <!--link rel="shortcut icon" href="assets/ico/favicon.ico"-->
+    <!--link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png"-->
+    <!--link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png"-->
+    <!--link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png"-->
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form runat="server" id="form1">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" />
+  
+        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" />
+  
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"
+            CssClass="loading"
+            Transparency="50"
+            IsSticky="true"
+            MinDisplayTime="800"
+            InitialDelayTime="500">
+            <div class="inner_container"></div>
+        </telerik:RadAjaxLoadingPanel>
+
+                     <asp:LoginView ID="LoginView2" runat="server">
+                <LoggedInTemplate>
+                    <div class="topbar">
+                        <div class="container">
+                            <h1>Build<strong>Mate</strong> Administration</h1>
+
+                            <ul>
+                                <li><a href="settings.aspx"><asp:LoginName ID="LoginName1" runat="server" /></a></li>
+                                <li><a href="logout.aspx">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </LoggedInTemplate>
+            </asp:LoginView>
+
+            <div class="container">
+                <div class="nav">
+                <ul id="nav">
+                    <li>
+                        <asp:HyperLink ID="hlHome" runat="server"
+                            NavigateUrl="~/admin/"><span></span>Overview</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlTopTasks" runat="server"
+                            NavigateUrl="~/admin/top_tasks.aspx"><span></span>Top Tasks</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlTasks" runat="server"
+                            NavigateUrl="~/admin/tasks.aspx"><span></span>Tasks</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlResources" runat="server"
+                            NavigateUrl="~/admin/resources.aspx"><span></span>Resources</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlSuppliers" runat="server"
+                            NavigateUrl="~/admin/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlSupport" runat="server"
+                            NavigateUrl="~/admin/support.aspx"><span></span>Support</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlKnowledgeBase" runat="server"
+                            NavigateUrl="~/admin/knowledge_base.aspx"><span></span>Knowledge Base</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlBlog" runat="server"
+                            NavigateUrl="~/admin/blog.aspx"><span></span>Blog</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlNotification" runat="server"
+                            NavigateUrl="~/admin/notification.aspx"><span></span>Notification</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlUsers" runat="server"
+                            NavigateUrl="~/admin/users.aspx"><span></span>Users</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink1" runat="server"
+                            NavigateUrl="~/admin/new_projects.aspx"><span></span>New Projects</asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="hlLogout" runat="server"
+                            NavigateUrl="~/logout.aspx"><span></span>Logout</asp:HyperLink>
+                    </li>
+                </ul>
+            </div>
+          
+
+        <div class="main_content">
+            <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+            
+            <div class="clear"></div>
+        </div>     
+                  </div>  
+    </form>
+    </body>
+</html>
