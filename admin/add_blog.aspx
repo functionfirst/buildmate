@@ -30,7 +30,18 @@
                 <div class="boxcontent">
                     <div class="row">
                         <asp:Label ID="Label1" runat="server" Text="Title" AssociatedControlID="titleTextBox" CssClass="label" />
-                        <asp:TextBox ID="titleTextBox" runat="server" Text='<%# Bind("title") %>' Width="400px" MaxLength="120" />
+                        <asp:TextBox ID="titleTextBox" runat="server" Text='<%# Bind("title") %>' Width="500px" MaxLength="255" />
+                    </div>
+
+                    <div class="row">
+                        <asp:Label ID="Label2" runat="server" Text="Abstract" AssociatedControlID="abstractTextBox" CssClass="label" />
+                        <asp:TextBox ID="abstractTextBox" runat="server" Text='<%# Bind("abstract")%>' Width="500px" Height="90" MaxLength="255" TextMode="MultiLine" />
+                    </div>
+
+                    <div class="row">
+                        <asp:Label ID="Label4" runat="server" Text="Keywords" AssociatedControlID="keywordTextbox" CssClass="label" />
+
+                        <asp:TextBox ID="keywordTextbox" runat="server" Text='<%# Bind("Keywords") %>' Width="500" MaxLength="255" Height="90" TextMode="MultiLine" />
                     </div>
 
                     <div class="row">
@@ -86,7 +97,7 @@
     <asp:SqlDataSource ID="blogDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         InsertCommand="
-            INSERT INTO Blogs(CategoryId, title, article, userId, BlogCategory_BlogCategoryId) VALUES(@categoryId, @title, @article, @userId, @categoryId)">
+            INSERT INTO Blogs(CategoryId, title, abstract, keywords, article, userId, BlogCategory_BlogCategoryId) VALUES(@categoryId, @title, @abstract, @keywords, @article, @userId, @categoryId)">
             <InsertParameters>
                 <asp:SessionParameter Name="UserId" SessionField="UserId" />
             </InsertParameters>

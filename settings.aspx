@@ -43,6 +43,7 @@
     <div class="boxcontent">
         <asp:FormView ID="fvContactDetails" runat="server"
             Width="100%"
+            DefaultMode="Edit"
             DataSourceID="userProfileDataSource">
             <EditItemTemplate>
                 <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
@@ -155,6 +156,7 @@
                     <asp:LinkButton ID="btnCancel" runat="server"
                         Text="Cancel"
                         CommandName="Cancel"
+                        Visible="false"
                         CausesValidation="false" />
                 </div>
                 </asp:Panel>
@@ -230,6 +232,7 @@
     <div class="boxcontent">
         <asp:FormView ID="fvAddressDetails" runat="server"
             Width="100%"
+            DefaultMode="Edit"
             DataSourceID="userProfileAddressDataSource">
             <EditItemTemplate>
                 <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
@@ -318,6 +321,7 @@
                     <asp:LinkButton ID="btnCancel" runat="server"
                         Text="Cancel"
                         CommandName="Cancel"
+                        Visible="false"
                         CausesValidation="false" />
                 </div>
                 </asp:Panel>
@@ -381,6 +385,7 @@
         <div class="boxcontent">
         <asp:FormView ID="fvCompanyDetails" runat="server" 
             Width="100%"
+            DefaultMode="Edit"
             DataSourceID="userProfileCompanyDataSource">
             <EditItemTemplate>
             
@@ -429,6 +434,7 @@
                     <asp:LinkButton ID="btnCancel" runat="server"
                         Text="Cancel"
                         CommandName="Cancel"
+                        Visible="false"
                         CausesValidation="false" />
                 </div>
             </EditItemTemplate>

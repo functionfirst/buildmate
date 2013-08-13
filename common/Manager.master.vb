@@ -8,6 +8,7 @@ Partial Class Manager
     Dim userId As String = user.ProviderUserKey.ToString
     Dim subscriptionDate As Date
     Dim paypalPayerId As String
+    Public user_email As String
 
     Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
         ' set userid
@@ -83,6 +84,7 @@ Partial Class Manager
                     Session("lastname") = reader("surname").ToString
                     Session("email") = reader("email").ToString
                     Session("vatnumber") = reader("vatnumber").ToString
+                    user_email = Session("email")
                 End While
 
             Catch ex As Exception

@@ -27,6 +27,19 @@
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
+    <asp:Panel ID="noCustomerPanel" runat="server" visible="false" CssClass="customer-panel">
+        <h3>Adding a Customer</h3>
+
+        <p>
+            To start using Buildmate you'll need to create your first Customer. This will allow you to then create a Project and start pricing up your job.
+        </p>
+        <p>
+            <a href="add_customer.aspx" class="button create">Add a Customer</a>
+        </p>
+    </asp:Panel>
+
+    
+    <asp:Panel ID="customerPanel" runat="server">
     <div class="box">
         <h3>Customers</h3>
 
@@ -160,6 +173,9 @@
     </div>
     </div>
     </div>
+
+        
+    </asp:Panel>
 
     <asp:SqlDataSource
         ID="allCustomersDataSource"

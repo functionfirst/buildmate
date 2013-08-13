@@ -2,8 +2,7 @@
 Imports System.Data.SqlClient
 
 Partial Class manager_Default
-    Inherits System.Web.UI.Page
-
+    Inherits MyBaseClass
 
     Protected Sub OnCheckChanged(ByVal sender As Object, ByVal e As EventArgs)
         ' flip the archive flag for the selected customer
@@ -63,5 +62,13 @@ Partial Class manager_Default
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlCustomers"), HyperLink)
         activeLink.CssClass = "active"
+
+        If hasCustomer() Then
+            customerPanel.Visible = False
+            noCustomerPanel.Visible = True
+        Else
+            customerPanel.Visible = True
+            noCustomerPanel.Visible = False
+        End If
     End Sub
 End Class

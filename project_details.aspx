@@ -318,8 +318,8 @@
                     <div class="boxcontent">
                         <div class='rowl'>
                             <label title='Labour'>
-                                <asp:HyperLink ID="hpLabour" runat="server" 
-                                navigateurl="~/labour_costs.aspx?pid={0}" Text="Labour" />
+                                <asp:HyperLink ID="hpLabour" runat="server" CssClass="ajaxify"
+                                    navigateurl="~/labour_costs.aspx?pid={0}" Text="Labour" />
                             </label>
                             <asp:Literal ID="litLabour" runat="server" Text='<%# Bind("labourCost", "{0:c2}") %>' />
                         </div>
@@ -449,7 +449,6 @@
        <div class="div75r">
         <asp:FormView ID="FormView1" runat="server"
             DataKeyNames="id"
-            DefaultMode="Edit"
             DataSourceID="SqlDataSource1"
             Width="100%">
             <ItemTemplate>
@@ -570,19 +569,14 @@
                         Style="border-color: #ececec">
                         <DayOverStyle BackColor="#bfdbff" />
                     </telerik:RadCalendar>
-
                     <div class="row">
                         <asp:Label ID="lblLabelProjectName" runat="server"
                             AssociatedControlID="rtbProjectName"
                             CssClass="label"
                             Text="Project Name*" />
 
-                        <telerik:RadTextBox
-                            ID="rtbProjectName"
-                            runat="server"
-                            Text='<%# Bind("projectName") %>'
-                            EmptyMessage="Project Name"
-                            MaxLength="150" />
+                        <telerik:RadTextBox ID="rtbProjectName" runat="server" Text='<%# Bind("projectName") %>'
+                            EmptyMessage="Project Name" Columns="50" MaxLength="150" style="width: 300px" />
                         
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                             ControlToValidate="rtbProjectName"
@@ -721,11 +715,11 @@
                     
                     <div class="row">
                         <label class="label">&nbsp;</label>
-                        <asp:Button ID="updateButton" runat="server" Text="Save Changes"
+                        <asp:Button ID="updateButton" runat="server" text="Update"
                             CommandName="Update" CausesValidation="True" />
                        
-                     <%--   <asp:LinkButton ID="cancelButton" runat="server" Text="Cancel"
-                            CommandName="Cancel" CausesValidation="False" />--%>
+                        <asp:LinkButton ID="cancelButton" runat="server" Text="Cancel"
+                            CommandName="Cancel" CausesValidation="False" />
                     </div>
                     </div>
                     

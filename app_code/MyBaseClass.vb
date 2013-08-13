@@ -1,5 +1,9 @@
-﻿Public Class MyBaseClass
+﻿Imports System.Data.SqlClient
+
+Public Class MyBaseClass
     Inherits System.Web.UI.Page
+
+    Dim connectionString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
 
     Protected Overrides Sub OnLoad(ByVal e As EventArgs)
         ' call the base class OnLoad method!
@@ -29,5 +33,25 @@
             Trace.Write(ex.ToString)
         End Try
     End Sub
+
+    Protected Function hasCustomer() As Boolean
+
+        Dim queryString As String = "SELECT COUNT(id) FROM UserContact WHERE userId = @userId;"
+        Using connection As New SqlConnection(connectionString)
+            Dim command As New SqlCommand(queryString, connection)
+            command.Parameters.AddWithValue("userId", Session("userId"))
+            connection.Open()
+            Dim reader As SqlDataReader = command.ExecuteReader()
+            Try
+                If reader.HasRows Then
+                    Return True
+                End If
+            Catch
+
+            End Try
+        End Using
+
+        Return False
+    End Function
 End Class
 

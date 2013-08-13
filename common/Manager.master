@@ -12,7 +12,7 @@
     <meta name="author" content="" />
 
     <!-- css -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href="/css/manager.css" />
@@ -107,13 +107,13 @@
                         <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/"><span></span>Dashboard</asp:HyperLink>
                     </li>
                     <li>
+                        <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx"><span></span>Customers</asp:HyperLink>
+                    </li>
+                    <li>
                         <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx"><span></span>Projects</asp:HyperLink>
                     </li>
                     <li>
                         <asp:HyperLink ID="hlDocuments" runat="server" NavigateUrl="~/documents.aspx"><span></span> Documents</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx"><span></span>Customers</asp:HyperLink>
                     </li>
                     <li>
                         <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
@@ -228,9 +228,12 @@
     
     <script type="text/javascript">
         var _mfq = _mfq || [];
+
+        _mfq.push(["setVariable", "email", "<%= user_email %>"]);
+
         (function () {
             var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
-            mf.src = "//cdn.mouseflow.com/projects/a02e2b68-10fe-4080-8865-ee316f77c62c.js";
+            mf.src = "//cdn.mouseflow.com/projects/14253c8b-9914-4c12-9ff3-e5e56ce2c250.js";
             document.getElementsByTagName("head")[0].appendChild(mf);
         })();
     </script>

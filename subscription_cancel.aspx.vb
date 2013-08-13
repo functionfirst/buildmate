@@ -15,7 +15,7 @@ Partial Class subscription_cancel
             cmd.ExecuteReader()
 
             ' redirect the user to paypal where they can continue with the subscription
-            Response.Redirect("https://www.sandbox.paypal.com/webscr?cmd=_customer-billing-agreement&token=" & token)
+            ' Response.Redirect("https://www.sandbox.paypal.com/webscr?cmd=_customer-billing-agreement&token=" & token)
         Catch ex As Exception
             Trace.Write(ex.ToString)
             myConn.Close()

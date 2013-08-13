@@ -1,12 +1,19 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    box-sizing:         border-box;
+}
+
 html,
 body {
     background: #f5f5f5;
 }
 body {
-    font: 13px/18px "Open Sans",arial,sans-serif;
+    font: 13px/1.6em "Open Sans",arial,sans-serif;
     margin: 0;
 	color: #2c2c2c;
 }
+
 
 a {
     color: #21759B;
@@ -15,6 +22,41 @@ a {
        -moz-transition: color .2s linear;
          -o-transition: color .2s linear;
            -transition: color .2s linear;
+}
+
+html body .RadInput_Default .riTextBox,
+html body .RadInputMgr_Default,
+html body .riSingle .riTextBox,
+html body .riSingle .riTextBox[type="text"] {
+    border-color: #ddd;
+    padding: 4px 8px;
+    min-height: 20px;
+    max-width: 100%;
+    -webkit-border-radius:  4px;
+    -moz-border-radius:     4px;
+    border-radius:          4px;
+}
+html .RadGrid_Default,
+html .RadGrid_Default .rgMasterTable,
+html .RadGrid_Default .rgDetailTable,
+html .RadGrid_Default .rgGroupPanel table,
+html .RadGrid_Default .rgCommandRow table,
+html .RadGrid_Default .rgEditForm table,
+html .RadGrid_Default .rgPager table,
+html .GridToolTip_Default {
+    font: inherit;
+}
+
+.RadForm_Default.rfdButton a.rfdSkinnedButton,
+.RadForm_Default.rfdButton input[type="button"].rfdDecorated,
+.RadForm_Default.rfdButton input[type="reset"].rfdDecorated,
+.RadForm_Default.rfdButton input[type="submit"].rfdDecorated,
+.RadForm_Default.rfdButton .rfdSkinnedButton button, .RadForm_Default a.rfdSkinnedButton,
+.RadForm_Default .rfdSkinnedButton button,
+.RadForm_Default .rfdSkinnedButton input.rfdDecorated,
+.RadForm_Default.rfdButton a.rfdSkinnedButton,
+.RadForm_Default.rfdButton a.rfdSkinnedButton * {
+    cursor: pointer;
 }
     
 #app .RadGrid a {
@@ -56,6 +98,24 @@ a:hover,
 .project-details .desc {
     margin-top: 5px;
     color: #666;
+}
+
+
+/* projects */
+.customer-panel {
+    padding: 20px 20px 10px;
+    color: #FFF;
+    background: #333;   
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px; 
+}
+
+.customer-panel h3 {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 0;
 }
 .main_content {
     padding: 20px 10px 10px;
@@ -396,38 +456,35 @@ a:hover,
  /* button */
  .button {
     display: inline-block;
-    font-weight: bold;
+    position: relative;
+    padding: 8px 12px;
+    color: #555;
     cursor: pointer;
-    color: #333;
-    /*margin: 1px 0;*/
-    padding: 5px 8px;
-    border: 1px solid #ddd;
-    border-color: #ddd #ccc #bbb #ddd;
-    text-shadow: 0 1px 0 #eee;
-    background: #eeeeee;
-    background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc));
-    background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%);
-    background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%);
-    background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 );
-    background: linear-gradient(top, #eeeeee 0%,#cccccc 100%);
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
-    -webkit-box-shadow: 0 1px 3px #eee;
-       -moz-box-shadow: 0 1px 3px #eee;
-            box-shadow: 0 1px 3px #eee;
+    background-color: #d6d6d6;
+    background-image: -moz-linear-gradient(top, #ddd, #ccc);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ddd), to(#ccc));
+    background-image: -webkit-linear-gradient(top, #ddd, #ccc);
+    background-image: -o-linear-gradient(top, #ddd, #ccc);
+    background-image: linear-gradient(to bottom, #ddd, #ccc);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdddddd', endColorstr='#ffcccccc', GradientType=0);
+    border: none;
+    -webkit-border-radius:  2px;
+    -moz-border-radius:     2px;
+    border-radius:          2px;
+    transition: top .1s;
 }
 .button:hover {
-    background: #f0f0f0;
+	opacity: 0.9;
+    color: inherit;
+    /*background: #f0f0f0;
     background: -moz-linear-gradient(top, #f0f0f0 0%, #d1d1d1 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f0f0), color-stop(100%,#d1d1d1));
     background: -webkit-linear-gradient(top, #fff 0%,#d1d1d1 100%);
     background: -o-linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);
     background: -ms-linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#d1d1d1',GradientType=0 );
-    background: linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);
+    background: linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);*/
 }
 .addButton {
     float: right;
@@ -444,20 +501,18 @@ a:hover,
 }
 .create 
 {
-    border: 1px solid #728b1a;
     color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
-    background: #a5c630;
-    background: -moz-linear-gradient(top, #a5c630 0%, #728b1a 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a5c630), color-stop(100%,#728b1a));
-    background: -webkit-linear-gradient(top, #a5c630 0%,#728b1a 100%);
-    background: -o-linear-gradient(top, #a5c630 0%,#728b1a 100%);
-    background: -ms-linear-gradient(top, #a5c630 0%,#728b1a 100%);
-    background: linear-gradient(top, #a5c630 0%,#728b1a 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a5c630', endColorstr='#728b1a',GradientType=0 );
+    background: #89bc00;
+    background: -moz-linear-gradient(top, #89bc00 0%, #7daa00 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#89bc00), color-stop(100%,#7daa00));
+    background: -webkit-linear-gradient(top, #89bc00 0%,#7daa00 100%);
+    background: -o-linear-gradient(top, #89bc00 0%,#7daa00 100%);
+    background: -ms-linear-gradient(top, #89bc00 0%,#7daa00 100%);
+    background: linear-gradient(to bottom, #89bc00 0%,#7daa00 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#89bc00', endColorstr='#7daa00',GradientType=0 );
 }
 .create:hover {
-    color: #f5f5f5;
+    /*color: #f5f5f5;
     border-color: rgba(0,0,0,0.1);
     background: #b6d34b;
     background: -moz-linear-gradient(top, #b6d34b 0%, #96b622 100%);
@@ -466,12 +521,14 @@ a:hover,
     background: -o-linear-gradient(top, #b6d34b 0%,#96b622 100%);
     background: -ms-linear-gradient(top, #b6d34b 0%,#96b622 100%);
     background: linear-gradient(top, #b6d34b 0%,#96b622 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6d34b', endColorstr='#96b622',GradientType=0 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6d34b', endColorstr='#96b622',GradientType=0 );*/
 }
 .button:active {
-    -webkit-box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;
+    /*margin: 2px 0 0;*/
+    top: 2px;
+    /*-webkit-box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;
        -moz-box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;
-            box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;
+            box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;*/
 }
 
 .button[disabled='disabled'],
@@ -851,6 +908,7 @@ a:hover,
 	h4 {
 	    color: #333;
         font-size: inherit;
+        font-weight: 600;
     }
 
     .cell { float: left; display: table-cell }
@@ -884,6 +942,20 @@ a:hover,
     /* FORMS & FILTER --------------- */
     hr { border: 0; border-top: 1px solid #ccc }
 
+    .control {
+        clear: both;
+    }
+
+    .control-label {
+        float: left;
+        width: 120px;
+        font-weight: 600;
+    }
+
+    .control-body {
+        margin-left: 130px;
+    }
+
     div.row, div.rowl, div.row_req {
         margin: 0 0 2px;
         clear: both;
@@ -893,13 +965,10 @@ a:hover,
     div.row label.label,
     div.rowl label,
     div.row_req label {
-        clear:left;
-        display:block;
         float:left;
-        min-width: 120px;
-        text-align:left;
-        margin-right:10px;
-        color: #444;
+        width: 120px;
+        margin-right: 10px;
+        font-weight: 600;
     }
     
     .box_total .row .label {
@@ -1017,6 +1086,7 @@ a:hover,
 .box_top,
 .box_top_edit {
     text-indent: 10px;
+    font-weight: 600;
     margin: 0;
     border-bottom: 1px solid #ccc;
     background: #eeeeee;

@@ -20,7 +20,19 @@
                 <div class="boxcontent">
                     <div class="row">
                         <asp:Label ID="Label1" runat="server" Text="Title" AssociatedControlID="titleTextBox" CssClass="label" />
-                        <asp:TextBox ID="titleTextBox" runat="server" Text='<%# Bind("title") %>' Width="500" MaxLength="120" />
+                        <asp:TextBox ID="titleTextBox" runat="server" Text='<%# Bind("title") %>' Width="500" MaxLength="255" />
+                    </div>
+
+                    <div class="row">
+                        <asp:Label ID="Label2" runat="server" Text="Abstract" AssociatedControlID="abstractTextBox" CssClass="label" />
+
+                        <asp:TextBox ID="abstractTextBox" runat="server" Text='<%# Bind("Abstract") %>' Width="500" MaxLength="255" Height="90" TextMode="MultiLine" />
+                    </div>
+
+                    <div class="row">
+                        <asp:Label ID="Label4" runat="server" Text="Keywords" AssociatedControlID="keywordTextbox" CssClass="label" />
+
+                        <asp:TextBox ID="keywordTextbox" runat="server" Text='<%# Bind("Keywords") %>' Width="500" MaxLength="255" Height="90" TextMode="MultiLine" />
                     </div>
 
                     <div class="row">
@@ -32,7 +44,7 @@
                             DataTextField="Name"
                             DataValueField="BlogCategoryId"
                             SelectedValue='<%# Bind("categoryId") %>' />
-                    </div> 
+                    </div>
 
                     <div class="row">
                         <asp:Label ID="Label5" runat="server" Text="Article" AssociatedControlID="RadEditor1" CssClass="label" />
@@ -79,6 +91,10 @@
                         <label class="label">Title:</label>
                         <asp:Label ID="titleLabel" runat="server" Text='<%# Bind("title") %>' />
                     </div>
+                    <div class="row">
+                        <label class="label">Abstract:</label>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("Abstract") %>' />
+                    </div>
             
                     <div class="row">
                         <label class="label">Category</label>
@@ -122,7 +138,7 @@
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         UpdateCommand="
             UPDATE Blogs
-            SET CategoryId = @categoryId, title = @title, article = @article, BlogCategory_BlogCategoryId = @categoryId
+            SET CategoryId = @categoryId, title = @title, abstract = @abstract, keywords = @keywords, article = @article, BlogCategory_BlogCategoryId = @categoryId
             WHERE BlogId = @id"
         SelectCommand="
             SELECT *

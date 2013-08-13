@@ -153,5 +153,13 @@ Partial Class manager_Default
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlProjects"), HyperLink)
         activeLink.CssClass = "active"
+
+        If hasCustomer() Then
+            customerPanel.Visible = False
+            noCustomerPanel.Visible = True
+        Else
+            customerPanel.Visible = True
+            noCustomerPanel.Visible = False
+        End If
     End Sub
 End Class

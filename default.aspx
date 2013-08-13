@@ -259,10 +259,11 @@
                     <ItemTemplate>
                         <p>
                             <a href="<%#Eval("URL")%>" target="_blank"><%#Eval("Title")%></a><br />
-
+                            <!--
                             <small>
                                 Posted on <%# DataBinder.Eval(Container.DataItem, "DateStart", "{0:MMMM d, yyyy}")%>
                             </small><br />
+                            -->
 
                             <%#Eval("Abstract")%>
                         </p>
