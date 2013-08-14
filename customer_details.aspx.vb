@@ -1,7 +1,7 @@
 ﻿Imports Telerik.Web.UI
 
 Partial Class manager_customer_details
-    Inherits System.Web.UI.Page
+    Inherits MyBaseClass
 
     Protected Sub defaultCountry(ByVal sender As Object, ByVal e As System.EventArgs)
         ' default country to UK
@@ -13,5 +13,10 @@ Partial Class manager_customer_details
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlCustomers"), HyperLink)
         activeLink.CssClass = "active"
+    End Sub
+
+    Protected Sub fvCustomerDetails_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvCustomerDetails.ItemUpdated
+
+        showNotification("Customer Updated", "Your changes were saved successfully")
     End Sub
 End Class

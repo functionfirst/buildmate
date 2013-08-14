@@ -13,6 +13,7 @@
             <telerik:AjaxSetting AjaxControlId="fvCustomerDetails">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvCustomerDetails" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -27,133 +28,8 @@
         </p>
     </div>
 
-                <asp:FormView ID="fvCustomerDetails" runat="server" DataSourceId="customerDataSource" DataKeyNames="id" Width="100%">
-                    <ItemTemplate>
-        <div class="box">
-                    <h3>Customer Details</h3>
-                    
-                    <div class="boxcontent">
-
-                        <div class="div33">
-                            <div class="row">
-                                <label title="Title" class="label">Title</label>
-                                <%#Eval("title")%>
-                            </div>
-                            
-                            <div class="row">
-                                <label title="First Name" class="label">First Name</label>
-                                <%#Eval("firstname")%>
-                            </div>
-                            
-                            <div class="row">
-                                <label title="Surname" class="label">Surname</label>
-                                <%#Eval("surname")%>
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Company" class="label">Company</label>
-                                <%#Eval("company")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Job Title" class="label">Job Title</label>
-                                <%#Eval("jobtitle")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Email" class="label">Email</label>
-                                <asp:HyperLink ID="HyperLink1" runat="server"
-                                    NavigateUrl='<%# "mailto:" & Eval("email")%>'
-                                    Text='<%#Eval("email")%>' />&nbsp;
-                            </div>
-                            
-                            <div class="row">
-                                <label title="Payment Terms" class="label">Payment Terms</label>
-                                <%#Eval("paymentTerm")%>&nbsp;
-                            </div>
-                            
-                            </div>
-                            
-                            <div class="div33">
-
-                            <div class="row">
-                                <label title="Telephone" class="label">Telephone</label>
-                                <%#Eval("tel")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Fax" class="label">Fax</label>
-                                <%#Eval("fax")%>&nbsp;
-                            </div>
-
-                            <div class="row">
-                                <label title="Mobile" class="label">Mobile</label>
-                                <%#Eval("mobile")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Business" class="label">Business</label>
-                                <%#Eval("business")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Extension" class="label">Extension</label>
-                                <%#Eval("extension")%>&nbsp;
-                            </div>
-                            
-                            </div>
-                            
-                            <div class="div33r">
-                            <div class="row">
-                                <label title="Address" class="label">Address</label>
-                                <%#Eval("address1")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Address 2" class="label">&nbsp;</label>
-                                <%#Eval("address2")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Address 3" class="label">&nbsp;</label>
-                                <%#Eval("address3")%>&nbsp;
-                            </div>
-                            
-                            <div class="row">
-                                <label title="Town/City" class="label">Town/City</label>
-                                <%#Eval("city")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="County" class="label">County</label>
-                                <%#Eval("county")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Postcode" class="label">Postcode</label>
-                                <%#Eval("postcode")%>&nbsp;
-                            </div>
-                                                    
-                            <div class="row">
-                                <label title="Country" class="label">Country</label>
-                                <%#Eval("countryName")%>&nbsp;
-                            </div>
-                            
-                            </div>
-
-                            
-                                                    
-                            <div class="row">
-                                <label class="label">&nbsp;</label>
-                                <asp:Button ID="btnEdit" runat="server" CommandName="Edit" Text="Edit Customer" />
-                            </div>
-
-                                <div class="clear"></div>
-                        </div>
-                        </div>
-
-
-                    </ItemTemplate>
+                <asp:FormView ID="fvCustomerDetails" runat="server" DefaultMode="Edit"
+                     DataSourceId="customerDataSource" DataKeyNames="id" Width="100%">
                     <EditItemTemplate> 
                     <div class="box">
                         <h3>Customer Details</h3>
@@ -330,8 +206,6 @@
                                     <label for="btns" class="label">&nbsp;</label>
                                     <asp:Button ID="btnUpdate" runat="server" CommandName="Update"
                                         Text="Save Changes" />
-                                    <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel"
-                                       Text="Cancel" />
                                 </div>
 
                                 <div class="clear"></div>

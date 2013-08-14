@@ -474,14 +474,21 @@ a:hover,
 .button:hover {
 	opacity: 0.9;
     color: inherit;
-    /*background: #f0f0f0;
-    background: -moz-linear-gradient(top, #f0f0f0 0%, #d1d1d1 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f0f0), color-stop(100%,#d1d1d1));
-    background: -webkit-linear-gradient(top, #fff 0%,#d1d1d1 100%);
-    background: -o-linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);
-    background: -ms-linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#d1d1d1',GradientType=0 );
-    background: linear-gradient(top, #f0f0f0 0%,#d1d1d1 100%);*/
+}
+.button:active {
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    -moz-box-shadow:    0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    box-shadow:         0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset
+}
+.button[disabled='disabled'],
+.button:active[disabled='disabled'] {
+    border:1px solid #ccc;
+    color: #666;
+    background: #f2f5f6; 
+    cursor: default;
+    -webkit-box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
+       -moz-box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
+            box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
 }
 .addButton {
     float: right;
@@ -496,8 +503,7 @@ a:hover,
     margin-left: 5px;
     margin-right: 5px;
 }
-.create 
-{
+.create {
     color: #fff;
     background: #89bc00;
     background: -moz-linear-gradient(top, #89bc00 0%, #7daa00 100%);
@@ -509,34 +515,7 @@ a:hover,
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#89bc00', endColorstr='#7daa00',GradientType=0 );
 }
 .create:hover {
-    /*color: #f5f5f5;
-    border-color: rgba(0,0,0,0.1);
-    background: #b6d34b;
-    background: -moz-linear-gradient(top, #b6d34b 0%, #96b622 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b6d34b), color-stop(100%,#96b622));
-    background: -webkit-linear-gradient(top, #b6d34b 0%,#96b622 100%);
-    background: -o-linear-gradient(top, #b6d34b 0%,#96b622 100%);
-    background: -ms-linear-gradient(top, #b6d34b 0%,#96b622 100%);
-    background: linear-gradient(top, #b6d34b 0%,#96b622 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6d34b', endColorstr='#96b622',GradientType=0 );*/
-}
-.button:active {
-    /*margin: 2px 0 0;*/
-    top: 2px;
-    /*-webkit-box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;
-       -moz-box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;
-            box-shadow: inset 0 2px 5px #666, 0 0 3px #fff;*/
-}
-
-.button[disabled='disabled'],
-.button:active[disabled='disabled'] {
-    border:1px solid #ccc;
-    color: #666;
-    background: #f2f5f6; 
-    cursor: default;
-    -webkit-box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
-       -moz-box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
-            box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
+    color: #fff;
 }
 
 .clear { clear: both; }
@@ -954,18 +933,23 @@ a:hover,
     }
 
     div.row, div.rowl, div.row_req {
-        margin: 0 0 2px;
+        margin-bottom: 5px;
         clear: both;
-        min-height: 26px;
     }
 
     div.row label.label,
     div.rowl label,
     div.row_req label {
-        float:left;
-        width: 120px;
         margin-right: 10px;
+        float: left;
+        width: 120px;
+        color: #999;
+        display: block;
         font-weight: 600;
+        text-align: right;
+        font-size: 11px;
+        text-transform: uppercase;
+        margin-top: 3px;
     }
     
     .box_total .row .label {
