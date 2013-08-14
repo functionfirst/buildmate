@@ -52,6 +52,16 @@
             IsSticky="true" MinDisplayTime="800" InitialDelayTime="500">
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
+
+        
+        <asp:Panel ID="notification" runat="server" CssClass="flash" Visible="false">
+            <h3><asp:Literal ID="notificationTitle" runat="server">Message</asp:Literal></h3>
+            <a href="#" class="flash-close">&times;</a>
+
+            <p>
+                <asp:Literal ID="notificationMessage" runat="server">Message content</asp:Literal>
+            </p>
+        </asp:Panel>
         
              <asp:LoginView ID="LoginView2" runat="server">
                 <LoggedInTemplate>

@@ -155,11 +155,11 @@ Partial Class manager_Default
         activeLink.CssClass = "active"
 
         If hasCustomer() Then
-            customerPanel.Visible = False
-            noCustomerPanel.Visible = True
-        Else
             customerPanel.Visible = True
             noCustomerPanel.Visible = False
+        Else
+            customerPanel.Visible = False
+            noCustomerPanel.Visible = True
         End If
     End Sub
 End Class

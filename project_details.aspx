@@ -35,9 +35,6 @@
     function checkVariationMode(item) {
         var currentStatus = $("#ctl00_MainContent_FormView1_hiddenStatusId").val()
         var newStatus = item._value;
-        console.log('test');
-        console.log(currentStatus);
-        console.log(newStatus);
         if (currentStatus <= 2 && newStatus >= 3) {
             showVariationMode();
         } else {
@@ -81,6 +78,7 @@
             <telerik:AjaxSetting AjaxControlId="FormView1">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="FormView1" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                      <telerik:AjaxUpdatedControl ControlID="fvProjectCosts" />
                      <telerik:AjaxUpdatedControl ControlID="fvElementDetailsInsert" />
                      <telerik:AjaxUpdatedControl ControlID="rgBuildElements" />
@@ -281,7 +279,7 @@
             </InsertItemTemplate>
         </asp:FormView>
     </div>
-    <div class="modal-wrapper" title="Click or press Esc to cancel"></div>    
+    <div class="modal-wrapper" title="Click or press Esc to cancel"></div>
     
     <asp:Panel ID="NoProjectPanel" runat="server" CssClass="successBox">
         <h3>Project Error</h3>
@@ -447,116 +445,10 @@
     </div>
 
        <div class="div75r">
-        <asp:FormView ID="FormView1" runat="server"
+        <asp:FormView ID="FormView1" runat="server" DefaultMode="Edit"
             DataKeyNames="id"
             DataSourceID="SqlDataSource1"
             Width="100%">
-            <ItemTemplate>
-                <div class="box project-details">
-                    <h3>Project Details</h3>
-                    
-                    <div class="boxcontent">
-                        <h4><asp:Label ID="Label2" runat="server" Text='<%# Bind("projectName") %>' /></h4>
-
-                        <p class="desc"><%#FormatString(Eval("description"))%></p>
-
-                        <div class="div50">
-                            <div class="row">
-                                <label title="Project Type" class="label">Project Type</label>
-                                <asp:Label ID="lblProjectType" runat="server" Text='<%# Bind("projectType") %>' />
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Customer" class="label">Customer</label>
-                                <asp:HyperLink ID="HyperLink1" runat="server"
-                                    Text='<%# Bind("Name") %>' NavigateUrl='<%# "~/customer_details.aspx?id=" & eval("customerId")%>' />
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Status" class="label">Status</label>
-                                <asp:Label ID="statusLabel" runat="server" Text='<%# Bind("status") %>' />
-
-                                <asp:HiddenField ID="hiddenStatusId" runat="server" Value='<%#Eval("projectStatusId") %>' />
-                                <asp:HiddenField ID="hiddenIsLocked" runat="server" Value='<%#Eval("isLocked") %>' />
-                                <asp:HiddenField ID="hiddenStatus" runat="server" Value='<%#Eval("status") %>' />
-                            </div>
-
-                            <div class="row">
-                                <label title="Return Date" class="label">Return Date</label>
-                                <asp:Label ID="lblReturnDate" runat="server" Text='<%# Bind("returnDate","{0:g}") %>' />&nbsp;
-                            </div>
-                
-                            <div class="row">
-                                <label title="Start Date" class="label">Start Date</label>
-                                <asp:Label ID="startDateLabel" runat="server" Text='<%# Bind("startDate","{0:d}") %>' />&nbsp;
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Completion Date" class="label">Completion Date</label>
-                                <asp:Label ID="completionDateLabel" runat="server" Text='<%# Bind("completionDate","{0:d}") %>' />&nbsp;
-                            </div>
-                    
-                            <div class="row">
-                                <label class="label">&nbsp;</label>                    
-                                <asp:Button ID="editButton" runat="server" CommandName="Edit"
-                                CausesValidation="False" Text="Edit Project" />
-                            </div>
-                        </div>
-                
-                        <div class="div50r">
-                            <div class="row">
-                                <label title="Retention" class="label">Retention</label>
-                                <asp:Label ID="retentionPeriodLabel" runat="server" Text='<%# Bind("retentionPeriod") %>' />
-                                <asp:Label ID="retentionTypeLabel" runat="server" Text='<%# Bind("retentionType") %>' />
-                                at
-                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("retentionPercentage") %>' />%
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Overhead (%)" class="label">Overhead (%)</label>
-                                <asp:Label ID="lblOverhead" runat="server" Text='<%# Bind("Overhead") %>' /> %
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Profit (%)" class="label">Profit (%)</label>
-                                <asp:Label ID="lblProfit" runat="server" Text='<%# Bind("profit") %>' /> %
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Tender Type" class="label">Tender Type</label>
-                                <asp:Label ID="lblTenderType" runat="server" Text='<%# Bind("tenderType") %>' />
-                            </div>
-                    
-                            <div class="row">
-                                <label title="VAT" class="label">VAT</label>
-
-                                <asp:Label ID="Label7" runat="server"
-                                    Text='<%# Bind("vatRate", "{0:f2}%") %>'
-                                    Visible='<%# IIF(Eval("incVAT"), "True", "False") %>' />
-                            
-                                <asp:Label ID="Label8" runat="server"
-                                    Text='None'
-                                    Visible='<%# IIF(Eval("incVAT"), "False", "True") %>' />
-                            </div>
-                    
-                            <div class="row">
-                                <label title="Discount" class="label">Discount</label>
-
-                                <asp:Label ID="Label9" runat="server"
-                                    Text="2.5% contractor discount"
-                                    Visible='<%# IIF(Eval("incDiscount"), "True", "False") %>' />
-
-                                <asp:Label ID="Label10" runat="server"
-                                    Text="None"
-                                    Visible='<%# IIF(Eval("incDiscount"), "False", "True") %>' />
-                            </div>
-                    
-                            </div>
-                        <div class="clear"></div>
-                        <asp:HiddenField ID="hfIsEditable" runat="server" Value='<%#eval("isEditable") %>' />
-                    </div>
-                </div>
-            </ItemTemplate>
             <EditItemTemplate>
                 <asp:Panel ID="Panel5" runat="server" DefaultButton="updateButton" CssClass="box">
                     
@@ -576,7 +468,7 @@
                             Text="Project Name*" />
 
                         <telerik:RadTextBox ID="rtbProjectName" runat="server" Text='<%# Bind("projectName") %>'
-                            EmptyMessage="Project Name" Columns="50" MaxLength="150" style="width: 300px" />
+                            EmptyMessage="Project Name" Columns="50" MaxLength="150" Width="400" />
                         
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                             ControlToValidate="rtbProjectName"
@@ -592,7 +484,7 @@
                             Text="Description" />
                         
                         <telerik:RadTextBox ID="rtbDescription" runat="server" Text='<%# Bind("description") %>'
-                            EmptyMessage="Description" TextMode="MultiLine" Columns="60" Rows="5" style="width: 570px" />
+                            EmptyMessage="Description" TextMode="MultiLine" Columns="60" Rows="3" Width="400" />
                     </div>
 
                     <div class="div50">
@@ -717,9 +609,6 @@
                         <label class="label">&nbsp;</label>
                         <asp:Button ID="updateButton" runat="server" text="Update"
                             CommandName="Update" CausesValidation="True" />
-                       
-                        <asp:LinkButton ID="cancelButton" runat="server" Text="Cancel"
-                            CommandName="Cancel" CausesValidation="False" />
                     </div>
                     </div>
                     

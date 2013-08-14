@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Imports System.Data
 
 Partial Class manager_Default
-    Inherits System.Web.UI.Page
+    Inherits MyBaseClass
 
     Dim isEditable As String
 
@@ -142,6 +142,8 @@ Partial Class manager_Default
         fvProjectCosts.DataBind()
         fvElementDetailsInsert.DataBind()
         rgBuildElements.DataBind()
+
+        showNotification("Project Updated", "Your changes were saved successfully")
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load

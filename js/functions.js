@@ -77,8 +77,8 @@ $(document).ready(function () {
     //    return false;
     //});
 
-    $(".help").click(function () {
-      
+    $('body').on('click', '.flash-close', function () {
+        $(this).parent('.flash').remove();
         return false;
     });
 });

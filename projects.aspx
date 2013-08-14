@@ -47,7 +47,7 @@
     <asp:Panel ID="noCustomerPanel" runat="server" visible="false" CssClass="customer-panel">
         <h3>First Steps...</h3>
         <p>
-            Before you being you'll first need to create a Customer which you can then assign to a Project.<br />
+            Before you begin you'll first need to create a Customer which you can then assign to a Project.<br />
         </p>
         <p>
             <a href="add_customer.aspx" class="button create">Add a Customer</a>
