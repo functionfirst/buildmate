@@ -3,7 +3,7 @@ Imports Telerik.Web.UI
 Imports System.Data.SqlClient
 
 Partial Class manager_build_element_details
-    Inherits System.Web.UI.Page
+    Inherits MyBaseClass
 
     Dim isLocked As Boolean = False
 
@@ -97,10 +97,7 @@ Partial Class manager_build_element_details
     'End Sub
 
     Protected Sub fvElementDetails_ItemUpdated(sender As Object, e As System.Web.UI.WebControls.FormViewUpdatedEventArgs) Handles fvElementDetails.ItemUpdated
-        completionBar.DataBind()
-    End Sub
-
-    Protected Sub fvCompletion_ItemUpdated(sender As Object, e As System.Web.UI.WebControls.FormViewUpdatedEventArgs) Handles fvCompletion.ItemUpdated
+        showNotification("Build Element Updated", "Your changes were saved successfully")
         completionBar.DataBind()
     End Sub
 End Class

@@ -29,12 +29,7 @@
             <telerik:AjaxSetting AjaxControlId="fvElementDetails">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="completionBar" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlId="fvCompletion">
-                <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="fvCompletion" />
-                     <telerik:AjaxUpdatedControl ControlID="completionBar" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -93,50 +88,10 @@
             <asp:FormView
                 ID="fvElementDetails"
                 runat="server"
+                DefaultMode="Edit"
                 DataSourceID="elementDataSource"
                 DataKeyNames="id" Width="100%">
                 <EmptyDataTemplate></EmptyDataTemplate>
-                <ItemTemplate>
-                    <div class="row">
-                        <label title="Name" class="label">Name</label>
-                        <%#Eval("spaceName")%>
-                    </div>
-                    
-                    <div class="row">
-                        <label title="Type" class="label">Type</label>
-                        <%#Eval("spaceType")%>
-                    </div>
-                
-                    <div class="row">
-                        <label title="Build Cost" class="label">Build Cost</label>
-                        <%#Eval("buildCost", "{0:C}")%>
-                    </div>
-                    
-                    <h4>Additional Costs</h4>
-                
-
-                    <div class="row">
-                        <label for="rntbSpacePrice" title="Sundry Items" class="label">Sundry Items</label>
-                        <span style="display: table-cell"><%#Eval("subcontractType")%></span>
-                    </div>
-                    
-                    <div class="row">
-                        <label for="rntbSpacePrice" title="Cost" class="label">Cost</label>
-                        <%#Eval("spacePrice", "{0:C}")%>
-                    </div>
-                    
-                    <div class="row">
-                        <label for="rntbSpacePrice" title="Adjustment" class="label">Adjustment</label>
-                        <%#Eval("subcontractPercent", "{0:N0}" & "%")%>
-                    </div>
-     
-                    <div class="row">
-                        <label class="label">&nbsp;</label>
-                        <asp:Button ID="btnEdit" runat="server"
-                            Enabled='<%#iif(Eval("isLocked"), "false", "true") %>'
-                            CommandName="Edit" Text="Edit Build Element" />
-                    </div>
-                </ItemTemplate>
                 <EditItemTemplate>
                     <div class="row">
                         <asp:Label
@@ -211,132 +166,28 @@
                             Width="60px" ShowSpinButtons="true" DBValue='<%#Bind("subcontractPercent") %>'
                             MinValue="0" MaxValue="100" Type="Percent" NumberFormat-DecimalDigits="0" />
                     </div>
+                    
+                    <div class="row">
+                        <label for="rntbSubcontractPercent" title="Completion" class="label">Completion</label>
+                        <telerik:RadNumericTextBox ID="rntbCompletion" runat="server"
+                            Width="60px" ShowSpinButtons="true" DBValue='<%#Bind("completion") %>'
+                            MinValue="0" MaxValue="100" Type="Percent" NumberFormat-DecimalDigits="0" />
+                    </div>
             
                     <div class="row">
                         <label for="btns" class="label">&nbsp;</label>
                         <asp:Button ID="btnUpdate" runat="server"
                             CommandName="Update" OnClick="validate"
                             ValidationGroup="editValidation" Text="Update" />
-                        <asp:LinkButton ID="btnCancel" runat="server"
-                            CommandName="Cancel" Text="Cancel" />
                     </div>
 
                 </EditItemTemplate>
             </asp:FormView>
-
-            <div class="clear"></div>
-
-            <asp:FormView
-            ID="fvCompletion"
-            runat="server"
-            DataSourceID="completionDataSource"
-            DataKeyNames="id"
-            Width="100%">
-            <EditItemTemplate>
-                <div class="row">
-                    <label class="label">Completion</label>
-
-                    <div class="clear">
-                       
-                       <table border="0" cellspacing="0">
-                        <colgroup>
-                            <col />
-                            <col width="30" />
-                        </colgroup>
-                        <tr>
-                            <td>
-                                <telerik:RadSlider
-                                    ID="RadSlider1"
-                                    runat="server"
-                                    Value='<%#Bind("completion") %>'
-                                    MinValue="0"
-                                    MaxValue="100"
-                                    Width="220px"
-                                    OnClientValueChanged="HandleValueChanged"
-                                    OnClientLoad="HandleValueChanged"
-                                    AnimationDuration="300"
-                                    ThumbsInteractionMode="Free" />
-                            </td>
-                            <td>
-                                <input type="text" style="width: 30px;" id="sliderValue" disabled="disabled" />
-                            </td>
-                            <td>
-                                <asp:LinkButton
-                                    ID="btnUpdate"
-                                    runat="server"
-                                    CssClass="floatright"
-                                    CommandName="Update"
-                                    Text="Save" />
-                            </td>
-                        </tr>
-                       </table>
-
-                        <p class="centrealign">This overrides the Completion for all Current Tasks .</p>
-                    </div>
-                </div>
-            </EditItemTemplate>
-            <ItemTemplate>
-                <div class="row">
-                    <label class="label">Completion</label>
-
-                    <div class="clear">
-                   <table border="0" cellspacing="0">
-                        <colgroup>
-                            <col />
-                            <col width="30" />
-                        </colgroup>
-                        <tr>
-                            <td>
-                                <telerik:RadSlider
-                                    ID="RadSlider1"
-                                    runat="server"
-                                    Value='<%#Bind("completion") %>'
-                                    MinValue="0"
-                                    Enabled="false"
-                                    MaxValue="100"
-                                    Width="220px"
-                                    AnimationDuration="300"
-                                    ThumbsInteractionMode="Free" />
-                            </td>
-                            <td>
-                                <asp:TextBox
-                                    ID="TextBox1"
-                                    runat="server"
-                                    Style="width: 30px"
-                                    Text='<%#Eval("completion", "{0}%") %>'
-                                    Enabled="false" />
-                            </td>
-                            <td>
-                                <asp:LinkButton
-                                    ID="btnEdit"
-                                    CssClass="floatright"
-                                    runat="server"
-                                    CommandName="Edit"
-                                    Text="Edit" />
-                            </td>
-                        </tr>
-                       </table>
-
-                        <script type="text/javascript">
-                            function HandleValueChanged(sender, eventArgs) {
-                                $get("sliderValue").value = sender.get_value() + "%";
-                            }
-                        </script>
-                    </div>
-                 </div>
-            </ItemTemplate>
-        </asp:FormView>
-            
         </div>
-
-        
     </asp:Panel>
-
-        
     </div>
     
     <div class="div66r">
-    
         <!-- current tasks -->
         <asp:Panel ID="pLimitedTasks" runat="server" CssClass="box_info" Visible="false">
             <h3>Limited Subscription</h3>
@@ -479,20 +330,6 @@
             <asp:Parameter Name="original_id" Type="Int64" />
             <asp:Parameter Name="spacePrice" DefaultValue="0" />
             <asp:Parameter Name="subcontractPercent" DefaultValue="0" />
-        </UpdateParameters>
-    </asp:SqlDataSource>
-
-    <asp:SqlDataSource ID="completionDataSource" runat="server"
-        ConflictDetection="OverwriteChanges"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        UpdateCommand="updateBuildElementCompletion" UpdateCommandType="StoredProcedure"
-        SelectCommand="getBuildElementCompletion"  SelectCommandType="StoredProcedure">
-        <SelectParameters>
-            <asp:QueryStringParameter Name="roomId" QueryStringField="rid" />
-            <asp:SessionParameter Name="UserId" SessionField="UserId" />
-        </SelectParameters>
-        <UpdateParameters>
-            <asp:SessionParameter Name="UserId" SessionField="UserId" />
         </UpdateParameters>
     </asp:SqlDataSource>
     
