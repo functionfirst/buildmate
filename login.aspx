@@ -5,9 +5,21 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Login - BuildMate</title>
+    <title>Login - Buildmate</title>
+
+    <meta name="description" content="Buildmate application" />
+    <meta name="author" content="Alan Jenkins" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
     
-    <link rel="stylesheet" type="text/css" href="~/css/manager.css" />    
+    <!-- css -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="~/css/manager.less" />
+
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="/js/functions.js"></script>
 </head>
@@ -16,12 +28,13 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-    <div class="container container_small">
-       <div class="box">
-            <div class="logo"><a href="http://www.getbuildmate.com" title="BuildMate">BuildMate</a></div>
+       <div class="login-form">
+            <div class="logo"><a href="http://www.getbuildmate.com" title="BuildMate">Buildmate</a></div>
 
-            <div class="boxcontent">
-                <asp:Login ID="Login1" runat="server" Width="100%">
+            <div class="login-form-inner">
+                <h1>Login</h1>
+
+                <asp:Login ID="Login1" runat="server" RenderOuterTable="false">
                     <LayoutTemplate>
                         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnLogin">
                             <div class="row">
@@ -35,14 +48,15 @@
                                 <asp:TextBox
                                     ID="userName"
                                     runat="server"
-                                    Width="180"
+                                    Width="210px"
                                     TextMode="SingleLine" />
 
                                 <asp:RequiredFieldValidator
                                     ID="RequiredFieldValidator1"
                                     runat="server"
+                                    Display="Dynamic"
                                     ControlToValidate="UserName">
-                                    <span class="req"></span>
+                                    Username is required
                                 </asp:RequiredFieldValidator>
                             </div>
 
@@ -53,17 +67,17 @@
                                     CssClass="label"
                                     AssociatedControlID="Password"
                                     Text="Password" />
-
+                                
                                 <asp:TextBox
                                     ID="Password"
                                     runat="server"
-                                    Width="180"
+                                    Width="210px"
                                     TextMode="Password" />
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                     ControlToValidate="Password"
                                     Display="Dynamic">
-                                    <span class="req"></span>
+                                    Password is required
                                 </asp:RequiredFieldValidator>
 
                                 <div>
@@ -77,29 +91,22 @@
                                 <asp:Button
                                     ID="btnLogin"
                                     runat="server"
-                                    CssClass="button"
+                                    CssClass="button button-create"
                                     CommandName="Login"
                                     Text="Login" />
-                            </div>
-
-                            <div class="row">
-                                <ul>
-                                    <li><a href="/forgot_password/">Forgot your password?</a></li>
-                                    <li>Don't have an account? <a href="http://getbuildmate.com/signup/">Start your free 30 day trial</a></li>
-                                </ul>
+                                   
+                                <a href="http://getbuildmate.com/signup/" class="button">Register</a>
                             </div>
                         </asp:Panel>
                     </LayoutTemplate>
                 </asp:Login>
             </div>
-        </div>
         
-        <p class="copy_footer">
-            &copy; 2013 Pyramid Estimator Ltd &bull;
-            <a href="http://www.getbuildmate.com/contact/">Contact</a> &bull;
-            <a href="http://www.getbuildmate.com/privacy/">Privacy</a> &bull;
-            <a href="http://www.getbuildmate.com/terms/">Terms of Use</a>
-        </p>
+        <div class="container centrealign">
+            <p>
+                <a href="/forgot_password/">Forgot your password?</a>
+            </p>
+        </div>
     </form>
 
        

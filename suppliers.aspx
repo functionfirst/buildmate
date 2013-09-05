@@ -2,7 +2,8 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
-<asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -25,128 +26,225 @@
                      <telerik:AjaxUpdatedControl ControlID="rcbSuppliers" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="fvSupplierInsert">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="fvSupplierInsert" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>        
     </telerik:RadAjaxManagerProxy>
 
+     <!-- begin add resource -->
+    <div id="addSupplier" class="md-window">
+        <div class="md-content">
+            <h3>Adding a Supplier..</h3>
+            
+            <asp:FormView ID="fvSupplierInsert" runat="server"
+                RenderOuterTable="false"
+                DataSourceId="insertSupplierDataSource"
+                DataKeyNames="id"
+                DefaultMode="Insert">
+                <InsertItemTemplate>
+                    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnInsert">
+                        <div class="md-details">
+                        <div class="row">
+                            <label for="rtbSupplierName" title="Supplier Name" class="label">Supplier Name*</label>
+                            <telerik:RadTextBox ID="rtbSupplierName" runat="server"
+                                Text='<%#Bind("supplierName") %>'
+                                MaxLength="50"
+                                Columns="35"
+                                EmptyMessage="Supplier Name" />
+                                    
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="rtbSupplierName" ValidationGroup="insertGroup"
+                                Display="Dynamic" ErrorMessage="Supplier Name">
+                                <span class="req"></span>
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-    <div class="clear">
+                        <hr />
 
-    <div class="div75">
-    <div class="box">
-        <h3>Suppliers</h3>
+                        <div class="row">
+                            <label for="rtbAddress1" title="Address" class="label">Address</label>
 
-        <div class="boxcontent">
-        
-            <div class=" rightalign">
-                <a href="add_supplier.aspx" class="button create">+ Add a Supplier</a>
-            </div>
+                            <telerik:RadTextBox ID="rtbAddress1" runat="server"
+                                Width="300px" Rows="8" Columns="80"
+                                Text='<%#Bind("address1") %>' TextMode="MultiLine" EmptyMessage="Address" />
+                        </div>
 
-    <telerik:RadGrid ID="rgSuppliers" runat="server"
-            DataSourceID="suppliersDataSource"
-            AllowAutomaticUpdates="true"
-            AllowAutomaticDeletes="true"
-            AutoGenerateColumns="false"
-            GridLines="None"
-            AllowSorting="true"
-            ShowStatusBar="true">
-            <MasterTableView
-                DataSourceID="suppliersDataSource"
-                AutoGenerateColumns="False"
-                GridLines="None"
-                NoMasterRecordsText="&nbsp;No Suppliers were found."
-                DataKeyNames="id">
-                 
-                <Columns>
-                    <telerik:GridTemplateColumn
-                        UniqueName="supplier"
-                        HeaderText="Supplier Name">
-                        <ItemTemplate>
-                            <asp:HyperLink ID="hlSupplier" runat="server" />
-                            <asp:Label ID="lblSupplier" runat="server" />
-                        </ItemTemplate>
-                    </telerik:GridTemplateColumn>
+                        <hr />
+                
+                        <div class="row">
+                            <label for="rtbEmail" title="Email" class="label">Email</label>
+                            <telerik:RadTextBox ID="rtbEmail" runat="server" Text='<%#Bind("email") %>' Columns="35" EmptyMessage="Email" />
+                        </div>
 
-                    <telerik:GridTemplateColumn
-                        UniqueName="position"
-                        HeaderText="Change Position"
-                        HeaderStyle-HorizontalAlign="Center" 
-                        ItemStyle-HorizontalAlign="Center">
-                        <ItemTemplate>
-                            <asp:HiddenField ID="hiddenId" runat="server" Value='<%# Bind("id") %>' />
+                        <div class="row">
+                            <label for="rtbTel" title="Telephone" class="label">Telephone</label>
+                            <telerik:RadTextBox ID="rtbTel" runat="server" Text='<%#Bind("tel") %>' Columns="35" EmptyMessage="Telephone" />
+                        </div>
+                                                        
+                        <div class="row">
+                            <label for="rtbFax" title="Fax" class="label">Fax</label>
+                            <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>' Columns="35" EmptyMessage="Fax" />
+                        </div>
+                                
+                        <div class="row">
+                            <label for="rtbURL" title="Website" class="label">Website</label>
+                            <telerik:RadTextBox ID="rtbURL" runat="server" Text='<%#Bind("URL") %>' Columns="35" EmptyMessage="Website" />
+                        </div>
 
-                            <asp:LinkButton ID="LinkButton1" runat="server"
-                                CommandArgument='<%# eval("position") %>'
-                                CssClass="pinArrow"
-                                ToolTip="Move Up"
-                                CommandName="MoveUp">&uArr;</asp:LinkButton>
+                        </div>
 
-                            <asp:LinkButton ID="LinkButton2" runat="server" 
-                                CommandArgument='<%# eval("position") %>'
-                                ToolTip="Move Down"
-                                CssClass="pinArrow"
-                                CommandName="MoveDown">&dArr;</asp:LinkButton>
-                        </ItemTemplate>
-                    </telerik:GridTemplateColumn>
+                        <div class="md-footer">
+                            <asp:Button ID="btnInsert" runat="server" CommandName="Insert"
+                                OnClientClick="validateModal()"
+                                ValidationGroup="insertGroup" Text="Add Supplier" CssClass="button button-create" />
                     
-                    <telerik:GridBoundColumn
-                        UniqueName="isLocked"
-                        HeaderText="isLocked"
-                        Visible="false"
-                        DataField="isLocked" />
-
-                    <telerik:GridBoundColumn
-                        UniqueName="supplierId"
-                        HeaderText="supplierId"
-                        Visible="false"
-                        DataField="supplierId" />
-
-                    <telerik:GridBoundColumn
-                        UniqueName="supplierName"
-                        HeaderText="supplierName"
-                        Visible="false"
-                        DataField="supplierName" />
-
-                    <telerik:GridButtonColumn
-                        ConfirmText="Remove this Supplier?"
-                        ConfirmTitle="Delete"
-                        ButtonType="ImageButton"
-                        CommandName="Delete"
-                        HeaderStyle-Width="5%"
-                        Text="Delete"
-                        UniqueName="DeleteColumn" />
-                </Columns>
-            </MasterTableView>
-        </telerik:RadGrid>    
-
-        </div>
+                            <a href="#" class="button md-close">Close</a>
+                        </div>
+                    </asp:Panel>
+                </div>
+                </InsertItemTemplate>
+            </asp:FormView>
         </div>
     </div>
 
-    <div class="div25r">
-        <asp:Panel ID="pNewSuppliers" runat="server">
-            <div class="box">
+    <div class="breadcrumb">
+        <ul class="breadcrumb-options">
+            <li><a href="#" data-target="addSupplier" class="js-open-modal button button-create">New Supplier</a></li>
+        </ul>
+        
+        <ul class="breadcrumb-list">
+            <li class="active">Suppliers</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <div class="div50">
+            <telerik:RadGrid ID="rgSuppliers" runat="server"
+                    DataSourceID="suppliersDataSource"
+                    AllowAutomaticUpdates="true"
+                    AllowAutomaticDeletes="true"
+                    AutoGenerateColumns="false"
+                    GridLines="None"
+                    AllowSorting="true"
+                    ShowStatusBar="true">
+                    <MasterTableView
+                        DataSourceID="suppliersDataSource"
+                        AutoGenerateColumns="False"
+                        GridLines="None"
+                        NoMasterRecordsText="&nbsp;No Suppliers were found."
+                        DataKeyNames="id">
+                 
+                        <Columns>
+                            <telerik:GridTemplateColumn
+                                UniqueName="supplier"
+                                HeaderText="Supplier Name">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="hlSupplier" runat="server" />
+                                    <asp:Label ID="lblSupplier" runat="server" />
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+
+                            <telerik:GridTemplateColumn
+                                UniqueName="position"
+                                HeaderText="Change Priority"
+                                HeaderStyle-HorizontalAlign="Center" 
+                                ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:HiddenField ID="hiddenId" runat="server" Value='<%# Bind("id") %>' />
+
+                                    <asp:LinkButton ID="LinkButton1" runat="server"
+                                        CommandArgument='<%# eval("position") %>'
+                                        CssClass="pinArrow"
+                                        ToolTip="Move Up"
+                                        CommandName="MoveUp">&uArr;</asp:LinkButton>
+
+                                    <asp:LinkButton ID="LinkButton2" runat="server" 
+                                        CommandArgument='<%# eval("position") %>'
+                                        ToolTip="Move Down"
+                                        CssClass="pinArrow"
+                                        CommandName="MoveDown">&dArr;</asp:LinkButton>
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
+                    
+                            <telerik:GridBoundColumn
+                                UniqueName="isLocked"
+                                HeaderText="isLocked"
+                                Visible="false"
+                                DataField="isLocked" />
+
+                            <telerik:GridBoundColumn
+                                UniqueName="supplierId"
+                                HeaderText="supplierId"
+                                Visible="false"
+                                DataField="supplierId" />
+
+                            <telerik:GridBoundColumn
+                                UniqueName="supplierName"
+                                HeaderText="supplierName"
+                                Visible="false"
+                                DataField="supplierName" />
+
+                            <telerik:GridButtonColumn
+                                ConfirmText="Remove this Supplier?"
+                                ConfirmTitle="Delete"
+                                ButtonType="ImageButton"
+                                CommandName="Delete"
+                                HeaderStyle-Width="5%"
+                                Text="Delete"
+                                UniqueName="DeleteColumn" />
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>    
+        </div>
+
+        <div class="div25">
+            <asp:Panel ID="pNewSuppliers" runat="server">
+                <div class="box">
+                    <h3>Unused Suppliers</h3>
+
+                    <div class="boxcontent">
+
+                        <p>
+                            Select a Supplier to use in your Projects.
+                        </p>
+
+                        <p>
+                            <telerik:RadComboBox
+                                ID="rcbSuppliers"
+                                runat="server"
+                                DataSourceID="newSupplierDataSource"
+                                DataTextField="supplierName"
+                                DataValueField="id" />
+                        </p>
+
+                        <div class="form-actions">
+                            <asp:Button ID="btnAddSupplier" runat="server" Text="Add this Supplier" CssClass="button button-create" />
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+
+        </div>
+
+        <div class="div25 div-last">
+            <div class="help-panel">
+                <h3>Suppliers</h3>
+                <p>
+                    Use the Supplier list to set your preferred priority, those at the top will be used first when checking resource prices.
+                </p>
+
                 <h3>Unused Suppliers</h3>
 
-                <div class="boxcontent">
-
-                        Select a Supplier to use in your Projects.
-
-                    <p>
-                        <telerik:RadComboBox
-                            ID="rcbSuppliers"
-                            runat="server"
-                            DataSourceID="newSupplierDataSource"
-                            DataTextField="supplierName"
-                            DataValueField="id" />
-                    </p>
-
-                    <asp:Button ID="btnAddSupplier" runat="server" Text="Add" />
-                </div>
+                <p>
+                    The Unusers Suppliers list displays all of your suppliers that you aren't actively using. To be able
+                    to use these Suppliers in your Project you will need to select them and click 'Add this Supplier'.
+                </p>
             </div>
-        </asp:Panel>
-    </div>
-
-        
+        </div>
     </div>
 
     <asp:SqlDataSource
@@ -175,4 +273,22 @@
             <asp:SessionParameter Name="UserId" SessionField="UserId" />
         </SelectParameters>
     </asp:SqlDataSource>
+
+    <asp:SqlDataSource
+        ID="insertSupplierDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        InsertCommand="insertSupplier"
+        InsertCommandType="StoredProcedure">
+        <InsertParameters>
+            <asp:SessionParameter name="UserId" SessionField="UserId" />
+            <asp:Parameter Name="NewId" Type="Int64" Direction="Output" />
+        </InsertParameters>
+    </asp:SqlDataSource>
+    
+    <asp:SqlDataSource
+        ID="countryDataSource"
+        runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        SelectCommand="getCountries"
+        SelectCommandType="StoredProcedure" />
  </asp:Content>

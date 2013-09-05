@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Dashboard - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="manager_default" %>
+﻿<%@ Page Title="Dashboard - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="manager_default" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -32,6 +32,14 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
+
+    <div class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li class="active">Dashboard</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
  
     <div class="div33">
         <asp:Panel ID="pOverdueTenders" runat="server" CssClass="box">
@@ -78,6 +86,7 @@
                 </telerik:radgrid>
             </div>
         </asp:Panel>
+
 
 
         <div class="box">
@@ -249,10 +258,10 @@
     </div>
 
 
-    <div class="div33r">
+    <div class="div33 div-last">
         
         <div class="box">
-            <h3>BuildMate News</h3>
+            <h3>Buildmate News</h3>
 
             <div class="boxcontent">
                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="NotificationDataSource">
@@ -294,7 +303,7 @@
         </li>
     </ol>
 
-
+    </div>
 
 
     <asp:SqlDataSource ID="statisticsDataSource" runat="server" 

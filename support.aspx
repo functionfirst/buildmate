@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="support.aspx.vb" Inherits="manager_Default" title="Support - BuildMate" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="support.aspx.vb" Inherits="manager_Default" title="Support - Buildmate" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -12,33 +12,94 @@
                      <telerik:AjaxUpdatedControl ControlID="rgTickets" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="Panel1">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="Panel1" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
+     <!-- begin add ticket -->
+    <div id="addTicket" class="md-window">
+        <div class="md-content">
+            <h3>Submit a Support Ticket..</h3>
+
+            <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSend">
+                <div class="md-details">
+                    <div class="row">
+                        <asp:Label ID="Label1" runat="server" Text="Subject*"
+                            AssociatedControlID="rtbSubject" CssClass="label" />
+                
+                        <telerik:RadTextBox
+                            ID="rtbSubject"
+                            runat="server"
+                            EmptyMessage="Enter your subject..."
+                            Text='<%#Bind("subject") %>'
+                            MaxLength="50"
+                            Width="300px" />
+
+                        <asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator2"
+                            runat="server"
+                            ErrorMessage="Content"
+                            Display="Dynamic"
+                            ControlToValidate="rtbSubject">
+                            <span class="req"></span>
+                        </asp:RequiredFieldValidator>
+                    </div>
+
+                    <div class="row">
+                        <asp:Label ID="lblContent" runat="server" Text="Description*"
+                            AssociatedControlID="rtbContent" CssClass="label" />
+                
+                        <telerik:RadTextBox ID="rtbContent" runat="server"
+                            EmptyMessage="Enter your support request..."
+                            Text='<%#Bind("supContent") %>' TextMode="MultiLine"
+                            Height="240px" Width="460px" />
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                            ErrorMessage="Content" Display="Dynamic" ControlToValidate="rtbContent">
+                            <span class="req"></span>
+                        </asp:RequiredFieldValidator>
+                    </div>
+                </div>
+
+                <div class="md-footer">
+                    <asp:Button ID="btnSend" runat="server" CssClass="button button-create" Text="Submit Ticket"
+                        OnClientClick="validateModal()" 
+                        CausesValidation="true" CommandName="Insert" />
+                            
+                    <a href="#" class="button md-close">Close</a>
+                </div>
+            </asp:Panel>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <ul class="breadcrumb-options">
+            <li><a href="#" data-target="addTicket" class="js-open-modal button button-create">New Ticket</a></li>
+        </ul>
+        <ul class="breadcrumb-list">
+            <li class="active">Support</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
 
     <div class="div75">
-
-    <div class="box">
-        <h3>Support</h3>
-
-        <div class="boxcontent">
-            <div class="div50">
-                <div class="row">
-                    <asp:RadioButtonList
-                        ID="rbTickets"
-                        runat="server"
-                        RepeatDirection="Horizontal"
-                        AutoPostBack="true">
-                        <asp:ListItem Text="Open Tickets" Selected="True" />
-                        <asp:ListItem Text="Closed Tickets"  />
-                        <asp:ListItem Text="All Tickets" />
-                    </asp:RadioButtonList>
-                </div>
-            </div>
-
-            <div class="div50r rightalign" style="margin-bottom: 10px">
-                <a href="add_ticket.aspx" class="button create">Create a Ticket</a>
-            </div>
+        <div class="row">
+            <asp:RadioButtonList
+                ID="rbTickets"
+                runat="server"
+                RepeatDirection="Horizontal"
+                AutoPostBack="true">
+                <asp:ListItem Text="Open Tickets" Selected="True" />
+                <asp:ListItem Text="Closed Tickets"  />
+                <asp:ListItem Text="All Tickets" />
+            </asp:RadioButtonList>
+        </div>
 
     <div class="clear">
         <telerik:RadGrid
@@ -103,11 +164,10 @@
         <asp:Panel ID="pContainer" runat="server" />
     </div>
     </div>
-    </div>
-    </div>
 
 
-    <div class="div25r">
+    <div class="div25 div-last">
+        <div class="help-panel">
         <h3>How to get help</h3>
 
         <p>
@@ -122,9 +182,11 @@
         <p>Each time they respond you'll be able to read their reply by selecting the relevant Ticket from the list to the left.</p>
         
         <p><strong>Note:</strong> We'll also send the response as an email to your registered email address.</p>
+            </div>
     </div>
 
     <div class="clear"></div>
+    </div>
 
 
     <asp:SqlDataSource ID="ticketsDataSource" runat="server"

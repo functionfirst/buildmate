@@ -99,10 +99,10 @@ Partial Class manager_task_details
         Dim taskQty As Object = DirectCast(fvTaskAdjustments.DataItem, DataRowView)("qty")
         If taskQty > 0 Then
             pRequiresTaskQty.Visible = False
-            pCurrentResources.Visible = True
+            pAddResources.Visible = True
         Else
             pRequiresTaskQty.Visible = True
-            pCurrentResources.Visible = False
+            pAddResources.Visible = False
         End If
     End Sub
 
@@ -122,12 +122,12 @@ Partial Class manager_task_details
         isLocked = checkLockState()
 
         If isLocked Then
-            Panel1.Visible = False
+            pAddResources.Visible = False
             pAddAdditions.Visible = False
             hlAddResources.Visible = False
             panelIsLocked.Visible = True
         Else
-            Panel1.Visible = True
+            pAddResources.Visible = True
             pAddAdditions.Visible = True
             hlAddResources.Visible = True
             panelIsLocked.Visible = False

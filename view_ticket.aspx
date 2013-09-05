@@ -17,78 +17,83 @@
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvReply" />
                      <telerik:AjaxUpdatedControl ControlID="rReplies" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <p>
-            &lArr;
-            <a href="support.aspx">Support</a>
-        </p>
+        <ul class="breadcrumb-list">
+            <li>
+                <a href="support.aspx">Support</a>
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                Ticket Details
+            </li>
+        </ul>
     </div>
 
-    <div class="div50">
-    <asp:FormView
-        ID="fvViewTicket"
-        runat="server"
-        DataKeyNames="id" Width="100%"
-        DataSourceID="viewTicketDataSource">
-        <ItemTemplate>
-            <div class="box">
-                <h3><%# Eval("subject")%></h2>
+    <div class="main-container">
 
-                <div class="boxcontent">
-                    <asp:HiddenField
-                        ID="isLocked"
-                        runat="server"
-                        Value='<%#eval("isLocked") %>'/>
+        <div class="div50">
+            <asp:FormView
+                ID="fvViewTicket"
+                runat="server"
+                DataKeyNames="id" Width="100%"
+                DataSourceID="viewTicketDataSource">
+                <ItemTemplate>
+                    <div class="box">
+                        <h3><%# Eval("subject")%></h2>
 
-                    <asp:Image
-                        ID="Image1"
-                        runat="server"
-                        ImageUrl="~/icons/lock.png"
-                        ImageAlign="AbsMiddle"
-                        CssClass="floatright"
-                        Visible='<%#Eval("isLocked") %>' />
+                        <div class="boxcontent">
+                            <asp:HiddenField
+                                ID="isLocked"
+                                runat="server"
+                                Value='<%#eval("isLocked") %>'/>
+
+                            <asp:Image
+                                ID="Image1"
+                                runat="server"
+                                ImageUrl="~/icons/lock.png"
+                                ImageAlign="AbsMiddle"
+                                CssClass="floatright"
+                                Visible='<%#Eval("isLocked") %>' />
                     
-                    <%# Eval("content")%>
+                            <%# Eval("content")%>
 
-                    <p>
+                            <p>
+                                <small>
+                                    Created by <%#Eval("name")%> on 
+                                    <%#Eval("dateCreated", "{0:f}")%>
+                                </small>
+                            </p>
+
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:FormView>
+
+            <asp:Repeater
+                ID="rReplies"
+                runat="server"
+                DataSourceID="relatedTicketsDataSource">
+
+                <ItemTemplate>
+                    <div class='<%# iif(eval("userId") = eval("mainUserId"), "", " admin_reply") %>'>
+                        <%#Eval("repContent")%><br />
                         <small>
-                            Created by <%#Eval("name")%> on 
-                            <%#Eval("dateCreated", "{0:f}")%>
+                            By <strong><%#Eval("name")%></strong> on
+                            <%#Eval("repDate", "{0:f}")%>
                         </small>
-                    </p>
+                    </div>
+                    <hr />
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
 
-                </div>
-            </div>
-        </ItemTemplate>
-    </asp:FormView>
-
-    <asp:Repeater
-        ID="rReplies"
-        runat="server"
-        DataSourceID="relatedTicketsDataSource">
-
-        <ItemTemplate>
-            <div class='<%# iif(eval("userId") = eval("mainUserId"), "box", "box admin_reply") %>'>
-            <div class="boxcontent">
-                <%#Eval("repContent")%><br />
-                <small>
-                    By <strong><%#Eval("name")%></strong> on
-                    <%#Eval("repDate", "{0:f}")%>
-                </small>
-            </div>
-            </div>
-        </ItemTemplate>
-
-    </asp:Repeater>
-</div>
-
-<div class="div50r">
-
+        <div class="div50 div-last">
             <asp:FormView
                 ID="fvReply"
                 runat="server"
@@ -111,12 +116,13 @@
                                     MaxLength="1000"
                                     Width="100%" />
                             </div>
-                            <div class="row">
-                            <label class="label">&nbsp;</label>
+
+                            <div class="form-actions">
                                 <asp:Button ID="btnUpdate" runat="server"
                                     Enabled='<%# Iif(eval("isLocked"), false, true) %>'
                                     CausesValidation="True"
                                     CommandName="Insert"
+                                    CssClass="button button-create"
                                     Text="Add Note" />
                             </div>
                     
@@ -135,7 +141,8 @@
                     </div>
                 </InsertItemTemplate>
             </asp:FormView>
-</div>
+        </div>
+    </div>
           
     <asp:SqlDataSource
         ID="viewTicketDataSource"
@@ -155,7 +162,6 @@
         </SelectParameters>
     </asp:SqlDataSource>
 
-      
     <asp:SqlDataSource
         ID="relatedTicketsDataSource"
         runat="server"
@@ -167,6 +173,4 @@
             <asp:QueryStringParameter Name="ticketId" QueryStringField="id" />
         </SelectParameters>
     </asp:SqlDataSource>
-    
 </asp:Content>
-

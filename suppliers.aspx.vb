@@ -99,27 +99,8 @@ Partial Class manager_Default
     Protected Sub btnAddSupplier_Click(sender As Object, e As System.EventArgs) Handles btnAddSupplier.Click
         btnAddSupplier.Enabled = False
         Dim supplierId = rcbSuppliers.SelectedValue
-
         If supplierId > 0 Then
-            Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-            Dim myConn As New SqlConnection(connString)
-            Dim cmd As New SqlCommand
-            cmd.Parameters.Clear()
-            cmd.CommandText = "insertSupplierPriority"
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Connection = myConn
-
-            cmd.Parameters.AddWithValue("@supplierId", supplierId)
-            cmd.Parameters.AddWithValue("@userId", Session("userId"))
-
-            Try
-                myConn.Open()
-                cmd.ExecuteScalar()
-
-            Catch ex As Exception
-                Trace.Write(ex.ToString)
-                myConn.Close()
-            End Try
+            AddSupplierToPriorityList(supplierId)
         End If
 
         rcbSuppliers.DataBind()
@@ -127,8 +108,34 @@ Partial Class manager_Default
         btnAddSupplier.Enabled = True
     End Sub
 
+    Protected Sub AddSupplierToPriorityList(ByVal supplierId As String)
+        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+        Dim myConn As New SqlConnection(connString)
+        Dim cmd As New SqlCommand
+        cmd.Parameters.Clear()
+        cmd.CommandText = "insertSupplierPriority"
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Connection = myConn
+
+        cmd.Parameters.AddWithValue("@supplierId", supplierId)
+        cmd.Parameters.AddWithValue("@userId", Session("userId"))
+
+        Try
+            myConn.Open()
+            cmd.ExecuteScalar()
+
+        Catch ex As Exception
+            Trace.Write(ex.ToString)
+            myConn.Close()
+        End Try
+    End Sub
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlSuppliers"), HyperLink)
         activeLink.CssClass = "active"
+    End Sub
+
+    Protected Sub fvSupplierInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvSupplierInsert.ItemInserted
+
     End Sub
 End Class

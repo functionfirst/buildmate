@@ -36,33 +36,38 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <p>
-            &lArr;
-            <asp:HyperLink ID="hlBack" runat="server"
-                NavigateUrl="project_details.aspx?pid={0}"
-                Text="Project Details" />
-        </p>
+        <ul class="breadcrumb-options">
+            <li>
+                <asp:HyperLink ID="hlAddTask" runat="server"
+                        CssClass="button button-create"
+                        OnLoad="hlAddTask_Load"
+                        Text="Add Tasks"
+                        NavigateUrl="add_task.aspx?pid={0}&rid={1}" />
+            </li>
+        </ul>
+        <ul class="breadcrumb-list">
+            <li>
+                <asp:HyperLink ID="hlBack" runat="server"
+                    NavigateUrl="project_details.aspx?pid={0}"
+                    Text="Project Details" />
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                Build Element Details
+            </li>
+        </ul>
     </div>
+    
+    <div class="main-container">
+        <asp:Panel ID="completionBar" runat="server" CssClass="completionBar">
+            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="buildElementTimesDataSource">
+                <ItemTemplate>
+                    <span style='text-align: center; width: <%#Eval("completion", "{0:00}")%>%'></span>
+                        <div><%#Eval("completion", "{0:0}")%>% complete</div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </asp:Panel>
 
-    <asp:Panel ID="completionBar" runat="server" CssClass="completionBar">
-        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="buildElementTimesDataSource">
-            <ItemTemplate>
-                <span style='text-align: center; width: <%#Eval("completion", "{0:00}")%>%'></span>
-                    <div><%#Eval("completion", "{0:0}")%>% complete</div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </asp:Panel>
-
-    <asp:SqlDataSource ID="buildElementTimesDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
-        SelectCommand="getBuildElementCompletion" SelectCommandType="StoredProcedure">
-        <SelectParameters>
-            <asp:SessionParameter Name="UserId" SessionField="UserId" />
-            <asp:QueryStringParameter Name="roomId" QueryStringField="rid" />
-        </SelectParameters>
-    </asp:SqlDataSource>
-
-    <!-- build element details //-->
     <div class="div33">
         <asp:Panel ID="pBuildElementDetails" runat="server" CssClass="box">
 
@@ -88,10 +93,56 @@
             <asp:FormView
                 ID="fvElementDetails"
                 runat="server"
-                DefaultMode="Edit"
                 DataSourceID="elementDataSource"
                 DataKeyNames="id" Width="100%">
                 <EmptyDataTemplate></EmptyDataTemplate>
+                <ItemTemplate>
+                    <div class="row">
+                        <label title="Name" class="label">Name</label>
+                        <%#Eval("spaceName")%>
+                    </div>
+                    
+                    <div class="row">
+                        <label title="Type" class="label">Type</label>
+                        <%#Eval("spaceType")%>
+                    </div>
+                
+                    <div class="row">
+                        <label title="Build Cost" class="label">Build Cost</label>
+                        <%#Eval("buildCost", "{0:C}")%>
+                    </div>
+                    
+                    <h4>Additional Costs</h4>
+                
+
+                    <div class="row">
+                        <label for="rntbSpacePrice" title="Sundry Items" class="label">Sundry Items</label>
+                        <span style="display: table-cell"><%#Eval("subcontractType")%></span>
+                    </div>
+                    
+                    <div class="row">
+                        <label for="rntbSpacePrice" title="Cost" class="label">Cost</label>
+                        <%#Eval("spacePrice", "{0:C}")%>
+                    </div>
+                    
+                    <div class="row">
+                        <label title="Adjustment" class="label">Adjustment</label>
+                        <%#Eval("subcontractPercent", "{0:N0}" & "%")%>
+                    </div>
+                    
+                    <div class="row">
+                        <label title="Completion" class="label">Completion</label>
+                        <%#Eval("completion", "{0:N0}" & "%")%>
+                    </div>
+     
+                    <div class="row">
+                        <label class="label">&nbsp;</label>
+                        <asp:Button ID="btnEdit" runat="server"
+                            Enabled='<%#iif(Eval("isLocked"), "false", "true") %>'
+                            CssClass="button"
+                            CommandName="Edit" Text="Edit Build Element" />
+                    </div>
+                </ItemTemplate>
                 <EditItemTemplate>
                     <div class="row">
                         <asp:Label
@@ -177,8 +228,13 @@
                     <div class="row">
                         <label for="btns" class="label">&nbsp;</label>
                         <asp:Button ID="btnUpdate" runat="server"
+                            CssClass="button button-create"
                             CommandName="Update" OnClick="validate"
                             ValidationGroup="editValidation" Text="Update" />
+                        
+                        <asp:LinkButton ID="btnCancel" runat="server"
+                            CssClass="button"
+                            CommandName="Cancel" Text="Cancel" />
                     </div>
 
                 </EditItemTemplate>
@@ -187,8 +243,7 @@
     </asp:Panel>
     </div>
     
-    <div class="div66r">
-        <!-- current tasks -->
+    <div class="div66 div-last">
         <asp:Panel ID="pLimitedTasks" runat="server" CssClass="box_info" Visible="false">
             <h3>Limited Subscription</h3>
 
@@ -236,14 +291,6 @@
             <h3>Current Tasks</h3>
 
             <div class="boxcontent">
-                <div class="rightalign" style="margin-bottom: 10px">
-                    <asp:HyperLink ID="hlAddTask" runat="server"
-                        CssClass="button create"
-                        OnLoad="hlAddTask_Load"
-                        Text="+ Add Tasks"
-                        NavigateUrl="add_task.aspx?pid={0}&rid={1}" />
-                </div>
-
                 <telerik:RadGrid ID="rgCurrentTasks" runat="server"
                     CssClass="clear"
                     AutoGenerateColumns="False"
@@ -316,6 +363,8 @@
         </style>
     </asp:Panel>
 
+    </div>
+
     <asp:SqlDataSource ID="elementDataSource" runat="server"
         ConflictDetection="OverwriteChanges" OldValuesParameterFormatString="original_{0}"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
@@ -359,5 +408,13 @@
             <asp:Parameter Name="id" Type="Int64" />
         </DeleteParameters>
     </asp:SqlDataSource>
-</asp:Content>
 
+    <asp:SqlDataSource ID="buildElementTimesDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
+        SelectCommand="getBuildElementCompletion" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:SessionParameter Name="UserId" SessionField="UserId" />
+            <asp:QueryStringParameter Name="roomId" QueryStringField="rid" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+</asp:Content>

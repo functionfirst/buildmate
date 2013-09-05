@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Customer Details - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="customer_details.aspx.vb" Inherits="manager_customer_details" %>
+﻿<%@ Page Title="Customer Details - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="customer_details.aspx.vb" Inherits="manager_customer_details" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -16,210 +16,150 @@
                      <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnArchive">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="btnArchive" />
+                     <telerik:AjaxUpdatedControl ControlID="btnUnarchive" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnUnarchive">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="btnArchive" />
+                     <telerik:AjaxUpdatedControl ControlID="btnUnarchive" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
     
     <div class="breadcrumb">
-        <p>
-            &lArr;
-            <asp:HyperLink ID="hlBack" runat="server"
-                NavigateUrl="customers.aspx"
-                Text="Customers" />
-        </p>
+        <ul class="breadcrumb-options">
+            <li>
+                <asp:Button ID="btnArchive" runat="server"
+                    CssClass="button button-error" Text="Archive this customer" />
+            </li>
+            <li>
+                <asp:Button ID="btnUnarchive" runat="server"
+                    CssClass="button button-primary" Text="Unarchive this Customer" />
+            </li>
+        </ul>
+        <ul class="breadcrumb-list">
+            <li>
+                <asp:HyperLink ID="hlBack" runat="server"
+                    NavigateUrl="customers.aspx"
+                    Text="Customers" />
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                Customer Details
+            </li>
+        </ul>
     </div>
 
-                <asp:FormView ID="fvCustomerDetails" runat="server" DefaultMode="Edit"
-                     DataSourceId="customerDataSource" DataKeyNames="id" Width="100%">
-                    <EditItemTemplate> 
-                    <div class="box">
-                        <h3>Customer Details</h3>
+    <div class="main-container">
+        <div class="div50">
+            <asp:FormView ID="fvCustomerDetails"
+                runat="server"
+                DefaultMode="Edit"
+                RenderOuterTable="false"
+                DataSourceId="customerDataSource"
+                DataKeyNames="id">
+                <EditItemTemplate> 
+                    <div class="row">
+                        <asp:Label ID="Label2" runat="server"
+                            Text="Name*"
+                            CssClass="label"
+                            AssociatedControlID="rtbFirstName" />
+                                        
+                        <telerik:RadTextBox ID="rtbFirstName" runat="server"
+                            Text='<%#Bind("firstname") %>'
+                            Width="300px"
+                            EmptyMessage="Name" />
+                               
+                                    
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                            ControlToValidate="rtbFirstName"
+                            Display="Dynamic"
+                            ErrorMessage="Name">
+                            <span class="req"></span>
+                        </asp:RequiredFieldValidator>
+                    </div>
+                                                        
+                    <div class="row">
+                        <label for="rtbCompany" title="Company" class="label">Company</label>
                     
-                        <div class="boxcontent">
-                                <div class="div33">
-                                
-                                <div class="row">
-                                    <asp:Label ID="Label3" runat="server"
-                                        Text="Title"
-                                        CssClass="label"
-                                        AssociatedControlID="rcbTitle" />
+                        <telerik:RadTextBox ID="rtbCompany" runat="server"
+                            Width="300px"
+                            Text='<%#Bind("company") %>' EmptyMessage="Company" />
+                    </div>
+                                                        
+                    <div class="row">
+                        <label for="rtbJobTitle" title="Job Title" class="label">Job Title</label>
+                    
+                        <telerik:RadTextBox ID="rtbJobTitle" runat="server"
+                            Width="300px"
+                            Text='<%#Bind("jobtitle") %>' EmptyMessage="Job Title" />
+                    </div>
 
-                                    <telerik:RadComboBox ID="rcbTitle" runat="server"
-                                        Width="50px"
-                                        SelectedValue='<%# Bind("titleId") %>'
-                                        DataSourceID="titleDataSource"
-                                        DataTextField="title"
-                                        DataValueField="id" />
-                                </div>
-                                
-                                <div class="row">
-                                    <asp:Label ID="Label2" runat="server"
-                                        Text="First Name"
-                                        CssClass="label"
-                                        AssociatedControlID="rtbFirstName" />
-                                        
-                                    <telerik:RadTextBox ID="rtbFirstName" runat="server"
-                                        Text='<%#Bind("firstname") %>'
-                                        Columns="25"
-                                        EmptyMessage="First Name" />
-                               
+                    <hr />
+
+                    <div class="row">
+                        <label for="rtbAddress1" title="Address" class="label">Address*</label>
+
+                        <telerik:RadTextBox ID="rtbAddress1" runat="server" Text='<%#Bind("address1") %>' InputType="Text" TextMode="MultiLine" Width="300px" Rows="6" Columns="80" EmptyMessage="Address" />
                                     
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                        ControlToValidate="rtbFirstName"
-                                        Display="Dynamic"
-                                        ErrorMessage="First Name">
-                                        <span class="req"></span>
-                                    </asp:RequiredFieldValidator>
-                                </div>
-                               
-                               <div class="row">
-                                    <asp:Label ID="Label1" runat="server"
-                                        Text="Surname"
-                                        CssClass="label"
-                                        AssociatedControlID="rtbSurname" />
-                                        
-                                    <telerik:RadTextBox ID="rtbSurname" runat="server"
-                                        Text='<%#Bind("surname") %>'
-                                        Columns="25"
-                                        EmptyMessage="Surname" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress1"
+                            Display="Dynamic" ErrorMessage="Address">
+                            <span class="req"></span>
+                        </asp:RequiredFieldValidator>
+                    </div>
 
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                        ControlToValidate="rtbSurname"
-                                        Display="Dynamic"
-                                        ErrorMessage="Surname">
-                                        <span class="req"></span>
-                                    </asp:RequiredFieldValidator>
-                                </div>
+                    <hr />
                                                         
-                                <div class="row">
-                                    <label for="rtbCompany" title="Company" class="label">Company</label>
-                                    <telerik:RadTextBox ID="rtbCompany" runat="server"
-                                        Text='<%#Bind("company") %>' EmptyMessage="Company" />
-                                </div>
+                    <div class="row">
+                        <label for="rtbEmail" title="Email" class="label">Email</label>
+                        <telerik:RadTextBox ID="rtbEmail" runat="server"
+                            Text='<%#Bind("email") %>' EmptyMessage="Email" />
+                    </div>
+
+                    <div class="row">
+                        <label for="rtbTel" title="Telephone" class="label">Telephone</label>
+                        <telerik:RadTextBox ID="rtbTel" runat="server"
+                            Text='<%#Bind("tel") %>' EmptyMessage="Telephone" />
+                    </div>
+
+                    <div class="row">
+                        <label for="rtbMobile" title="Mobile" class="label">Mobile</label>
+                        <telerik:RadTextBox ID="rtbMobile" runat="server" Text='<%#Bind("mobile") %>' EmptyMessage="Mobile" />
+                    </div>
                                                         
-                                <div class="row">
-                                    <label for="rtbJobTitle" title="Job Title" class="label">Job Title</label>
-                                    <telerik:RadTextBox ID="rtbJobTitle" runat="server"
-                                        Text='<%#Bind("jobtitle") %>' EmptyMessage="Job Title" />
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbEmail" title="Email" class="label">Email</label>
-                                    <telerik:RadTextBox ID="rtbEmail" runat="server"
-                                        Text='<%#Bind("email") %>' EmptyMessage="Email" />
-                                </div>
+                    <div class="row">
+                        <label for="rtbFax" title="Fax" class="label">Fax</label>
+                        <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>' EmptyMessage="Fax" />
+                    </div>
+
+                    <hr />
                                 
-                                
-                                <div class="row">
-                                    <label for="rcbPaymentTerms" title="Payment Terms" class="label">Payment Terms</label>
-                                    <telerik:RadComboBox ID="rcbPaymentTerms" runat="server" Height="80px" Width="130px" SelectedValue='<%# Bind("paymentTermsId") %>'
-                                        DataSourceID="paymentDataSource" DataTextField="paymentTerm" DataValueField="id" />
-                                </div>
-                                
+                    <div class="row">
+                        <label for="rcbPaymentTerms" title="Payment Terms" class="label">Payment Terms</label>
+                        <telerik:RadComboBox ID="rcbPaymentTerms" runat="server" Height="80px" Width="130px" SelectedValue='<%# Bind("paymentTermsId") %>'
+                            DataSourceID="paymentDataSource" DataTextField="paymentTerm" DataValueField="id" />
+                    </div>
 
-                                </div>
-                                
-                                <div class="div33">
-                                <div class="row">
-                                    <label for="rtbTel" title="Telephone" class="label">Telephone</label>
-                                    <telerik:RadTextBox ID="rtbTel" runat="server"
-                                        Text='<%#Bind("tel") %>' EmptyMessage="Telephone" />
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbFax" title="Fax" class="label">Fax</label>
-                                    <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>' EmptyMessage="Fax" />
-                                </div>
+                    <div class="form-actions">
+                        <asp:Button ID="btnUpdate" runat="server" CommandName="Update" CssClass="button button-create" Text="Save Changes" />
+                    </div>
+                </EditItemTemplate>
+            </asp:FormView>
+        </div>
 
-                                <div class="row">
-                                    <label for="rtbMobile" title="Mobile" class="label">Mobile</label>
-                                    <telerik:RadTextBox ID="rtbMobile" runat="server" Text='<%#Bind("mobile") %>' EmptyMessage="Mobile" />
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbBusiness" title="Business" class="label">Business</label>
-                                    <telerik:RadTextBox ID="rtbBusiness" runat="server" Text='<%#Bind("business") %>' EmptyMessage="Business" />
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbExtension" title="Extension" class="label">Extension</label>
-                                    <telerik:RadTextBox ID="rtbExtension" runat="server" Text='<%#Bind("extension") %>' EmptyMessage="Extension" Width="60px" />
-                                </div>
-                            </div>
-                            <div class="div33r">
-                                <div class="row">
-                                    
-
-                                    <label for="rtbAddress1" title="Address" class="label">Address*</label>
-                                    <telerik:RadTextBox ID="rtbAddress1" runat="server" Text='<%#Bind("address1") %>' EmptyMessage="Address" />
-                                    
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress1"
-                                        Display="Dynamic" ErrorMessage="Address">
-                                        <span class="req"></span>
-                                    </asp:RequiredFieldValidator>
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbAddress2" title="Address 2" class="label">&nbsp;</label>
-                                    <telerik:RadTextBox ID="rtbAddress2" runat="server" Text='<%#Bind("address2") %>' />
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbAddress3" title="Address 3" class="label">&nbsp;</label>
-                                    <telerik:RadTextBox ID="rtbAddress3" runat="server" Text='<%#Bind("address3") %>' />
-                                </div>
-                                
-                                <div class="row">
-                                    <label for="rtbCity" title="Town/City" class="label">Town/City*</label>
-                                    <telerik:RadTextBox ID="rtbCity" runat="server" Text='<%#Bind("city") %>' EmptyMessage="Town/City" />
-                                    
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="rtbCity"
-                                        Display="Dynamic" ErrorMessage="Town/City*">
-                                        <span class="req"></span>
-                                    </asp:RequiredFieldValidator>
-                                </div>
-                                                        
-                                <div class="row">
-                                    <label for="rtbCounty" title="County" class="label">County</label>
-                                    <telerik:RadTextBox ID="rtbCounty" runat="server" Text='<%#Bind("county") %>' EmptyMessage="County" />
-                                </div>
-
-                                <div class="row">
-                                    <label for="rtbPostcode" title="Postcode" class="label">Postcode*</label>
-                                    <telerik:RadTextBox ID="rtbPostcode" runat="server" Text='<%#Bind("postcode") %>' EmptyMessage="Postcode" />
-                                    
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="rtbPostcode"
-                                        Display="Dynamic" ErrorMessage="Postcode*">
-                                        <span class="req"></span>
-                                    </asp:RequiredFieldValidator>
-                                </div>
-                  
-                                <div class="row">
-                                    <label for="rcbCountry" title="Country" class="label">Country</label>
-                                    <telerik:RadComboBox ID="rcbCountry" runat="server" Height="140px" OnLoad="defaultCountry" SelectedValue='<%# Bind("countryId") %>'
-                                        DataSourceID="countryDataSource" DataTextField="countryName" DataValueField="id" />
-                                </div>
-
-                                </div>
-
-                                
-                                <div class="row">
-                                    <label for="btns" class="label">&nbsp;</label>
-                                    <asp:Button ID="btnUpdate" runat="server" CommandName="Update"
-                                        Text="Save Changes" />
-                                </div>
-
-                                <div class="clear"></div>
-                        </div>
-                        </div>
-                    </EditItemTemplate>
-                </asp:FormView>
-
-        <div class="box">
-            <h3>Project History</h3>
+        <div class="div50 div-last">
+            <div class="box">
+                <h3>Customer Projects</h3>
             
-            <div class="boxcontent">
-       
-                <telerik:RadGrid
+                <div class="boxcontent">
+                    <telerik:RadGrid
                     ID="rgProjects"
                     runat="server"
                     DataSourceID="projectsDataSource"
@@ -282,9 +222,12 @@
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>
+                </div>
             </div>
         </div>
-                
+
+    </div>
+    
     <asp:SqlDataSource ID="customerDataSource" runat="server" ConflictDetection="CompareAllValues"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" OldValuesParameterFormatString="original_{0}"
         SelectCommand="getUserContactDetails" SelectCommandType="StoredProcedure"
@@ -307,20 +250,6 @@
             <asp:QueryStringParameter Name="CustomerId" QueryStringField="id" />
         </SelectParameters>
     </asp:SqlDataSource>
-
-    <asp:SqlDataSource
-        ID="titleDataSource"
-        runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getUserTitle"
-        SelectCommandType="StoredProcedure" />
-
-    <asp:SqlDataSource
-        ID="countryDataSource"
-        runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getCountries"
-        SelectCommandType="StoredProcedure" /> 
 
     <asp:SqlDataSource ID="paymentDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"

@@ -11,30 +11,44 @@
             <telerik:AjaxSetting AjaxControlId="fvCompanyLogo">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvCompanyLogo" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="fvNotifications">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvNotifications" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="fvCompanyDetails">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvCompanyDetails" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="fvContactDetails">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvContactDetails" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="fvAddressDetails">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvAddressDetails" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
+
+    
+    <div class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li class="active">Settings</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
 
 <div class="div50">
     <div class="box">
@@ -42,7 +56,7 @@
 
     <div class="boxcontent">
         <asp:FormView ID="fvContactDetails" runat="server"
-            Width="100%"
+            RenderOuterTable="false"
             DefaultMode="Edit"
             DataSourceID="userProfileDataSource">
             <EditItemTemplate>
@@ -145,83 +159,15 @@
                             EmptyMessage="Extension" />
                     </div>                    
                     
-                <div class="row">
-                    <label class="label">&nbsp;</label>
-                    
+                <div class="form-actions">
                     <asp:Button ID="btnUpdate" runat="server"
                         Text="Save Changes"
+                        CssClass="button button-create"
                         CommandName="Update"
                         CausesValidation="true" />
-                    
-                    <asp:LinkButton ID="btnCancel" runat="server"
-                        Text="Cancel"
-                        CommandName="Cancel"
-                        Visible="false"
-                        CausesValidation="false" />
                 </div>
                 </asp:Panel>
             </EditItemTemplate>
-            <ItemTemplate>
-            
-                <div class="row">
-                    <asp:Label ID="lblLabelTitle" runat="server" Text="Title" CssClass="label" AssociatedControlID="lblTitle" />
-                    <asp:Label ID="lblTitle" runat="server" Text='<%# Bind("title") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <asp:Label ID="lblLabelName" runat="server" Text="First Name" CssClass="label" AssociatedControlID="lblName" />
-                    <asp:Label ID="lblName" runat="server" Text='<%# Bind("firstname") %>' />&nbsp;
-                </div>
-                
-                <div class="row">
-                    <asp:Label ID="lblLabelSurname" runat="server" Text="Surname" CssClass="label" AssociatedControlID="lblSurname" />
-                    <asp:Label ID="lblSurname" runat="server" Text='<%# Bind("surname") %>' />&nbsp;
-                </div>
-                
-                <div class="row">
-                        <label title="Job Title" class="label">Job Title</label>
-                    <asp:Literal ID="Literal2" runat="server" Text='<%# Bind("jobtitle") %>' />&nbsp;
-                </div>
-                
-                <div class="row">
-                    <asp:Label ID="lblLabelTel" runat="server" Text="Telephone" CssClass="label" AssociatedControlID="lblTel" />
-                    <asp:Label ID="lblTel" runat="server" Text='<%# Bind("tel") %>' />&nbsp;
-                </div>
-                <div class="row">
-                    <asp:Label ID="lblLabelFax" runat="server" Text="Fax" CssClass="label" AssociatedControlID="lblFax" />
-                    <asp:Label ID="lblFax" runat="server" Text='<%# Bind("fax") %>' />&nbsp;
-                </div>
-                <div class="row">
-                    <asp:Label ID="lblLabelMobile" runat="server" Text="Mobile" CssClass="label" AssociatedControlID="lblMobile" />
-                    <asp:Label ID="lblMobile" runat="server" Text='<%# Bind("mobile") %>' />&nbsp;
-                </div>
-                
-                <div class="row">
-                    <asp:Label ID="lblLabelBusiness" runat="server"
-                        Text="Company Tel"
-                        CssClass="label"
-                        AssociatedControlID="lblBusiness" />
-                    
-                    <asp:Label ID="lblBusiness" runat="server"
-                        Text='<%# Bind("business") %>' />&nbsp;
-                </div>
-                
-                <div class="row">
-                    <asp:Label ID="lblLabelExtension" runat="server"
-                        Text="Extension"
-                        CssClass="label"
-                        AssociatedControlID="lblExtension" />
-                    
-                    <asp:Label ID="lblExtension" runat="server"
-                        Text='<%# Bind("extension") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <label class="label">
-                        &nbsp;</label>
-                    <asp:Button ID="btnEdit" runat="server" Text="Edit Account" CommandName="Edit" />
-                </div>
-            </ItemTemplate>
         </asp:FormView>
             </div>
         </div>
@@ -231,7 +177,7 @@
 
     <div class="boxcontent">
         <asp:FormView ID="fvAddressDetails" runat="server"
-            Width="100%"
+            RenderOuterTable="false"
             DefaultMode="Edit"
             DataSourceID="userProfileAddressDataSource">
             <EditItemTemplate>
@@ -310,72 +256,23 @@
                             DataValueField="id" />
                     </div>
 
-                <div class="row">
-                    <label class="label">&nbsp;</label>
-                    
+                <div class="form-actions">
                     <asp:Button ID="btnUpdate" runat="server"
                         Text="Save Changes"
                         CommandName="Update"
+                        CssClass="button button-create"
                         CausesValidation="true" />
-                    
-                    <asp:LinkButton ID="btnCancel" runat="server"
-                        Text="Cancel"
-                        CommandName="Cancel"
-                        Visible="false"
-                        CausesValidation="false" />
                 </div>
                 </asp:Panel>
             </EditItemTemplate>
-            <ItemTemplate>
-                <div class="row">
-                    <asp:Label ID="lblLabelAddress" runat="server" Text="Address" CssClass="label" AssociatedControlID="lblAddress" />
-                    <asp:Label ID="lblAddress" runat="server" Text='<%# Bind("address1") %>' />&nbsp;
-                </div>
-
-                <div class="row" runat="server" id="add2">
-                    <asp:Label ID="lblLabelAddress2" runat="server" Text="&nbsp;" CssClass="label" AssociatedControlID="lblAddress2" />
-                    <asp:Label ID="lblAddress2" runat="server" Text='<%# Bind("address2") %>' />&nbsp;
-                </div>
-
-                <div class="row" runat="server" id="add3">
-                    <asp:Label ID="lblLabelAddress3" runat="server" Text="&nbsp;" CssClass="label" AssociatedControlID="lblAddress3" />
-                    <asp:Label ID="lblAddress3" runat="server" Text='<%# Bind("address3") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <asp:Label ID="lblLabelCity" runat="server" Text="Town/City" CssClass="label" AssociatedControlID="lblCity" />
-                    <asp:Label ID="lblCity" runat="server" Text='<%# Bind("city") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <asp:Label ID="lblLabelCounty" runat="server" Text="County" CssClass="label" AssociatedControlID="lblCounty" />
-                    <asp:Label ID="lblCounty" runat="server" Text='<%# Bind("county") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <asp:Label ID="lblLabelPostcode" runat="server" Text="Postcode" CssClass="label"
-                        AssociatedControlID="lblPostcode" />
-                    <asp:Label ID="lblPostcode" runat="server" Text='<%# Bind("postcode") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <asp:Label ID="lblLabelCountry" runat="server" Text="Country" CssClass="label" AssociatedControlID="lblCountry" />
-                    <asp:Label ID="lblCountry" runat="server" Text='<%# Bind("countryName") %>' />&nbsp;
-                </div>
-
-                <div class="row">
-                    <label class="label">
-                        &nbsp;</label>
-                    <asp:Button ID="btnEdit" runat="server" Text="Edit Address" CommandName="Edit" />
-                </div>
-            </ItemTemplate>
+            
         </asp:FormView>
             </div>
         </div>
     </div>
 
     
-    <div class="div50r">
+    <div class="div50 div-last">
         
     
     
@@ -383,12 +280,12 @@
         <h3>Company Details</h3>
     
         <div class="boxcontent">
-        <asp:FormView ID="fvCompanyDetails" runat="server" 
-            Width="100%"
+
+        <asp:FormView ID="fvCompanyDetails" runat="server"
+            RenderOuterTable="false"
             DefaultMode="Edit"
             DataSourceID="userProfileCompanyDataSource">
             <EditItemTemplate>
-            
                 <div class="row">
                     <asp:Label ID="lblCompany" runat="server"
                         Text="Company Name"
@@ -423,48 +320,14 @@
                         Type="Percent" />
                 </div>
                     
-                <div class="row">
-                    <label class="label">&nbsp;</label>
-                    
+                <div class="form-actions">
                     <asp:Button ID="btnUpdate" runat="server"
                         Text="Save Changes"
                         CommandName="Update"
+                        CssClass="button button-create"
                         CausesValidation="true" />
-                    
-                    <asp:LinkButton ID="btnCancel" runat="server"
-                        Text="Cancel"
-                        CommandName="Cancel"
-                        Visible="false"
-                        CausesValidation="false" />
                 </div>
             </EditItemTemplate>
-            <ItemTemplate>
-                    <div class="row">
-                        <asp:Label ID="lblLabelCompany" runat="server" Text="Company Name" CssClass="label"
-                            AssociatedControlID="lblCompany" />
-                        <asp:Label ID="lblCompany" runat="server" Text='<%# Bind("company") %>' />&nbsp;
-                    </div>
-
-                    <div class="row">
-                        <asp:Label ID="lblLabelVATNumber" runat="server"
-                            Text="VAT Number" CssClass="label" AssociatedControlID="lblVATNumber" />
-                                
-                        <asp:Label ID="lblVATNumber" runat="server" Text='<%# Bind("vatnumber") %>' />&nbsp;
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblLabelVAT" runat="server"
-                            Text="VAT Rate" CssClass="label" AssociatedControlID="lblVAT" />
-                                
-                        <asp:Label ID="lblVAT" runat="server" Text='<%# Bind("vat") %>' />%&nbsp;
-                    </div>
-                    
-                <div class="row">
-                    <label class="label">
-                        &nbsp;</label>
-                    <asp:Button ID="btnEdit" runat="server" Text="Edit Company Details" CommandName="Edit" />
-                </div>
-            </ItemTemplate>
         </asp:FormView>
 
     
@@ -473,45 +336,40 @@
 
     <div class="box">
         <h3>Company Logo</h3>
-        <div class="boxcontent">
         
-                <asp:FormView ID="fvCompanyLogo" runat="server"
-                    Width="100%"
-                    DataSourceID="updateImageDataSource">
-                    <ItemTemplate>
-                    <div class="row">
-                            <asp:HyperLink ID="HyperLink1" runat="server"
-                                Target="_blank"
-                                NavigateUrl='<%# "~/images/logos/" & Eval("logo") %>'>
-                                <asp:Image ID="Image1" runat="server"
-                                    ImageUrl='<%# "~/showimage.aspx?w=285&img=" & Eval("logo") %>'
-                                    ToolTip="Click to view the full-size Logo" />
-                            </asp:HyperLink>
-                        </div>
+        <div class="boxcontent">
+            <asp:FormView ID="fvCompanyLogo" runat="server"
+                RenderOuterTable="false"
+                DataSourceID="updateImageDataSource">
+                <ItemTemplate>
+                <div class="row">
+                        <asp:HyperLink ID="HyperLink1" runat="server"
+                            Target="_blank"
+                            NavigateUrl='<%# "~/images/logos/" & Eval("logo") %>'>
+                            <asp:Image ID="Image1" runat="server"
+                                ImageUrl='<%# "~/showimage.aspx?w=285&img=" & Eval("logo") %>'
+                                ToolTip="Click to view the full-size Logo" />
+                        </asp:HyperLink>
+                    </div>
                         
-                        <asp:HiddenField ID="origImage" runat="server" Value='<%#eval("logo") %>' />
-                    </ItemTemplate>
-                </asp:FormView>
+                    <asp:HiddenField ID="origImage" runat="server" Value='<%#eval("logo") %>' />
+                </ItemTemplate>
+            </asp:FormView>
                 
-                <p>Upload new logo</p>
+            <p>Upload new logo</p>
                     
-                <div class="row">
-                    <telerik:RadUpload ID="RadUpload1" runat="server"
-                        MaxFileInputsCount="1"
-                        Width="200px"
-                        Localization-Select="browse..."
-                        ControlObjectsVisibility="None"
-                        AllowedFileExtensions=".jpg, .jpeg, .gif"
-                        MaxFileSize="1000000"
-                        TargetFolder="~/images/logos" />
-                </div>
-                
-                <div class="row" runat="server" id="uploadResponse" visible="false">
-                    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
-                </div>
-                            
-                <div class="row">
-                    <asp:Button ID="btnUpload" runat="server" Text="Upload logo" />
+            <div class="row">
+                <telerik:RadUpload ID="RadUpload1" runat="server"
+                    MaxFileInputsCount="1"
+                    Width="200px"
+                    Localization-Select="browse..."
+                    ControlObjectsVisibility="None"
+                    AllowedFileExtensions=".jpg, .jpeg, .gif"
+                    MaxFileSize="1000000"
+                    TargetFolder="~/images/logos" />
+            </div>                            
+                <div class="form-actions">
+                    <asp:Button ID="btnUpload" runat="server" Text="Upload logo" CssClass="button button-create" />
                 </div>
             </div>
         </div>
@@ -559,12 +417,10 @@
                             <asp:Literal ID="FailureText" runat="server" EnableViewState="False" />
                         </div>
                         
-                        <div class="row">
-                            <asp:Label class="label" ID="lblChangePasswordPushButton" runat="server"
-                                AssociatedControlID="ChangePasswordPushButton">&nbsp;</asp:Label>
-                            
+                        <div class="form-actions">
                             <asp:Button ID="ChangePasswordPushButton" runat="server"
                                 CommandName="ChangePassword" ValidationGroup="ChangePassword1"
+                                CssClass="button button-create"
                                 OnClick="Validate_Change" Text="Change Password" />
                         </div>
                     </ChangePasswordTemplate>
@@ -584,29 +440,30 @@
     <div class="clear"></div>
 
     <div class="box">
-        <h3>Notifications</h3>
+        <h3>Notification Settings</h3>
             
         <div class="boxcontent">
             <asp:FormView DefaultMode="Edit"
                 ID="fvNotifications"
                 runat="server"
+                RenderOuterTable="false"
                 DataSourceID="dsNotifications">
                 <EditItemTemplate>
                     <div class="row">
-                        <label class="label">
+                        <label for="ctl00_MainContent_fvNotifications_CheckBox1">
                             <asp:CheckBox
                                 ID="CheckBox1"
                                 runat="server"
-                                AutoPostBack="true"
                                 checked='<%#Bind("notifyByEmail") %>' />
                         Receive email Notifications</label>
                     </div>
                     
-                    <div class="row">
+                    <div class="form-actions">
                         <asp:Button
                             ID="btnEdit"
                             runat="server"
                             Text="Update"
+                            CssClass="button button-create"
                             CommandName="Update" />
                     </div>
                 </EditItemTemplate>
@@ -617,7 +474,7 @@
 
     <div class="clear"></div>
 
-    
+    </div>
 
         <asp:SqlDataSource ID="dsNotifications" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"

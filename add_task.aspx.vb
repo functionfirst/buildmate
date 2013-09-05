@@ -223,13 +223,7 @@ Partial Class manager_add_task
 
     Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
         Dim limitedAccount = Session("limitedAccount")
-
-        If limitedAccount Then
-            pLimitedTasks.Visible = True
-            pAddTasks.Visible = False
-        Else
-            pLimitedTasks.Visible = False
-            pAddTasks.Visible = True
-        End If
+        pLimitedTasks.Visible = limitedAccount
+        pAddTasks.Visible = Not limitedAccount
     End Sub
 End Class

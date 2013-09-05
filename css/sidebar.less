@@ -1,0 +1,24 @@
+﻿.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    visibility: hidden;
+    width: 300px;
+    height: 100%;
+    background: #48A770;
+    -webkit-transition: all 0.5s;
+    transition:         all 0.5s;
+
+    z-index: 1;
+    -webkit-transform:  translate3d(-50%, 0, 0);
+    transform:          translate3d(-50%, 0, 0);
+}
+
+    .sidebar.open {
+    visibility: visible;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition:         transform 0.5s;
+    -webkit-transform:  translate3d(0, 0, 0);
+    transform:          translate3d(0, 0, 0);
+    }

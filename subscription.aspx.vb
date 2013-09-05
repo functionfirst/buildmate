@@ -261,7 +261,7 @@ Partial Class manager_subscription
                 errorText += ppPay.ErrorList(0).Severity & "<br />"
                 errorText += ppPay.ErrorList(0).ShortMessage & "<br />"
                 errorText += ppPay.ErrorList(0).LongMessage
-                'sendError("[BuildMate] Error - NvpGetRecurringPaymentsProfileDetails", errorText)
+                'sendErrorToAdmin(errorText)
             End If
             getAccountStatus = "Error"
         End If
@@ -478,7 +478,7 @@ Partial Class manager_subscription
                     errString += ppPay.ErrorList(0).ShortMessage
                     errString += ppPay.ErrorList(0).LongMessage
                     Trace.Write(errString)
-                    sendError("[BuildMate ] NvpCreateRecurringPaymentsProfile", errString)
+                    sendErrorToAdmin(errString)
 
                     lblError.Text = "<b>Subscription Problem</b><br />There was a problem while trying to subscribe, it may be because you have already created a subscription."
                     pError.Visible = True
@@ -576,7 +576,7 @@ Partial Class manager_subscription
     '        errorText += ppPay.ErrorList(0).Severity & "<br />"
     '        errorText += ppPay.ErrorList(0).ShortMessage & "<br />"
     '        errorText += ppPay.ErrorList(0).LongMessage
-    '        sendError("", errorText)
+    '        sendErrorToAdmin(errorText)
     '    End If
     'End Sub
 

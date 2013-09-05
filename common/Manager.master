@@ -7,112 +7,52 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title>Untitled Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="Buildmate application" />
+    <meta name="author" content="Alan Jenkins" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <!-- css -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" type="text/css" href="/css/manager.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="/css/manager.less" />
 
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <!--fav and touch icons -->
-    <!--link rel="shortcut icon" href="assets/ico/favicon.ico"-->
-    <!--link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png"-->
-    <!--link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png"-->
-    <!--link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png"-->
 </head>
 
 <body id="app">  
-
     <form runat="server" id="form1">
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-            <%--<Services>
-                <asp:ServiceReference Path="~/WebService.asmx" />
-            </Services>--%>
-        </asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" />
 
-        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" Enabled="true" />
-
-        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel2" runat="server" CssClass="loadtemp" Transparency="30"
-            MinDisplayTime="800" InitialDelayTime="500">
-            <div class="inner_container"></div>
-        </telerik:RadAjaxLoadingPanel>
+        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" Enabled="false" />
 
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" CssClass="loading" Transparency="50"
             IsSticky="true" MinDisplayTime="800" InitialDelayTime="500">
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
-
         
         <asp:Panel ID="notification" runat="server" CssClass="flash" Visible="false">
             <h3><asp:Literal ID="notificationTitle" runat="server">Message</asp:Literal></h3>
-            <a href="#" class="flash-close">&times;</a>
 
             <p>
                 <asp:Literal ID="notificationMessage" runat="server">Message content</asp:Literal>
             </p>
         </asp:Panel>
-        
-             <asp:LoginView ID="LoginView2" runat="server">
-                <LoggedInTemplate>
-                    <div class="topbar">
-                        <div class="container">
-                            <h1>Build<strong>Mate</strong></h1>
-                                                <asp:Repeater ID="Repeater2" runat="server" DataSourceID="userTotalNotificationDataSource" Visible="false">
-                                <ItemTemplate>
-                                    <a id="A1" href="~/notifications.aspx"
-                                        class="noticeBadge noticeBadgeNew"
-                                        runat="server" 
-                                        visible='<%#IIf(Eval("newMessage"), "True", "False") %>'><strong><%#Eval("totalMessages") %></strong> <span class="notext">Notifications</span></a>
 
-                                    <a id="A2" href="~/notifications.aspx"
-                                        class="noticeBadge "
-                                        runat="server"
-                                        visible='<%#IIf(Eval("newMessage"), "False", "True") %>'><strong><%#Eval("totalMessages") %></strong> <span class="notext">Notifications</span></a>
-                                </ItemTemplate>
-                            </asp:Repeater>
+        <div class="topbar">
+            <div class="brand">Buildmate</div>
 
-                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="userNotificationDataSource" Visible="false">
-                                <HeaderTemplate>
-                                    <div class="noticePoint">
-                                        <strong>Notifications</strong>
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <%--<a href="dismiss_notice.aspx?id=<%#Eval("id")%>" class="dismiss" rel="<%#Eval("id")%>" title="Mark as Read">&times;</a>--%>
-                                    <a href="notification.aspx?id=<%#Eval("id")%>"><%#Eval("title")%></a>
-                                </ItemTemplate>
-                                <SeparatorTemplate>
-                                    <hr />
-                                </SeparatorTemplate>
-                                <FooterTemplate>
-                                        <a href="notifications.aspx" class="viewall">+ View all notifications</a>
-                                </div>
-                                </FooterTemplate>
-                            </asp:Repeater>
+            <div class="nav">
+                <ul class="nav-options">
+                    <li><a href="http://getbuildmate.com/knowledgebase/">Help/Support</a></li>
+                    <li><a href="logout.aspx">Logout</a></li>
+                </ul>
 
-
-                            <ul>
-                                <li><a href="settings.aspx"><asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                                <li><a href="logout.aspx">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </LoggedInTemplate>
-            </asp:LoginView>
-        
-            <div class="container">
-                <div class="nav">
-                <ul  runat="server" id="nav">
+                <ul runat="server" id="nav">
                     <li>
                         <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/"><span></span>Dashboard</asp:HyperLink>
                     </li>
@@ -123,68 +63,24 @@
                         <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx"><span></span>Projects</asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="hlDocuments" runat="server" NavigateUrl="~/documents.aspx"><span></span> Documents</asp:HyperLink>
-                    </li>
-                    <li>
                         <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
                     </li>
                     <li>
                         <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx"><span></span>Resources</asp:HyperLink>
                     </li>
-                    <!--li class="split">
-                        <asp:HyperLink ID="hlCatalogue" runat="server" NavigateUrl="~/catalogue.aspx" ToolTip="Catalogue"><span></span>Catalogue</asp:HyperLink>
-                    </li-->
                     <li>
                         <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx"><span></span>Support</asp:HyperLink>
                     </li>
-                    <!--li>
-                        <asp:HyperLink ID="hlKnowledgeBase" runat="server" NavigateUrl="~/knowledgebase.aspx" ToolTip="Knowledge Base"><span></span>Knowledge Base</asp:HyperLink>
-                    </li-->
-                    <!--li>
-                        <asp:LinkButton ID="hlHelp" runat="server" ToolTip="Help"><span></span>Help</asp:LinkButton>
-                    </li-->
                     <li>
                         <asp:HyperLink ID="hlSettings" runat="server"
                             NavigateUrl="~/settings.aspx" ToolTip="Settings"><span></span>Settings</asp:HyperLink>
                     </li>
-                    <!--li>
-                        <asp:HyperLink
-                            ID="hlPassword" 
-                            runat="server"
-                            NavigateUrl="~/changepassword.aspx"
-                            ToolTip="Password"><span></span>Password</asp:HyperLink>
-                    </li-->
-                    <!--li>
-                        <asp:HyperLink
-                            ID="hlSubscription"
-                            runat="server"
-                            NavigateUrl="~/subscription.aspx"
-                            ToolTip="Subscription"><span></span>Subscription</asp:HyperLink>
-                    </li-->
-                    <!--li>
-                        <asp:HyperLink
-                            ID="hlNotifications"
-                            runat="server"
-                            NavigateUrl="~/notifications.aspx"
-                            ToolTip="Notifications"><span></span>Notifications</asp:HyperLink>
-                    </li-->
                 </ul>
             </div>
+        </div>
         
-            <div class="main_content">
-                <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
-
-                <div class="clear"></div>
-            </div>
-
-            <div class="footer">
-                <div class="container">
-                    <p>
-                    <a href="http://getbuildmate.com/privacy/">Privacy Policy</a> |
-                    <a href="http://getbuildmate.com/terms/">Terms of Service</a> |
-                    <a href="http://getbuildmate.com/knowledgebase/"><strong>Get Help/Support</strong></a></p>
-                </div>
-            </div>
+        <div class="container">
+            <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
         </div>
 
         <div id="variationMode" class="variationMode">
@@ -209,24 +105,8 @@
                 
             </div>
         </div>
-    </div>
-
-
-        <asp:SqlDataSource ID="userNotificationDataSource" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
-            SelectCommand="getUserNotificationsByUser" SelectCommandType="StoredProcedure">
-            <SelectParameters>
-                <asp:SessionParameter Name="userId" SessionField="userId" />
-            </SelectParameters>
-        </asp:SqlDataSource>
-
-        <asp:SqlDataSource ID="userTotalNotificationDataSource" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
-            SelectCommand="getTotalUnreadUserNotificationsByUser" SelectCommandType="StoredProcedure">
-            <SelectParameters>
-                <asp:SessionParameter Name="userId" SessionField="userId" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+   
+        <div class="md-wrapper" title="Click or press Esc to cancel"></div>
     </form>
 
     <!-- js -->

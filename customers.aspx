@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="customers.aspx.vb" Inherits="manager_Default" title="Customers - BuildMate" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="customers.aspx.vb" Inherits="manager_Default" title="Customers - Buildmate" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -8,12 +8,7 @@
 
     <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlId="btnApplyFilter">
-                <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlId="btnRemoveFilter">
+            <telerik:AjaxSetting AjaxControlId="Panel1">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
                      <telerik:AjaxUpdatedControl ControlID="Panel1" />
@@ -24,158 +19,231 @@
                      <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="fvCustomerInsert">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
-    <asp:Panel ID="noCustomerPanel" runat="server" visible="false" CssClass="customer-panel">
-        <h3>Adding a Customer</h3>
-
-        <p>
-            To start using Buildmate you'll need to create your first Customer. This will allow you to then create a Project and start pricing up your job.
-        </p>
-        <p>
-            <a href="add_customer.aspx" class="button create">Add a Customer</a>
-        </p>
-    </asp:Panel>
-
     
-    <asp:Panel ID="customerPanel" runat="server">
-    <div class="box">
-        <h3>Customers</h3>
+    <!-- begin add customer -->
+    <div id="addCustomer" class="md-window">
+        <div class="md-content">
+            <h3>Adding a Customer..</h3>
 
-        <div class="boxcontent">
-    <div class="div50">
-        <asp:Panel
-            ID="Panel1"
-            runat="server"
-            DefaultButton="btnApplyFilter">
-            <div id="advSearch" class="search">
-                <a href="#" class="toggleSearch"><span></span></a>
+            <asp:FormView
+                ID="fvCustomerInsert"
+                runat="server"
+                DataSourceId="insertCustomerDataSource"
+                DefaultMode="Insert"
+                RenderOuterTable="false"
+                DataKeyNames="id">
+                <InsertItemTemplate>
+                    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnInsert">
+                        <div class="md-details">
+                            <div class="row">
+                                <label for="rtbFirstname" title="Name" class="label">Name*</label>
+                    
+                                <telerik:RadTextBox ID="rtbFirstName" runat="server" Text='<%#Bind("firstname") %>' 
+                                    Width="300px" EmptyMessage="Name" />
+                                
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="rtbFirstName" ValidationGroup="insertGroup"
+                                    Display="Dynamic" ErrorMessage="Name">
+                                    <span class="req"></span>
+                                </asp:RequiredFieldValidator>
+                            </div>
+                                                    
+                            <div class="row">
+                                <label for="rtbCompany" title="Company" class="label">Company</label>
+                    
+                                <telerik:RadTextBox ID="rtbCompany" Width="300px" runat="server" Text='<%#Bind("company") %>' Columns="35" EmptyMessage="Company" />
+                            </div>
+                                                    
+                            <div class="row">
+                                <label for="rtbJobTitle" title="Job Title" class="label">Job Title</label>
+                    
+                                <telerik:RadTextBox ID="rtbJobTitle" Width="300px" runat="server" Text='<%#Bind("jobtitle") %>' Columns="35" EmptyMessage="Job Title" />
+                            </div>
+
+                            <hr />
+
+                            <div class="row">
+                                <label for="rtbAddress1" title="Address" class="label">Address*</label>
+                    
+                                <telerik:RadTextBox ID="rtbAddress1" runat="server" Text='<%#Bind("address1") %>' TextMode="MultiLine" Width="300px" Rows="6" Columns="80"  EmptyMessage="Address" />
+                                
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress1" ValidationGroup="insertGroup"
+                                    Display="Dynamic" ErrorMessage="Address">
+                                    <span class="req"></span>
+                                </asp:RequiredFieldValidator>
+                            </div>
+
+                            <hr />
+                                                    
+                            <div class="row">
+                                <label for="rtbEmail" title="Email" class="label">Email</label>
+                    
+                                <telerik:RadTextBox ID="rtbEmail" runat="server" Text='<%#Bind("email") %>' Columns="35" EmptyMessage="Email" />
+                            </div>
+
+                            <div class="row">
+                                <label for="rtbTel" title="Telephone" class="label">Telephone</label>
+                    
+                                <telerik:RadTextBox ID="rtbTel" runat="server" Text='<%#Bind("tel") %>'  Columns="35" EmptyMessage="Telephone" />
+                            </div>
+
+                            <div class="row">
+                                <label for="rtbMobile" title="Mobile" class="label">Mobile</label>
+                    
+                                <telerik:RadTextBox ID="rtbMobile" runat="server" Text='<%#Bind("mobile") %>'  Columns="35" EmptyMessage="Mobile" />
+                            </div>
+                                                    
+                            <div class="row">
+                                <label for="rtbFax" title="Fax" class="label">Fax</label>
+                    
+                                <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>'  Columns="35" EmptyMessage="Fax" />
+                            </div>
+
+                            <hr />
+
+                            <div class="row">
+                                <label for="rcbPaymentTerms" title="Payment Terms" class="label">Payment Terms</label>
+                    
+                                <telerik:RadComboBox ID="rcbPaymentTerms" runat="server" Height="80px" Width="130px" SelectedValue='<%# Bind("paymentTermsId") %>'
+                                    DataSourceID="paymentDataSource" DataTextField="paymentTerm" DataValueField="id" />
+                            </div>
+                        </div>
+                   
+                        <div class="md-footer">
+                            <asp:Button ID="btnInsert" runat="server" CommandName="Insert" CssClass="button button-create"
+                            OnClientClick="validateModal()" Text="Add Customer" />
+                            
+                            <a href="#" class="button md-close">Close</a>
+                        </div>
+                    </asp:Panel>
+                </InsertItemTemplate>
+            </asp:FormView>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <ul class="breadcrumb-options">
+            <li><a href="#" data-target="addCustomer" class="js-open-modal button button-create">New Customer</a></li>
+        </ul>
+
+        <ul class="breadcrumb-list">
+            <li class="active">Customers</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <asp:Panel ID="noCustomerPanel" runat="server" visible="false" CssClass="help-panel">
+            <h3>Adding a Customer</h3>
+
+            <p>
+                To start using Buildmate you'll need to create your first Customer. This will allow you to then create a Project and start pricing up your job.
+            </p>
+            <p>
+                <a href="add_customer.aspx" class="button button-primary">New Customer</a>
+            </p>
+        </asp:Panel>
+
+        <asp:Panel ID="customerPanel" runat="server">
+            <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
                 <telerik:RadTextBox
                     ID="rtbFilter"
                     runat="server"
-                    CssClass="searchInput"
+                    AutoPostBack="true"
+                    CssClass="search-input"
                     EmptyMessage="Search by customer name or address"
                     Width="220px" />
-              
-                <asp:LinkButton
-                    ID="btnRemoveFilter"
+
+                <asp:CheckBox
+                    ID="cbArchived"
                     runat="server"
-                    Text="clear" />
+                    AutoPostBack="true"
+                    Text="Include archived customers" />
 
-                <div class="panel">
-                    <div class="row">
-                        <asp:CheckBox
-                            ID="cbArchived"
-                            runat="server"
-                            Text="Include archived customers" />
-                    </div>
+                <asp:Button
+                    ID="btnApplyFilter"
+                    runat="server"
+                    CssClass="button button-primary"
+                    Text="Apply Filters" />
 
-                    <div class="row">
-                        <asp:Button
-                            ID="btnApplyFilter"
-                            runat="server"
-                            Text="Apply Filters" />
-                    </div>
-                </div>
-            </div>
+                <asp:LinkButton
+                        ID="btnRemoveFilter"
+                        runat="server"
+                        CssClass="button"
+                        Text="clear" />
+            </asp:Panel>
+    
+            <telerik:RadGrid
+                ID="rgCustomers"
+                runat="server"
+                EnableLinqExpressions="false"
+                DataSourceID="allCustomersDataSource"
+                AllowAutomaticDeletes="true"
+                AllowPaging="true"
+                EnableAJAX="True"
+                GridLines="None"
+                PageSize="20"
+                PagerStyle-Mode="NextPrev"
+                AutoGenerateColumns="false"
+                ShowStatusBar="true"
+                AllowSorting="true">
+                <MasterTableView
+                    DataSourceID="allCustomersDataSource"
+                    AutoGenerateColumns="False"
+                    FilterExpression=""
+                    GridLines="None"
+                    DataKeyNames="id"
+                    NoMasterRecordsText="&nbsp;No Customers were found.">
+                    <Columns>
+                        <telerik:GridTemplateColumn UniqueName="customerName" HeaderText="Name" SortExpression="customerName">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server"
+                                    NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("customerName") %></asp:HyperLink>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        
+                        <telerik:GridBoundColumn
+                            Visible="false"
+                            UniqueName="firstname"
+                            DataField="firstname"
+                            HeaderText="firstname"
+                            SortExpression="firstname" />
+         
+                        <telerik:GridBoundColumn
+                            UniqueName="address"
+                            DataField="customerAddress"
+                            HeaderText="Address"
+                            SortExpression="customerAddress" />
+
+                        <telerik:GridBoundColumn
+                            DataField="city"
+                            HeaderText="Town/City" 
+                            SortExpression="city"
+                            UniqueName="city" />
+
+                        <telerik:GridBoundColumn
+                            DataField="county"
+                            HeaderText="County" 
+                            SortExpression="county"
+                            UniqueName="county" />
+
+                        <telerik:GridBoundColumn
+                            DataField="postcode"
+                            HeaderText="Postcode" 
+                            SortExpression="postcode"
+                            UniqueName="postcode" />
+                    </Columns>
+                </MasterTableView>
+            </telerik:RadGrid>
+        
         </asp:Panel>
     </div>
-    
-    <div class="div50r rightalign">
-        <a href="add_customer.aspx" class="button create">+ Add a Customer</a>
-    </div>
-    
-    <div class=" clear">
-        <telerik:RadGrid
-            ID="rgCustomers"
-            runat="server"
-            EnableLinqExpressions="false"
-            DataSourceID="allCustomersDataSource"
-            AllowAutomaticDeletes="true"
-            AllowPaging="true"
-            EnableAJAX="True"
-            GridLines="None"
-            PageSize="20"
-            PagerStyle-Mode="NextPrev"
-            AutoGenerateColumns="false"
-            ShowStatusBar="true"
-            AllowSorting="true">
-            <MasterTableView
-                DataSourceID="allCustomersDataSource"
-                AutoGenerateColumns="False"
-                GridLines="None"
-                DataKeyNames="id"
-                NoMasterRecordsText="&nbsp;No Customers were found.">
-                <Columns>
-                    <telerik:GridHyperLinkColumn
-                        UniqueName="customerName"
-                        HeaderText="Name"
-                        SortExpression="customerName"
-                        DataTextField="customerName"
-                        DataNavigateUrlFields="id"
-                        DataNavigateUrlFormatString="customer_details.aspx?id={0}" />
-                        
-                    <telerik:GridBoundColumn
-                        Visible="false"
-                        UniqueName="firstname"
-                        DataField="firstname"
-                        HeaderText="firstname"
-                        SortExpression="firstname" />
-         
-                    <telerik:GridBoundColumn
-                        UniqueName="address"
-                        DataField="customerAddress"
-                        HeaderText="Address"
-                        SortExpression="customerAddress" />
-
-                    <telerik:GridBoundColumn
-                        DataField="city"
-                        HeaderText="Town/City" 
-                        SortExpression="city"
-                        UniqueName="city" />
-
-                    <telerik:GridBoundColumn
-                        DataField="county"
-                        HeaderText="County" 
-                        SortExpression="county"
-                        UniqueName="county" />
-
-                    <telerik:GridBoundColumn
-                        DataField="postcode"
-                        HeaderText="Postcode" 
-                        SortExpression="postcode"
-                        UniqueName="postcode" />
-
-                    <telerik:GridTemplateColumn
-                        UniqueName="archived"
-                        SortExpression="archived"
-                        HeaderText="Archived"
-                        HeaderStyle-HorizontalAlign="Center"
-                        ItemStyle-HorizontalAlign="Center">
-                        <ItemTemplate>
-                            <asp:CheckBox
-                                ID="CheckBox1"
-                                runat="server"
-                                AutoPostBack="true"
-                                Checked='<%#Bind("archived") %>'
-                                OnCheckedChanged="OnCheckChanged" />
-                            
-                            <asp:HiddenField
-                                ID="hiddenCustomerId"
-                                runat="server"
-                                Value='<%#Eval("id") %>' />
-                        </ItemTemplate>
-                    </telerik:GridTemplateColumn>
-                </Columns>
-            </MasterTableView>
-        </telerik:RadGrid>
-    </div>
-    </div>
-    </div>
-
-        
-    </asp:Panel>
 
     <asp:SqlDataSource
         ID="allCustomersDataSource"
@@ -191,4 +259,21 @@
         </SelectParameters>
     </asp:SqlDataSource>
 
+    <asp:SqlDataSource
+        ID="insertCustomerDataSource"
+        runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        InsertCommand="insertUserContactDetails"
+        InsertCommandType="StoredProcedure">
+        <InsertParameters>
+            <asp:SessionParameter name="UserId" SessionField="UserId" />
+            <asp:Parameter Name="NewId" Type="Int64" Direction="Output" />
+        </InsertParameters>
+    </asp:SqlDataSource>
+    
+    <asp:SqlDataSource
+        ID="paymentDataSource"
+        runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        SelectCommand="getProjectPaymentTerms" /> 
 </asp:Content>

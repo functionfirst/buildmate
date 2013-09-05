@@ -1,6 +1,6 @@
 ﻿
 Partial Class manager_adhoc
-    Inherits System.Web.UI.Page
+    Inherits MyBaseClass
 
     Protected Sub fvReply_ItemInserted(sender As Object, e As System.Web.UI.WebControls.FormViewInsertedEventArgs) Handles fvReply.ItemInserted
         ' send email notification to admin
@@ -16,6 +16,8 @@ Partial Class manager_adhoc
 
         fvReply.DataBind()
         rReplies.DataBind()
+
+        showNotification("Note Added", "Your note was successfully added")
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load

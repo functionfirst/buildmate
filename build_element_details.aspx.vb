@@ -75,6 +75,10 @@ Partial Class manager_build_element_details
         End If
     End Sub
 
+    Protected Sub fvElementDetails_ItemCommand(sender As Object, e As FormViewCommandEventArgs) Handles fvElementDetails.ItemCommand
+        hideNotification()
+    End Sub
+
     'Protected Sub lbRefreshResources_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbRefreshResources.Click
     '    ' resynchronise prices and useage for all resources
     '    Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString

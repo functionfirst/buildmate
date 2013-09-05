@@ -17,7 +17,18 @@ Public Class MyBaseClass
         targetPanel.Controls.Add(userControl)
     End Sub
 
-    Protected Sub sendError(ByVal subject As String, ByVal errorBody As String)
+    Protected Sub reportError(ByVal exception As Exception)
+        Dim e = exception.ToString
+        Trace.Write(e)      ' log the bug to the trace tool.
+        sendErrorToAdmin(e) ' send the error to the admin email
+    End Sub
+
+    Protected Sub activateNavigationLink(ByVal linkName As String)
+        Dim activeLink As HyperLink = CType(Master.FindControl(linkName), HyperLink)
+        activeLink.CssClass = "active"
+    End Sub
+
+    Protected Sub sendErrorToAdmin(ByVal errorBody As String)
         ' send error to support
         Try
             Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
@@ -25,8 +36,8 @@ Public Class MyBaseClass
             Mailmsg.To.Clear()
             Mailmsg.To.Add(New System.Net.Mail.MailAddress("BuildMate<alan@buildmateapp.com>"))
             Mailmsg.From = New System.Net.Mail.MailAddress("alan@buildmateapp.com")
-            Mailmsg.Subject = subject & " - Error Report - BuildMate"
-            Mailmsg.IsBodyHtml = True
+            Mailmsg.Subject = "[Buildmate] - Error Report"
+            Mailmsg.IsBodyHtml = False
             Mailmsg.Body = errorBody
             obj.Send(Mailmsg)
         Catch ex As Exception
@@ -45,8 +56,26 @@ Public Class MyBaseClass
         notification.Visible = True
     End Sub
 
+    Protected Sub hideNotification()
+        Dim notification = CType(Master.FindControl("notification"), Panel)
+        notification.Visible = False
+    End Sub
+
     Protected Function hasCustomer() As Boolean
         Dim queryString As String = "SELECT COUNT(id) FROM UserContact WHERE userId = @userId;"
+        Using connection As New SqlConnection(connectionString)
+            Dim command As New SqlCommand(queryString, connection)
+            command.Parameters.AddWithValue("userId", Session("userId"))
+            connection.Open()
+            Dim rowCount = Convert.ToInt32(command.ExecuteScalar())
+            If rowCount > 0 Then Return True
+        End Using
+
+        Return False
+    End Function
+
+    Protected Function hasProject() As Boolean
+        Dim queryString As String = "SELECT COUNT(id) FROM Project WHERE userId = @userId;"
         Using connection As New SqlConnection(connectionString)
             Dim command As New SqlCommand(queryString, connection)
             command.Parameters.AddWithValue("userId", Session("userId"))

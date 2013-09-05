@@ -3,7 +3,6 @@
     -moz-box-sizing:    border-box;
     box-sizing:         border-box;
 }
-
 html,
 body {
     background: #f5f5f5;
@@ -13,15 +12,13 @@ body {
     margin: 0;
 	color: #2c2c2c;
 }
-
-
 a {
     color: #21759B;
     text-decoration: none;
-    -webkit-transition: color .2s linear;
-       -moz-transition: color .2s linear;
-         -o-transition: color .2s linear;
-           -transition: color .2s linear;
+    -webkit-transition: color .2s;
+    -moz-transition:    color .2s;
+    -o-transition:      color .2s;
+    -transition:        color .2s;
 }
 
 html body .RadInput_Default .riTextBox,
@@ -70,6 +67,30 @@ a:hover,
 	float: right;
 	margin: 49px 0 0;
 }
+.login-form {
+    max-width: 460px;
+    margin: 80px auto;
+}
+
+    .login-form h1 {
+        margin: 0;
+        border-bottom: 1px solid #EEE;
+        line-height: 30px;
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    .login-form .logo a {
+        background: url("../images/logo.png") no-repeat center;
+
+    }
+
+.login-form-inner {
+    background: #fff;
+    padding: 40px 60px 30px;
+    box-shadow: 0 2px 8px #ddd;
+    border-radius: 3px;
+}
 .logo a {
     background: url(http://images.getbuildmate.com/logo.jpg) #222 no-repeat center;
     display: block;
@@ -100,9 +121,8 @@ a:hover,
     color: #666;
 }
 
-
-/* projects */
-.customer-panel {
+/* help panel */
+.help-panel {
     padding: 20px 20px 10px;
     color: #FFF;
     background: #333;   
@@ -111,12 +131,58 @@ a:hover,
     border-radius: 4px; 
 }
 
-.customer-panel h3 {
+.help-panel h3 {
     color: #FFF;
     font-size: 20px;
     font-weight: 300;
     margin-top: 0;
+    border: 0;
 }
+
+/* project wizard */
+.project-wizard {
+    padding: 0;
+    color: #333;
+    background: #ccc;
+    margin: 10px 0;
+    overflow: hidden;
+    -webkit-border-radius:  4px;
+    -moz-border-radius:     4px;
+    border-radius:          4px;
+}
+    .project-wizard .project-tab {
+        display: inline-block;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        margin-right: -4px;
+    }
+    .project-wizard .active {
+        background: #0078e7;
+        color: #fff;
+        position: relative;
+    }
+    .project-wizard .active:first-child {
+        -webkit-border-radius:  4px 0 0 4px;
+        -moz-border-radius:     4px 0 0 4px;
+        border-radius:          4px 0 0 4px;
+    }
+    .project-wizard .project-tab-active-last {
+        color: #fff;
+        background: #0078e7;
+        -webkit-border-radius:  0 4px 4px 0;
+        -moz-border-radius:     0 4px 4px 0;
+        border-radius:          0 4px 4px 0;
+    }
+    .project-wizard .active:after {
+        content: "";
+        position: absolute;
+        right: -20px;
+        top: 0;
+        border: 10px solid #0078e7;
+        border-width: 20px 10px;
+        border-color: transparent transparent transparent #0078e7;
+    }
+
 .main_content {
     padding: 20px 10px 10px;
     background: #fff;
@@ -131,13 +197,6 @@ a:hover,
             box-shadow: 0 0 5px #ddd;
 }
 
-/* footer */
-.footer {
-    clear: both;
-    padding: 0 0 5px 80px;
-    color: #bbb;
-}
-    
     fieldset { border: 1px solid #ccc; margin: 5px 5px 10px; padding: 10px }
 
     legend { color: #666; font-size: 11px }
@@ -145,35 +204,40 @@ a:hover,
 /* topbar */
 .topbar 
 {
+    /*position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: #282828;
+    -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+       -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            box-shadow: 0 1px 5px rgba(0,0,0,0.3);*/
+
     position: fixed;
-    width: 100%;
     z-index: 100;
     top: 0;
-    /*min-height: 24px;
-    line-height: 24px;*/
-    color: #555;
-    text-align: right;
-    /*padding: 10px 0;*/
-    text-shadow: 0 -1px 1px #000;
-    background: #282828;
-    background: -moz-linear-gradient(top, #222222 0%, #343434 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#222222), color-stop(100%,#343434));
-    background: -webkit-linear-gradient(top, #222222 0%,#343434 100%);
-    background: -o-linear-gradient(top, #222222 0%,#343434 100%);
-    background: -ms-linear-gradient(top, #222222 0%,#343434 100%);
-    background: linear-gradient(top, #222222 0%,#343434 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#343434',GradientType=0 );
-    -webkit-box-shadow: 0 1px 5px #aaa;
-       -moz-box-shadow: 0 1px 5px #aaa;
-            box-shadow: 0 1px 5px #aaa;
+    left: 0;
+    right: 0;
+    background-color: #ECECEC;
+    background-image: -moz-linear-gradient(top, #F3F3F3, #E2E2E2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F3F3F3), to(#E2E2E2));
+    background-image: -webkit-linear-gradient(top, #F3F3F3, #E2E2E2);
+    background-image: -o-linear-gradient(top, #F3F3F3, #E2E2E2);
+    background-image: linear-gradient(to bottom, #F3F3F3, #E2E2E2);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff3f3f3', endColorstr='#ffe2e2e2', GradientType=0);
+    -webkit-box-shadow: 0 0 6px #333;
+    -moz-box-shadow: 0 0 6px #333;
+    box-shadow: 0 0 6px #333;
 }
-.topbar h1 {
-    float: left;
-    color: #fff;
-    margin: 0 10px;
-    font-size: 15px;
-    font-weight: normal;
-    line-height: 44px;
+.topbar .brand {
+    display: inline-block;
+    margin: 10px;
+    text-indent: -999em;
+    height: 26px;
+    width: 121px;
+    background: url("../images/logo.png") no-repeat
 }
 .topbar ul {
     padding: 0;
@@ -182,18 +246,10 @@ a:hover,
     float: right;
 }
 .topbar li {
-    float: left;
+    display: inline-block;
     line-height: 24px;
 }
-.topbar li+li {
-    border-left: 1px solid #666;
-}
-.topbar span.notext { display: none; color: #fff; }
-.topbar em { color: #555; }
-.topbar a { color: #ccc; display: block; padding: 10px; }
-.topbar a:hover { color: #fff; }
-
-.topbar .toggleNav { display: none; float: left; width: 30px; height: 30px; background: #f00; }
+.topbar a { display: block; padding: 10px; }
 
 
 /* help icon in topbar */
@@ -431,30 +487,34 @@ a:hover,
 
 /* breadcrumb */
 .breadcrumb {
-   line-height: 30px;
-   text-indent: 8px;
-    background: #f5f5f5;
-    border-bottom: 1px solid #DDD;
-    margin: -10px -10px 10px;
-    -webkit-border-radius: 5px 5px 0 0;
-       -moz-border-radius: 5px 5px 0 0;
-            border-radius: 5px 5px 0 0;
+    list-style: none;
+    background: #444;
+    padding: 8px 12px;
+    margin: 0 0 10px;
+    -webkit-border-radius:  4px;
+    -moz-border-radius:     4px;
+    border-radius:          4px;
 }
-.breadcrumb p {
-    /*margin: 0 2px 10px; */
-    margin:0;
-}
-.breadcrumb + .breadcrumb 
-{
-    /*padding: 4px 4px 0;*/
-    line-height: 24px;
-    text-indent: 20px;
-    background: #f8f8f8;
-}
-
+    .breadcrumb li {
+        display: inline-block;
+    }
+    .breadcrumb .divider {
+        color: #999;
+        margin: 0 4px;
+    }
+    .breadcrumb .active {
+        color: #999;
+    }
+    .breadcrumb a {
+        color: #ccc;
+    }
+    .breadcrumb a:hover {
+        color: #fff;
+    }
  
  /* button */
  .button {
+    margin: 0;
     border-style: none;
     border-color: inherit;
     border-width: medium;
@@ -465,11 +525,13 @@ a:hover,
     cursor: pointer;
     background-color: #d6d6d6;
     background-repeat: repeat-x;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
+    -webkit-border-radius:  2px;
+    -moz-border-radius:     2px;
+    border-radius:          2px;
     transition: top .1s;
-    background-image: linear-gradient(to bottom, #ddd, #ccc);
+}
+a.button {
+    padding: 6px 11px;
 }
 .button:hover {
 	opacity: 0.9;
@@ -481,14 +543,12 @@ a:hover,
     box-shadow:         0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset
 }
 .button[disabled='disabled'],
+.button:hover[disabled='disabled'],
 .button:active[disabled='disabled'] {
     border:1px solid #ccc;
     color: #666;
     background: #f2f5f6; 
     cursor: default;
-    -webkit-box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
-       -moz-box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
-            box-shadow: inset 0 0 3px #fff, 0 0 3px #eee;
 }
 .addButton {
     float: right;
@@ -503,18 +563,32 @@ a:hover,
     margin-left: 5px;
     margin-right: 5px;
 }
-.create {
+.button-create {
     color: #fff;
     background: #89bc00;
-    background: -moz-linear-gradient(top, #89bc00 0%, #7daa00 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#89bc00), color-stop(100%,#7daa00));
-    background: -webkit-linear-gradient(top, #89bc00 0%,#7daa00 100%);
-    background: -o-linear-gradient(top, #89bc00 0%,#7daa00 100%);
-    background: -ms-linear-gradient(top, #89bc00 0%,#7daa00 100%);
-    background: linear-gradient(to bottom, #89bc00 0%,#7daa00 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#89bc00', endColorstr='#7daa00',GradientType=0 );
 }
-.create:hover {
+.button-primary {
+    color: #fff;
+    background-color: #0078E7;
+}
+.button-error {
+    color: #fff;
+    background-color: #CA3C3C;
+}
+.button-warning {
+    color: #fff;
+    background-color: #DF7514;
+}
+.button-secondary {
+    color: #fff;
+    background-color: #42B8DD;
+}
+.button-create:hover,
+.button-create:hover,
+.button-error:hover,
+.button-warning:hover,
+.button-secondary:hover,
+.button-primary:hover {
     color: #fff;
 }
 
@@ -598,7 +672,7 @@ a:hover,
 
 .search .panel {
     display: none;
-    width: 300px;
+    width: 310px;
     padding: 10px;
     background: #f8f8f8;
     border: 1px solid #ddd;
@@ -696,6 +770,11 @@ a:hover,
     
     
     .RadGrid_Default .rgEditForm { background: #efefef; border: 0 }
+
+div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
+    background: #eaeaea;
+    border-color: #ddd
+}
     
     .sidebar { float: left; width: 220px }
     
@@ -707,24 +786,12 @@ a:hover,
         line-height: 26px;
         margin: 0 0 10px;
         position: relative;
-        background-color: #149BDF;
-        background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-        background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-        background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-        background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-        background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
-        background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-        -webkit-background-size: 40px 40px;
-        -moz-background-size: 40px 40px;
-        -o-background-size: 40px 40px;
-        background-size: 40px 40px;
-
-        -webkit-box-shadow: inset 0 0px 8px rgba(0,0,0,0.3), inset 0 14px 14px rgba(255,255,255,0.5), 0 0 3px #eee;;
-           -moz-box-shadow: inset 0 0px 8px rgba(0,0,0,0.3), inset 0 14px 14px rgba(255,255,255,0.5), 0 0 3px #eee;;
-                box-shadow: inset 0 0px 8px rgba(0,0,0,0.3), inset 0 14px 14px rgba(255,255,255,0.5), 0 0 3px #eee;;
+        background-color: #42B8DD;
+        overflow: hidden;
         -webkit-border-radius: 3px;
            -moz-border-radius: 3px;
                 border-radius: 3px;
+        box-shadow: inset 0 0 1px rgba(0,0,0,0.2)
     }
     
     .completionBar div {
@@ -734,34 +801,31 @@ a:hover,
         position: absolute;
         display: block;
         height: 26px;
-        background: #000;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-        -moz-opacity: 0.5;
-        -khtml-opacity: 0.5;
-        opacity: 0.5;
-        -webkit-border-radius: 3px 0 0 3px;
-           -moz-border-radius: 3px 0 0 3px;
-                border-radius: 3px;
+        background: #0078E7;
     }
     
     .locked { background: url(/icons/lock.png); display: block; padding: 5px 5px 5px 30px }
     
     /* modal window */
-    .modal-wrapper {
+    .md-wrapper {
         position: fixed;
         top: 0;
         left: 0;
+        opacity: 0;
         width: 100%;
         height: 100%;
-        z-index: 60;
+        z-index:1000;
         background: #333;
         background: rgba(0,0,0,0.5);    
-        display: none;
+        visibility: hidden;
         cursor: pointer;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
     }
     
-    .modal-window {
-        top: -50%;
+    .md-window {
+        /*top: -50%;
         left: 50%;
         position: fixed;
         margin-left: -300px;
@@ -771,40 +835,102 @@ a:hover,
         background: #f3f3f3;
         -webkit-box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
            -moz-box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
-                box-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+                box-shadow: 1px 1px 8px rgba(0,0,0,0.5);*/
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        max-width: 630px;
+        min-width: 320px;
+        height: auto;
+        z-index: 2000;
+        visibility: hidden;
+        /*-webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        backface-visibility: hidden;*/
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
     }
-    
-    .modal-window > h3 {
+    .md-show .md-wrapper {
+        opacity: 1;
+        visibility: visible;
+    }
+    .md-show.md-window {
+        visibility: visible;
+    }
+    .md-content {
+        background: #f3f3f3;
+        -webkit-transform: scale(2);
+        -moz-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2);
+        opacity: 0;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+
+    /*-webkit-transform: translateY(20%);
+    -moz-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    transform: translateY(20%);
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;*/
+
+    }
+    .md-show .md-content {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    .md-content h3 {
         margin: 0;
+        font-weight: 300;
         color: #fff;
+        font-size: 18px;
         padding: 5px 10px;
-        line-height: 24px;
-        border-bottom: 1px solid #ccc;
-	    background: #1c5ea0;
-        background: -moz-linear-gradient(top, #1c5ea0 0%, #064792 100%);
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1c5ea0), color-stop(100%,#064792));
-        background: -webkit-linear-gradient(top, #1c5ea0 0%,#064792 100%);
-        background: -o-linear-gradient(top, #1c5ea0 0%,#064792 100%);
-        background: -ms-linear-gradient(top, #1c5ea0 0%,#064792 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c5ea0', endColorstr='#064792',GradientType=0 );
-        background: linear-gradient(top, #1c5ea0 0%,#064792 100%);
+        line-height: 40px;
+        background: #333;
     }
     
-    .modal-window .close {
+    /*
+        .md-close {
         outline: none;
         display: block;
-        font-size: 22px;
-        font-weight: bold;
-        line-height: 12px;
+        font-size: 20px;
+        font-weight: 300;
         color: #fff;
         position: absolute;
-        top: 8px;
-        right: 8px;
+        top: 14px;
+        right: 14px;
     }
 
-    .modal-window .close:hover {
+    .md-close:hover {
         color: #cecece;
+    }*/
+    
+    .md-content .md-details {
+        padding: 10px;
+        overflow: auto;
+        max-height: 400px;
+        margin: 5px;
     }
+
+    .md-footer {
+        text-align: right;
+        border-top: 1px solid #ccc;
+        background: #ddd;
+        padding: 10px;
+    }
+
+
+
 
     .calc-open {
         border: 0;
@@ -883,17 +1009,17 @@ a:hover,
 	h3,
 	h4 {
 	    color: #333;
-        font-size: inherit;
-        font-weight: 600;
+        margin: 0 0 10px;
+        border-bottom: 1px solid #EEE;
+        line-height: 30px;
+        font-weight: 400;
+        font-size: 16px;
     }
 
     .cell { float: left; display: table-cell }
 
 
-    .loading { position: fixed; width: 100%; height: 100%; z-index: 99; background: #fff; top: 0; left: 0; }    
-    .loadtemp { height: 100%; background: #fff}
-    .loadtemp div {width: 100%; height: 100%; text-indent: -200em; background: url(../images/loading.gif) center no-repeat }
-
+    .loading { position: fixed; width: 100%; height: 100%; z-index: 2100; background: #fff; top: 0; left: 0; }
 	.loading div {
 		position: fixed; width: 742px; left: 50%; margin-left: -371px; height: 100%;
 		text-indent: -200em;
@@ -916,7 +1042,7 @@ a:hover,
 
 
     /* FORMS & FILTER --------------- */
-    hr { border: 0; border-top: 1px solid #ccc }
+    hr { border: 0; border-top: 1px solid #eee }
 
     .control {
         clear: both;
@@ -933,7 +1059,7 @@ a:hover,
     }
 
     div.row, div.rowl, div.row_req {
-        margin-bottom: 5px;
+        margin: 5px 0;
         clear: both;
     }
 
@@ -951,7 +1077,12 @@ a:hover,
         text-transform: uppercase;
         margin-top: 3px;
     }
-    
+
+    .form-actions {
+        margin: 10px 0;
+        background: #eee;
+        padding: 10px 10px 10px 130px;
+    }
     .box_total .row .label {
         color: #fff;
     }
@@ -1053,14 +1184,6 @@ a:hover,
 .box  {
     margin: 0 0 10px;
     border: 1px solid #ddd;
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
-    -webkit-box-shadow: 0 1px 3px #eee;
-        -moz-box-shadow: 0 1px 3px #eee;
-            box-shadow: 0 1px 3px #eee
 }
 .box h3,
 .box_total h3,
@@ -1069,15 +1192,8 @@ a:hover,
     text-indent: 10px;
     font-weight: 600;
     margin: 0;
-    border-bottom: 1px solid #ccc;
-    background: #eeeeee;
-    background: -moz-linear-gradient(top, #f8f8f8 0%, #f8f8f8 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#f8f8f8));
-    background: -webkit-linear-gradient(top, #f8f8f8 0%,#eeeeee 100%);
-    background: -o-linear-gradient(top, #f8f8f8 0%,#eeeeee 100%);
-    background: -ms-linear-gradient(top, #f8f8f8 0%,#eeeeee 100%);
-    background: linear-gradient(top, #f8f8f8 0%,#eeeeee 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#eeeeee',GradientType=0 );
+    border-bottom: 1px solid #ddd;
+    background: #f5f5f5;
     line-height: 30px;
     -webkit-border-radius: 3px 3px 0 0;
        -moz-border-radius: 3px 3px 0 0;
@@ -1111,35 +1227,21 @@ h4 {
 }*/
 .box_info,
 .box_total {
-    background: #21759B;
+    background: #0078E7;
     text-align: center;
     color: #fff;
     padding: 20px;
     margin: 0 0 10px;
-    background: #1c5ea0;
-    background: -moz-linear-gradient(top, #1c5ea0 0%, #064792 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1c5ea0), color-stop(100%,#064792));
-    background: -webkit-linear-gradient(top, #1c5ea0 0%,#064792 100%);
-    background: -o-linear-gradient(top, #1c5ea0 0%,#064792 100%);
-    background: -ms-linear-gradient(top, #1c5ea0 0%,#064792 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c5ea0', endColorstr='#064792',GradientType=0 );
-    background: linear-gradient(top, #1c5ea0 0%,#064792 100%);
-    -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
-    -webkit-box-shadow: 0 0 3px #ccc;
-       -moz-box-shadow: 0 0 3px #ccc;
-            box-shadow: 0 0 3px #ccc;
 }
+
 
 .box_info h3,
 .box_info h4,
 .box_total h3,
 .box_total h3 {
+    text-align: center;
     background: none;
-    text-shadow: none;
     color: #fff;
-    margin: 0;
     border: 0;
 }
 .box_total .boxcontent {
@@ -1165,30 +1267,22 @@ h4 {
 
     
 /* grid */
-.div25, .div25r, .div33, .div33r, .div50, .div50r, .div66, .div66r, .div75, .div75r { float: left; margin-right: 1%; }
+.div25, .div25r, .div33, .div33r, .div50, .div50r, .div66, .div66r, .div75, .div75r { float: left; padding: 5px; }
 .div25, .div25r { width: 25%; }
 .div33, .div33r { width: 33%; }
 .div50, .div50r { width: 50%; }
 .div75, .div75r { width: 74%; }
 .div66, .div66r { width: 66%; }
-.div25r, .div33r, .div50r, .div66r, .div75r { margin: 0; }
 .div_mid { width: 45%; margin: 0 auto; }
 
+.div-last {
+    margin-right: 0;
+}
 
 .div50r { margin-right: 0; width: 49% }
 .div33r { margin-right: 0; width: 32% }
 
 /* SUCCESS/ERROR BOXES ----------------- */
-/*.errorBox,
-.successBox {
-    margin: .5em 0;
-    padding: 1em;
-    -moz-border-radius: .3em;
-    -webkit-border-radius: .3em;
-    border-radius: .3em;
-}*/
-
-
 @-webkit-keyframes fadeInDown {
 	0% { opacity: 0; -webkit-transform: translateY(-60px); }
     100% { opacity: 1; -webkit-transform: translateY(0); }
@@ -1353,6 +1447,15 @@ h4 {
 #app .RadGrid_Default {
     border: 1px solid #ddd;
     outline: 0;
+}
+
+div .RadGrid_Default .rgMasterTable .rgSelectedCell,
+div .RadGrid_Default .rgSelectedRow {
+    background: #666
+}
+
+#app .RadGrid .rgSelectedRow a {
+    color: #fff;
 }
 div.RadTreeView_Default .rtHover .rtIn,
 div.RadTreeView_Default .rtSelected .rtIn,

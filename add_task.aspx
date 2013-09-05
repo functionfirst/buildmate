@@ -23,25 +23,27 @@
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
-
     <div class="breadcrumb">
-        <p>
-            &lArr;
-            <asp:HyperLink ID="hlBack" runat="server"
-                NavigateUrl="project_details.aspx?pid={0}"
-                Text="Project Details" />
-        </p>
+        <ul class="breadcrumb-list">
+            <li>
+                <asp:HyperLink ID="hlBack" runat="server"
+                    NavigateUrl="project_details.aspx?pid={0}"
+                    Text="Project Details" />
+                <span class="divider">/</span>
+            </li>
+            <li>
+                <asp:HyperLink ID="hlBack2" runat="server"
+                    NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
+                    Text="Build Element Details" />
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                Add Tasks
+            </li>
+        </ul>
     </div>
 
-    <div class="breadcrumb">
-        <p>
-            &lArr; 
-            <asp:HyperLink ID="hlBack2" runat="server"
-                NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
-                Text="Build Element Details" />
-        </p>
-    </div>
-
+    <div class="main-container">
     <asp:Panel ID="pTaskFilters" runat="server" Visible="false">
         <fieldset>
             <legend title="Keywords">Keywords</legend>
@@ -54,22 +56,18 @@
         </fieldset>
     </asp:Panel>
     
-    <asp:Panel ID="pAddTasks" runat="server" CssClass="box" Visible="false">
-        <h3>Add Tasks</h3>
-        
-        <div class="boxcontent">
-            <div class="rightalign" style="margin-bottom: 10px">
-                <asp:LinkButton ID="btnAdd" runat="server" tooltip="Add Selected Task(s)"
-                    CssClass="button create" text="+ Add Selected Tasks" />
-            </div>
-            
-            <asp:Label ID="results" runat="server" />
+    <asp:Panel ID="pAddTasks" runat="server" Visible="false">
+        <asp:Label ID="results" runat="server" />
 
-            <telerik:RadTreeView runat="server" ID="RadTreeView1"
-                CheckBoxes="true"
-                SingleExpandPath="true"
-                Style="white-space: normal;"
-                ShowLineImages="false" />
+        <telerik:RadTreeView runat="server" ID="RadTreeView1"
+            CheckBoxes="true"
+            SingleExpandPath="true"
+            Style="white-space: normal;"
+            ShowLineImages="false" />
+
+        <div class="form-actions">
+            <asp:LinkButton ID="btnAdd" runat="server" tooltip="Add Selected Task(s)"
+                    CssClass="button button-create" text="Add Selected Tasks" />
         </div>
     </asp:Panel>
 
@@ -115,5 +113,5 @@
                 </ol>
             </div>
         </asp:Panel>
+    </div>
 </asp:Content>
-

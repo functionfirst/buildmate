@@ -18,83 +18,83 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <p>
-            &lArr;
-            <asp:HyperLink ID="HyperLink1" runat="server"
-                NavigateUrl="~/project_details.aspx?pid={0}"
-                Text="Project Details" />
-        </p>
+        <ul class="breadcrumb-list">
+            <li>
+                <asp:HyperLink ID="HyperLink1" runat="server"
+                    NavigateUrl="~/project_details.aspx?pid={0}"
+                    Text="Project Details" />
+                <span class="divider">/</span>
+            </li>
+            <li class="active">Plant Costs</li>
+        </ul>
     </div>
     
-    <div class="box">
-        <h3>Plant Costs</h3>
+    <div class="main-container">
+        <h1>Plant Costs</h1>
         
-        <div class="boxcontent">
-        
-            <asp:Repeater ID="Repeater1" runat="server"
-                DataSourceID="resourceDataSource">
-                <HeaderTemplate>
-                    <table border="0" cellpadding="0" cellspacing="0" class="table" width="100%">
-                    <colgroup>
-                        <col />
-                        <col width="10%" />
-                        <col width="5%" />
-                        <col width="10%" />
-                        <col width="10%" />
-                        <col width="10%" />
-                        <col width="10%" />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="firstcol centrealign" colspan="3">Purchase Cost</th>
-                            <th class="firstcol centrealign" colspan="3">Project Cost</th>
-                        </tr>
-                        <tr>
-                            <th class="leftalign">Resource Name</th>
-                            <th class="firstcol">Unit</th>
-                            <th>Qty</th>
-                            <th class="rightalign">Cost (&pound;)</th>
-                            <th class="firstcol rightalign">Cost (&pound;)</th>
-                            <th class="rightalign">Waste</th>
-                            <th class="rightalign">Total Cost (&pound;)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                </HeaderTemplate>
-                <ItemTemplate>
+        <asp:Repeater ID="Repeater1" runat="server"
+            DataSourceID="resourceDataSource">
+            <HeaderTemplate>
+                <table border="0" cellpadding="0" cellspacing="0" class="table" width="100%">
+                <colgroup>
+                    <col />
+                    <col width="10%" />
+                    <col width="5%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                    <col width="10%" />
+                </colgroup>
+                <thead>
                     <tr>
-                        <td>
-                            <asp:Image ID="Image1" runat="server"
-                                Visible='<%# IIf(eval("isEditable")=0, "True", "False")%>'
-                                ToolTip="Non-Variation Resource"
-                                Src="/images/editable0.gif" />
-                        
-                            <asp:Image ID="Image2" runat="server"
-                                Visible='<%# IIf(eval("isEditable")=1, "True", "False")%>'
-                                ToolTip="Variation Resource" src="/images/editable1.gif" />
-                            <%# eval("resourceName") %>
-                        </td>
-                        <td class="centrealign purchasecol firstcol"><%#Eval("purchaseUnit")%></td>
-                        <td class="centrealign purchasecol"><%#Eval("purchaseQty")%></td>
-                        <td class="rightalign purchasecol"><%#Eval("purchaseCost", "{0:C2}")%></td>
-                        <td class="rightalign projectcol firstcol"><%#Eval("projectCost", "{0:C2}")%></td>
-                        <td class="rightalign projectcol"><%# checkWaste(Eval("incWaste"), Eval("projectWaste"), Eval("wastePercent")) %></td>
-                        <td class="rightalign projectcol lastcol"><%#Eval("projectTotalCost", "{0:C2}")%></td>
+                        <th></th>
+                        <th class="firstcol centrealign" colspan="3">Purchase Cost</th>
+                        <th class="firstcol centrealign" colspan="3">Project Cost</th>
                     </tr>
-                </ItemTemplate>
-                <FooterTemplate>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th colspan="6" class="rightalign">Total Cost:</th>
-                                <th class="rightalign"><asp:Label ID="lblGrandTotal" runat="server" /></th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </FooterTemplate>
-            </asp:Repeater>
-        </div>
+                    <tr>
+                        <th class="leftalign">Resource Name</th>
+                        <th class="firstcol">Unit</th>
+                        <th>Qty</th>
+                        <th class="rightalign">Cost (&pound;)</th>
+                        <th class="firstcol rightalign">Cost (&pound;)</th>
+                        <th class="rightalign">Waste</th>
+                        <th class="rightalign">Total Cost (&pound;)</th>
+                    </tr>
+                </thead>
+                <tbody>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tr>
+                    <td>
+                        <asp:Image ID="Image1" runat="server"
+                            Visible='<%# IIf(eval("isEditable")=0, "True", "False")%>'
+                            ToolTip="Non-Variation Resource"
+                            Src="/images/editable0.gif" />
+                        
+                        <asp:Image ID="Image2" runat="server"
+                            Visible='<%# IIf(eval("isEditable")=1, "True", "False")%>'
+                            ToolTip="Variation Resource" src="/images/editable1.gif" />
+                        <%# eval("resourceName") %>
+                    </td>
+                    <td class="centrealign purchasecol firstcol"><%#Eval("purchaseUnit")%></td>
+                    <td class="centrealign purchasecol"><%#Eval("purchaseQty")%></td>
+                    <td class="rightalign purchasecol"><%#Eval("purchaseCost", "{0:C2}")%></td>
+                    <td class="rightalign projectcol firstcol"><%#Eval("projectCost", "{0:C2}")%></td>
+                    <td class="rightalign projectcol"><%# checkWaste(Eval("incWaste"), Eval("projectWaste"), Eval("wastePercent")) %></td>
+                    <td class="rightalign projectcol lastcol"><%#Eval("projectTotalCost", "{0:C2}")%></td>
+                </tr>
+            </ItemTemplate>
+            <FooterTemplate>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="6" class="rightalign">Total Cost:</th>
+                            <th class="rightalign"><asp:Label ID="lblGrandTotal" runat="server" /></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>
     </div>
 
     <asp:SqlDataSource ID="resourceDataSource" runat="server"

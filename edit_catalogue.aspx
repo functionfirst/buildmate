@@ -11,29 +11,31 @@
             <telerik:AjaxSetting AjaxControlId="fvCatalogueDetails">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvCatalogueDetails" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <p>
-            &lArr; <a href="resources.aspx" title="Resources">Resources</a><br />
-        </p>
+        <ul class="breadcrumb-list">
+            <li>
+                <a href="resources.aspx" title="Resources">Resources</a>
+                <span class="divider">/</span>
+            </li>
+            <li>
+                <asp:HyperLink ID="hlResource" runat="server">Resource Details</asp:HyperLink>
+                <span class="divider">/</span>
+            </li>
+            <li class="active">Resource Supplier Details</li>
+        </ul>
     </div>
 
-    <div class="breadcrumb">
-        <p>
-            &lArr; <asp:HyperLink ID="hlResource" runat="server">Resource Details</asp:HyperLink>
-        </p>
-    </div>
-
-    <div class="box">
-        <h3>Resource Supplier Details</h3>
+    <div class="main-container">
+        <h1>Resource Supplier Details</h1>
         
-        <div class="boxcontent">
         
-            <asp:FormView ID="fvCatalogueDetails" runat="server" DataKeyNames="id" Width="100%" 
+            <asp:FormView ID="fvCatalogueDetails" runat="server" DataKeyNames="id" RenderOuterTable="false" DefaultMode="Edit" 
                 DataSourceID="catalogueDS">
                 <EditItemTemplate>
                     <div class="row">
@@ -119,68 +121,14 @@
                             Text='<%#String.Format("{0:f}", Container.DataItem("lastUpdated"))%> ' />
                     </div>
             
-                    <div class="row">
-                        <label class="label">&nbsp;</label>
+                    <div class="form-actions">
                         <asp:Button ID="UpdateButton" runat="server"
-                            CausesValidation="True" 
+                            CausesValidation="True"
+                            CssClass="button button-create"
                             CommandName="Update" Text="Update" />
-                    
-                        <asp:LinkButton ID="UpdateCancelButton" runat="server" 
-                            CausesValidation="False"
-                            CommandName="Cancel"
-                            Text="Cancel" />
                     </div>
                 </EditItemTemplate>
-                <ItemTemplate>
-                    <div class="row">
-                        <label class="label">Product Code</label>
-                        <asp:Label ID="productCodeLabel" runat="server" 
-                            Text='<%# Bind("productCode") %>' />&nbsp;
-                    </div>
-
-                    <div class="row">
-                        <label class="label">Suffix</label>
-                        <asp:Label ID="Label11" runat="server" 
-                            Text='<%# Bind("suffix") %>' />&nbsp;
-                    </div>
-                    
-                    <div class="row">
-                        <label class="label">Price</label>
-                        <asp:Label ID="Label1" runat="server" 
-                            Text='<%#String.Format("{0:C2}", Container.DataItem("price"))%> ' />
-                    </div>
-                    
-                    <div class="row">
-                        <label class="label">Lead Time</label>
-                        <asp:Label ID="Label2" runat="server" 
-                            Text='<%# Bind("leadTime") %>' />
-                    </div>
-
-                    <div class="row">
-                        <label class="label">Useage</label>
-                        <asp:Label ID="Label4" runat="server" 
-                            Text='<%# Bind("useage", "{0:f2}") %>' />
-                    </div>
-                    
-                    <div class="row">
-                        <label class="label">Discontinued</label>
-                        <asp:CheckBox ID="discontinuedCheckBox" runat="server" 
-                            Checked='<%# Bind("discontinued") %>' Enabled="false" />
-                    </div>
-                    
-                    <div class="row">
-                        <label class="label">Last Updated</label>
-                        <asp:Label ID="Label3" runat="server" 
-                            Text='<%#String.Format("{0:f}", Container.DataItem("lastUpdated"))%> ' />
-                    </div>
-
-                    <div class="row">
-                        <label class="label">&nbsp;</label>
-                        <asp:Button ID="Button1" runat="server" CommandName="Edit" Text="Edit" />
-                    </div>
-                </ItemTemplate>
             </asp:FormView>
-        </div>
     </div>
 
     <asp:SqlDataSource

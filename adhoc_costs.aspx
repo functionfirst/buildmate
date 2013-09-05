@@ -16,19 +16,21 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <p>
-            &lArr;
+        <ul class="breadcrumb-list">
+        <li>
             <asp:HyperLink ID="HyperLink1" runat="server"
                 NavigateUrl="~/project_details.aspx?pid={0}"
                 Text="Project Details" />
-        </p>
+            <span class="divider">/</span>
+        </li>
+        <li class="active">Ad-hoc Costs</li>
+        </ul>
     </div>
-    
-    <div class="box">
-        <h3>Ad-hoc Costs</h3>
+
+    <div class="main-container">
+        <h1>Ad-hoc Costs</h1>
         
-        <div class="boxcontent">
-            <telerik:RadGrid ID="rgAdhocCosts" runat="server"
+        <telerik:RadGrid ID="rgAdhocCosts" runat="server"
                 CssClass="clear"
                 DataSourceID="adhocCostDataSource"
                 GridLines="None"
@@ -62,7 +64,6 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
-        </div>
     </div>
 
     <asp:SqlDataSource ID="adhocCostDataSource" runat="server"

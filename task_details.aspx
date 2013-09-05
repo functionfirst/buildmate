@@ -11,14 +11,9 @@
         }
 
         if (Page_IsValid) {
-            // close modal
-            $(".modal-window").animate({ "top": "-50%" }, function() {
-                $(".modal-wrapper").fadeOut();
-            });
-            return true;
-        } else {
-            return false;
+            hideModal();
         }
+        return true;
     }
 </script>
 </asp:Content>
@@ -59,7 +54,7 @@
             <telerik:AjaxSetting AjaxControlId="fvTaskAdjustments">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvTaskTotals" />
-                     <telerik:AjaxUpdatedControl ControlID="pCurrentResources" />
+                     <telerik:AjaxUpdatedControl ControlID="pAddResources" />
                      <telerik:AjaxUpdatedControl ControlID="pRequiresTaskQty" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
@@ -124,62 +119,76 @@
     </telerik:RadAjaxManagerProxy>
     
     <!-- add resources modal -->
-    <div id="addResources" class="modal-window">
-        <h3><a href="#" class="close">&times;</a> Add a Resource</h3>
+    <div id="addResources" class="md-window">
+        <asp:Panel ID="pRequiresTaskQty" runat="server" Visible="false" CssClass="md-content">
+            <h3>A Task Quantity is required</h3>
 
-        <div class="boxcontent">
-            <asp:Panel ID="Panel1" runat="server" DefaultButton="btnAddResources">
-    
-            <div class="row">
-                <asp:Label ID="Label10" runat="server"
-                    Text="Type:"
-                    CssClass="label"
-                    AssociatedControlID="rblResourceType" />
-            
-                <asp:RadioButtonList ID="rblResourceType" runat="server"
-                    AutoPostBack="true"
-                    RepeatDirection="Horizontal">
-                    <asp:ListItem Value="1" Text="Labour" Selected="True" />
-                    <asp:ListItem Value="2" Text="Material" />
-                    <asp:ListItem Value="3" Text="Plant &amp; Equipment" />
-                </asp:RadioButtonList>
+            <div class="md-details">
+                <div class="box_info">
+                    You must enter a Task quantity before adding Resources to this Task. Click <strong>Edit Task Details</strong> to begin.
+                </div>
             </div>
 
-            <div class="row">
-                <asp:Label ID="Label9" runat="server"
-                    Text="Search in..."
-                    CssClass="label"
-                    AssociatedControlID="rcbSearchType" />
-
-                <telerik:RadComboBox ID="rcbSearchType" runat="server" 
-                    AutoPostBack="true">
-                    <Items>
-                        <telerik:RadComboBoxItem Value="1" Text="All Resources" />
-                        <telerik:RadComboBoxItem Value="2" Text="Current Project" />
-                        <telerik:RadComboBoxItem Value="3" Text="All Projects" />
-                    </Items>
-                </telerik:RadComboBox>
+            <div class="md-footer">
+                <a href="#" class="button md-close">Close</a>
             </div>
+        </asp:Panel>
+
+        <asp:Panel ID="pAddResources" runat="server" DefaultButton="btnAddResources" CssClass="md-content">
+            <h3>Add a Resource</h3>
+
+            <div class="md-details">
+                <div class="row">
+                    <asp:Label ID="Label10" runat="server"
+                        Text="Type:"
+                        CssClass="label"
+                        AssociatedControlID="rblResourceType" />
             
-            <div class="row">
-                <asp:Label ID="Label12" runat="server"
-                    Text="Resource:"
-                    CssClass="label"
-                    AssociatedControlID="rcbResources" />
-                        <telerik:RadComboBox
-                            ID="rcbResources"
-                            runat="server"
-                            AutoPostBack="true"
-                            Width="215px"
-                            Height="150px"
-                            IsCaseSensitive="false"
-                            DropDownWidth="480px"
-                            EmptyMessage="contains any of the word(s)"
-                            EnableLoadOnDemand="true"
-                            ShowMoreResultsBox="true"
-                            EnableVirtualScrolling="false"
-                            MarkFirstMatch="false"
-                            HighlightTemplatedItems="true">
+                    <asp:RadioButtonList ID="rblResourceType" runat="server"
+                        AutoPostBack="true"
+                        RepeatDirection="Horizontal">
+                        <asp:ListItem Value="1" Text="Labour" Selected="True" />
+                        <asp:ListItem Value="2" Text="Material" />
+                        <asp:ListItem Value="3" Text="Plant &amp; Equipment" />
+                    </asp:RadioButtonList>
+                </div>
+
+                <div class="row">
+                    <asp:Label ID="Label9" runat="server"
+                        Text="Search in..."
+                        CssClass="label"
+                        AssociatedControlID="rcbSearchType" />
+
+                    <telerik:RadComboBox ID="rcbSearchType" runat="server" 
+                        AutoPostBack="true">
+                        <Items>
+                            <telerik:RadComboBoxItem Value="1" Text="All Resources" />
+                            <telerik:RadComboBoxItem Value="2" Text="Current Project" />
+                            <telerik:RadComboBoxItem Value="3" Text="All Projects" />
+                        </Items>
+                    </telerik:RadComboBox>
+                </div>
+            
+                <div class="row">
+                    <asp:Label ID="Label12" runat="server"
+                        Text="Resource:"
+                        CssClass="label"
+                        AssociatedControlID="rcbResources" />
+
+                    <telerik:RadComboBox
+                        ID="rcbResources"
+                        runat="server"
+                        AutoPostBack="true"
+                        Width="215px"
+                        Height="150px"
+                        IsCaseSensitive="false"
+                        DropDownWidth="480px"
+                        EmptyMessage="contains any of the word(s)"
+                        EnableLoadOnDemand="true"
+                        ShowMoreResultsBox="true"
+                        EnableVirtualScrolling="false"
+                        MarkFirstMatch="false"
+                        HighlightTemplatedItems="true">
                         <HeaderTemplate>
                             <table border="0" cellspacing="0" cellpadding="0">
                                 <tr>
@@ -217,395 +226,417 @@
                         Type="Number"
                         MinValue="1"
                         NumberFormat-DecimalDigits="0" />
-            </div>
+                </div>
 
-            <div class="row">
-                        
-                <asp:Label ID="Label14" runat="server"
-                    Text="Usage:"
-                    CssClass="label"
-                    AssociatedControlID="rntbUses" />
-                        <telerik:RadNumericTextBox
-                            ID="rntbUses"
-                            runat="server"
-                            Value="0"
-                            Width="60px"
-                            Type="Number"
-                            MinValue="0"
-                            NumberFormat-DecimalDigits="2" />
+                <div class="row">
+                    <asp:Label ID="Label14" runat="server"
+                        Text="Usage:"
+                        CssClass="label"
+                        AssociatedControlID="rntbUses" />
+                            <telerik:RadNumericTextBox
+                                ID="rntbUses"
+                                runat="server"
+                                Value="0"
+                                Width="60px"
+                                Type="Number"
+                                MinValue="0"
+                                NumberFormat-DecimalDigits="2" />
 
                     <asp:Literal ID="lblUnitName" runat="server"></asp:Literal>
                 </div>
-            
-            <div class="row">
-                <label class="label">&nbsp;</label>
-                    <asp:Button ID="btnAddResources" runat="server" Text="Add Resource" />
+            </div>
+
+            <div class="md-footer">
+                <asp:Button ID="btnAddResources" runat="server" Text="Add Resource" CssClass="button button-create" />
+                <a href="#" class="button md-close">Close</a>
             </div>
         </asp:Panel>
-        </div>
     </div>
     
     <!-- add adhoc modal -->
-    <div id="addAddition" class="modal-window">
-        <h3><a href="#" class="close">&times;</a> Add an Addition</h3>
-        
-        <div class="boxcontent">
+    <div id="addAddition" class="md-window">
+        <div class="md-content">
             <asp:FormView ID="fvAddAdhoc" runat="server"
+                RenderOuterTable="false"
                 DefaultMode="Insert"
                 DataSourceID="additionsDataSource"
-                Width="100%"
                 DataKeyNames="id">
                 <InsertItemTemplate>
-                    <div class="row">
-                        <asp:Label
-                            ID="Label13"
-                            runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rtbDescription"
-                            Text="Description" />
+                
+                    <h3>Add an Addition</h3>
 
-                        <telerik:RadTextBox
-                            ID="rtbDescription"
-                            runat="server"
-                            TextMode="MultiLine"
-                            Columns="40"
-                            Height="50px"
-                            Text='<%#Bind("description") %>'
-                            MaxLength="255" />
+                    <div class="md-details">
+                        <div class="row">
+                            <asp:Label
+                                ID="Label13"
+                                runat="server"
+                                CssClass="label"
+                                AssociatedControlID="rtbDescription"
+                                Text="Description" />
+
+                            <telerik:RadTextBox
+                                ID="rtbDescription"
+                                runat="server"
+                                TextMode="MultiLine"
+                                Columns="40"
+                                Height="50px"
+                                Text='<%#Bind("description") %>'
+                                MaxLength="255" />
                         
-                        <asp:RequiredFieldValidator
-                            ID="RequiredFieldValidator1"
-                            runat="server"
-                            ControlToValidate="rtbDescription"
-                            ErrorMessage="Descripion"
-                            ValidationGroup="insertAdditionValidation">
-                            <span class="req"></span>
-                        </asp:RequiredFieldValidator>
-                    </div>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator1"
+                                runat="server"
+                                ControlToValidate="rtbDescription"
+                                ErrorMessage="Descripion"
+                                ValidationGroup="insertAdditionValidation">
+                                <span class="req"></span>
+                            </asp:RequiredFieldValidator>
+                        </div>
 
-                    <div class="row">
-                        <asp:Label
-                            ID="Label15"
-                            runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rntbCost"
-                            Text="Cost" />
+                        <div class="row">
+                            <asp:Label
+                                ID="Label15"
+                                runat="server"
+                                CssClass="label"
+                                AssociatedControlID="rntbCost"
+                                Text="Cost" />
 
-                        <telerik:RadNumericTextBox
-                            ID="rntbCost"
-                            runat="server"
-                            EmptyMessage="£0.00"
-                            Width="80px"
-                            Value='<%#Bind("price") %>'
-                            Type="Currency"
-                            NumberFormat-DecimalDigits="2" />
+                            <telerik:RadNumericTextBox
+                                ID="rntbCost"
+                                runat="server"
+                                EmptyMessage="£0.00"
+                                Width="80px"
+                                Value='<%#Bind("price") %>'
+                                Type="Currency"
+                                NumberFormat-DecimalDigits="2" />
                         
-                        <asp:RequiredFieldValidator
-                            ID="RequiredFieldValidator2"
-                            runat="server"
-                            ControlToValidate="rntbCost"
-                            ErrorMessage="Cost"
-                            ValidationGroup="insertAdditionValidation">
-                            <span class="req"></span>
-                        </asp:RequiredFieldValidator>
-                    </div>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator2"
+                                runat="server"
+                                ControlToValidate="rntbCost"
+                                ErrorMessage="Cost"
+                                ValidationGroup="insertAdditionValidation">
+                                <span class="req"></span>
+                            </asp:RequiredFieldValidator>
+                        </div>
                     
-                    <div class="row">
-                        <asp:Label
-                            ID="Label16"
-                            runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rntbPercentage"
-                            Text="Adjustment (%)" />
+                        <div class="row">
+                            <asp:Label
+                                ID="Label16"
+                                runat="server"
+                                CssClass="label"
+                                AssociatedControlID="rntbPercentage"
+                                Text="Adjustment (%)" />
 
-                        <telerik:RadNumericTextBox
-                            ID="rntbPercentage"
-                            runat="server"
-                            EmptyMessage="0 %"
-                            MinValue="0"
-                            MaxValue="100"
-                            Width="60px"
-                            Value='<%#Bind("percentage") %>'
-                            Type="Percent" />
-                    </div>
+                            <telerik:RadNumericTextBox
+                                ID="rntbPercentage"
+                                runat="server"
+                                EmptyMessage="0 %"
+                                MinValue="0"
+                                MaxValue="100"
+                                Width="60px"
+                                Value='<%#Bind("percentage") %>'
+                                Type="Percent" />
+                        </div>
                     
-                    <div class="row">
-                        <asp:Label
-                            ID="Label17"
-                            runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rcbType"
-                            Text="Cost Modifier" />
+                        <div class="row">
+                            <asp:Label
+                                ID="Label17"
+                                runat="server"
+                                CssClass="label"
+                                AssociatedControlID="rcbType"
+                                Text="Cost Modifier" />
 
-                        <telerik:RadComboBox
-                            ID="rcbType"
-                            runat="server"
-                            DataSourceID="adhocTypeDataSource"
-                            SelectedValue='<%#Bind("adhocTypeId") %>'
-                            DataTextField="type"
-                            DataValueField="id"  />
+                            <telerik:RadComboBox
+                                ID="rcbType"
+                                runat="server"
+                                DataSourceID="adhocTypeDataSource"
+                                SelectedValue='<%#Bind("adhocTypeId") %>'
+                                DataTextField="type"
+                                DataValueField="id"  />
+                        </div>
                     </div>
                     
-                     <div class="row">
-                        <label class="label">&nbsp;</label>
+                    <div class="md-footer">
                         <asp:Button
                             ID="btnInsert"
                             runat="server"
                             CausesValidation="True" 
                             CommandName="Insert"
+                            CssClass="button button-create"
                             ValidationGroup="insertAdditionValidation"
                             OnClientClick="validateModal()"
                             Text="Add Addition" />
+                        <a href="#" class="button md-close">Close</a>
                     </div>
                 </InsertItemTemplate>
             </asp:FormView>
         </div>
     </div>
     
-    
     <!-- calculator modal -->
-    <div id="calculator" class="modal-window">
-        <h3><a href="#" class="close">&times;</a> Calculator</h3>
+    <div id="calculator" class="md-window">
+        <div class="md-content">
+            <h3>Calculator</h3>
 
-        <asp:HiddenField ID="qtyTotal" runat="server" />
+            <asp:HiddenField ID="qtyTotal" runat="server" />
     
-        <div class="boxcontent">
-            <p class="rightalign">
-                <asp:LinkButton ID="btnAdd" runat="server" CssClass="button">
-                    Add a dimension
-                </asp:LinkButton>
-            </p>
+            <div class="md-details">
+                <p class="rightalign">
+                    <asp:LinkButton ID="btnAdd" runat="server" CssClass="button">
+                        Add a dimension
+                    </asp:LinkButton>
+                </p>
                 
-            <asp:FormView ID="fvAddCalc" runat="server"
-                Width="100%"
-                Visible="false"
-                DefaultMode="Insert"
-                EnableViewState="false"
-                DataSourceId="calcDataSource">
-                <InsertItemTemplate>
-                    <fieldset>
-                        <legend title="Add a Dimension">Add a Dimension</legend>
+                <asp:FormView ID="fvAddCalc" runat="server"
+                    RenderOuterTable="false"
+                    Visible="false"
+                    DefaultMode="Insert"
+                    EnableViewState="false"
+                    DataSourceId="calcDataSource">
+                    <InsertItemTemplate>
+                            <h4>Add a Dimension</h4>
 
-                        <div class="row">
-                            <asp:Label ID="Label4" runat="server" 
-                                CssClass="label"
-                                AssociatedControlID="rtbComment"
-                                Text="Comment" />
-
-                            <telerik:RadTextBox ID="rtbComment" runat="server"
-                                Text='<%# Bind("comment") %>'
-                                Width="160px" />
-                        </div>
-
-                        <div class="row">
-                            <asp:Label ID="Label1" runat="server"
-                                CssClass="label"
-                                AssociatedControlID="rntbLength"
-                                Text="Dimensions" />
-                                
-                            <telerik:RadNumericTextBox ID="rntbLength" runat="server"
-                                Type="Number"
-                                NumberFormat-DecimalDigits="2"
-                                Text='<%#Bind("length") %>'
-                                Value='1'
-                                Width="40px" /> x
-                                    
-                            <telerik:RadNumericTextBox ID="rntbWidth" runat="server"
-                                Type="Number"
-                                NumberFormat-DecimalDigits="2"
-                                Text='<%#Bind("width") %>'
-                                Value='1'
-                                Width="40px" /> x
-                                    
-                            <telerik:RadNumericTextBox ID="rntbHeight" runat="server"
-                                Type="Number"
-                                NumberFormat-DecimalDigits="2"
-                                Text='<%#Bind("height") %>'
-                                Value='1'
-                                Width="40px" />
-                        </div>
-                                
-                        <div class="row">
-                            <asp:Label runat="server" ID="Label3"
-                                CssClass="label"
-                                AssociatedControlID="rntbMultiplier"
-                                Text="Multiplier" />
-                                    
-                            <telerik:RadNumericTextBox ID="rntbMultiplier" runat="server"
-                                Type="Number"
-                                NumberFormat-DecimalDigits="2"
-                                Text='<%#Bind("multiplier") %>'
-                                Value='1'
-                                Width="50px" />
-                        </div>
-                            
-                        <div class="row">
-                            <asp:Label ID="Label2" runat="server"
-                                CssClass="label"
-                                AssociatedControlID="chkMyBox"
-                                Text="Subtract" />
-
-                            <myChk:myCheckbox ID="chkMyBox" runat="server"
-                                Checked='<%# Bind("subtract") %>' />
-                        </div>
-                            
-                        <div class="row">
-                            <label class="label">&nbsp;</label>
-                                
-                            <asp:Button ID="btnUpdate" runat="server"
-                                CommandName="Insert"
-                                Text='Insert' />
-                                
-                            <asp:LinkButton ID="btnCancel" runat="server"
-                                CausesValidation="false"
-                                OnClick="btnCancel_Click"
-                                Text="Cancel" />
-                        </div>
-                    </fieldset>
-                </InsertItemTemplate>
-            </asp:FormView>
-        
-
-            <telerik:RadGrid ID="rgCalculator" runat="server"
-                width="100%"
-                DataSourceID="calcDataSource"
-                GridLines="None"
-                ShowStatusBar="true"
-                ShowFooter="true"
-                AutoGenerateColumns="False"
-                AllowAutomaticInserts="True"
-                AllowAutomaticDeletes="True"
-                AllowAutomaticUpdates="True">
-                <MasterTableView
-                    AutoGenerateColumns="False"
-                    DataKeyNames="id"
-                    AllowAutomaticDeletes="true"
-                    AllowAutomaticUpdates="true"
-                    NoMasterRecordsText="&nbsp;No dimensions were found."
-                    EditMode="EditForms"
-                    DataSourceID="calcDataSource"
-                    InsertItemDisplay="Bottom">
-                    <Columns>
-                        <telerik:GridBoundColumn
-                            UniqueName="dimensions"
-                            HeaderText="Dimensions"
-                            HeaderStyle-width="30%"
-                            DataField="dimensions" />
-
-                        <telerik:GridBoundColumn
-                            UniqueName="multiplier"
-                            HeaderText="Multiplier"
-                            HeaderStyle-Width="10%"
-                            HeaderStyle-HorizontalAlign="Center"
-                            ItemStyle-HorizontalAlign="Center"
-                            DataField="multiplier" />
-
-                        <telerik:GridBoundColumn
-                            UniqueName="total" 
-                            HeaderText="Total"
-                            HeaderStyle-Width="15%"
-                            DataFormatString="{0:N2}"
-                            HeaderStyle-HorizontalAlign="Center"
-                            ItemStyle-HorizontalAlign="Center"
-                            DataField="total" />
-
-                        <telerik:GridBoundColumn
-                            UniqueName="comment"
-                            HeaderText="Comment"
-                            HeaderStyle-Width="30%"
-                            DataField="comment" />
-                            
-                        <telerik:GridEditCommandColumn
-                            UniqueName="EditCommandColumn"
-                            ButtonType="ImageButton" />
-
-                        <telerik:GridButtonColumn
-                            ConfirmText="Delete this item?"
-                            ConfirmTitle="Delete"
-                            ButtonType="ImageButton"
-                            CommandName="Delete"
-                            Text="Delete"
-                            UniqueName="DeleteColumn" />
-                        
-                    </Columns>
-                    <EditFormSettings EditFormType="Template">
-                        <FormTemplate>
-                            <h3>Editing a Dimension</h3>
-                                
                             <div class="row">
-                                <asp:Label CssClass="label" ID="Label4" AssociatedControlID="rntbMultiplier" runat="server" Text="Comment" />
+                                <asp:Label ID="Label4" runat="server" 
+                                    CssClass="label"
+                                    AssociatedControlID="rtbComment"
+                                    Text="Comment" />
+
                                 <telerik:RadTextBox ID="rtbComment" runat="server"
-                                    Text='<%# Bind("comment") %>' Width="160px" />
+                                    Text='<%# Bind("comment") %>'
+                                    Width="160px" />
+                            </div>
+
+                            <div class="row">
+                                <asp:Label ID="Label1" runat="server"
+                                    CssClass="label"
+                                    AssociatedControlID="rntbLength"
+                                    Text="Dimensions" />
+                                
+                                <telerik:RadNumericTextBox ID="rntbLength" runat="server"
+                                    Type="Number"
+                                    NumberFormat-DecimalDigits="2"
+                                    Text='<%#Bind("length") %>'
+                                    Value='1'
+                                    Width="40px" /> x
+                                    
+                                <telerik:RadNumericTextBox ID="rntbWidth" runat="server"
+                                    Type="Number"
+                                    NumberFormat-DecimalDigits="2"
+                                    Text='<%#Bind("width") %>'
+                                    Value='1'
+                                    Width="40px" /> x
+                                    
+                                <telerik:RadNumericTextBox ID="rntbHeight" runat="server"
+                                    Type="Number"
+                                    NumberFormat-DecimalDigits="2"
+                                    Text='<%#Bind("height") %>'
+                                    Value='1'
+                                    Width="40px" />
+                            </div>
+                                
+                            <div class="row">
+                                <asp:Label runat="server" ID="Label3"
+                                    CssClass="label"
+                                    AssociatedControlID="rntbMultiplier"
+                                    Text="Multiplier" />
+                                    
+                                <telerik:RadNumericTextBox ID="rntbMultiplier" runat="server"
+                                    Type="Number"
+                                    NumberFormat-DecimalDigits="2"
+                                    Text='<%#Bind("multiplier") %>'
+                                    Value='1'
+                                    Width="50px" />
                             </div>
                             
                             <div class="row">
-                                <asp:Label CssClass="label" ID="Label1" AssociatedControlID="rntbLength" runat="server" Text="Dimensions" />
-                                    
-                                <telerik:RadNumericTextBox ID="rntbLength" runat="server"
-                                    dbValue='<%# Bind("length") %>' Width="40px" /> x
-                                <telerik:RadNumericTextBox ID="rntbWidth" runat="server"
-                                    dbValue='<%# Bind("width") %>' Width="40px" /> x
-                                <telerik:RadNumericTextBox ID="rntbHeight" runat="server"
-                                    dbValue='<%# Bind("height") %>' Width="40px" />
-                            </div>
-                                
-                            <div class="row">
-                                <asp:Label CssClass="label" ID="Label3" AssociatedControlID="rntbMultiplier" runat="server" Text="Multiplier" />
-                                <telerik:RadNumericTextBox ID="rntbMultiplier" runat="server"
-                                    NumberFormat-DecimalDigits="2" Width="50px"
-                                    Type="Number" dbValue='<%# Bind("multiplier") %>' />
-                            </div>
-                                
-                            <div class="row">
-                                <asp:Label CssClass="label" ID="Label2" AssociatedControlID="chkMyBox" runat="server" Text="Subtract" />
+                                <asp:Label ID="Label2" runat="server"
+                                    CssClass="label"
+                                    AssociatedControlID="chkMyBox"
+                                    Text="Subtract" />
+
                                 <myChk:myCheckbox ID="chkMyBox" runat="server"
-                                            Checked='<%# Bind("subtract") %>' />
+                                    Checked='<%# Bind("subtract") %>' />
                             </div>
-                                
+                            
                             <div class="row">
                                 <label class="label">&nbsp;</label>
+                                
                                 <asp:Button ID="btnUpdate" runat="server"
-                                    CommandName='<%# IIf((TypeOf(Container) is GridEditFormInsertItem), "PerformInsert", "Update")%>'
-                                    Text='<%#IIf((TypeOf (Container) Is GridEditFormInsertItem), "Insert", "Update")%>' />
-                                    
+                                    CommandName="Insert"
+                                    CssClass="button button-create"
+                                    Text='Insert' />
+                                
                                 <asp:LinkButton ID="btnCancel" runat="server"
                                     CausesValidation="false"
-                                    CommandName="Cancel"
+                                    CssClass="button"
+                                    OnClick="btnCancel_Click"
                                     Text="Cancel" />
                             </div>
-                        </FormTemplate>
-                    </EditFormSettings>
-                </MasterTableView>
-            </telerik:RadGrid>
+                    </InsertItemTemplate>
+                </asp:FormView>
+        
 
-            <p runat="server" id="showupdate" class="rightalign">
+                <telerik:RadGrid ID="rgCalculator" runat="server"
+                    width="100%"
+                    DataSourceID="calcDataSource"
+                    GridLines="None"
+                    ShowStatusBar="true"
+                    ShowFooter="true"
+                    AutoGenerateColumns="False"
+                    AllowAutomaticInserts="True"
+                    AllowAutomaticDeletes="True"
+                    AllowAutomaticUpdates="True">
+                    <MasterTableView
+                        AutoGenerateColumns="False"
+                        DataKeyNames="id"
+                        AllowAutomaticDeletes="true"
+                        AllowAutomaticUpdates="true"
+                        NoMasterRecordsText="&nbsp;No dimensions were found."
+                        EditMode="EditForms"
+                        DataSourceID="calcDataSource"
+                        InsertItemDisplay="Bottom">
+                        <Columns>
+                            <telerik:GridBoundColumn
+                                UniqueName="dimensions"
+                                HeaderText="Dimensions"
+                                HeaderStyle-width="30%"
+                                DataField="dimensions" />
+
+                            <telerik:GridBoundColumn
+                                UniqueName="multiplier"
+                                HeaderText="Multiplier"
+                                HeaderStyle-Width="10%"
+                                HeaderStyle-HorizontalAlign="Center"
+                                ItemStyle-HorizontalAlign="Center"
+                                DataField="multiplier" />
+
+                            <telerik:GridBoundColumn
+                                UniqueName="total" 
+                                HeaderText="Total"
+                                HeaderStyle-Width="15%"
+                                DataFormatString="{0:N2}"
+                                HeaderStyle-HorizontalAlign="Center"
+                                ItemStyle-HorizontalAlign="Center"
+                                DataField="total" />
+
+                            <telerik:GridBoundColumn
+                                UniqueName="comment"
+                                HeaderText="Comment"
+                                HeaderStyle-Width="30%"
+                                DataField="comment" />
+                            
+                            <telerik:GridEditCommandColumn
+                                UniqueName="EditCommandColumn"
+                                ButtonType="ImageButton" />
+
+                            <telerik:GridButtonColumn
+                                ConfirmText="Delete this item?"
+                                ConfirmTitle="Delete"
+                                ButtonType="ImageButton"
+                                CommandName="Delete"
+                                Text="Delete"
+                                UniqueName="DeleteColumn" />
+                        
+                        </Columns>
+                        <EditFormSettings EditFormType="Template">
+                            <FormTemplate>
+                                <h3>Editing a Dimension</h3>
+                                
+                                <div class="row">
+                                    <asp:Label CssClass="label" ID="Label4" AssociatedControlID="rntbMultiplier" runat="server" Text="Comment" />
+                                    <telerik:RadTextBox ID="rtbComment" runat="server"
+                                        Text='<%# Bind("comment") %>' Width="160px" />
+                                </div>
+                            
+                                <div class="row">
+                                    <asp:Label CssClass="label" ID="Label1" AssociatedControlID="rntbLength" runat="server" Text="Dimensions" />
+                                    
+                                    <telerik:RadNumericTextBox ID="rntbLength" runat="server"
+                                        dbValue='<%# Bind("length") %>' Width="40px" /> x
+                                    <telerik:RadNumericTextBox ID="rntbWidth" runat="server"
+                                        dbValue='<%# Bind("width") %>' Width="40px" /> x
+                                    <telerik:RadNumericTextBox ID="rntbHeight" runat="server"
+                                        dbValue='<%# Bind("height") %>' Width="40px" />
+                                </div>
+                                
+                                <div class="row">
+                                    <asp:Label CssClass="label" ID="Label3" AssociatedControlID="rntbMultiplier" runat="server" Text="Multiplier" />
+                                    <telerik:RadNumericTextBox ID="rntbMultiplier" runat="server"
+                                        NumberFormat-DecimalDigits="2" Width="50px"
+                                        Type="Number" dbValue='<%# Bind("multiplier") %>' />
+                                </div>
+                                
+                                <div class="row">
+                                    <asp:Label CssClass="label" ID="Label2" AssociatedControlID="chkMyBox" runat="server" Text="Subtract" />
+                                    <myChk:myCheckbox ID="chkMyBox" runat="server"
+                                                Checked='<%# Bind("subtract") %>' />
+                                </div>
+                                
+                                <div class="row">
+                                    <label class="label">&nbsp;</label>
+                                    <asp:Button ID="btnUpdate" runat="server"
+                                        CommandName='<%# IIf((TypeOf(Container) is GridEditFormInsertItem), "PerformInsert", "Update")%>'
+                                        Text='<%#IIf((TypeOf (Container) Is GridEditFormInsertItem), "Insert", "Update")%>' />
+                                    
+                                    <asp:LinkButton ID="btnCancel" runat="server"
+                                        CausesValidation="false"
+                                        CommandName="Cancel"
+                                        Text="Cancel" />
+                                </div>
+                            </FormTemplate>
+                        </EditFormSettings>
+                    </MasterTableView>
+                </telerik:RadGrid>
+            
+            </div>
+        
+            <div runat="server" id="showupdate" class="md-footer">
                 <asp:Button ID="btnUpdateQty" runat="server"
+                    CssClass="button button-secondary"
                     OnClientClick="closeModal()"
                     Text="Use this Total as the Task Quantity" />
-            </p>
+
+                <a href="#" class="button md-close">Close</a>
+            </div>
         </div>
     </div>
     
-    <!-- modal wrapper -->
-    <div class="modal-wrapper" title="Click here or press Esc to cancel"></div>
-
-        <div class="breadcrumb">
-            <p>
-                &lArr;
+    <div class="breadcrumb">
+        <ul class="breadcrumb-options">
+            <li>
+                <asp:Panel ID="pAddAdditions" runat="server">
+                    <a href="#" data-target="addAddition" class="js-open-modal button button-create">Add an Addition</a>
+                </asp:Panel>
+            </li>
+            <li>
+                <asp:HyperLink ID="hlAddResources" runat="server"
+                    data-target="addResources"
+                    CssClass="js-open-modal button button-primary"
+                    Text="Add a Resource" />
+            </li>
+        </ul>
+        <ul class="breadcrumb-list">
+            <li>
                 <asp:HyperLink ID="hlBack" runat="server"
                     NavigateUrl="project_details.aspx?pid={0}"
                     Text="Project Details" />
-            </p>
-        </div>
-
-        <div class="breadcrumb">
-            <p>
-                &lArr;
+                <span class="divider">/</span>
+            </li>
+            <li>
                 <asp:HyperLink ID="hlBack2" runat="server"
                     NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
                     Text="Build Element Details" />
-            </p>
-        </div>
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                Task Details
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-container">
 
     <!-- task details -->
     <div class="div33">
@@ -616,7 +647,8 @@
                     
     <asp:FormView
         ID="fvTaskTotals"
-        runat="server" Width="100%"
+        runat="server"
+        RenderOuterTable="false"
         DataSourceID="taskTotalsDataSource">
         <ItemTemplate>
                     <div class="row">
@@ -670,10 +702,6 @@
             <h3>Ad-hoc Additions</h3>
             
             <div class="boxcontent">
-                <asp:Panel ID="pAddAdditions" runat="server" CssClass="rightalign" style="margin-bottom: 10px">
-                    <a href="#" rel="addAddition" class="open_modal button create">+ Add an Addition</a>
-                </asp:Panel>
-
                 <telerik:RadGrid ID="rgAdditions" runat="server"
                     CssClass="clear"
                     DataSourceID="additionsDataSource"
@@ -817,7 +845,7 @@
     </div>
 
 
-    <div class="div66r">
+    <div class="div66 div-last">
     
     <div class="box">
         <h3>Task Details</h3>
@@ -836,7 +864,7 @@
                 ID="fvTaskAdjustments"
                 runat="server"
                 DataKeyNames="id"
-                Width="100%"
+                RenderOuterTable="false"
                 DataSourceID="taskDataSource">
                 <ItemTemplate>
                     <div class="row">
@@ -881,11 +909,11 @@
                                 runat="server"
                                 Enabled='<%#iif(Eval("isLocked"), "false", "true") %>'
                                 Text="Edit Task Details"
+                                CssClass="button"
                                 CommandName="Edit" />
                         </div>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    
                     <div class="row">
                         <label title="Description" class="label">Description</label>
                         <span style="display: table-cell"><%#Eval("taskName")%></span>
@@ -893,8 +921,9 @@
                     
                     <div class="row">
                         <label for="lblProjectNotes" title="Note" class="label">Note</label>
+
                         <telerik:RadTextBox ID="rtbProjectNotes" runat="server"
-                            TextMode="MultiLine" Columns="60" Rows="3"
+                            TextMode="MultiLine" Columns="120" Rows="4"
                             Text='<%# Bind("note") %>' />
                     </div>
 
@@ -943,7 +972,7 @@
                                 <span class="req"></span>
                             </asp:RequiredFieldValidator>
                             
-                            <a href="#" rel="calculator" class="open_modal calc-open" title="Open Calculator">Calculator</a>
+                            <a href="#" data-target="calculator" class="js-open-modal calc-open" title="Open Calculator">Calculator</a>
                         </div>
                     
                         <div class="row">
@@ -968,11 +997,13 @@
                                 CommandName="Update"
                                 CausesValidation="true"
                                 OnClick="Validate_Edit"
+                                CssClass="button button-create"
                                 ValidationGroup="editGroup"
                                 Text="Update" />
  
                             <asp:LinkButton ID="btnCancel" runat="server"
                                 CommandName="Cancel"
+                                CssClass="button"
                                 CausesValidation="false"
                                 Text="Cancel" />
                         </div>
@@ -983,9 +1014,9 @@
             <asp:FormView
                 ID="fvCompletion"
                 runat="server"
+                RenderOuterTable="false"
                 DataSourceID="completionDataSource"
-                DataKeyNames="id"
-                Width="100%">
+                DataKeyNames="id">
                 <EditItemTemplate>
                     <div class="row">
                         <asp:Label ID="Label7" runat="server"
@@ -1042,11 +1073,13 @@
                             ID="btnUpdate"
                             runat="server"
                             CommandName="Update"
+                            CssClass="button button-create"
                             Text="Save Completion" />
 
                         <asp:LinkButton
                             ID="btnCancel"
                             runat="server"
+                            CssClass="button"
                             CausesValidation="false"
                             CommandName="Cancel"
                             Text="Cancel" />
@@ -1103,6 +1136,7 @@
                             ID="btnEdit"
                             runat="server"
                             CommandName="Edit"
+                            CssClass="button"
                             Text="Edit Completion" />
                     </div>
 
@@ -1116,26 +1150,17 @@
         </div>
     </div>
     
-      <asp:Panel ID="pRequiresTaskQty" runat="server" Visible="false" CssClass="box_info">
-            <div class="box_content">
-                <p>
-                    <strong>Task Quantity is required</strong><br />
-                    You must enter a Task quantity before adding Resources to this Task. Click <strong>Edit Task Details</strong> above to begin.
-                </p>
-            </div>
-        </asp:Panel>
-        
         <asp:Panel ID="pCurrentResources" runat="server" CssClass="box">
             <h3>Current Resources</h3>
-        <div class="boxcontent">
 
-        <div class="div50">
+            <div class="boxcontent">
+
             <asp:FormView
                 ID="fvDefaultResources"
                 DefaultMode="Edit"
                 runat="server"
                 DataKeyNames="id"
-                Width="100%"
+                RenderOuterTable="false"
                 DataSourceID="taskDataSource">
                 <EditItemTemplate>
                     <asp:CheckBox ID="CheckBox1" runat="server" 
@@ -1154,15 +1179,7 @@
                         Checked='True' />
                 </EditItemTemplate>
             </asp:FormView>
-            </div>
-
-            <div class="div50r rightalign" style="margin-bottom: 10px">
-                <asp:HyperLink ID="hlAddResources" runat="server"
-                    rel="addResources"
-                    CssClass="open_modal button create"
-                    Text="+ Add a Resource" />
-            </div>
-
+                
             <div class="clear"></div>
 
             <asp:HiddenField ID="resourcePrice" runat="server" />
@@ -1268,6 +1285,7 @@
                             <FormTemplate>
                              <div class="row">
                                     <label title="Resource Name" class="label">Resource</label>
+
                                     <telerik:RadNumericTextBox ID="rntbQuantity" runat="server"
                                         dbvalue='<%# Bind("qty") %>'
                                         NumberFormat-DecimalDigits="0"
@@ -1277,58 +1295,51 @@
                                     x <%#Eval("resourceName")%>
                                 </div>
                                     
-                                <div class="div50">
-                                   
-                                    
-                                    <div class="row">
-                                        <label title="Useage" class="label">Useage</label>
+                                <div class="row">
+                                    <label title="Useage" class="label">Useage</label>
                                         
-                                        <telerik:RadNumericTextBox ID="rntbUses" runat="server"
-                                            dbvalue='<%# Bind("uses") %>'
-                                            NumberFormat-DecimalDigits="2"
-                                            Width="80px"
-                                            Type="Number" />
-                                            <%#Eval("unit")%>
-                                    </div>
+                                    <telerik:RadNumericTextBox ID="rntbUses" runat="server"
+                                        dbvalue='<%# Bind("uses") %>'
+                                        NumberFormat-DecimalDigits="2"
+                                        Width="80px"
+                                        Type="Number" />
+                                        <%#Eval("unit")%>
+                                </div>
                                     
-                                    <div class="row">
-                                        <label title="Cost" class="label">Cost</label>
-                                        <%#Eval("cost", "{0:C}")%>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <label class="label">&nbsp;</label>
+                                <div class="row">
+                                    <label title="Cost" class="label">Cost</label>
+                                    <%#Eval("cost", "{0:C}")%>
+                                </div>
 
-                                        <asp:Button ID="btnUpdate" runat="server"
-                                            Text="Update"
-                                            CommandName="Update" />
+                                <div class="row">
+                                    <label title="Supplier" class="label">Supplier</label>
+                                    <%#Eval("supplierName")%>
+                                </div>
 
-                                        <asp:LinkButton ID="btnCancel" runat="server"
-                                            Text="Cancel"
-                                            CommandName="Cancel" />
-                                    </div>
+                                <div class="row">
+                                    <label title="Waste Cost" class="label">Waste Cost</label>
+                                    <%#Eval("wasteCost", "{0:C}")%> (<%#Eval("waste")%>%)
+                                </div>
                                     
-                                    
-                                    </div>
-                                    
-                                    <div class="div50r">
-                                        <div class="row">
-                                            <label title="Supplier" class="label">Supplier</label>
-                                            <%#Eval("supplierName")%>
-                                        </div>
+                                <div class="row">
+                                    <label class="label">&nbsp;</label>
 
-                                        <div class="row">
-                                            <label title="Waste Cost" class="label">Waste Cost</label>
-                                            <%#Eval("wasteCost", "{0:C}")%> (<%#Eval("waste")%>%)
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
+                                    <asp:Button ID="btnUpdate" runat="server"
+                                        Text="Update"
+                                        CssClass="button button-create"
+                                        CommandName="Update" />
+
+                                    <asp:LinkButton ID="btnCancel" runat="server"
+                                        Text="Cancel"
+                                        CssClass="button"
+                                        CommandName="Cancel" />
+                                </div>
                             </FormTemplate>
                         </EditFormSettings>
                     </MasterTableView>
                 </telerik:RadGrid>
             </div>
-        </asp:Panel>      
+        </asp:Panel>
     </div>
     <!-- /task adjustments -->
     
@@ -1337,6 +1348,8 @@
         .variationMode{ display: block; }
         </style>
     </asp:Panel>
+
+    </div>
 
     <asp:SqlDataSource ID="taskDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"

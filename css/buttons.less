@@ -1,0 +1,79 @@
+﻿/* button */
+ .button {
+    margin: 0;
+    border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    display: inline-block;
+    position: relative;
+    padding: 8px 12px;
+    color: #555;
+    cursor: pointer;
+    background-color: #d6d6d6;
+    background-repeat: repeat-x;
+    -webkit-border-radius:  2px;
+    -moz-border-radius:     2px;
+    border-radius:          2px;
+    transition: top .1s;
+}
+a.button {
+    padding: 6px 11px;
+}
+.button:hover {
+	opacity: 0.9;
+    color: inherit;
+}
+.button:active {
+    -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    -moz-box-shadow:    0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset;
+    box-shadow:         0 0 0 1px rgba(0,0,0,.15) inset,0 0 6px rgba(0,0,0,.2) inset
+}
+.button[disabled='disabled'],
+.button:hover[disabled='disabled'],
+.button:active[disabled='disabled'] {
+    border:1px solid #ccc;
+    color: #666;
+    background: #f2f5f6; 
+    cursor: default;
+}
+.addButton {
+    float: right;
+    padding: 1px 10px;
+    margin-top: -2px;
+    font-size: 22px;
+}
+
+.fullButton {
+    display: block;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.button-create {
+    color: #fff;
+    background: #89bc00;
+}
+.button-primary {
+    color: #fff;
+    background-color: #0078E7;
+}
+.button-error {
+    color: #fff;
+    background-color: #CA3C3C;
+}
+.button-warning {
+    color: #fff;
+    background-color: #DF7514;
+}
+.button-secondary {
+    color: #fff;
+    background-color: #42B8DD;
+}
+.button-create:hover,
+.button-create:hover,
+.button-error:hover,
+.button-warning:hover,
+.button-secondary:hover,
+.button-primary:hover {
+    color: #fff;
+}

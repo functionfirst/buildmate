@@ -29,36 +29,39 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
+
+    <div class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li class="active">Resources</li>
+        </ul>
+    </div>
+
+    <div class="main-container">
     
-    <div class="box clear">
-        <h3>Resources</h3>
-
-        <div class="boxcontent">
-
     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
-
-        <div class="div50">
+        <div class="div33">
             <div class="search">
-            <telerik:RadTextBox
-                ID="rtbResourceName"
-                runat="server"
-                Width="220"
-                CssClass="searchInput"
-                EmptyMessage="Search by Name, Manufacturer or Part Id"
-                AutoPostBack="true" />
+                <telerik:RadTextBox
+                    ID="rtbResourceName"
+                    runat="server"
+                    Width="300"
+                    CssClass="searchInput"
+                    EmptyMessage="Search by Name, Manufacturer or Part Id"
+                    AutoPostBack="true" />
             </div>
-            </div>
+        </div>
 
-            <div class="div50r">
+        <div class="div33">
             <asp:RadioButtonList ID="rblResourceType" runat="server"
                 RepeatDirection="Horizontal"
                 DataSourceID="resourceTypesDataSource"
                 DataTextField="resourceType"
                 DataValueField="id"
                 AutoPostBack="true" />
-            </div>
-
-            <asp:Button ID="btnApplyFilter" runat="server" Text="Search" Visible="false" />
+        </div>
+        <div class="div33 div-last">
+            <asp:Button ID="btnApplyFilter" runat="server" Text="Search" Visible="true" CssClass="button" />
+        </div>
     </asp:Panel>
 
     <div class="clear"></div>
@@ -121,6 +124,8 @@
             </MasterTableView>
         </telerik:RadGrid>
         </div>
+    </div>
+
     </div>
 
     <asp:SqlDataSource ID="allResourcesDataSource" runat="server"

@@ -18,19 +18,21 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <p>
-            &lArr;
-            <asp:HyperLink ID="HyperLink1" runat="server"
-                NavigateUrl="~/project_details.aspx?pid={0}"
-                Text="Project Details" />
-        </p>
+        <ul class="breadcrumb-list">
+            <li>
+                <asp:HyperLink ID="HyperLink1" runat="server"
+                    NavigateUrl="~/project_details.aspx?pid={0}"
+                    Text="Project Details" />
+                <span class="divider">/</span>
+            </li>
+            <li class="active">Material Costs</li>
+        </ul>
     </div>
     
-    <div class="box">
-        <h3>Material Costs</h3>
+    <div class="main-container">
+        <h1>Material Costs</h1>
         
-        <div class="boxcontent">
-            <asp:Repeater ID="Repeater1" runat="server"
+        <asp:Repeater ID="Repeater1" runat="server"
                 DataSourceID="resourceDataSource">
                 <HeaderTemplate>
                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="table" width="100%">
@@ -94,7 +96,6 @@
                     </table>
                 </FooterTemplate>
             </asp:Repeater>
-        </div>
     </div>
 
     <asp:SqlDataSource ID="resourceDataSource" runat="server"

@@ -3,33 +3,24 @@ var mside = false; // initialise mouse-inside
 $(document).ready(function () {
     // open the related modal window
     // pass the div id as the rel attribute
-    $(".open_modal").live("click", function () {
-        var target = "#" + $(this).attr("rel");
-        $(".modal-wrapper").fadeIn(function () {
-            $(target).animate({ "top": "50%" });
-        });
-
+    $('body').on('click', '.js-open-modal', function () {
+        var target = "#" + $(this).data("target");
+        $('body, '+ target).addClass('md-show');
         return false;
     });
 
-    // close modal if wrapper is clicked
-    $(".modal-wrapper").click(function () {
-        $(".modal-window").animate({ "top": "-50%" }, function () {
-            $(".modal-wrapper").fadeOut();
-        });
 
-        return false;
-    });
-
-    // close modal window on close button click
-    $(".modal-window").find(".close").click(function () {
-        $(".modal-wrapper").click();
+    // close modal if wrapper is clicked or button is closed
+    $('body').on('click', '.md-wrapper, .md-close', function () {
+        hideModal();
         return false;
     });
 
     // close modal if escape is pressed
     $(document).keyup(function (e) {
-        if (e.which == 27) { $(".modal-wrapper").click(); }
+        if (e.which == 27) {
+            hideModal();
+        }
         if ($("#variationMode").hasClass("active")) {
             hideVariationMode();
         }
@@ -48,37 +39,8 @@ $(document).ready(function () {
         $(this).parent().toggleClass('active');
     });
 
-    // check mouse position in modal window
-//    $('.search').hover(function () {
-//        mside = true;
-//    }, function () {
-//        mside = false;
-//    });
-
-    // close search box
-//    $("body").click(function () {
-//        if (!mside) { $(".search").removeClass('active'); }
-//    });
-
-    // show notifications
-    // move notification
- //   $(".noticePoint").animate({ "top": "0" }, 600);
-
-    //    // hide notification
-    //    $(".dismiss").click(function () {
-    //        $(this).parent().fadeOut();
-    //        notificationCheck();
-    //        return false;
-    //    })
-
-    // toggle notification list in topbar
-    //$(".noticeBadgeNew").click(function () {
-    //    $(this).parent().toggleClass("active");
-    //    return false;
-    //});
-
-    $('body').on('click', '.flash-close', function () {
-        $(this).parent('.flash').remove();
+    $('body').on('click', '.flash', function () {
+        $(this).remove();
         return false;
     });
 });
@@ -86,13 +48,6 @@ $(document).ready(function () {
 // check for the next unread notification
 function notificationCheck() {
     
-}
-
-// close modal window function
-function closeModal() {
-    $(".modal-window").animate({ "top": "-50%" }, function () {
-        $(".modal-wrapper").fadeOut();
-    });
 }
 
 function showVariationMode() {
@@ -115,30 +70,18 @@ function setMessage(text) {
     alert(text);
 }
 
-//function notificationCheck(id) {
-//    WebService.setNotificationAsRead('B2B6D6D5-DCC1-4006-ABAE-8EFDE48B77F6', id);
-//}
+function hideModal() {
+    $('body, .md-window').removeClass('md-show');
+}
 
-//var notifications = {
-//    init: function () {
-//        WebService.getLastNotification('B2B6D6D5-DCC1-4006-ABAE-8EFDE48B77F6', this.success, this.failure);
-//        $('.dismiss').bind('click', this.hide);
-//    },
-//    success: function (result) {
-//        var c = eval(result.d);
-//        console.log(result);
-//        for (var i in c) {
-//            console.log(c[i][0]);
-//            $("#resultstable tr:last").after("<tr><td>" + c[i][0] + "</td><td>" + c[i][1] + "</td><td>" + c[i][2] + "</td></tr>");
-//        }
-//    },
-//    failure: function (error) {
-//        alert(error.get_message());
-//    },
-//    hide: function () {
-//        $(this).parent().fadeOut();
-//        notificationCheck($(this).attr("rel"));
-//        return false;
-//    }
-//}
-//notifications.init();
+function validateModal() {
+    if (typeof (Page_ClientValidate) == 'function') {
+        Page_ClientValidate();
+    }
+
+    if (Page_IsValid) {
+        hideModal();
+        return true;
+    }
+    return false;
+}
