@@ -62,15 +62,16 @@ Partial Class settings
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlSettings"), HyperLink)
         activeLink.CssClass = "active"
+
+        showSubscriptionDate()
+    End Sub
+
+    Private Sub showSubscriptionDate()
+        lSubscriptionDate.Text = Session("SubscriptionDate")
     End Sub
 
     Protected Sub fvContactDetails_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvContactDetails.ItemUpdated
         showNotification("Contact Details Updated", "Your changes have been saved successfully")
-    End Sub
-
-    Protected Sub fvAddressDetails_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvAddressDetails.ItemUpdated
-        showNotification("Address Details Updated", "Your changes have been saved successfully")
-
     End Sub
 
     Protected Sub fvCompanyDetails_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvCompanyDetails.ItemUpdated

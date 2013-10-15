@@ -3,7 +3,7 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" class="login-page">
 <head runat="server">
     <title>Forgot your password? - Buildmate</title>
     
@@ -13,6 +13,7 @@
     
     <!-- css -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="~/css/manager.less" />
         
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -27,7 +28,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
     <div class="login-form">
-            <div class="logo"><a href="http://www.getbuildmate.com" title="BuildMate">BuildMate</a></div>
+            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">BuildMate</a></div>
 
         <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" CssClass="login-form-inner">
 

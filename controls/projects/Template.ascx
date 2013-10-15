@@ -2,9 +2,9 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
-<h3>Select a Project to use as a Template <em>or</em> use a Blank Template</h3>
+<h3>2. Select a Project to copy <em>or</em> create a Blank project</h3>
 
-<asp:Panel ID="noProjectsExist" runat="server">
+<asp:Panel ID="noProjectsExist" runat="server" Visible="false">
     <p>
         There are no Templates matching the Estimate Type you selected.
     </p>
@@ -29,7 +29,7 @@
     <MasterTableView
         DataSourceID="projectsDataSource"
         AutoGenerateColumns="False"
-        NoMasterRecordsText="&nbsp;No Projects were found.">
+        NoMasterRecordsText="&nbsp;There are no Templates matching the Estimate Type you selected.">
         <Columns>
             <telerik:GridTemplateColumn UniqueName="CheckBoxTemplateColumn">
                 <ItemTemplate>
@@ -98,11 +98,11 @@
         <asp:LinkButton ID="lbBack" runat="server" CssClass="button">
             &laquo; Back
         </asp:LinkButton>
-        <asp:LinkButton ID="lbProject" runat="server" CssClass="button button-primary" Visible="false">
-            Use this Project Template &raquo;
+        <asp:LinkButton ID="lbProject" runat="server" CssClass="button button-primary" Enabled="false">
+            Copy the selected Project
         </asp:LinkButton>
-        <asp:LinkButton ID="lbBlankTemplate" runat="server" CssClass="button button-primary">
-            Use a Blank Template &raquo;
+        <asp:LinkButton ID="lbBlankTemplate" runat="server" CssClass="button button-secondary">
+            Create a Blank Project
         </asp:LinkButton>
     </div>
     

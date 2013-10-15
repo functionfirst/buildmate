@@ -67,68 +67,66 @@ Partial Class manager_add_project
     '    End If
     'End Sub
 
-    Protected Sub CopyExistingProject(ByVal pid As Integer, ByVal npid As Integer)
-        ' connect to the database
-        Dim myConn As SqlConnection = New Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
-        myConn.Open()
+    'Protected Sub CopyExistingProject(ByVal pid As Integer, ByVal npid As Integer)
+    '    ' connect to the database
+    '    Dim myConn As SqlConnection = New Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
+    '    myConn.Open()
 
-        ' create commadn object
-        Dim cmd As System.Data.SqlClient.SqlCommand = New System.Data.SqlClient.SqlCommand
-        cmd.Connection = myConn
-        cmd.CommandText = "copyBuildElementsToProject"
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@projectId", pid)
-        cmd.Parameters.AddWithValue("@NewProjectId", npid)
-        cmd.ExecuteNonQuery()
+    '    ' create commadn object
+    '    Dim cmd As System.Data.SqlClient.SqlCommand = New System.Data.SqlClient.SqlCommand
+    '    cmd.Connection = myConn
+    '    cmd.CommandText = "copyBuildElementsToProject"
+    '    cmd.CommandType = CommandType.StoredProcedure
+    '    cmd.Parameters.AddWithValue("@projectId", pid)
+    '    cmd.Parameters.AddWithValue("@NewProjectId", npid)
+    '    cmd.ExecuteNonQuery()
 
-        Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=copy", npid))
-    End Sub
+    '    Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=copy", npid))
+    'End Sub
 
     Private Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlProjects"), HyperLink)
         activeLink.CssClass = "active"
 
-        If Not Page.IsPostBack Then
-            AddTab("Estimate", True)
+        'If Not Page.IsPostBack Then
+        '    AddTab("Estimate", True)
 
-            Dim pageView As New RadPageView()
-            pageView.ID = "Estimate"
-            rmpProject.PageViews.Add(pageView)
+        '    Dim pageView As New RadPageView()
+        '    pageView.ID = "Estimate"
+        '    rmpProject.PageViews.Add(pageView)
 
-            AddTab("Template", False)
-            AddTab("Customer", False)
-            AddTab("Details", False)
-        End If
+        '    AddTab("Template", False)
+        '    AddTab("Customer", False)
+        '    AddTab("Details", False)
+        'End If
     End Sub
 
-    Private Sub AddTab(ByVal tabName As String, ByVal enabled As Boolean)
-        Dim tab As New RadTab(tabName)
-        tab.Enabled = enabled
+    'Private Sub AddTab(ByVal tabName As String, ByVal enabled As Boolean)
+    '    Dim tab As New RadTab(tabName)
+    '    tab.Enabled = enabled
 
-        Select Case tab.Text
-            Case "Estimate"
-                tab.Text = "1. Estimate Type"
-                Exit Select
-            Case "Template"
-                tab.Text = "1a. Template"
-                Exit Select
-            Case "Customer"
-                tab.Text = "2. Customer"
-                Exit Select
-            Case "Details"
-                tab.Text = "3. Project Details"
-                Exit Select
-            Case Else
-                Exit Select
-        End Select
+    '    Select Case tab.Text
+    '        Case "Estimate"
+    '            tab.Text = "1. Estimate Type"
+    '            Exit Select
+    '        Case "Template"
+    '            tab.Text = "1a. Template"
+    '            Exit Select
+    '        Case "Customer"
+    '            tab.Text = "2. Customer"
+    '            Exit Select
+    '        Case "Details"
+    '            tab.Text = "3. Project Details"
+    '            Exit Select
+    '        Case Else
+    '            Exit Select
+    '    End Select
+    'End Sub
 
+    'Protected Sub rmpProject_PageViewCreated(sender As Object, e As RadMultiPageEventArgs) Handles rmpProject.PageViewCreated
+    '    Dim pageViewContents As Control = LoadControl("/controls/projects/" & e.PageView.ID & ".ascx")
+    '    pageViewContents.ID = e.PageView.ID & "UserControl"
 
-    End Sub
-
-    Protected Sub rmpProject_PageViewCreated(sender As Object, e As RadMultiPageEventArgs) Handles rmpProject.PageViewCreated
-        Dim pageViewContents As Control = LoadControl("/controls/projects/" & e.PageView.ID & ".ascx")
-        pageViewContents.ID = e.PageView.ID & "UserControl"
-
-        e.PageView.Controls.Add(pageViewContents)
-    End Sub
+    '    e.PageView.Controls.Add(pageViewContents)
+    'End Sub
 End Class

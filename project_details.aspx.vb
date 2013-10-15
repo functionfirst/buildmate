@@ -100,14 +100,54 @@ Partial Class manager_Default
     End Sub
 
     Protected Sub setProjectName()
+        ' Get the projectName to use as the file name when downloading documents
         Dim rowView As DataRowView = CType(FormView1.DataItem, DataRowView)
         projectName = rowView("projectName").ToString()
     End Sub
 
+    Protected Sub archiveProject(ByVal archived As Boolean)
+        Dim projectId = CType(Request.QueryString("pid"), Integer)
+        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+        Dim sql As String = "UPDATE Project SET archived = '" & archived & "' WHERE id = " & projectId & " AND UserId = '" & Session("userId") & "'"
+
+        Using conn As New SqlConnection(connString)
+            Dim cmd As New SqlCommand(sql, conn)
+            Try
+                conn.Open()
+                cmd.ExecuteScalar()
+
+                If archived Then
+                    showNotification("Archived", "The project was successfully archived")
+                Else
+                    showNotification("Unarchived", "You unarchived this project")
+                End If
+                toggleArchiveButtons(archived)
+            Catch ex As Exception
+                Trace.Write(ex.Message)
+            End Try
+        End Using
+    End Sub
+
+    Protected Sub toggleArchiveButtons(ByVal archived As Boolean)
+        btnArchive.Visible = Not archived
+        btnUnarchive.Visible = archived
+    End Sub
+
+    Protected Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        archiveProject(True)
+    End Sub
+
+    Protected Sub btnUnarchive_Click(sender As Object, e As EventArgs) Handles btnUnarchive.Click
+        archiveProject(False)
+    End Sub
+
     Protected Sub FormView1_DataBound(sender As Object, e As System.EventArgs) Handles FormView1.DataBound
-        'Dim rowView As DataRowView = CType(FormView1.DataItem, DataRowView)
-        'projectName = rowView("projectName").ToString()
+        ' Get the project name so 
         setProjectName()
+
+        ' hide appropriate archive button
+        Dim archived As Boolean = DirectCast(FormView1.DataItem, DataRowView)("archived")
+        toggleArchiveButtons(archived)
 
         ' check if we need to hide the add build element button
         ' indicates we're now in a fully locked state for this project
@@ -170,6 +210,19 @@ Partial Class manager_Default
         Dim ScriptManager1 As ScriptManager = Page.Master.FindControl("ScriptManager1")
         ScriptManager1.RegisterPostBackControl(btnExportToPDF)
         ScriptManager1.RegisterPostBackControl(btnExportToXLS)
+
+        checkForProjectCopy()
+    End Sub
+
+    Protected Sub checkForProjectCopy()
+        ' if action = copy then this was just copied from a project
+        Dim action As String = Request.QueryString("action")
+
+        If action = "copy" Then
+            showNotification("Project Copied", "Your project was copied successfully")
+        ElseIf action = "new" Then
+            showNotification("Project Created", "Your project was created successfully")
+        End If
     End Sub
 
     Protected Sub FormView1_PreRender(ByVal sender As Object, ByVal e As System.EventArgs) Handles FormView1.PreRender
@@ -381,10 +434,15 @@ Partial Class manager_Default
         btnEmailToCustomer.Enabled = True
 
         Select Case rcbReportType.SelectedValue
-            Case 3, 4
-                pTermsOfUse.Visible = True
-            Case Else
+            Case 1
+                btnExportToXLS.Visible = True
                 pTermsOfUse.Visible = False
+            Case 2
+                btnExportToXLS.Visible = False
+                pTermsOfUse.Visible = False
+            Case 3
+                btnExportToXLS.Visible = False
+                pTermsOfUse.Visible = True
         End Select
     End Sub
 

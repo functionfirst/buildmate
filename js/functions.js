@@ -9,6 +9,20 @@ $(document).ready(function () {
         return false;
     });
 
+    $('body').on('click', '.sidebar-close', function () {
+        toggleSidebar();
+    });
+
+    // toggle side panel
+    if ($('.sidebar').length === 0) {
+        $('.js-toggle-help').attr('disabled', 'disabled').unbind('click');
+    } else {
+        $('body').on('click', '.js-toggle-help', function () {
+            toggleSidebar();
+            return false;
+        });
+    }
+
 
     // close modal if wrapper is clicked or button is closed
     $('body').on('click', '.md-wrapper, .md-close', function () {
@@ -84,4 +98,8 @@ function validateModal() {
         return true;
     }
     return false;
+}
+
+function toggleSidebar() {
+    $('body').toggleClass('show-sidebar');
 }

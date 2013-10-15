@@ -20,17 +20,29 @@ Partial Class controls_projects_estimate
 
     Private Sub GoToPageView()
         Dim multiPage As RadMultiPage = DirectCast(Me.NamingContainer.FindControl("rmpProject"), RadMultiPage)
-        Dim templatePageView As RadPageView = multiPage.FindPageViewByID("Template")
-        If templatePageView Is Nothing Then
-            templatePageView = New RadPageView()
-            templatePageView.ID = "Template"
-            multiPage.PageViews.Add(templatePageView)
-        End If
+        Dim templatePageView As RadPageView = multiPage.FindPageViewByID("rpvTemplate")
         templatePageView.Selected = True
     End Sub
 
     Private Sub UpdateNextPageView()
         Dim hfEstimateType As HiddenField = DirectCast(Me.NamingContainer.FindControl("hfEstimateType"), HiddenField)
         hfEstimateType.Value = rblEstimateType.SelectedValue
+    End Sub
+
+    Protected Sub rblEstimateType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles rblEstimateType.SelectedIndexChanged
+        resetSelectedProject()
+    End Sub
+
+    Private Sub resetSelectedProject()
+        Dim bmTemplate As UserControl = DirectCast(Me.NamingContainer.FindControl("bmTemplate"), UserControl)
+        Dim rgProjects As RadGrid = DirectCast(bmTemplate.FindControl("rgProjects"), RadGrid)
+        rgProjects.SelectedIndexes.Clear()
+        Dim lbProject As LinkButton = DirectCast(bmTemplate.FindControl("lbProject"), LinkButton)
+        lbProject.Enabled = False
+        'rgProjects.Visible = True
+        'rgProjects.DataBind()
+
+        'Dim noProjectsExist As Panel = DirectCast(bmTemplate.FindControl("noProjectsExist"), Panel)
+        'noProjectsExist.Visible = False
     End Sub
 End Class

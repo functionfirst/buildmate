@@ -26,6 +26,7 @@ Partial Class controls_projects_customer
     End Sub
 
     Private Sub CheckSelectedItem(ByVal sender As Object)
+        customerId = 0
         TryCast(TryCast(sender, CheckBox).NamingContainer, GridItem).Selected = TryCast(sender, CheckBox).Checked
 
         For Each dataItem As GridDataItem In rgCustomers.Items
@@ -33,14 +34,17 @@ Partial Class controls_projects_customer
         Next
 
         For Each dataItem As GridDataItem In rgCustomers.SelectedItems
+
+
             TryCast(dataItem.FindControl("CheckBox1"), CheckBox).Checked = True
-            customerId = dataItem.Item("id").ToString()
+            customerId = dataItem.Item("id").Text.ToString()
+            UpdateNextPageView()
         Next
     End Sub
 
     Private Sub ToggleTemplateButton(ByVal sender As Object)
         If TryCast(sender, CheckBox).Checked Then
-            lbDetails.Text = "Use this Customer &raquo;"
+            lbDetails.Text = "Use the selected Customer"
             lbDetails.Enabled = True
         Else
             lbDetails.Text = "You must select a Customer above"
@@ -58,33 +62,36 @@ Partial Class controls_projects_customer
         Dim pTemplate As Panel = DirectCast(Me.NamingContainer.FindControl("pCustomer"), Panel)
         pTemplate.CssClass = "project-tab"
 
-        GoToPageView("Template")
+        GoToPageView("rpvTemplate")
     End Sub
 
     Protected Sub lbDetails_Click(sender As Object, e As EventArgs) Handles lbDetails.Click
         GoToNextTab()
-        GoToPageView("Details")
-        UpdateNextPageView()
+        GoToPageView("rpvDetails")
     End Sub
 
     Private Sub GoToNextTab()
         Dim pDetails As Panel = DirectCast(Me.NamingContainer.FindControl("pDetails"), Panel)
-        pDetails.CssClass = "project-tab project-tab-active-last"
+        pDetails.CssClass = "project-tab active"
     End Sub
 
     Private Sub GoToPageView(ByVal pageViewId As String)
         Dim multiPage As RadMultiPage = DirectCast(Me.NamingContainer.FindControl("rmpProject"), RadMultiPage)
         Dim templatePageView As RadPageView = multiPage.FindPageViewByID(pageViewId)
-        If templatePageView Is Nothing Then
-            templatePageView = New RadPageView()
-            templatePageView.ID = pageViewId
-            multiPage.PageViews.Add(templatePageView)
-        End If
+        'If templatePageView Is Nothing Then
+        '    templatePageView = New RadPageView()
+        '    templatePageView.ID = pageViewId
+        '    multiPage.PageViews.Add(templatePageView)
+        'End If
         templatePageView.Selected = True
     End Sub
 
     Private Sub UpdateNextPageView()
         Dim hfCustomerId As HiddenField = DirectCast(Me.NamingContainer.FindControl("hfCustomerId"), HiddenField)
         hfCustomerId.Value = customerId
+    End Sub
+
+    Protected Sub fvCustomerInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvCustomerInsert.ItemInserted
+        rgCustomers.DataBind()
     End Sub
 End Class

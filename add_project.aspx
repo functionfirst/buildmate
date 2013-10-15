@@ -2,6 +2,11 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
+<%@ Register TagPrefix="bm" TagName="Estimate" Src="~/controls/projects/Estimate.ascx" %>
+<%@ Register TagPrefix="bm" TagName="Template" Src="~/controls/projects/Template.ascx" %>
+<%@ Register TagPrefix="bm" TagName="Customer" Src="~/controls/projects/Customer.ascx" %>
+<%@ Register TagPrefix="bm" TagName="Details" Src="~/controls/projects/Details.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <style type="text/css">
     
@@ -85,56 +90,34 @@ function validateModal() {
 
     <div class="main-container">
         <asp:Panel ID="pWizard" runat="server" CssClass="project-wizard">
-            <asp:Panel ID="pEstimate" runat="server" CssClass="project-tab active">1. Estimate Type</asp:Panel>
-            <asp:Panel ID="pTemplate" runat="server" CssClass="project-tab">2. Template</asp:Panel>
-            <asp:Panel ID="pCustomer" runat="server" CssClass="project-tab">3. Customer</asp:Panel>
-            <asp:Panel ID="pDetails" runat="server" CssClass="project-tab">4. Details</asp:Panel>
-
+            <asp:Panel ID="pEstimate" runat="server" CssClass="project-tab active"><span>1</span> Estimate Type</asp:Panel>
+            <asp:Panel ID="pTemplate" runat="server" CssClass="project-tab"><span>2</span> Template</asp:Panel>
+            <asp:Panel ID="pCustomer" runat="server" CssClass="project-tab"><span>3</span> Customer</asp:Panel>
+            <asp:Panel ID="pDetails" runat="server" CssClass="project-tab"><span>4</span> Details</asp:Panel>
+            
             <asp:HiddenField ID="hfEstimateType" runat="server" Value="0" />
             <asp:HiddenField ID="hfProjectId" runat="server" Value="0" />
             <asp:HiddenField ID="hfCustomerId" runat="server" Value="0" />
         </asp:Panel>
 
-        <telerik:RadMultiPage ID="rmpProject" runat="server" SelectedIndex="0"></telerik:RadMultiPage>
+        <div class="wizard-panel">
+            <telerik:RadMultiPage ID="rmpProject" runat="server" SelectedIndex="0" RenderSelectedPageOnly="true">
+                <telerik:RadPageView runat="server" ID="rpvEstimate">
+                   <bm:Estimate id="bmEstimate" runat="server"  />
+                </telerik:RadPageView>
+
+                <telerik:RadPageView runat="server" ID="rpvTemplate">
+                   <bm:Template id="bmTemplate" runat="server"  />
+                </telerik:RadPageView>
+
+                <telerik:RadPageView runat="server" ID="rpvCustomer">
+                   <bm:Customer id="bmCustomer" runat="server"  />
+                </telerik:RadPageView>
+
+                <telerik:RadPageView runat="server" ID="rpvDetails">
+                   <bm:Details id="bmDetails" runat="server"  />
+                </telerik:RadPageView>
+            </telerik:RadMultiPage>
+        </div>
     </div>
-
-    
-    <asp:SqlDataSource ID="retentionTypeDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="SELECT [id], [retentionType] FROM ProjectRetentionType" />
-
-
-    <asp:SqlDataSource ID="projectsDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="
-            SELECT Project.id, projectName, projectTypeId
-            FROM Project
-            WHERE userID = @userId OR Project.id IN (SELECT ProjectId FROM ProjectTemplate)
-            ORDER BY projectName"
-        FilterExpression="projectTypeId = {0}">
-        <SelectParameters>
-            <asp:SessionParameter name="userId" SessionField="userId" />
-        </SelectParameters>
-        <FilterParameters>
-            <asp:ControlParameter ControlID="rcbEstimateType" PropertyName="SelectedValue" DefaultValue="0" />
-        </FilterParameters>
-    </asp:SqlDataSource>
-    
-    <asp:SqlDataSource ID="insertProjectDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
-        InsertCommand="insertProject" InsertCommandType="StoredProcedure">
-        <InsertParameters>
-            <asp:SessionParameter Name="userId" SessionField="UserId" />
-            <asp:ControlParameter Name="projectTypeId" ControlID="rcbEstimateType" PropertyName="SelectedValue" />
-            <asp:ControlParameter Name="customerId" ControlID="rcbCustomer" PropertyName="SelectedValue" Type="Int64" />
-            <asp:Parameter Name="statusId" Type="Byte" DefaultValue="1" />
-            <asp:Parameter Name="retentionPeriod" Type="Byte" DefaultValue="0" />
-            <asp:Parameter Name="retentionPercentage" Type="Byte" DefaultValue="0" />
-            <asp:Parameter Name="newId" Direction="Output" Size="4" />
-        </InsertParameters>
-    </asp:SqlDataSource>
-    
-    <asp:SqlDataSource ID="paymentDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="SELECT [id], [paymentTerm] FROM ProjectPaymentTerm" />
 </asp:Content>

@@ -1,0 +1,42 @@
+﻿/* project wizard */
+.project-wizard {
+    position: absolute;
+    width: 140px;
+    border-left: 1px solid #ddd;
+    margin-left: 20px;
+
+    .project-tab {
+        color: #ccc;
+        padding-left: 30px;
+        line-height: 30px;
+
+        span {
+            position: absolute;
+            margin-left: -46px;
+            display: block;
+            height: 30px;
+            width: 30px;
+            text-align: center;
+            line-height: 25px;
+            border: 2px solid #ccc;
+            background: #fff;
+            border-radius: 10em;
+        }
+    }
+
+    .project-tab + .project-tab {
+        margin-top: 10px;
+    }
+
+    .active {
+        color: #333;
+        
+        span {
+            border-color: #333;
+        }
+    }
+}
+
+.wizard-panel {
+    margin-left: 200px;
+}

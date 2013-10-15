@@ -48,52 +48,67 @@
                 <InsertItemTemplate>
                     <asp:Panel ID="Panel1" runat="server" DefaultButton="btnInsert">
                         <div class="md-details">
-                        <div class="row">
-                            <label for="rtbSupplierName" title="Supplier Name" class="label">Supplier Name*</label>
-                            <telerik:RadTextBox ID="rtbSupplierName" runat="server"
-                                Text='<%#Bind("supplierName") %>'
-                                MaxLength="50"
-                                Columns="35"
-                                EmptyMessage="Supplier Name" />
+                            <div class="row">
+                                <label for="rtbSupplierName" title="Supplier Name" class="label">Supplier Name*</label>
+                                <telerik:RadTextBox ID="rtbSupplierName" runat="server"
+                                    Text='<%#Bind("supplierName") %>'
+                                    MaxLength="50"
+                                    Width="300px"
+                                    Columns="35"
+                                    EmptyMessage="Supplier Name" />
                                     
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                ControlToValidate="rtbSupplierName" ValidationGroup="insertGroup"
-                                Display="Dynamic" ErrorMessage="Supplier Name">
-                                <span class="req"></span>
-                            </asp:RequiredFieldValidator>
-                        </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                    ControlToValidate="rtbSupplierName" ValidationGroup="insertGroup"
+                                    Display="Dynamic" ErrorMessage="Supplier Name">
+                                    <span class="req"></span>
+                                </asp:RequiredFieldValidator>
+                            </div>
 
-                        <hr />
+                            <div class="row">
+                                <label for="rtbAddress" title="Address" class="label">Address*</label>
 
-                        <div class="row">
-                            <label for="rtbAddress1" title="Address" class="label">Address</label>
+                                <telerik:RadTextBox ID="rtbAddress" runat="server"
+                                    Width="300px" Rows="4" Columns="80"
+                                    Text='<%#Bind("address")%>' TextMode="MultiLine" EmptyMessage="Address" />
 
-                            <telerik:RadTextBox ID="rtbAddress1" runat="server"
-                                Width="300px" Rows="8" Columns="80"
-                                Text='<%#Bind("address1") %>' TextMode="MultiLine" EmptyMessage="Address" />
-                        </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                                    ControlToValidate="rtbAddress" ValidationGroup="insertGroup"
+                                    Display="Dynamic" ErrorMessage="Address">
+                                    <span class="req"></span>
+                                </asp:RequiredFieldValidator>
+                            </div>
+                            
+                            <div class="row">
+                                <label for="rtbPostcode" title="Postcode" class="label">Postcode*</label>
 
-                        <hr />
-                
-                        <div class="row">
-                            <label for="rtbEmail" title="Email" class="label">Email</label>
-                            <telerik:RadTextBox ID="rtbEmail" runat="server" Text='<%#Bind("email") %>' Columns="35" EmptyMessage="Email" />
-                        </div>
+                                <telerik:RadTextBox ID="rtbPostcode" runat="server" Text='<%#Bind("postcode")%>' Columns="35" EmptyMessage="Postcode" />
 
-                        <div class="row">
-                            <label for="rtbTel" title="Telephone" class="label">Telephone</label>
-                            <telerik:RadTextBox ID="rtbTel" runat="server" Text='<%#Bind("tel") %>' Columns="35" EmptyMessage="Telephone" />
-                        </div>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                    ControlToValidate="rtbPostcode" ValidationGroup="insertGroup"
+                                    Display="Dynamic" ErrorMessage="Postcode">
+                                    <span class="req"></span>
+                                </asp:RequiredFieldValidator>
+                            </div>
+
+                            <div class="row">
+                                <label for="rtbEmail" title="Email" class="label">Email</label>
+                                <telerik:RadTextBox ID="rtbEmail" runat="server" Text='<%#Bind("email") %>' Columns="35" EmptyMessage="Email" />
+                            </div>
+
+                            <div class="row">
+                                <label for="rtbTel" title="Telephone" class="label">Telephone</label>
+                                <telerik:RadTextBox ID="rtbTel" runat="server" Text='<%#Bind("tel") %>' Columns="35" EmptyMessage="Telephone" />
+                            </div>
                                                         
-                        <div class="row">
-                            <label for="rtbFax" title="Fax" class="label">Fax</label>
-                            <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>' Columns="35" EmptyMessage="Fax" />
-                        </div>
+                            <div class="row">
+                                <label for="rtbFax" title="Fax" class="label">Fax</label>
+                                <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>' Columns="35" EmptyMessage="Fax" />
+                            </div>
                                 
-                        <div class="row">
-                            <label for="rtbURL" title="Website" class="label">Website</label>
-                            <telerik:RadTextBox ID="rtbURL" runat="server" Text='<%#Bind("URL") %>' Columns="35" EmptyMessage="Website" />
-                        </div>
+                            <div class="row">
+                                <label for="rtbURL" title="Website" class="label">Website</label>
+                                <telerik:RadTextBox ID="rtbURL" runat="server" Text='<%#Bind("URL") %>' Columns="35" EmptyMessage="Website" />
+                            </div>
 
                         </div>
 
@@ -105,7 +120,6 @@
                             <a href="#" class="button md-close">Close</a>
                         </div>
                     </asp:Panel>
-                </div>
                 </InsertItemTemplate>
             </asp:FormView>
         </div>
@@ -122,7 +136,7 @@
     </div>
 
     <div class="main-container">
-        <div class="div50">
+        <div class="div75">
             <telerik:RadGrid ID="rgSuppliers" runat="server"
                     DataSourceID="suppliersDataSource"
                     AllowAutomaticUpdates="true"
@@ -201,7 +215,7 @@
                 </telerik:RadGrid>    
         </div>
 
-        <div class="div25">
+        <div class="div25 div-last">
             <asp:Panel ID="pNewSuppliers" runat="server">
                 <div class="box">
                     <h3>Unused Suppliers</h3>
@@ -227,23 +241,6 @@
                     </div>
                 </div>
             </asp:Panel>
-
-        </div>
-
-        <div class="div25 div-last">
-            <div class="help-panel">
-                <h3>Suppliers</h3>
-                <p>
-                    Use the Supplier list to set your preferred priority, those at the top will be used first when checking resource prices.
-                </p>
-
-                <h3>Unused Suppliers</h3>
-
-                <p>
-                    The Unusers Suppliers list displays all of your suppliers that you aren't actively using. To be able
-                    to use these Suppliers in your Project you will need to select them and click 'Add this Supplier'.
-                </p>
-            </div>
         </div>
     </div>
 
@@ -292,3 +289,20 @@
         SelectCommand="getCountries"
         SelectCommandType="StoredProcedure" />
  </asp:Content>
+
+
+<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
+    <div class="sidebar">
+        <h3>Suppliers</h3>
+        <p>
+            Use the Supplier list to set your preferred priority, those at the top will be used first when checking resource prices.
+        </p>
+
+        <h3>Unused Suppliers</h3>
+
+        <p>
+            The Unusers Suppliers list displays all of your suppliers that you aren't actively using. To be able
+            to use these Suppliers in your Project you will need to select them and click 'Add this Supplier'.
+        </p>
+    </div>
+</asp:Content>

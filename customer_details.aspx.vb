@@ -5,13 +5,6 @@ Imports System.Data
 Partial Class manager_customer_details
     Inherits MyBaseClass
 
-    'Protected Sub defaultCountry(ByVal sender As Object, ByVal e As System.EventArgs)
-    '    ' default country to UK
-    '    ' ?? possible to change this to default based on browser location
-    '    Dim rcbCountry As RadComboBox = CType(sender, RadComboBox)
-    '    rcbCountry.SelectedValue = 183
-    'End Sub
-
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlCustomers"), HyperLink)
         activeLink.CssClass = "active"
@@ -41,7 +34,7 @@ Partial Class manager_customer_details
     Protected Sub archiveCustomer(ByVal archived As Boolean)
         Dim customerId = CType(Request.QueryString("id"), Integer)
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-        Dim sql As String = "UPDATE UserContact SET archived = '" & archived & "' WHERE id = " & customerId
+        Dim sql As String = "UPDATE UserContact SET archived = '" & archived & "' WHERE id = " & customerId & " AND UserId = '" & Session("userId") & "'"
 
         Using conn As New SqlConnection(connString)
             Dim cmd As New SqlCommand(sql, conn)
@@ -59,8 +52,6 @@ Partial Class manager_customer_details
                 Trace.Write(ex.Message)
             End Try
         End Using
-        'rgCustomers.DataBind()
-        'applyFilters()
     End Sub
 
     Protected Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click

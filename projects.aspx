@@ -219,27 +219,6 @@
                             HeaderText="Finish Date"
                             UniqueName="completionDate"
                             SortExpression="completionDate" />
-
-                        <telerik:GridTemplateColumn
-                            UniqueName="archived"
-                            SortExpression="archived"
-                            HeaderText="Archived"
-                            HeaderStyle-HorizontalAlign="Center"
-                            ItemStyle-HorizontalAlign="Center">
-                            <ItemTemplate>
-                                <asp:CheckBox
-                                    ID="CheckBox1"
-                                    runat="server"
-                                    AutoPostBack="true"
-                                    Checked='<%#Bind("archived") %>'
-                                    OnCheckedChanged="OnCheckChanged" />
-                            
-                                <asp:HiddenField
-                                    ID="hiddenProjectId"
-                                    runat="server"
-                                    Value='<%#Eval("id") %>' />
-                            </ItemTemplate>
-                        </telerik:GridTemplateColumn>
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>

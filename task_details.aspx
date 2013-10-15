@@ -120,19 +120,6 @@
     
     <!-- add resources modal -->
     <div id="addResources" class="md-window">
-        <asp:Panel ID="pRequiresTaskQty" runat="server" Visible="false" CssClass="md-content">
-            <h3>A Task Quantity is required</h3>
-
-            <div class="md-details">
-                <div class="box_info">
-                    You must enter a Task quantity before adding Resources to this Task. Click <strong>Edit Task Details</strong> to begin.
-                </div>
-            </div>
-
-            <div class="md-footer">
-                <a href="#" class="button md-close">Close</a>
-            </div>
-        </asp:Panel>
 
         <asp:Panel ID="pAddResources" runat="server" DefaultButton="btnAddResources" CssClass="md-content">
             <h3>Add a Resource</h3>
@@ -1149,6 +1136,14 @@
             </asp:FormView>
         </div>
     </div>
+
+
+        
+        <asp:Panel ID="pRequiresTaskQty" runat="server" Visible="false">
+            <div class="box_info">
+                You must enter a Task quantity before adding Resources to this Task. Click <strong>Edit Task Details</strong> to begin.
+            </div>
+        </asp:Panel>
     
         <asp:Panel ID="pCurrentResources" runat="server" CssClass="box">
             <h3>Current Resources</h3>

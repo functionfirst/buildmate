@@ -28,12 +28,12 @@ Partial Class manager_Default
     End Sub
 
     Private Sub applyFilters()
-        Dim filter As String
-        filter = String.Format("(firstname LIKE '%%%{0}%%%' OR jobtitle LIKE '%%%{0}%%%' OR customerAddress LIKE '%%%{0}%%%' OR postcode LIKE '%%%{0}%%%')", rtbFilter.Text)
+        Dim filter As String = ""
+        filter = String.Format("(name LIKE '%%%{0}%%%' OR jobtitle LIKE '%%%{0}%%%' OR address LIKE '%%%{0}%%%' OR postcode LIKE '%%%{0}%%%')", rtbFilter.Text)
 
         If Not cbArchived.Checked Then filter += " AND archived = 0"
 
-        rgCustomers.MasterTableView.FilterExpression = rgCustomers.MasterTableView.FilterExpression + filter
+        rgCustomers.MasterTableView.FilterExpression = filter
         rgCustomers.MasterTableView.Rebind()
 
         allCustomersDataSource.FilterExpression = filter
@@ -49,5 +49,9 @@ Partial Class manager_Default
 
     Protected Sub rtbFilter_TextChanged(sender As Object, e As EventArgs) Handles rtbFilter.TextChanged
         applyFilters()
+    End Sub
+
+    Protected Sub fvCustomerInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvCustomerInsert.ItemInserted
+        rgCustomers.DataBind()
     End Sub
 End Class

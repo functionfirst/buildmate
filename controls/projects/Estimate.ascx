@@ -2,16 +2,20 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
-    <h3>Select an Estimate Type</h3>
+    <h3>1. Select an Estimate Type</h3>
 
     <div class="row">
         <label class="label">&nbsp;</label>
-        <asp:RadioButtonList ID="rblEstimateType" runat="server" DataSourceID="projectTypeDataSource" DataTextField="projectType" DataValueField="id"></asp:RadioButtonList>
+        <asp:RadioButtonList ID="rblEstimateType" runat="server"
+            AutoPostBack="true"
+            DataSourceID="projectTypeDataSource"
+            DataTextField="projectType"
+            DataValueField="id"></asp:RadioButtonList>
     </div>
 
     <div class="form-actions">
         <asp:LinkButton ID="lbTemplate" runat="server" CssClass="button button-primary">
-            Continue &raquo;
+            Next
         </asp:LinkButton>
     </div>
     

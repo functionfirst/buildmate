@@ -35,7 +35,9 @@
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
         
+
         <asp:Panel ID="notification" runat="server" CssClass="flash" Visible="false">
+            <a href="#" class="flash-close">&times;</a>
             <h3><asp:Literal ID="notificationTitle" runat="server">Message</asp:Literal></h3>
 
             <p>
@@ -43,45 +45,53 @@
             </p>
         </asp:Panel>
 
-        <div class="topbar">
-            <div class="brand">Buildmate</div>
-
-            <div class="nav">
-                <ul class="nav-options">
-                    <li><a href="http://getbuildmate.com/knowledgebase/">Help/Support</a></li>
-                    <li><a href="logout.aspx">Logout</a></li>
-                </ul>
-
-                <ul runat="server" id="nav">
-                    <li>
-                        <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/"><span></span>Dashboard</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx"><span></span>Customers</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx"><span></span>Projects</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx"><span></span>Resources</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx"><span></span>Support</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlSettings" runat="server"
-                            NavigateUrl="~/settings.aspx" ToolTip="Settings"><span></span>Settings</asp:HyperLink>
-                    </li>
-                </ul>
-            </div>
-        </div>
         
         <div class="container">
+            <div class="topbar">
+                <div class="brand">Buildmate</div>
+
+                <div class="nav">
+                    <ul class="nav-options">
+                        <li><a href="http://getbuildmate.com/knowledgebase/">Help/Support</a></li>
+                        <li><a href="logout.aspx">Logout</a></li>
+                        <li>
+                            <a href="#" class="toggle-help js-toggle-help"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+                        </li>
+                    </ul>
+
+                    <ul runat="server" id="nav">
+                        <li>
+                            <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/"><span></span>Dashboard</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx"><span></span>Customers</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx"><span></span>Projects</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx"><span></span>Resources</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx"><span></span>Support</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlSettings" runat="server"
+                                NavigateUrl="~/settings.aspx" ToolTip="Settings"><span></span>Settings</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+            
+            <div class="md-wrapper" title="Click or press Esc to cancel"></div>
         </div>
+
+        <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
 
         <div id="variationMode" class="variationMode">
             <a href="#" class="openVariatonMode" title="You are in Variation Mode"><span>Variation Mode</span></a>
@@ -106,7 +116,6 @@
             </div>
         </div>
    
-        <div class="md-wrapper" title="Click or press Esc to cancel"></div>
     </form>
 
     <!-- js -->

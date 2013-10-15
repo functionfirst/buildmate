@@ -124,28 +124,6 @@ Partial Class manager_Default
         End If
     End Sub
 
-    Protected Sub OnCheckChanged(ByVal sender As Object, ByVal e As EventArgs)
-        ' flip the archive flag for the selected customer
-        ' Identify the customerId from a hidden label within the datagrid row
-        Dim grdCell As GridTableCell = CType(sender, CheckBox).Parent
-        Dim projectId As String = CType(grdCell.FindControl("hiddenProjectId"), HiddenField).Value
-        Dim checkState As Boolean = CType(sender, CheckBox).Checked
-        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-        Dim sql As String = "UPDATE Project SET archived = '" & checkState & "', lastModified = getdate() WHERE id = " & projectId
-
-        Using conn As New SqlConnection(connString)
-            Dim cmd As New SqlCommand(sql, conn)
-            Try
-                conn.Open()
-                cmd.ExecuteScalar()
-            Catch ex As Exception
-                Trace.Write(ex.Message)
-            End Try
-        End Using
-        rgProjects.DataBind()
-        applyFilters()
-    End Sub
-
     Protected Sub rgProjects_PageIndexChanged(source As Object, e As Telerik.Web.UI.GridPageChangedEventArgs) Handles rgProjects.PageIndexChanged
         applyFilters()
     End Sub

@@ -28,7 +28,7 @@
                         content: " ";
                         border: 8px solid #222;
                         border-color: #222 transparent transparent transparent;
-                        bottom: -16px;
+                        bottom: -14px;
                         left: 50%;
                         margin-left: -8px;
                         -webkit-transition: border .2s linear, opacity .2s linear;
@@ -37,11 +37,11 @@
                     }
                 }
 
-                    &.active:hover {
-                        &:before {
-                            border-color: #292929 transparent transparent transparent;
-                        }
+                &.active:hover {
+                    &:before {
+                        border-color: #292929 transparent transparent transparent;
                     }
+                }
 
                 &:hover {
                     background: #292929;
@@ -52,5 +52,37 @@
 
     .nav-options {
         float: right;
+
+        .toggle-help {
+            padding-top: 19px;
+            padding-bottom: 20px;
+        }
+
+            .toggle-help[disabled='disabled'] {
+                cursor: default;
+                color: #666;
+
+                .icon-bar {
+                    border-color: #555;
+                }
+            }
+
+        .icon-bar {
+            display: block;
+            width: 18px;
+            border-top: 2px solid #ddd;
+        }
+
+        .icon-bar + .icon-bar {
+            margin-top: 3px;
+        }
+    }
+}
+
+.show-sidebar {
+    .nav-options {
+        .icon-bar {
+            border-color: #b6ff00;
+        }
     }
 }

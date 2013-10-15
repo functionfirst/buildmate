@@ -70,16 +70,16 @@
                         <asp:Label ID="Label2" runat="server"
                             Text="Name*"
                             CssClass="label"
-                            AssociatedControlID="rtbFirstName" />
+                            AssociatedControlID="rtbName" />
                                         
-                        <telerik:RadTextBox ID="rtbFirstName" runat="server"
-                            Text='<%#Bind("firstname") %>'
+                        <telerik:RadTextBox ID="rtbName" runat="server"
+                            Text='<%#Bind("name")%>'
                             Width="300px"
                             EmptyMessage="Name" />
                                
                                     
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                            ControlToValidate="rtbFirstName"
+                            ControlToValidate="rtbName"
                             Display="Dynamic"
                             ErrorMessage="Name">
                             <span class="req"></span>
@@ -102,20 +102,28 @@
                             Text='<%#Bind("jobtitle") %>' EmptyMessage="Job Title" />
                     </div>
 
-                    <hr />
-
                     <div class="row">
-                        <label for="rtbAddress1" title="Address" class="label">Address*</label>
+                        <label for="rtbAddress" title="Address" class="label">Address*</label>
 
-                        <telerik:RadTextBox ID="rtbAddress1" runat="server" Text='<%#Bind("address1") %>' InputType="Text" TextMode="MultiLine" Width="300px" Rows="6" Columns="80" EmptyMessage="Address" />
+                        <telerik:RadTextBox ID="rtbAddress" runat="server" Text='<%#Bind("address")%>'
+                            InputType="Text" TextMode="MultiLine" Rows="4" Columns="80" Width="300" MaxLength="255" EmptyMessage="Address" />
                                     
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress1"
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress"
                             Display="Dynamic" ErrorMessage="Address">
                             <span class="req"></span>
                         </asp:RequiredFieldValidator>
                     </div>
 
-                    <hr />
+                    <div class="row">
+                        <label for="rtbPostcode" title="Postcode" class="label">Postcode*</label>
+
+                        <telerik:RadTextBox ID="rtbPostcode" runat="server" Text='<%#Bind("postcode") %>' Columns="35" MaxLength="8" EmptyMessage="Postcode" />
+
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="rtbPostcode"
+                            Display="Dynamic" ErrorMessage="Postcode">
+                            <span class="req"></span>
+                        </asp:RequiredFieldValidator>
+                    </div>
                                                         
                     <div class="row">
                         <label for="rtbEmail" title="Email" class="label">Email</label>
@@ -139,8 +147,6 @@
                         <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>' EmptyMessage="Fax" />
                     </div>
 
-                    <hr />
-                                
                     <div class="row">
                         <label for="rcbPaymentTerms" title="Payment Terms" class="label">Payment Terms</label>
                         <telerik:RadComboBox ID="rcbPaymentTerms" runat="server" Height="80px" Width="130px" SelectedValue='<%# Bind("paymentTermsId") %>'
@@ -228,11 +234,11 @@
 
     </div>
     
-    <asp:SqlDataSource ID="customerDataSource" runat="server" ConflictDetection="CompareAllValues"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" OldValuesParameterFormatString="original_{0}"
-        SelectCommand="getUserContactDetails" SelectCommandType="StoredProcedure"
-        UpdateCommand="updateUserContactDetails" UpdateCommandType="StoredProcedure"
-        InsertCommand="insertUserContactDetails" InsertCommandType="StoredProcedure">
+    <asp:SqlDataSource ID="customerDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        SelectCommand="UserContact_Select" SelectCommandType="StoredProcedure"
+        UpdateCommand="UserContact_Update" UpdateCommandType="StoredProcedure"
+        InsertCommand="UserContact_Insert" InsertCommandType="StoredProcedure">
         <InsertParameters>
             <asp:SessionParameter name="UserId" SessionField="UserId" />
             <asp:Parameter Name="NewId" Type="Int64" Direction="Output" />

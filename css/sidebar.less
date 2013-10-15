@@ -1,24 +1,50 @@
-﻿.sidebar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    visibility: hidden;
-    width: 300px;
+﻿html, body, .container {
     height: 100%;
-    background: #48A770;
-    -webkit-transition: all 0.5s;
-    transition:         all 0.5s;
+}
+#aspnetForm {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.sidebar {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    z-index: 25;
+    width: 340px;
+    padding: 20px;
+    height: 100%;
+    background: #333;
+    color: #fff;
+    overflow: auto;
+    -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) inset;
+    -moz-box-shadow:    5px 5px 10px rgba(0, 0, 0, 0.3) inset;
+    box-shadow:         5px 5px 10px rgba(0, 0, 0, 0.3) inset;
 
-    z-index: 1;
-    -webkit-transform:  translate3d(-50%, 0, 0);
-    transform:          translate3d(-50%, 0, 0);
+    h3 {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 300;
+        margin-top: 0;
+        border: 0;
+    }
+
+    small {
+        color: #ddd;
+    }
+
+    a,
+    .help-panel-link {
+        color: #0078e7;
+
+        &:hover {
+            color: #21759B;
+        }
+    }
 }
 
-    .sidebar.open {
-    visibility: visible;
-    -webkit-transition: -webkit-transform 0.5s;
-    transition:         transform 0.5s;
-    -webkit-transform:  translate3d(0, 0, 0);
-    transform:          translate3d(0, 0, 0);
+.show-sidebar {
+    .container {
+        right: 340px;
     }
+}

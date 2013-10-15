@@ -53,7 +53,7 @@
                 AssociatedControlID="rtbDescription" />
 
             <telerik:RadTextBox ID="rtbDescription" runat="server"
-                Width="300px" Rows="8" Columns="80" 
+                 Columns="60" Rows="3" Width="400"
                 TextMode="MultiLine"
                 Text='<%# Bind("description") %>'
                 EmptyMessage="Description" />
@@ -155,7 +155,7 @@
             <asp:Button ID="btnCreate" runat="server"
                 CommandName="Insert"
                 CssClass="button button-create"
-                Text="Create Project &raquo;"
+                Text="Create Project"
                 OnClick="OnClick_Validate"
                 ValidationGroup="projectGroup" />
 
@@ -163,17 +163,13 @@
     </InsertItemTemplate>
 </asp:FormView>
 
-<asp:HiddenField ID="hfEstimateType" runat="server" Value="0" />
-<asp:HiddenField ID="hfProjectId" runat="server" Value="0" />
-<asp:HiddenField ID="hfCustomerId" runat="server" Value="0" />
-
 <asp:SqlDataSource ID="insertProjectDataSource" runat="server" 
     ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
     InsertCommand="insertProject" InsertCommandType="StoredProcedure">
     <InsertParameters>
         <asp:SessionParameter Name="userId" SessionField="UserId" />
-        <asp:ControlParameter Name="projectTypeId" ControlID="rcbEstimateType" PropertyName="SelectedValue" />
-        <asp:ControlParameter Name="customerId" ControlID="rcbCustomer" PropertyName="SelectedValue" Type="Int64" />
+        <asp:ControlParameter Name="projectTypeId" ControlID="hfEstimateType" PropertyName="Value" />
+        <asp:ControlParameter Name="customerId" ControlID="hfCustomerId" PropertyName="Value" Type="Int64" />
         <asp:Parameter Name="statusId" Type="Byte" DefaultValue="1" />
         <asp:Parameter Name="retentionPeriod" Type="Byte" DefaultValue="0" />
         <asp:Parameter Name="retentionPercentage" Type="Byte" DefaultValue="0" />

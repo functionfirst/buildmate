@@ -87,8 +87,6 @@
     </div>
 
     <div class="main-container">
-
-    <div class="div75">
         <div class="row">
             <asp:RadioButtonList
                 ID="rbTickets"
@@ -101,7 +99,6 @@
             </asp:RadioButtonList>
         </div>
 
-    <div class="clear">
         <telerik:RadGrid
             ID="rgTickets"
             runat="server"
@@ -163,11 +160,19 @@
 
         <asp:Panel ID="pContainer" runat="server" />
     </div>
-    </div>
 
+    <asp:SqlDataSource ID="ticketsDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        FilterExpression="isLocked <> 1"
+        SelectCommand="SELECT * FROM SupportTickets WHERE userId = @userId ORDER BY dateCreated DESC">
+        <SelectParameters>
+            <asp:SessionParameter name="UserId" SessionField="UserId" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+</asp:Content>
 
-    <div class="div25 div-last">
-        <div class="help-panel">
+<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
+    <div class="sidebar">
         <h3>How to get help</h3>
 
         <p>
@@ -182,19 +187,5 @@
         <p>Each time they respond you'll be able to read their reply by selecting the relevant Ticket from the list to the left.</p>
         
         <p><strong>Note:</strong> We'll also send the response as an email to your registered email address.</p>
-            </div>
     </div>
-
-    <div class="clear"></div>
-    </div>
-
-
-    <asp:SqlDataSource ID="ticketsDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        FilterExpression="isLocked <> 1"
-        SelectCommand="SELECT * FROM SupportTickets WHERE userId = @userId ORDER BY dateCreated DESC">
-        <SelectParameters>
-            <asp:SessionParameter name="UserId" SessionField="UserId" />
-        </SelectParameters>
-    </asp:SqlDataSource>
 </asp:Content>

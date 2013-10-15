@@ -3,7 +3,7 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" class="login-page">
 <head runat="server">
     <title>Login - Buildmate</title>
 
@@ -29,7 +29,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
        <div class="login-form">
-            <div class="logo"><a href="http://www.getbuildmate.com" title="BuildMate">Buildmate</a></div>
+            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
 
             <div class="login-form-inner">
                 <h1>Login</h1>

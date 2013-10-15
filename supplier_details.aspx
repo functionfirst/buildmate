@@ -43,7 +43,8 @@
             <EditItemTemplate>
                 <div class="row">
                     <label for="rtbSupplierName" title="Supplier Name" class="label">Supplier Name*</label>
-                    <telerik:RadTextBox ID="rtbSupplierName" runat="server" Text='<%#Bind("supplierName") %>' Columns="35" EmptyMessage="Supplier Name" />
+                    <telerik:RadTextBox ID="rtbSupplierName" runat="server" Text='<%#Bind("supplierName") %>'
+                        MaxLength="50" Columns="35" Width="300px" EmptyMessage="Supplier Name" />
                                                     
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                         ControlToValidate="rtbSupplierName" ValidationGroup="editGroup"
@@ -52,17 +53,31 @@
                     </asp:RequiredFieldValidator>
                 </div>
 
-                <hr />
+                <div class="row">
+                    <label for="rtbAddress" title="Address" class="label">Address*</label>
+
+                    <telerik:RadTextBox ID="rtbAddress" runat="server"
+                        Width="300px" Rows="4" Columns="80"
+                        Text='<%#Bind("address")%>' TextMode="MultiLine" EmptyMessage="Address" />
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
+                        ControlToValidate="rtbAddress" ValidationGroup="editGroup"
+                        Display="Dynamic" ErrorMessage="Address">
+                        <span class="req"></span>
+                    </asp:RequiredFieldValidator>
+                </div>
 
                 <div class="row">
-                    <label for="rtbAddress1" title="Address" class="label">Address</label>
+                    <label for="rtbPostcode" title="Postcode" class="label">Postcode*</label>
 
-                    <telerik:RadTextBox ID="rtbAddress1" runat="server"
-                        Width="300px" Rows="8" Columns="80"
-                        Text='<%#Bind("address1") %>' TextMode="MultiLine" EmptyMessage="Address" />
+                    <telerik:RadTextBox ID="rtbPostcode" runat="server" Text='<%#Bind("postcode")%>' Columns="35" EmptyMessage="Postcode" />
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                        ControlToValidate="rtbPostcode" ValidationGroup="editGroup"
+                        Display="Dynamic" ErrorMessage="Postcode">
+                        <span class="req"></span>
+                    </asp:RequiredFieldValidator>
                 </div>
-            
-                <hr />
                                                 
                 <div class="row">
                     <label for="rtbEmail" title="Email" class="label">Email</label>

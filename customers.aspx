@@ -8,10 +8,10 @@
 
     <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlId="Panel1">
+            <telerik:AjaxSetting AjaxControlId="pCustomerSearch">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
-                     <telerik:AjaxUpdatedControl ControlID="Panel1" />
+                     <telerik:AjaxUpdatedControl ControlID="pCustomerSearch" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="rgCustomers">
@@ -22,6 +22,7 @@
             <telerik:AjaxSetting AjaxControlId="fvCustomerInsert">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
+                     <telerik:AjaxUpdatedControl ControlID="fvCustomerInsert" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -41,15 +42,15 @@
                 RenderOuterTable="false"
                 DataKeyNames="id">
                 <InsertItemTemplate>
-                    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnInsert">
+                    <asp:Panel ID="pCustomerInsert" runat="server" DefaultButton="btnInsert">
                         <div class="md-details">
                             <div class="row">
-                                <label for="rtbFirstname" title="Name" class="label">Name*</label>
+                                <label for="rtbName" title="Name" class="label">Name*</label>
                     
-                                <telerik:RadTextBox ID="rtbFirstName" runat="server" Text='<%#Bind("firstname") %>' 
+                                <telerik:RadTextBox ID="rtbName" runat="server" Text='<%#Bind("name")%>' 
                                     Width="300px" EmptyMessage="Name" />
                                 
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="rtbFirstName" ValidationGroup="insertGroup"
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="rtbName" ValidationGroup="insertGroup"
                                     Display="Dynamic" ErrorMessage="Name">
                                     <span class="req"></span>
                                 </asp:RequiredFieldValidator>
@@ -67,20 +68,28 @@
                                 <telerik:RadTextBox ID="rtbJobTitle" Width="300px" runat="server" Text='<%#Bind("jobtitle") %>' Columns="35" EmptyMessage="Job Title" />
                             </div>
 
-                            <hr />
-
                             <div class="row">
-                                <label for="rtbAddress1" title="Address" class="label">Address*</label>
+                                <label for="rtbAddress" title="Address" class="label">Address*</label>
                     
-                                <telerik:RadTextBox ID="rtbAddress1" runat="server" Text='<%#Bind("address1") %>' TextMode="MultiLine" Width="300px" Rows="6" Columns="80"  EmptyMessage="Address" />
+                                <telerik:RadTextBox ID="rtbAddress" runat="server" Text='<%#Bind("address")%>' TextMode="MultiLine"
+                                    Width="300px" Rows="4" Columns="80"  EmptyMessage="Address" />
                                 
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress1" ValidationGroup="insertGroup"
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="rtbAddress" ValidationGroup="insertGroup"
                                     Display="Dynamic" ErrorMessage="Address">
                                     <span class="req"></span>
                                 </asp:RequiredFieldValidator>
                             </div>
 
-                            <hr />
+                            <div class="row">
+                                <label for="rtbPostcode" title="Postcode" class="label">Postcode*</label>
+
+                                <telerik:RadTextBox ID="rtbPostcode" runat="server" Text='<%#Bind("postcode") %>' Columns="35" EmptyMessage="Postcode" />
+
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="rtbPostcode" ValidationGroup="insertGroup"
+                                    Display="Dynamic" ErrorMessage="Postcode">
+                                    <span class="req"></span>
+                                </asp:RequiredFieldValidator>
+                            </div>
                                                     
                             <div class="row">
                                 <label for="rtbEmail" title="Email" class="label">Email</label>
@@ -105,8 +114,6 @@
                     
                                 <telerik:RadTextBox ID="rtbFax" runat="server" Text='<%#Bind("fax") %>'  Columns="35" EmptyMessage="Fax" />
                             </div>
-
-                            <hr />
 
                             <div class="row">
                                 <label for="rcbPaymentTerms" title="Payment Terms" class="label">Payment Terms</label>
@@ -140,7 +147,7 @@
 
     <div class="main-container">
         <asp:Panel ID="noCustomerPanel" runat="server" visible="false" CssClass="help-panel">
-            <h3>Adding a Customer</h3>
+            <h3>1. Adding a Customer</h3>
 
             <p>
                 To start using Buildmate you'll need to create your first Customer. This will allow you to then create a Project and start pricing up your job.
@@ -151,7 +158,7 @@
         </asp:Panel>
 
         <asp:Panel ID="customerPanel" runat="server">
-            <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
+            <asp:Panel ID="pCustomerSearch" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
                 <telerik:RadTextBox
                     ID="rtbFilter"
                     runat="server"
@@ -201,37 +208,18 @@
                     DataKeyNames="id"
                     NoMasterRecordsText="&nbsp;No Customers were found.">
                     <Columns>
-                        <telerik:GridTemplateColumn UniqueName="customerName" HeaderText="Name" SortExpression="customerName">
+                        <telerik:GridTemplateColumn UniqueName="name" HeaderText="Name" SortExpression="name">
                             <ItemTemplate>
                                 <asp:HyperLink ID="HyperLink1" runat="server"
-                                    NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("customerName") %></asp:HyperLink>
+                                    NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("name") %></asp:HyperLink>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                         
                         <telerik:GridBoundColumn
-                            Visible="false"
-                            UniqueName="firstname"
-                            DataField="firstname"
-                            HeaderText="firstname"
-                            SortExpression="firstname" />
-         
-                        <telerik:GridBoundColumn
                             UniqueName="address"
-                            DataField="customerAddress"
+                            DataField="address"
                             HeaderText="Address"
-                            SortExpression="customerAddress" />
-
-                        <telerik:GridBoundColumn
-                            DataField="city"
-                            HeaderText="Town/City" 
-                            SortExpression="city"
-                            UniqueName="city" />
-
-                        <telerik:GridBoundColumn
-                            DataField="county"
-                            HeaderText="County" 
-                            SortExpression="county"
-                            UniqueName="county" />
+                            SortExpression="address" />
 
                         <telerik:GridBoundColumn
                             DataField="postcode"
@@ -250,7 +238,7 @@
         runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         FilterExpression="archived = 0"
-        SelectCommand="getUserContactsByUserId"
+        SelectCommand="UserContact_GetByUserId"
         SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:SessionParameter
@@ -263,7 +251,7 @@
         ID="insertCustomerDataSource"
         runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        InsertCommand="insertUserContactDetails"
+        InsertCommand="UserContact_Insert"
         InsertCommandType="StoredProcedure">
         <InsertParameters>
             <asp:SessionParameter name="UserId" SessionField="UserId" />

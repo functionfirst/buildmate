@@ -1,8 +1,23 @@
-﻿    <%@ Page Title="Settings - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="settings.aspx.vb" Inherits="settings" %>
+﻿    <%@ Page Title="Settings - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="settings.aspx.vb" Inherits="settings" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.tab-nav').find('a').click(function () {
+                var target = $(this).attr('href');
+                showTab(target);
+                return false;
+            });
+
+        });
+
+        function showTab(tabId) {
+            $(tabId).addClass('tab-container-active').siblings().removeClass('tab-container-active');
+            $('a[href="' + tabId + '"]').parent().addClass('active').siblings().removeClass('active');
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -32,12 +47,6 @@
                      <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlId="fvAddressDetails">
-                <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="fvAddressDetails" />
-                     <telerik:AjaxUpdatedControl ControlID="notification" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
@@ -49,337 +58,231 @@
     </div>
 
     <div class="main-container">
-
-<div class="div50">
-    <div class="box">
-        <h3>Contact Details</h3>
-
-    <div class="boxcontent">
-        <asp:FormView ID="fvContactDetails" runat="server"
-            RenderOuterTable="false"
-            DefaultMode="Edit"
-            DataSourceID="userProfileDataSource">
-            <EditItemTemplate>
-                <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
-                    <div class="row">
-                        <asp:Label ID="lblLabelTitle" runat="server"
-                            Text="Title"
-                            CssClass="label"
-                            AssociatedControlID="rcbTitle" />
-                            
-                        <telerik:RadComboBox ID="rcbTitle" runat="server"
-                            Width="70px"
-                            SelectedValue='<%# Bind("titleId") %>'
-                            DataSourceID="titleDataSource"
-                            DataTextField="title"
-                            DataValueField="id" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblName" runat="server"
-                            Text="First Name"
-                            CssClass="label"
-                            AssociatedControlID="rtbFirstname" />
-
-                        <telerik:RadTextBox ID="rtbFirstname" runat="server"
-                            Text='<%#Bind("firstname") %>'
-                            EmptyMessage="First Name" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblSurname" runat="server"
-                            Text="Surname"
-                            CssClass="label"
-                            AssociatedControlID="rtbSurname" />
-                        
-                        <telerik:RadTextBox ID="rtbSurname" runat="server"
-                            Text='<%#Bind("surname") %>'
-                            EmptyMessage="Surname" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="Label1" runat="server"
-                            Text="Job Title"
-                            CssClass="label"
-                            AssociatedControlID="rtbJobtitle" />
-                            
-                        <telerik:RadTextBox ID="rtbJobtitle" runat="server"
-                            Text='<%#Bind("jobtitle") %>' EmptyMessage="Job Title" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblTel" runat="server"
-                            Text="Telephone"
-                            CssClass="label"
-                            AssociatedControlID="lblTel" />
-                        
-                        <telerik:RadTextBox ID="rtbTel" runat="server"
-                            Text='<%#Bind("tel") %>'
-                            EmptyMessage="Telephone" />
-                    </div>
-                    <div class="row">
-                        <asp:Label ID="lblFax" runat="server"
-                            Text="Fax"
-                            CssClass="label"
-                            AssociatedControlID="rtbFax" />
-                        
-                        <telerik:RadTextBox ID="rtbFax" runat="server"
-                            Text='<%#Bind("fax") %>'
-                            EmptyMessage="Fax" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblMobile" runat="server"
-                            Text="Mobile"
-                            CssClass="label"
-                            AssociatedControlID="lblMobile" />
-                        
-                        <telerik:RadTextBox ID="rtbMobile" runat="server"
-                            Text='<%#Bind("mobile") %>'
-                            EmptyMessage="Mobile" />
-                    </div>
-                    <div class="row">
-                        <asp:Label ID="lblBusiness" runat="server"
-                            Text="Company Tel."
-                            CssClass="label"
-                            AssociatedControlID="rtbBusiness" />
-                        
-                        <telerik:RadTextBox ID="rtbBusiness" runat="server"
-                            Text='<%#Bind("business") %>'
-                            EmptyMessage="Company Telephone" />
-                    </div>
-                    <div class="row">
-                        <asp:Label ID="lblExtension" runat="server"
-                            Text="Extension"
-                            CssClass="label"
-                            AssociatedControlID="rtbExtension" />
-                        
-                        <telerik:RadTextBox ID="rtbExtension" runat="server"
-                            Text='<%#Bind("extension") %>'
-                            EmptyMessage="Extension" />
-                    </div>                    
-                    
-                <div class="form-actions">
-                    <asp:Button ID="btnUpdate" runat="server"
-                        Text="Save Changes"
-                        CssClass="button button-create"
-                        CommandName="Update"
-                        CausesValidation="true" />
-                </div>
-                </asp:Panel>
-            </EditItemTemplate>
-        </asp:FormView>
-            </div>
-        </div>
-    
-        <div class="box">
-        <h3>Address Details</h3>
-
-    <div class="boxcontent">
-        <asp:FormView ID="fvAddressDetails" runat="server"
-            RenderOuterTable="false"
-            DefaultMode="Edit"
-            DataSourceID="userProfileAddressDataSource">
-            <EditItemTemplate>
-                <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
-                    <div class="row">
-                        <asp:Label ID="lblAddress1" runat="server"
-                            Text="Address"
-                            CssClass="label"
-                            AssociatedControlID="rtbAddress1" />
-                        
-                        <telerik:RadTextBox ID="rtbAddress1" runat="server"
-                            Text='<%#Bind("address1") %>'
-                            EmptyMessage="Address" />
-                    </div>
-
-                    <div class="row">
-                        <label class="label">&nbsp;</label>
-                        
-                        <telerik:RadTextBox ID="rtbAddress2" runat="server"
-                            Text='<%#Bind("address2") %>'
-                            EmptyMessage="Address 2" />
-                    </div>
-                    
-                    <div class="row">
-                        <label class="label">&nbsp;</label>
-                        
-                        <telerik:RadTextBox ID="rtbAddress3" runat="server"
-                            Text='<%#Bind("address3") %>'
-                            EmptyMessage="Address 3" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblCity" runat="server"
-                            Text="Town/City"
-                            CssClass="label"
-                            AssociatedControlID="rtbCity" />
-                        
-                        <telerik:RadTextBox ID="rtbCity" runat="server"
-                            Text='<%#Bind("city") %>'
-                            EmptyMessage="Town/City" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblCounty" runat="server"
-                            Text="County"
-                            CssClass="label"
-                            AssociatedControlID="rtbCounty" />
-                        
-                        <telerik:RadTextBox ID="rtbCounty" runat="server"
-                            Text='<%#Bind("county") %>'
-                            EmptyMessage="County" />
-                    </div>
-                    
-                    <div class="row">
-                        <asp:Label ID="lblPostcode" runat="server"
-                            Text="Postcode"
-                            CssClass="label"
-                            AssociatedControlID="rtbPostcode" />
-                        
-                        <telerik:RadTextBox ID="rtbPostcode" runat="server"
-                            Text='<%#Bind("postcode") %>'
-                            MaxLength="8"
-                            EmptyMessage="Postcode" />
-                    </div>
-                    <div class="row">
-                        <asp:Label ID="lblCountry" runat="server"
-                            Text="Country"
-                            CssClass="label"
-                            AssociatedControlID="rcbCountry" />
-                        
-                        <telerik:RadComboBox ID="rcbCountry" runat="server"
-                            Height="140px"
-                            SelectedValue='<%# Bind("countryId") %>'
-                            DataSourceID="countryDataSource"
-                            DataTextField="countryName"
-                            DataValueField="id" />
-                    </div>
-
-                <div class="form-actions">
-                    <asp:Button ID="btnUpdate" runat="server"
-                        Text="Save Changes"
-                        CommandName="Update"
-                        CssClass="button button-create"
-                        CausesValidation="true" />
-                </div>
-                </asp:Panel>
-            </EditItemTemplate>
+        <div class="tabs">
+            <ul class="tab-nav">
+                <li class="active"><a href="#contact">Contact Details</a></li>
+                <li><a href="#company">Company Details</a></li>
+                <li><a href="#logo">Company Logo</a></li>
+                <li><a href="#password">Change Password</a></li>
+                <li><a href="#notifications">Notification Settings</a></li>
+                <li><a href="#subscription">Subscription</a></li>
+            </ul>
             
-        </asp:FormView>
+            <div class="tab-container tab-container-active" id="contact">
+                <h3>Contact Details</h3>
+
+                <asp:FormView ID="fvContactDetails" runat="server"
+                            RenderOuterTable="false"
+                            DefaultMode="Edit"
+                            DataSourceID="userProfileDataSource">
+                            <EditItemTemplate>
+                                <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
+                                    <div class="row">
+                                        <asp:Label ID="lblName" runat="server"
+                                            Text="Name"
+                                            CssClass="label"
+                                            AssociatedControlID="rtbName" />
+
+                                        <telerik:RadTextBox ID="rtbName" runat="server"
+                                            Text='<%#Bind("name") %>'
+                                            EmptyMessage="Name" />
+                                    </div>
+                    
+                                    <div class="row">
+                                        <asp:Label ID="Label1" runat="server"
+                                            Text="Job Title"
+                                            CssClass="label"
+                                            AssociatedControlID="rtbJobtitle" />
+                            
+                                        <telerik:RadTextBox ID="rtbJobtitle" runat="server"
+                                            Text='<%#Bind("jobtitle") %>' EmptyMessage="Job Title" />
+                                    </div>
+
+                                    <div class="row">
+                                        <asp:Label ID="lblAddress" runat="server"
+                                            Text="Address"
+                                            CssClass="label"
+                                            AssociatedControlID="rtbAddress" />
+           
+                                        <telerik:RadTextBox ID="rtbAddress" runat="server"
+                                            Width="300px" Rows="4" Columns="80"
+                                            Text='<%#Bind("address")%>' TextMode="MultiLine" EmptyMessage="Address" />
+                                    </div>
+
+                                    <div class="row">
+                                        <asp:Label ID="lblPostcode" runat="server"
+                                            Text="Postcode"
+                                            CssClass="label"
+                                            AssociatedControlID="rtbPostcode" />
+                        
+                                        <telerik:RadTextBox ID="rtbPostcode" runat="server"
+                                            Text='<%#Bind("postcode") %>'
+                                            MaxLength="8"
+                                            EmptyMessage="Postcode" />
+                                    </div>
+                    
+                                    <div class="row">
+                                        <asp:Label ID="lblTel" runat="server"
+                                            Text="Telephone"
+                                            CssClass="label"
+                                            AssociatedControlID="lblTel" />
+                        
+                                        <telerik:RadTextBox ID="rtbTel" runat="server"
+                                            Text='<%#Bind("tel") %>'
+                                            EmptyMessage="Telephone" />
+                                    </div>
+                                    <div class="row">
+                                        <asp:Label ID="lblFax" runat="server"
+                                            Text="Fax"
+                                            CssClass="label"
+                                            AssociatedControlID="rtbFax" />
+                        
+                                        <telerik:RadTextBox ID="rtbFax" runat="server"
+                                            Text='<%#Bind("fax") %>'
+                                            EmptyMessage="Fax" />
+                                    </div>
+                    
+                                    <div class="row">
+                                        <asp:Label ID="lblMobile" runat="server"
+                                            Text="Mobile"
+                                            CssClass="label"
+                                            AssociatedControlID="lblMobile" />
+                        
+                                        <telerik:RadTextBox ID="rtbMobile" runat="server"
+                                            Text='<%#Bind("mobile") %>'
+                                            EmptyMessage="Mobile" />
+                                    </div>
+                                    <div class="row">
+                                        <asp:Label ID="lblBusiness" runat="server"
+                                            Text="Company Tel."
+                                            CssClass="label"
+                                            AssociatedControlID="rtbBusiness" />
+                        
+                                        <telerik:RadTextBox ID="rtbBusiness" runat="server"
+                                            Text='<%#Bind("business") %>'
+                                            EmptyMessage="Company Telephone" />
+                                    </div>
+                                    <div class="row">
+                                        <asp:Label ID="lblExtension" runat="server"
+                                            Text="Extension"
+                                            CssClass="label"
+                                            AssociatedControlID="rtbExtension" />
+                        
+                                        <telerik:RadTextBox ID="rtbExtension" runat="server"
+                                            Text='<%#Bind("extension") %>'
+                                            EmptyMessage="Extension" />
+                                    </div>                    
+                    
+                                <div class="form-actions">
+                                    <asp:Button ID="btnUpdate" runat="server"
+                                        Text="Save Changes"
+                                        CssClass="button button-create"
+                                        CommandName="Update"
+                                        CausesValidation="true" />
+                                </div>
+                                </asp:Panel>
+                            </EditItemTemplate>
+                        </asp:FormView>
             </div>
-        </div>
-    </div>
 
+            <div class="tab-container" id="company">
+                <h3>Company Details</h3>
     
-    <div class="div50 div-last">
-        
-    
-    
-    <div class="box">
-        <h3>Company Details</h3>
-    
-        <div class="boxcontent">
+                <asp:FormView ID="fvCompanyDetails" runat="server"
+                    RenderOuterTable="false"
+                    DefaultMode="Edit"
+                    DataSourceID="userProfileCompanyDataSource">
+                    <EditItemTemplate>
+                        <div class="row">
+                            <asp:Label ID="lblCompany" runat="server"
+                                Text="Company Name"
+                                CssClass="label"
+                                AssociatedControlID="rtbCompany" />
 
-        <asp:FormView ID="fvCompanyDetails" runat="server"
-            RenderOuterTable="false"
-            DefaultMode="Edit"
-            DataSourceID="userProfileCompanyDataSource">
-            <EditItemTemplate>
-                <div class="row">
-                    <asp:Label ID="lblCompany" runat="server"
-                        Text="Company Name"
-                        CssClass="label"
-                        AssociatedControlID="rtbCompany" />
-
-                    <telerik:RadTextBox ID="rtbCompany" runat="server"
-                        Text='<%#Bind("company") %>'
-                        EmptyMessage="Company Name" />
-                </div>
+                            <telerik:RadTextBox ID="rtbCompany" runat="server"
+                                Text='<%#Bind("company") %>'
+                                EmptyMessage="Company Name" />
+                        </div>
                 
-                <div class="row">
-                    <asp:Label ID="lblLabelVATNumber" runat="server"
-                        Text="VAT Number" CssClass="label" AssociatedControlID="rtbVATNumber" />
+                        <div class="row">
+                            <asp:Label ID="lblLabelVATNumber" runat="server"
+                                Text="VAT Number" CssClass="label" AssociatedControlID="rtbVATNumber" />
                         
-                    <telerik:RadTextBox
-                        ID="rtbVATNumber"
-                        runat="server"
-                        Text='<%#Bind("vatNumber") %>'
-                        EmptyMessage="VAT Number" />
-                </div>
+                            <telerik:RadTextBox
+                                ID="rtbVATNumber"
+                                runat="server"
+                                Text='<%#Bind("vatNumber") %>'
+                                EmptyMessage="VAT Number" />
+                        </div>
                 
-                <div class="row">
-                    <asp:Label ID="lblVAT" runat="server"
-                        Text="VAT Rate"
-                        CssClass="label"
-                        AssociatedControlID="rntbVAT" />
+                        <div class="row">
+                            <asp:Label ID="lblVAT" runat="server"
+                                Text="VAT Rate"
+                                CssClass="label"
+                                AssociatedControlID="rntbVAT" />
                         
-                    <telerik:RadNumericTextBox ID="rntbVAT" runat="server"
-                        Value='<%#Bind("vat") %>' Width="55px"
-                        NumberFormat-DecimalDigits="2"
-                        Type="Percent" />
-                </div>
+                            <telerik:RadNumericTextBox ID="rntbVAT" runat="server"
+                                Value='<%#Bind("vat") %>' Width="55px"
+                                NumberFormat-DecimalDigits="2"
+                                Type="Percent" />
+                        </div>
                     
-                <div class="form-actions">
-                    <asp:Button ID="btnUpdate" runat="server"
-                        Text="Save Changes"
-                        CommandName="Update"
-                        CssClass="button button-create"
-                        CausesValidation="true" />
-                </div>
-            </EditItemTemplate>
-        </asp:FormView>
+                        <div class="form-actions">
+                            <asp:Button ID="btnUpdate" runat="server"
+                                Text="Save Changes"
+                                CommandName="Update"
+                                CssClass="button button-create"
+                                CausesValidation="true" />
+                        </div>
+                    </EditItemTemplate>
+                </asp:FormView>
 
-    
-        </div>
-    </div>
-
-    <div class="box">
-        <h3>Company Logo</h3>
+            </div>
+            
+            <div class="tab-container" id="logo">
+                <h3>Company Logo</h3>
         
-        <div class="boxcontent">
-            <asp:FormView ID="fvCompanyLogo" runat="server"
-                RenderOuterTable="false"
-                DataSourceID="updateImageDataSource">
-                <ItemTemplate>
-                <div class="row">
-                        <asp:HyperLink ID="HyperLink1" runat="server"
-                            Target="_blank"
-                            NavigateUrl='<%# "~/images/logos/" & Eval("logo") %>'>
-                            <asp:Image ID="Image1" runat="server"
-                                ImageUrl='<%# "~/showimage.aspx?w=285&img=" & Eval("logo") %>'
-                                ToolTip="Click to view the full-size Logo" />
-                        </asp:HyperLink>
-                    </div>
+                <asp:FormView ID="fvCompanyLogo" runat="server"
+                    RenderOuterTable="false"
+                    DataSourceID="updateImageDataSource">
+                    <ItemTemplate>
+                        <div class="row">
+                            <label class="label">Current Logo</label>
+                            
+                            <asp:HyperLink ID="HyperLink1" runat="server"
+                                Target="_blank"
+                                NavigateUrl='<%# "~/images/logos/" & Eval("logo") %>'>
+                                <asp:Image ID="Image1" runat="server"
+                                    ImageUrl='<%# "~/showimage.aspx?w=285&img=" & Eval("logo") %>'
+                                    ToolTip="Click to view the full-size Logo" />
+                            </asp:HyperLink>
+                        </div>
                         
-                    <asp:HiddenField ID="origImage" runat="server" Value='<%#eval("logo") %>' />
-                </ItemTemplate>
-            </asp:FormView>
+                        <asp:HiddenField ID="origImage" runat="server" Value='<%#eval("logo") %>' />
+                    </ItemTemplate>
+                </asp:FormView>
                 
-            <p>Upload new logo</p>
+                <div class="row">
+                    <label class="label">Upload new logo</label>
                     
-            <div class="row">
-                <telerik:RadUpload ID="RadUpload1" runat="server"
-                    MaxFileInputsCount="1"
-                    Width="200px"
-                    Localization-Select="browse..."
-                    ControlObjectsVisibility="None"
-                    AllowedFileExtensions=".jpg, .jpeg, .gif"
-                    MaxFileSize="1000000"
-                    TargetFolder="~/images/logos" />
-            </div>                            
+                        <telerik:RadUpload ID="RadUpload1" runat="server"
+                            MaxFileInputsCount="1"
+                            Localization-Select="browse..."
+                            ControlObjectsVisibility="None"
+                            AllowedFileExtensions=".jpg, .jpeg, .gif"
+                            MaxFileSize="1000000"
+                            TargetFolder="~/images/logos" />
+                </div>
+                                     
                 <div class="form-actions">
                     <asp:Button ID="btnUpload" runat="server" Text="Upload logo" CssClass="button button-create" />
                 </div>
             </div>
-        </div>
+            
+            <div class="tab-container" id="password">
+                <h3>Change Password</h3>
 
-        <div class="box">
-            <h3>Change Password</h3>
-
-            <div class="boxcontent">
-                <asp:ChangePassword ID="ChangePassword1" runat="server"
-                    Width="100%">
+                <asp:ChangePassword ID="ChangePassword1" runat="server" RenderOuterTable="false">
                     <ChangePasswordTemplate>
                         <asp:ValidationSummary ID="ValidationSummary2" runat="server"
                             ValidationGroup="ChangePassword1" HeaderText="The following fields are required:" />
@@ -435,48 +338,48 @@
                     />
                 </asp:ChangePassword>
             </div>
+            
+            <div class="tab-container" id="notifications">
+                <h3>Notification Settings</h3>
+            
+                <asp:FormView DefaultMode="Edit"
+                    ID="fvNotifications"
+                    runat="server"
+                    RenderOuterTable="false"
+                    DataSourceID="dsNotifications">
+                    <EditItemTemplate>
+                        <div class="row">
+                            <label for="ctl00_MainContent_fvNotifications_CheckBox1">
+                                <asp:CheckBox
+                                    ID="CheckBox1"
+                                    runat="server"
+                                    checked='<%#Bind("notifyByEmail") %>' />
+                            Receive email Notifications</label>
+                        </div>
+                    
+                        <div class="form-actions">
+                            <asp:Button
+                                ID="btnEdit"
+                                runat="server"
+                                Text="Update"
+                                CssClass="button button-create"
+                                CommandName="Update" />
+                        </div>
+                    </EditItemTemplate>
+                </asp:FormView>
+            </div>
+            
+            <div class="tab-container" id="subscription">
+                <h3>Your Subscription</h3>
+
+                <div class="row">
+                    <label class="label">Expires on</label>
+                    <asp:Literal ID="lSubscriptionDate" runat="server"></asp:Literal>
+                </div>
+            </div>       
         </div>
 
-    <div class="clear"></div>
-
-    <div class="box">
-        <h3>Notification Settings</h3>
-            
-        <div class="boxcontent">
-            <asp:FormView DefaultMode="Edit"
-                ID="fvNotifications"
-                runat="server"
-                RenderOuterTable="false"
-                DataSourceID="dsNotifications">
-                <EditItemTemplate>
-                    <div class="row">
-                        <label for="ctl00_MainContent_fvNotifications_CheckBox1">
-                            <asp:CheckBox
-                                ID="CheckBox1"
-                                runat="server"
-                                checked='<%#Bind("notifyByEmail") %>' />
-                        Receive email Notifications</label>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <asp:Button
-                            ID="btnEdit"
-                            runat="server"
-                            Text="Update"
-                            CssClass="button button-create"
-                            CommandName="Update" />
-                    </div>
-                </EditItemTemplate>
-            </asp:FormView>
-        </div>         
-    </div>
-    </div>
-
-    <div class="clear"></div>
-
-    </div>
-
-        <asp:SqlDataSource ID="dsNotifications" runat="server" 
+    <asp:SqlDataSource ID="dsNotifications" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="getUserProfileNotifications"
         SelectCommandType="StoredProcedure"
@@ -490,8 +393,6 @@
         </UpdateParameters>
     </asp:SqlDataSource>   
 
-
-    
     <asp:SqlDataSource ID="userProfileDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="getUserProfile" SelectCommandType="StoredProcedure"
@@ -503,20 +404,6 @@
             <asp:SessionParameter Name="userId" SessionField="userId" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    
-    
-    <asp:SqlDataSource ID="userProfileAddressDataSource" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getUserProfileAddress" SelectCommandType="StoredProcedure"
-        UpdateCommand="updateUserProfileAddress" UpdateCommandType="StoredProcedure">
-        <SelectParameters>
-            <asp:SessionParameter Name="userId" SessionField="userId" />
-        </SelectParameters>
-        <UpdateParameters>
-            <asp:SessionParameter Name="userId" SessionField="userId" />
-        </UpdateParameters>
-    </asp:SqlDataSource>
-    
     
     <asp:SqlDataSource ID="userProfileCompanyDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
@@ -530,21 +417,6 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     
-    
-    <asp:SqlDataSource
-        ID="titleDataSource"
-        runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getUserTitle"
-        SelectCommandType="StoredProcedure" />
-
-    <asp:SqlDataSource
-        ID="countryDataSource"
-        runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getCountries"
-        SelectCommandType="StoredProcedure" />
-
     <asp:SqlDataSource
         ID="businessTypeDataSource"
         runat="server"
@@ -568,7 +440,6 @@
             <asp:Parameter Name="image" DefaultValue="" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    
         
     <asp:SqlDataSource ID="subscriptionTypeDataSource"
         runat="server" 
@@ -576,7 +447,4 @@
         SelectCommand="getUserSubscriptionTypes"
         SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
-
-
 </asp:Content>
-

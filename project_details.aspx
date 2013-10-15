@@ -36,12 +36,14 @@
 
 <script type="text/javascript">
     function checkVariationMode(item) {
-        var currentStatus = $("#ctl00_MainContent_FormView1_hiddenStatusId").val()
+        var currentStatus = $("#ctl00_MainContent_FormView1_hiddenStatusId").val();
         var newStatus = item._value;
         if (currentStatus <= 2 && newStatus >= 3) {
             showVariationMode();
+            console.log('show variation mode');
         } else {
             hideVariationMode();
+            console.log('hide variation mode');
         }
     }
 </script>
@@ -85,6 +87,20 @@
                      <telerik:AjaxUpdatedControl ControlID="fvElementDetailsInsert" />
                      <telerik:AjaxUpdatedControl ControlID="rgBuildElements" />
                      <telerik:AjaxUpdatedControl ControlID="addBuildElementLink" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnUnarchive">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="btnArchive" />
+                     <telerik:AjaxUpdatedControl ControlID="btnUnarchive" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnArchive">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="btnArchive" />
+                     <telerik:AjaxUpdatedControl ControlID="btnUnarchive" />
+                     <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -255,19 +271,19 @@
                     runat="server"
                     Text="Preview"
                     CssClass="button" />
-                    
-                <asp:Button
-                    ID="btnExportToPDF"
-                    runat="server"
-                    Text="Download as PDF"
-                    CssClass="button button-create" />
-                    
+                
                 <asp:Button
                     ID="btnExportToXLS"
                     runat="server"
                     Text="Download as Excel"
                     CssClass="button button-secondary" />
                     
+                <asp:Button
+                    ID="btnExportToPDF"
+                    runat="server"
+                    Text="Download as PDF"
+                    CssClass="button button-create" />
+                
                 <asp:Button
                     ID="btnEmailToCustomer"
                     Visible="false"
@@ -439,6 +455,14 @@
             </li>
             <li>
                 <a href="#" class="js-open-modal button" data-target="projectLogs">View Project Logs</a>
+            </li>
+            <li>
+                <asp:Button ID="btnArchive" runat="server"
+                    CssClass="button button-error" Text="Archive this Project" />
+            </li>
+            <li>
+                <asp:Button ID="btnUnarchive" runat="server"
+                    CssClass="button button-primary" Text="Unarchive this Project" />
             </li>
         </ul>
         <ul class="breadcrumb-list">
@@ -746,7 +770,7 @@
                                     Text="Description" />
                         
                                 <telerik:RadTextBox ID="rtbDescription" runat="server" Text='<%# Bind("description") %>'
-                                    EmptyMessage="Description" TextMode="MultiLine" Columns="60" Rows="3" Width="400" />
+                                    EmptyMessage="Description" TextMode="MultiLine" Columns="60" Rows="4" Width="400" />
                             </div>
 
                             <div class="row">
@@ -1086,7 +1110,7 @@
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getProjectDetails" SelectCommandType="StoredProcedure"
+        SelectCommand="Project_Select" SelectCommandType="StoredProcedure"
         UpdateCommand="updateProjectDetails" UpdateCommandType="StoredProcedure">
         <SelectParameters>
             <asp:SessionParameter Name="UserId" SessionField="UserId" />

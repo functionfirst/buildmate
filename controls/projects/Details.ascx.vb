@@ -20,17 +20,17 @@ Partial Class controls_projects_details
         Dim pDetails As Panel = DirectCast(Me.NamingContainer.FindControl("pDetails"), Panel)
         pDetails.CssClass = "project-tab"
 
-        GoToPageView("Customer")
+        GoToPageView("rpvCustomer")
     End Sub
 
     Private Sub GoToPageView(ByVal pageViewId As String)
         Dim multiPage As RadMultiPage = DirectCast(Me.NamingContainer.FindControl("rmpProject"), RadMultiPage)
         Dim templatePageView As RadPageView = multiPage.FindPageViewByID(pageViewId)
-        If templatePageView Is Nothing Then
-            templatePageView = New RadPageView()
-            templatePageView.ID = pageViewId
-            multiPage.PageViews.Add(templatePageView)
-        End If
+        'If templatePageView Is Nothing Then
+        '    templatePageView = New RadPageView()
+        '    templatePageView.ID = pageViewId
+        '    multiPage.PageViews.Add(templatePageView)
+        'End If
         templatePageView.Selected = True
     End Sub
 
