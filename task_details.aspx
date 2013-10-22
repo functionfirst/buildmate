@@ -54,7 +54,7 @@
             <telerik:AjaxSetting AjaxControlId="fvTaskAdjustments">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvTaskTotals" />
-                     <telerik:AjaxUpdatedControl ControlID="pAddResources" />
+                     <telerik:AjaxUpdatedControl ControlID="pCurrentResources" />
                      <telerik:AjaxUpdatedControl ControlID="pRequiresTaskQty" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
