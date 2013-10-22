@@ -46,13 +46,6 @@ Partial Class manager_Default
         rgSuppliers.DataBind()
     End Sub
 
-    Protected Sub defaultCountry(ByVal sender As Object, ByVal e As System.EventArgs)
-        ' default country to UK
-        ' ?? possible to change this to default based on browser location
-        Dim rcbCountry As RadComboBox = CType(sender, RadComboBox)
-        rcbCountry.SelectedValue = 183
-    End Sub
-
     Protected Sub rgSuppliers_ItemDataBound(sender As Object, e As Telerik.Web.UI.GridItemEventArgs) Handles rgSuppliers.ItemDataBound
         ' hide delete option for build elements that were created before variation mode
         If (TypeOf (e.Item) Is GridDataItem) Then
@@ -136,6 +129,6 @@ Partial Class manager_Default
     End Sub
 
     Protected Sub fvSupplierInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvSupplierInsert.ItemInserted
-
+        rgSuppliers.DataBind()
     End Sub
 End Class

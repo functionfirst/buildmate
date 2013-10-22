@@ -29,6 +29,7 @@
             <telerik:AjaxSetting AjaxControlId="fvSupplierInsert">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="fvSupplierInsert" />
+                     <telerik:AjaxUpdatedControl ControlID="rgSuppliers" />
                      <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
