@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Common/Manager.master" AutoEventWireup="false" validateRequest="false"
     CodeFile="project_details.aspx.vb" Inherits="manager_Default" Title="Project Details - BuildMate" %>
 
-<%@ Register Assembly="Telerik.ReportViewer.WebForms, Version=5.3.11.1116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be"
+<%@ Register Assembly="Telerik.ReportViewer.WebForms, Version=6.2.12.1017, Culture=neutral, PublicKeyToken=a9d7983dfcc261be"
     Namespace="Telerik.ReportViewer.WebForms" TagPrefix="telerik" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>

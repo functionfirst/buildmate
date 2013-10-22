@@ -465,15 +465,14 @@ Partial Class manager_Default
                 Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
                 reportParameters("pid").Value = projectId
                 reportParameters("resourceTypeId").Value = rblResourceType.SelectedValue
-                renderAsFile(reportToExport, reportParameters, reportFormat)
+                renderAsFile(reportToExport, reportFormat)
             Case 2
                 ' Acceptance Form
                 Dim reportToExport As PyramidReports.AcceptanceForm = New PyramidReports.AcceptanceForm
 
                 Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
                 reportParameters("pid").Value = projectId
-
-                renderAsFile(reportToExport, reportParameters, reportFormat)
+                renderAsFile(reportToExport, reportFormat)
             Case 3
                 ' check if the current project should include VAT
                 Dim incVat As Boolean = getIncludeVAT(projectId)
@@ -487,7 +486,7 @@ Partial Class manager_Default
                         reportParameters("pid").Value = projectId
                         reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
 
-                        renderAsFile(reportToExport, reportParameters, reportFormat)
+                        renderAsFile(reportToExport, reportFormat)
                     Else
                         ' show excluding VAT
                         Dim reportToExport As PyramidReports.NewCompanyExcVAT = New PyramidReports.NewCompanyExcVAT
@@ -495,7 +494,7 @@ Partial Class manager_Default
                         reportParameters("pid").Value = projectId
                         reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
 
-                        renderAsFile(reportToExport, reportParameters, reportFormat)
+                        renderAsFile(reportToExport, reportFormat)
                     End If
                 Else
                     If incVat Then
@@ -504,14 +503,14 @@ Partial Class manager_Default
                         reportParameters("pid").Value = projectId
                         reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
 
-                        renderAsFile(reportToExport, reportParameters, reportFormat)
+                        renderAsFile(reportToExport, reportFormat)
                     Else
                         Dim reportToExport As PyramidReports.NewSoletraderExcVAT = New PyramidReports.NewSoletraderExcVAT
                         Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
                         reportParameters("pid").Value = projectId
                         reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
 
-                        renderAsFile(reportToExport, reportParameters, reportFormat)
+                        renderAsFile(reportToExport, reportFormat)
 
                     End If
                 End If
@@ -527,12 +526,17 @@ Partial Class manager_Default
         End Select
     End Sub
 
-    Sub renderAsFile(reportToExport As Telerik.Reporting.ReportObject, ByVal reportParameters As Telerik.Reporting.ReportParameterCollection, ByVal reportFormat As String)
+    Sub renderAsFile(reportToExport As Telerik.Reporting.Report, ByVal reportFormat As String)
         ' create report
-        Dim reportProcessor As New ReportProcessor()
-        Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, reportToExport, Nothing)
-        Dim fileName As String = projectName + " " + rcbReportType.SelectedItem.Text + "." + reportFormat
+        'Dim reportProcessor As New ReportProcessor()
+        'Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, reportToExport, Nothing)
 
+        Dim reportProcessor As New ReportProcessor()
+        Dim instanceReportSource As New Telerik.Reporting.InstanceReportSource()
+        instanceReportSource.ReportDocument = reportToExport
+        Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, instanceReportSource, Nothing)
+
+        Dim fileName As String = projectName + " " + rcbReportType.SelectedItem.Text + "." + reportFormat
         Response.Clear()
         Response.ContentType = result.MimeType
         Response.Cache.SetCacheability(HttpCacheability.Private)
