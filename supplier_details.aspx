@@ -115,9 +115,5 @@
             <asp:QueryStringParameter Name="SupplierId" QueryStringField="id" />
         </SelectParameters>
     </asp:SqlDataSource>
-    
-    <asp:SqlDataSource ID="countryDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="getCountries" />
 </asp:Content>
 
