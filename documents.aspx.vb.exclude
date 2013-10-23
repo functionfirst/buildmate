@@ -69,7 +69,7 @@ Partial Class manager_report
         ReportViewer1.Visible = True
     End Sub
 
-    Sub renderAsFile(reportToExport As Telerik.Reporting.ReportObject, ByVal reportParameters As Telerik.Reporting.ReportParameterCollection, ByVal reportFormat As String)
+    Sub renderAsFile(reportToExport As Telerik.Reporting.Report, ByVal reportParameters As Telerik.Reporting.ReportParameterCollection, ByVal reportFormat As String)
         ' create report
         Dim reportProcessor As New ReportProcessor()
         Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, reportToExport, Nothing)

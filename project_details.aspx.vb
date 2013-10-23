@@ -3,6 +3,7 @@ Imports Telerik.Web.UI
 Imports System.Data.SqlClient
 Imports System.Data
 Imports Telerik.Reporting.Processing
+Imports System.IO
 
 Partial Class manager_Default
     Inherits MyBaseClass
@@ -355,63 +356,6 @@ Partial Class manager_Default
         toggleButtons()
     End Sub
 
-    'Protected Sub btnPreview_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnPreview.Click
-    '    loadReport()
-    'End Sub
-
-    'Protected Sub loadReport()
-    '    Dim projectId = Request.QueryString("pid")
-
-    '    Select Case rcbReportType.SelectedValue
-    '        Case 1
-    '            ' Resource break-down
-    '            ReportViewer1.Report = New SupplierResources
-    '            Dim report1 As Telerik.Reporting.Report = ReportViewer1.Report
-    '            report1.ReportParameters("pid").Value = projectId
-    '            report1.ReportParameters("resourceTypeId").Value = rblResourceType.SelectedValue
-    '        Case 2
-    '            ' Acceptance Form
-    '            ReportViewer1.Report = New AcceptanceForm
-    '            Dim report1 As Telerik.Reporting.Report = ReportViewer1.Report
-    '            report1.ReportParameters("pid").Value = projectId
-    '        Case 3
-    '            ' check if the current project should include VAT
-    '            Dim incVat As Boolean = getIncludeVAT(projectId)
-
-    '            If IsNumeric(Session("vatnumber")) Then
-    '                If incVat Then
-    '                    ' Company inc VAT
-    '                    ReportViewer1.Report = New NewCompanyIncVAT
-    '                    Dim report1 As Telerik.Reporting.Report = ReportViewer1.Report
-    '                    report1.ReportParameters("pid").Value = projectId
-    '                    report1.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-    '                Else
-    '                    ' Company exc VAT
-    '                    ReportViewer1.Report = New NewCompanyExcVAT
-    '                    Dim report1 As Telerik.Reporting.Report = ReportViewer1.Report
-    '                    report1.ReportParameters("pid").Value = projectId
-    '                    report1.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-    '                End If
-    '            Else
-    '                If incVat Then
-    '                    ' Soletrader including VAT
-    '                    ReportViewer1.Report = New NewSoletraderIncVAT
-    '                    Dim report1 As Telerik.Reporting.Report = ReportViewer1.Report
-    '                    report1.ReportParameters("pid").Value = projectId
-    '                    report1.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-    '                Else
-    '                    ' Company excluding VAT
-    '                    ReportViewer1.Report = New NewSoletraderExcVAT
-    '                    Dim report1 As Telerik.Reporting.Report = ReportViewer1.Report
-    '                    report1.ReportParameters("pid").Value = projectId
-    '                    report1.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-    '                End If
-    '            End If
-    '    End Select
-
-    '    ReportViewer1.Visible = True
-    'End Sub
-
     Protected Function getIncludeVAT(ByVal projectId As Integer) As Boolean
         Dim sqlSelectCommand As String = "Select incVAT FROM Project WHERE id=@projectId"
         Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
@@ -461,17 +405,13 @@ Partial Class manager_Default
             Case 1
                 ' Resource break-down
                 Dim reportToExport As PyramidReports.SupplierResources = New PyramidReports.SupplierResources
-
-                Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                reportParameters("pid").Value = projectId
-                reportParameters("resourceTypeId").Value = rblResourceType.SelectedValue
+                reportToExport.ReportParameters("pid").Value = projectId
+                reportToExport.ReportParameters("resourceTypeId").Value = rblResourceType.SelectedValue
                 renderAsFile(reportToExport, reportFormat)
             Case 2
                 ' Acceptance Form
-                Dim reportToExport As PyramidReports.AcceptanceForm = New PyramidReports.AcceptanceForm
-
-                Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                reportParameters("pid").Value = projectId
+                Dim reportToExport As New PyramidReports.AcceptanceForm
+                reportToExport.ReportParameters("pid").Value = projectId
                 renderAsFile(reportToExport, reportFormat)
             Case 3
                 ' check if the current project should include VAT
@@ -482,61 +422,41 @@ Partial Class manager_Default
                     If incVat Then
                         ' show including VAT
                         Dim reportToExport As PyramidReports.NewCompanyIncVAT = New PyramidReports.NewCompanyIncVAT
-                        Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                        reportParameters("pid").Value = projectId
-                        reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-
+                        reportToExport.ReportParameters("pid").Value = projectId
+                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
                         renderAsFile(reportToExport, reportFormat)
                     Else
                         ' show excluding VAT
                         Dim reportToExport As PyramidReports.NewCompanyExcVAT = New PyramidReports.NewCompanyExcVAT
-                        Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                        reportParameters("pid").Value = projectId
-                        reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-
+                        reportToExport.ReportParameters("pid").Value = projectId
+                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
                         renderAsFile(reportToExport, reportFormat)
                     End If
                 Else
                     If incVat Then
                         Dim reportToExport As PyramidReports.NewSoletraderIncVAT = New PyramidReports.NewSoletraderIncVAT
-                        Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                        reportParameters("pid").Value = projectId
-                        reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-
+                        reportToExport.reportParameters("pid").Value = projectId
+                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
                         renderAsFile(reportToExport, reportFormat)
                     Else
                         Dim reportToExport As PyramidReports.NewSoletraderExcVAT = New PyramidReports.NewSoletraderExcVAT
-                        Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                        reportParameters("pid").Value = projectId
-                        reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-
+                        reportToExport.ReportParameters("pid").Value = projectId
+                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
                         renderAsFile(reportToExport, reportFormat)
 
                     End If
                 End If
-                'Case 4
-                '    ' New Company inc VAT
-                '    Dim reportToExport As PyramidReports.NewCompanyIncVAT = New PyramidReports.NewCompanyIncVAT
-
-                '    Dim reportParameters As Telerik.Reporting.ReportParameterCollection = reportToExport.ReportParameters
-                '    reportParameters("pid").Value = rcbProject.SelectedValue
-                '    reportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-
-                '    renderAsFile(reportToExport, reportParameters, reportFormat)
         End Select
     End Sub
 
     Sub renderAsFile(reportToExport As Telerik.Reporting.Report, ByVal reportFormat As String)
         ' create report
-        'Dim reportProcessor As New ReportProcessor()
-        'Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, reportToExport, Nothing)
-
         Dim reportProcessor As New ReportProcessor()
         Dim instanceReportSource As New Telerik.Reporting.InstanceReportSource()
         instanceReportSource.ReportDocument = reportToExport
         Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, instanceReportSource, Nothing)
 
-        Dim fileName As String = projectName + " " + rcbReportType.SelectedItem.Text + "." + reportFormat
+        Dim fileName As String = "D:\wwwroot\pyramidestimator\" + projectName + " " + rcbReportType.SelectedItem.Text + "." + reportFormat
         Response.Clear()
         Response.ContentType = result.MimeType
         Response.Cache.SetCacheability(HttpCacheability.Private)

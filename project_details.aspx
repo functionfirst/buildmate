@@ -225,6 +225,7 @@
 
                     <asp:RadioButtonList
                         ID="rblTermsOfUse"
+                        AutoPostBack="true"
                         runat="server">
                         <asp:ListItem Text="None" Value="0" Selected="true" />
                         <asp:ListItem Text="Small Print" Value="1" />
@@ -242,6 +243,7 @@
 
                     <asp:RadioButtonList
                         ID="rblResourceType"
+                        AutoPostBack="true"
                         runat="server">
                         <asp:ListItem Value="1" Text="Labour" Selected="True" />
                         <asp:ListItem Value="2" Text="Material" />
