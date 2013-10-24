@@ -9,7 +9,6 @@ Partial Class manager_Default
     Inherits MyBaseClass
 
     Dim isEditable As String
-    Dim projectName As String
 
     Protected Sub logChange(ByVal sender As Object, ByVal e As System.EventArgs)
         ' log change made to the project status
@@ -100,12 +99,6 @@ Partial Class manager_Default
         End If
     End Sub
 
-    Protected Sub setProjectName()
-        ' Get the projectName to use as the file name when downloading documents
-        Dim rowView As DataRowView = CType(FormView1.DataItem, DataRowView)
-        projectName = rowView("projectName").ToString()
-    End Sub
-
     Protected Sub archiveProject(ByVal archived As Boolean)
         Dim projectId = CType(Request.QueryString("pid"), Integer)
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
@@ -143,9 +136,6 @@ Partial Class manager_Default
     End Sub
 
     Protected Sub FormView1_DataBound(sender As Object, e As System.EventArgs) Handles FormView1.DataBound
-        ' Get the project name so 
-        setProjectName()
-
         ' hide appropriate archive button
         Dim archived As Boolean = DirectCast(FormView1.DataItem, DataRowView)("archived")
         toggleArchiveButtons(archived)
@@ -207,10 +197,6 @@ Partial Class manager_Default
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlProjects"), HyperLink)
         activeLink.CssClass = "active"
-
-        Dim ScriptManager1 As ScriptManager = Page.Master.FindControl("ScriptManager1")
-        ScriptManager1.RegisterPostBackControl(btnExportToPDF)
-        ScriptManager1.RegisterPostBackControl(btnExportToXLS)
 
         checkForProjectCopy()
     End Sub
@@ -290,34 +276,6 @@ Partial Class manager_Default
         FormView1.DataBind()
     End Sub
 
-    'Protected Sub lbRefreshResources_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbRefreshResources.Click
-    '    ' resynchronise prices and useage for all resources
-    '    Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-    '    Dim sql As String = "modifyResourceStack"
-
-    '    Using conn As New SqlConnection(connString)
-    '        Dim cmd As New SqlCommand(sql, conn)
-    '        cmd.CommandType = Data.CommandType.StoredProcedure
-    '        cmd.Parameters.AddWithValue("@userId", Session("userId"))
-    '        cmd.Parameters.AddWithValue("@projectId", Request("pid"))
-    '        cmd.Parameters.AddWithValue("@rid", "")
-    '        cmd.Parameters.AddWithValue("@isEditable", isEditable)
-    '        Try
-    '            conn.Open()
-    '            cmd.ExecuteScalar()
-
-    '            'rgBuildElements.DataBind()
-    '            'fvProjectCosts.DataBind()
-    '        Catch ex As Exception
-    '            Trace.Write(ex.Message)
-    '        End Try
-    '    End Using
-    'End Sub
-
-    'Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-    '    isEditable = CType(FormView1.FindControl("hfIsEditable"), HiddenField).Value
-    'End Sub
-
     Protected Sub Page_LoadComplete(sender As Object, e As System.EventArgs) Handles Me.LoadComplete
         ' check for an action in the url
         If Request.QueryString("action") = "add_variation" Then
@@ -338,55 +296,30 @@ Partial Class manager_Default
     End Sub
 
     Protected Sub rcbReportType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles rcbReportType.SelectedIndexChanged
-        ' only show resource type for resource break-down
-        Select Case rcbReportType.SelectedValue
-            Case 1
-                ' resource break-down
-                pResourceType.Visible = True
-            Case 2, 3, 4
-                ' acceptance form OR company with no VAT OR Inc. VAT OR Exc. VAT
-                pResourceType.Visible = False
-        End Select
-
         toggleButtons()
     End Sub
 
     Protected Sub rblResourceType_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles rblResourceType.SelectedIndexChanged
-        'ReportViewer1.Visible = False
         toggleButtons()
     End Sub
 
-    Protected Function getIncludeVAT(ByVal projectId As Integer) As Boolean
-        Dim sqlSelectCommand As String = "Select incVAT FROM Project WHERE id=@projectId"
-        Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
-        adapter.SelectCommand.Parameters.AddWithValue("@projectId", projectId)
-        Dim dataTable As New DataTable
-        adapter.Fill(dataTable)
-
-        ' check item exists
-        If dataTable.Rows.Count >= 1 Then
-            Return Convert.ToBoolean(dataTable.Rows.Item(0)("incVat").ToString)
-        End If
-
-        Return False
-    End Function
-
     Protected Sub toggleButtons()
-        'btnPreview.Enabled = True
-        btnExportToXLS.Enabled = True
-        btnExportToPDF.Enabled = True
-        btnEmailToCustomer.Enabled = True
-
         Select Case rcbReportType.SelectedValue
             Case 1
+                ' resource break-down
+                pTermsOfUse.Visible = False
+                pResourceType.Visible = True
                 btnExportToXLS.Visible = True
-                pTermsOfUse.Visible = False
             Case 2
-                btnExportToXLS.Visible = False
+                ' resource break-down
                 pTermsOfUse.Visible = False
-            Case 3
+                pResourceType.Visible = False
                 btnExportToXLS.Visible = False
+            Case 3
+                ' acceptance form OR company with no VAT OR Inc. VAT OR Exc. VAT
                 pTermsOfUse.Visible = True
+                pResourceType.Visible = False
+                btnExportToXLS.Visible = False
         End Select
     End Sub
 
@@ -399,71 +332,20 @@ Partial Class manager_Default
     End Sub
 
     Sub ExportToFile(ByVal reportFormat As String)
-        Dim projectId = Request.QueryString("pid")
+        Dim projectId As String = Request.QueryString("pid")
+        Dim reportTypeId As String = rcbReportType.SelectedValue
+        Dim reportTypeName As String = rcbReportType.SelectedItem.Text
+        Dim resourceTypeId As String = rblResourceType.SelectedValue
+        Dim termsId As String = rblTermsOfUse.SelectedValue
 
-        Select Case rcbReportType.SelectedValue
-            Case 1
-                ' Resource break-down
-                Dim reportToExport As PyramidReports.SupplierResources = New PyramidReports.SupplierResources
-                reportToExport.ReportParameters("pid").Value = projectId
-                reportToExport.ReportParameters("resourceTypeId").Value = rblResourceType.SelectedValue
-                renderAsFile(reportToExport, reportFormat)
-            Case 2
-                ' Acceptance Form
-                Dim reportToExport As New PyramidReports.AcceptanceForm
-                reportToExport.ReportParameters("pid").Value = projectId
-                renderAsFile(reportToExport, reportFormat)
-            Case 3
-                ' check if the current project should include VAT
-                Dim incVat As Boolean = getIncludeVAT(projectId)
+        Dim url As String = String.Format("document.aspx?pid={0}&type={1}&typeName={2}&resource={3}&format={4}&terms={5}",
+                                          projectId,
+                                          reportTypeId,
+                                          reportTypeName,
+                                          resourceTypeId,
+                                          reportFormat,
+                                          termsId)
 
-                ' offer letter
-                If IsNumeric(Session("vatnumber")) Then
-                    If incVat Then
-                        ' show including VAT
-                        Dim reportToExport As PyramidReports.NewCompanyIncVAT = New PyramidReports.NewCompanyIncVAT
-                        reportToExport.ReportParameters("pid").Value = projectId
-                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-                        renderAsFile(reportToExport, reportFormat)
-                    Else
-                        ' show excluding VAT
-                        Dim reportToExport As PyramidReports.NewCompanyExcVAT = New PyramidReports.NewCompanyExcVAT
-                        reportToExport.ReportParameters("pid").Value = projectId
-                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-                        renderAsFile(reportToExport, reportFormat)
-                    End If
-                Else
-                    If incVat Then
-                        Dim reportToExport As PyramidReports.NewSoletraderIncVAT = New PyramidReports.NewSoletraderIncVAT
-                        reportToExport.reportParameters("pid").Value = projectId
-                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-                        renderAsFile(reportToExport, reportFormat)
-                    Else
-                        Dim reportToExport As PyramidReports.NewSoletraderExcVAT = New PyramidReports.NewSoletraderExcVAT
-                        reportToExport.ReportParameters("pid").Value = projectId
-                        reportToExport.ReportParameters("TermsOfUse").Value = rblTermsOfUse.SelectedValue
-                        renderAsFile(reportToExport, reportFormat)
-
-                    End If
-                End If
-        End Select
-    End Sub
-
-    Sub renderAsFile(reportToExport As Telerik.Reporting.Report, ByVal reportFormat As String)
-        ' create report
-        Dim reportProcessor As New ReportProcessor()
-        Dim instanceReportSource As New Telerik.Reporting.InstanceReportSource()
-        instanceReportSource.ReportDocument = reportToExport
-        Dim result As RenderingResult = reportProcessor.RenderReport(reportFormat, instanceReportSource, Nothing)
-
-        Dim fileName As String = "D:\wwwroot\pyramidestimator\" + projectName + " " + rcbReportType.SelectedItem.Text + "." + reportFormat
-        Response.Clear()
-        Response.ContentType = result.MimeType
-        Response.Cache.SetCacheability(HttpCacheability.Private)
-        Response.Expires = -1
-        Response.Buffer = True
-        Response.AddHeader("Content-Disposition", String.Format("{0};FileName=""{1}""", "attachment", fileName))
-        Response.BinaryWrite(result.DocumentBytes)
-        Response.End()
+        document.Attributes.Add("src", url)
     End Sub
 End Class

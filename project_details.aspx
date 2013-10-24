@@ -1,9 +1,6 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/Common/Manager.master" AutoEventWireup="false" validateRequest="false"
     CodeFile="project_details.aspx.vb" Inherits="manager_Default" Title="Project Details - BuildMate" %>
 
-<%@ Register Assembly="Telerik.ReportViewer.WebForms, Version=6.2.12.1017, Culture=neutral, PublicKeyToken=a9d7983dfcc261be"
-    Namespace="Telerik.ReportViewer.WebForms" TagPrefix="telerik" %>
-
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" runat="Server">
@@ -69,7 +66,17 @@
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="pDocuments">
                 <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="pDocuments" />
+                    <telerik:AjaxUpdatedControl ControlID="pDocuments" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnExportToXLS">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="document" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnExportToPDF">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="document" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="rgBuildElements">
@@ -198,6 +205,8 @@
         <div class="md-content">
             <h3>Create a Document...</h3>
 
+            <iframe id="document" width="1px" height="1px" runat="server"></iframe>
+
         <asp:Panel ID="pDocuments" runat="server">
              <div class="md-details">
                 <div class="row">
@@ -225,7 +234,6 @@
 
                     <asp:RadioButtonList
                         ID="rblTermsOfUse"
-                        AutoPostBack="true"
                         runat="server">
                         <asp:ListItem Text="None" Value="0" Selected="true" />
                         <asp:ListItem Text="Small Print" Value="1" />
@@ -243,56 +251,27 @@
 
                     <asp:RadioButtonList
                         ID="rblResourceType"
-                        AutoPostBack="true"
                         runat="server">
                         <asp:ListItem Value="1" Text="Labour" Selected="True" />
                         <asp:ListItem Value="2" Text="Material" />
                         <asp:ListItem Value="3" Text="Plant" />
                     </asp:RadioButtonList>
                 </asp:panel>
-                
-                <telerik:ReportViewer ID="ReportViewer1" runat="server"
-                    Visible="false"
-                    Width="100%"
-                    Height="500px"
-                    ZoomPercent="150"
-                    ShowHistoryButtons="false"
-                    ShowZoomSelect="false"
-                    ShowPrintPreviewButton="true"
-                    ShowExportGroup="false"
-                    ShowPrintButton="false"
-                    ShowRefreshButton="false"
-                    ShowParametersButton="false" />
-              
             </div>
 
             <div class="md-footer">
-                <asp:Button
-                    ID="btnPreview"
-                    Visible="false"
-                    runat="server"
-                    Text="Preview"
-                    CssClass="button" />
-                
                 <asp:Button
                     ID="btnExportToXLS"
                     runat="server"
                     Text="Download as Excel"
                     CssClass="button button-secondary" />
-                    
+
                 <asp:Button
                     ID="btnExportToPDF"
                     runat="server"
                     Text="Download as PDF"
                     CssClass="button button-create" />
                 
-                <asp:Button
-                    ID="btnEmailToCustomer"
-                    Visible="false"
-                    runat="server"
-                    Text="Email to customer"
-                    CssClass="button" />
-
                 <a href="#" class="md-close button">Close</a>
             </div>
         </asp:Panel>
