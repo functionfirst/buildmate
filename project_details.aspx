@@ -37,10 +37,8 @@
         var newStatus = item._value;
         if (currentStatus <= 2 && newStatus >= 3) {
             showVariationMode();
-            console.log('show variation mode');
         } else {
             hideVariationMode();
-            console.log('hide variation mode');
         }
     }
 </script>
@@ -205,9 +203,8 @@
         <div class="md-content">
             <h3>Create a Document...</h3>
 
-            <iframe id="document" width="1px" height="1px" runat="server"></iframe>
-
         <asp:Panel ID="pDocuments" runat="server">
+            <iframe id="document" width="1px" height="1px" runat="server"></iframe>
              <div class="md-details">
                 <div class="row">
                     <asp:Label
