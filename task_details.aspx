@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Task Details - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="task_details.aspx.vb" Inherits="manager_task_details" %>
+﻿b<%@ Page Title="Task Details - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="task_details.aspx.vb" Inherits="manager_task_details" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <%@ Register Src="~/controls/myCheckBox.ascx" TagName="myCheckbox" TagPrefix="myChk" %>
@@ -605,6 +605,10 @@
             </li>
         </ul>
         <ul class="breadcrumb-list">
+            <li>
+                <a href="projects.aspx">Projects</a>
+                <span class="divider">/</span>
+            </li>
             <li>
                 <asp:HyperLink ID="hlBack" runat="server"
                     NavigateUrl="project_details.aspx?pid={0}"

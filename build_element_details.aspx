@@ -47,6 +47,10 @@
         </ul>
         <ul class="breadcrumb-list">
             <li>
+                <a href="projects.aspx">Projects</a>
+                <span class="divider">/</span>
+            </li>
+            <li>
                 <asp:HyperLink ID="hlBack" runat="server"
                     NavigateUrl="project_details.aspx?pid={0}"
                     Text="Project Details" />

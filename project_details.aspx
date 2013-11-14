@@ -444,6 +444,10 @@
             </li>
         </ul>
         <ul class="breadcrumb-list">
+            <li>
+                <a href="projects.aspx">Projects</a>
+                <span class="divider">/</span>
+            </li>
             <li class="active">
                 Project Details
             </li>
