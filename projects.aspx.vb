@@ -133,6 +133,17 @@ Partial Class manager_Default
         activeLink.CssClass = "active"
 
         checkIntroStatus()
+
+        filterByStatus()
+    End Sub
+
+    Protected Sub filterByStatus()
+        Dim status = Request.QueryString("status")
+
+        If (IsNumeric(status)) Then
+            rcbStatus.SelectedValue = status
+            applyFilters()
+        End If
     End Sub
 
     Protected Sub checkIntroStatus()

@@ -171,11 +171,13 @@
                     <HeaderStyle Width="20px"></HeaderStyle>
                     </ExpandCollapseColumn>
                         <Columns>
-                            <telerik:GridBoundColumn 
-                                DataField="status"
-                                HeaderText="Status" 
-                                SortExpression="status"
-                                UniqueName="status" />
+                            <telerik:GridTemplateColumn HeaderText="Status" SortExpression="status" UniqueName="status">
+                                <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server"
+                                    NavigateUrl='<%# "~/projects.aspx?status=" & Eval("projectStatusId") %>'
+                                    Text='<%#Bind("status") %>' />
+                                </ItemTemplate>
+                            </telerik:GridTemplateColumn>
 
                             <telerik:GridBoundColumn
                                 DataField="totalCount"
