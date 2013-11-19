@@ -15,7 +15,7 @@
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="btnApplyFilter">
                 <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="rgProjects" />
+                    <telerik:AjaxUpdatedControl ControlID="rgProjects" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlId="btnRemoveFilter">
@@ -139,9 +139,8 @@
 
                             <div class="row">
                                 <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filters"  />
-                            
                             </div>
-                    </div>
+                        </div>
                     </div>
                 </asp:Panel>
 

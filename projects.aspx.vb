@@ -139,10 +139,14 @@ Partial Class manager_Default
 
     Protected Sub filterByStatus()
         Dim status = Request.QueryString("status")
-
         If (IsNumeric(status)) Then
             rcbStatus.SelectedValue = status
-            applyFilters()
+            Dim filter As String = "projectStatusId = " & status & " AND archived = 0"
+
+            addGroupingToGrid()
+
+            projectsDataSource.FilterExpression = filter
+            projectsDataSource.DataBind()
         End If
     End Sub
 
