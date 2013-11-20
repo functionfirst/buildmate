@@ -24,20 +24,26 @@
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
+    <div class="breadcrumb">
+        <ul class="breadcrumb-list">
+            <li>
+             <asp:HyperLink ID="HyperLink1" runat="server"
+                NavigateUrl="~/project_details.aspx?pid={0}"
+                Text="Project Details" />
+                <span class="divider">/</span>
+            </li>
+            <li>
+                <asp:HyperLink ID="hlResource" runat="server"
+                NavigateUrl="~/project_details.aspx?pid={0}"
+                Text="Resource Costs" />
+                <span class="divider">/</span>
+            </li>
+            <li class="active">Resource Details</li>
+        </ul>
+    </div>
 
-    <div class="breadcrumb">
-                &lArr;
-         <asp:HyperLink ID="HyperLink1" runat="server"
-            NavigateUrl="~/project_details.aspx?pid={0}"
-            Text="Project Details" />
-    </div>
-        
-    <div class="breadcrumb">
-        &lArr;
-        <asp:HyperLink ID="hlResource" runat="server"
-        NavigateUrl="~/project_details.aspx?pid={0}"
-        Text="Resource Costs" />
-    </div>
+    
+    <div class="main-container">
 
     <div class="div33">
     <div class="box">
@@ -93,7 +99,7 @@
     </div>
     </div>
 
-    <div class="div66r">
+    <div class="div66 last">
         <div class="box">
             <h3>Swap this Resource</h3>
 
@@ -126,9 +132,9 @@
               </table>
             </asp:Panel>
 
-        <asp:Label ID="lblCount" runat="server" Visible="false">
-            <div class="successBox">Your search returned more than 1,000 results, please be more specific with your search</div>
-        </asp:Label>
+            <asp:Label ID="lblCount" runat="server" Visible="false">
+                <div class="successBox">Your search returned more than 1,000 results, please be more specific with your search</div>
+            </asp:Label>
 
             <telerik:RadGrid
                 ID="rgResources"
@@ -202,6 +208,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"

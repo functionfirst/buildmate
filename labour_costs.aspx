@@ -32,8 +32,10 @@
     </div>
 
     <div class="main-container">
-        <h1>Labour Costs</h1>
+        <div class="box">
+        <h3>Labour Costs</h3>
         
+            <div class="boxcontent">
         <asp:Repeater ID="Repeater1" runat="server"
             DataSourceID="resourceDataSource">
             <HeaderTemplate>
@@ -98,6 +100,8 @@
             </FooterTemplate>
         </asp:Repeater>
     </div>
+    </div>
+</div>
 
     <asp:SqlDataSource ID="resourceDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
