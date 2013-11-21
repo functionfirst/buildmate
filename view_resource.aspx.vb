@@ -60,13 +60,36 @@ Partial Class view_resource
             cmd.Parameters.AddWithValue("@oldResourceId", Request.QueryString("id"))
             cmd.Parameters.AddWithValue("@resourceId", resourceId)
 
+            Trace.Write(Session("userId"))
+            Trace.Write(Request.QueryString("pid"))
+            Trace.Write(Request.QueryString("id"))
+            Trace.Write(resourceId)
+
+
+
             ' bind to data adapter
             Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
             Dim dt As DataTable = New DataTable
             adapter.Fill(dt)
             dbCon.Close()
 
-            Response.Redirect(String.Format("material_costs.aspx?pid={0}", Request.QueryString("pid")))
+            Response.Redirect(String.Format("material_costs.aspx?pid={0}&action=swapped", Request.QueryString("pid")))
         End If
+    End Sub
+
+    Protected Sub btnApplyFilter_Click(sender As Object, e As EventArgs) Handles btnApplyFilter.Click
+        applyFilters()
+    End Sub
+
+    Private Sub applyFilters()
+        If rtbResourceName.Text.Length > 0 Then
+            rgResources.Visible = True
+        Else
+            rgResources.Visible = False
+        End If
+    End Sub
+
+    Protected Sub rtbResourceName_TextChanged(sender As Object, e As EventArgs) Handles rtbResourceName.TextChanged
+        applyFilters()
     End Sub
 End Class

@@ -21,6 +21,16 @@
                      <telerik:AjaxUpdatedControl ControlID="btnSwapResource" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="rtbResourceName">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="rgResources" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="btnApplyFilter">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="rgResources" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
@@ -101,13 +111,14 @@
 
     <div class="div66 last">
         <div class="box">
-            <h3>Swap this Resource</h3>
+            <h3>Use a different Resource</h3>
 
             <div class="boxcontent">
           
             <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
-   
-              To replace this resource, select a resource from the list below and click submit.
+                Search for a resource by entering some keywords below.
+                
+                Once you've found the resource you need, click to highlight it then save your change by clicking 'Swap this Resource'.
 
               <table border="0" cellpadding="5" cellspacing="0">
                 <tr>
@@ -126,7 +137,13 @@
                             AutoPostBack="true" />
                     </td>
                     <td>
-                        <asp:Button ID="btnApplyFilter" runat="server" Text="Search" />
+                        <asp:Button ID="btnApplyFilter" CssClass="button" runat="server" Text="Search" />
+                    </td>
+                    <td class="rightalign">
+                        <asp:Button ID="btnSwapResource" runat="server"
+                            Text="Swap this Resource"
+                            CssClass="button button-primary"
+                            Enabled="false" OnClientClick="confirm('Are you sure you wish to swap this resource?')" />
                     </td>
                 </tr>
               </table>
@@ -142,6 +159,7 @@
                 DataSourceID="allResourcesDataSource"
                 AllowPaging="true"
                 PageSize="20"
+                Visible="false"
                 PagerStyle-Mode="NextPrev"
                 ShowGroupPanel="false"
                 AllowSorting="true"
@@ -198,14 +216,6 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
-        
-                <div class="rightalign">
-                    <p>
-                        <asp:Button ID="btnSwapResource" runat="server"
-                            Text="Swap this Resource"
-                            Enabled="false" OnClientClick="confirm('Are you sure you wish to swap this resource?')" />
-                    </p>
-                </div>
             </div>
         </div>
     </div>
