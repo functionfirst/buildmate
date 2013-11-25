@@ -115,6 +115,11 @@
                      <telerik:AjaxUpdatedControl ControlID="fvCompletion" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="pAddResources">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="pAddResources" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
     
