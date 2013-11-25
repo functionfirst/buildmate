@@ -59,7 +59,6 @@ Partial Class manager_add_task
             For Each row As DataRow In rows
                 Dim node As RadTreeNode = New RadTreeNode
                 node.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
-                node.ToolTip = HttpUtility.HtmlDecode(CType(row("taskName"), String))
                 node.Value = CType(row("id"), Integer).ToString
                 node.Checkable = False
                 'node.PostBack = False
@@ -94,7 +93,6 @@ Partial Class manager_add_task
         For Each row As DataRow In rows
             Dim childNode As RadTreeNode = New RadTreeNode
             childNode.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
-            childNode.ToolTip = HttpUtility.HtmlDecode(CType(row("taskName"), String))
             childNode.Value = CType(row("id"), Integer).ToString
             childNode.Target = "_new"
 
@@ -139,7 +137,6 @@ Partial Class manager_add_task
 
     Protected Sub RadTreeView1_NodeExpand(ByVal sender As Object, ByVal e As RadTreeNodeEventArgs) Handles RadTreeView1.NodeExpand
         AddChildNodes(e.Node)
-
         cacheTreeview(e.Node.Value)
         'Dim treeViewState As String = CType(Session("treeViewState"), String)
         'Dim cachedTreeView As RadTreeView = New RadTreeView

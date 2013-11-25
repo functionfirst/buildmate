@@ -97,7 +97,6 @@ Partial Class manager_task_details
 
     Protected Sub fvTaskAdjustments_DataBound(sender As Object, e As System.EventArgs) Handles fvTaskAdjustments.DataBound
         Dim taskQty As Object = DirectCast(fvTaskAdjustments.DataItem, DataRowView)("qty")
-        Trace.Write("task qty" & taskQty)
         If taskQty > 0 Then
             pRequiresTaskQty.Visible = False
             pCurrentResources.Visible = True
