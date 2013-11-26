@@ -137,38 +137,41 @@ Partial Class manager_Default
 
     Protected Sub FormView1_DataBound(sender As Object, e As System.EventArgs) Handles FormView1.DataBound
         ' hide appropriate archive button
-        Dim archived As Boolean = DirectCast(FormView1.DataItem, DataRowView)("archived")
-        toggleArchiveButtons(archived)
+        Dim item = FormView1.DataItem
+        If Not item Is Nothing Then
+            Dim archived As Boolean = DirectCast(item, DataRowView)("archived")
+            toggleArchiveButtons(archived)
 
-        ' check if we need to hide the add build element button
-        ' indicates we're now in a fully locked state for this project
-        If Not FormView1.FindControl("hfIseditable") Is Nothing Then
-            isEditable = CType(FormView1.FindControl("hfIsEditable"), HiddenField).Value
-            'Dim addBuildElementLink = CType(FormView1.FindControl("addBuildElementLink"), HyperLink)
-            If isEditable = 2 Then
-                addBuildElementLink.Visible = False
-            Else
-                addBuildElementLink.Visible = True
+            ' check if we need to hide the add build element button
+            ' indicates we're now in a fully locked state for this project
+            If Not FormView1.FindControl("hfIseditable") Is Nothing Then
+                isEditable = CType(FormView1.FindControl("hfIsEditable"), HiddenField).Value
+                'Dim addBuildElementLink = CType(FormView1.FindControl("addBuildElementLink"), HyperLink)
+                If isEditable = 2 Then
+                    addBuildElementLink.Visible = False
+                Else
+                    addBuildElementLink.Visible = True
+                End If
             End If
-        End If
 
-        ' check if a project exists for this pid
-        If FormView1.DataItemCount = 0 Then
-            ' nothing found, display a notification to the user.
-            NoProjectPanel.Visible = True
-            completionBar.Visible = False
-            FormView1.Visible = False
-            BuildElementsPanel.Visible = False
-            'pViewLogs.Visible = False
-            fvProjectCosts.Visible = False
-        Else
-            ' project was found so make sure appropriate panels are visible
-            NoProjectPanel.Visible = False
-            completionBar.Visible = True
-            FormView1.Visible = True
-            BuildElementsPanel.Visible = True
-            'pViewLogs.Visible = True
-            fvProjectCosts.Visible = True
+            ' check if a project exists for this pid
+            If FormView1.DataItemCount = 0 Then
+                ' nothing found, display a notification to the user.
+                NoProjectPanel.Visible = True
+                completionBar.Visible = False
+                FormView1.Visible = False
+                BuildElementsPanel.Visible = False
+                'pViewLogs.Visible = False
+                fvProjectCosts.Visible = False
+            Else
+                ' project was found so make sure appropriate panels are visible
+                NoProjectPanel.Visible = False
+                completionBar.Visible = True
+                FormView1.Visible = True
+                BuildElementsPanel.Visible = True
+                'pViewLogs.Visible = True
+                fvProjectCosts.Visible = True
+            End If
         End If
     End Sub
 
