@@ -11,23 +11,13 @@
     <meta name="author" content="" />
 
     <!-- css -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
-    
-    <link id="Link1" runat="server" rel="stylesheet" type="text/css" href="~/css/manager.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="/css/manager.less" />
 
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <!--fav and touch icons -->
-    <!--link rel="shortcut icon" href="assets/ico/favicon.ico"-->
-    <!--link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png"-->
-    <!--link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png"-->
-    <!--link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png"-->
-    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 
 <body>
@@ -47,23 +37,19 @@
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
 
-                     <asp:LoginView ID="LoginView2" runat="server">
-                <LoggedInTemplate>
-                    <div class="topbar">
-                        <div class="container">
-                            <h1>Build<strong>Mate</strong> Administration</h1>
+        <div class="container">
+            <div class="topbar">
+                <div class="brand"><strong>Buildmate</strong> Administration</div>
 
-                            <ul>
-                                <li><a href="settings.aspx"><asp:LoginName ID="LoginName1" runat="server" /></a></li>
-                                <li><a href="logout.aspx">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </LoggedInTemplate>
-            </asp:LoginView>
-
-            <div class="container">
                 <div class="nav">
+                <asp:LoginView ID="LoginView2" runat="server">
+                    <LoggedInTemplate>
+                        <ul class="nav-options">
+                            <li><a href="logout.aspx">Logout</a></li>
+                        </ul>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+
                 <ul id="nav">
                     <li>
                         <asp:HyperLink ID="hlHome" runat="server"
@@ -109,20 +95,20 @@
                         <asp:HyperLink ID="HyperLink1" runat="server"
                             NavigateUrl="~/admin/new_projects.aspx"><span></span>New Projects</asp:HyperLink>
                     </li>
-                    <li>
-                        <asp:HyperLink ID="hlLogout" runat="server"
-                            NavigateUrl="~/logout.aspx"><span></span>Logout</asp:HyperLink>
-                    </li>
                 </ul>
             </div>
-          
+        </div>
 
-        <div class="main_content">
-            <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+        <div class="container">
+            <div class="main_content">
+                <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
             
-            <div class="clear"></div>
-        </div>     
-                  </div>  
+                <div class="clear"></div>
+            </div>     
+        </div>  
     </form>
+    
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     </body>
 </html>
