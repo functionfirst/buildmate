@@ -951,6 +951,7 @@
                                 Value="0"
                                 IncrementSettings-Step="1"
                                 Type="Number"
+                                CssClass="rightalign"
                                 Width="60px" />
 
                             <asp:Label
