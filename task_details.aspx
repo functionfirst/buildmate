@@ -951,7 +951,7 @@
                                 Value="0"
                                 IncrementSettings-Step="1"
                                 Type="Number"
-                                Width="40px" />
+                                Width="60px" />
 
                             <asp:Label
                                 ID="Label2"
