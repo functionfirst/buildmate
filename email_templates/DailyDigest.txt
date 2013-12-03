@@ -11,7 +11,7 @@ a { color: #21759B; text-decoration: none;}
                 <tr>
                     <td>
                         <p style="font-size: 11px; text-align: center; margin: 0 0 20px">
-                            You received this email because you're registered at BuildMate.<br />
+                            You received this email because you're registered at Buildmate.<br />
                             If you're not interested anymore, please <a href="http://buildmateapp.com/settings.aspx">unsubscribe</a>
                         </p>
                     </td>
