@@ -3,6 +3,18 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<script language="javascript">
+function ClientNodeClicked(sender, eventArgs) {
+    var node = eventArgs.get_node();
+    node.toggle();
+
+    if (node.get_checked()) {
+        node.uncheck();
+    } else {
+        node.check();
+    }
+}
+</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
@@ -60,6 +72,7 @@
         <asp:Label ID="results" runat="server" />
 
         <telerik:RadTreeView runat="server" ID="RadTreeView1"
+            OnClientNodeClicked="ClientNodeClicked"
             CheckBoxes="true"
             SingleExpandPath="true"
             Style="white-space: normal;"

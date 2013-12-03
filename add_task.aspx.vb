@@ -61,14 +61,8 @@ Partial Class manager_add_task
                 node.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
                 node.Value = CType(row("id"), Integer).ToString
                 node.Checkable = False
-                'node.PostBack = False
+                node.CssClass = "has_pointer"
                 node.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
-
-                If row("taskId") >= 1 Then
-                    node.CssClass = "active"
-                    node.SelectedCssClass = "active"
-                End If
-
                 RadTreeView1.Nodes.Add(node)
             Next
         End If
@@ -94,30 +88,31 @@ Partial Class manager_add_task
             Dim childNode As RadTreeNode = New RadTreeNode
             childNode.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
             childNode.Value = CType(row("id"), Integer).ToString
-            childNode.Target = "_new"
+            childNode.CssClass = "has_pointer"
+            'childNode.Target = "_new"
 
             ' identify tasks that exist for this project/build element
-            If row("taskId") >= 1 Then
-                childNode.CssClass = "active"
-                childNode.SelectedCssClass = "active"
-            End If
+            'If row("taskId") >= 1 Then
+            '    childNode.CssClass = "active"
+            '    childNode.SelectedCssClass = "active"
+            'End If
 
             If (CType(row("HasChildren"), Integer) > 0) Then
                 childNode.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
                 childNode.Checkable = False
                 ' childNode.PostBack = False
-            Else
-                ' add a linkbutton to any active/enabled task
-                If row("taskId") >= 1 Then
-                    ' add task id as attribute
-                    childNode.Attributes("taskId") = row("taskId")
+                'Else
+                '    ' add a linkbutton to any active/enabled task
+                '    If row("taskId") >= 1 Then
+                '        ' add task id as attribute
+                '        childNode.Attributes("taskId") = row("taskId")
 
-                    ' identify unquantified Tasks
-                    childNode.CssClass = "active_link"
-                    If row("qty") = 0 Then childNode.CssClass = "quantify"
-                End If
-                childNode.CssClass = "nolink"
-                childNode.PostBack = False
+                '        ' identify unquantified Tasks
+                '        childNode.CssClass = "active_link"
+                '        If row("qty") = 0 Then childNode.CssClass = "quantify"
+                '    End If
+                '    childNode.CssClass = "nolink"
+                '    childNode.PostBack = False
             End If
             node.Nodes.Add(childNode)
         Next
