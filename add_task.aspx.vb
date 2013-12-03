@@ -48,7 +48,7 @@ Partial Class manager_add_task
         Dim filters As String = getFilters()
 
         ' define the datatable
-        Dim sp As String = "getTaskData"
+        Dim sp As String = "TaskData_Select_Top_Level"
         Dim data As DataTable = GetNodeData(sp, 0)
         Dim rows As DataRow() = data.Select(filters, "taskName")
 
@@ -73,7 +73,7 @@ Partial Class manager_add_task
         Dim filters As String = getFilters()
 
         ' defining the datatable
-        Dim sp As String = "getChildTaskData"
+        Dim sp As String = "TaskData_Select_by_Parent"
         Dim data As DataTable = GetNodeData(sp, node.Value)
         Dim rows As DataRow() = data.Select(filters, "taskName")
 
@@ -148,7 +148,7 @@ Partial Class manager_add_task
 
         Dim cmd As New SqlCommand(sp, dbCon)
         cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@roomId", roomId)
+        'cmd.Parameters.AddWithValue("@roomId", roomId)
         cmd.Parameters.AddWithValue("@parentId", parentId)
 
         ' bind to data adapter
