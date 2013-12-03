@@ -137,7 +137,7 @@ Partial Class manager_add_task
 
     Protected Sub RadTreeView1_NodeExpand(ByVal sender As Object, ByVal e As RadTreeNodeEventArgs) Handles RadTreeView1.NodeExpand
         AddChildNodes(e.Node)
-        cacheTreeview(e.Node.Value)
+        'cacheTreeview(e.Node.Value)
         'Dim treeViewState As String = CType(Session("treeViewState"), String)
         'Dim cachedTreeView As RadTreeView = New RadTreeView
         'cachedTreeView.LoadXmlString(treeViewState)
