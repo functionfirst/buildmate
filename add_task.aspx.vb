@@ -89,30 +89,10 @@ Partial Class manager_add_task
             childNode.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
             childNode.Value = CType(row("id"), Integer).ToString
             childNode.CssClass = "has_pointer"
-            'childNode.Target = "_new"
-
-            ' identify tasks that exist for this project/build element
-            'If row("taskId") >= 1 Then
-            '    childNode.CssClass = "active"
-            '    childNode.SelectedCssClass = "active"
-            'End If
 
             If (CType(row("HasChildren"), Integer) > 0) Then
                 childNode.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
                 childNode.Checkable = False
-                ' childNode.PostBack = False
-                'Else
-                '    ' add a linkbutton to any active/enabled task
-                '    If row("taskId") >= 1 Then
-                '        ' add task id as attribute
-                '        childNode.Attributes("taskId") = row("taskId")
-
-                '        ' identify unquantified Tasks
-                '        childNode.CssClass = "active_link"
-                '        If row("qty") = 0 Then childNode.CssClass = "quantify"
-                '    End If
-                '    childNode.CssClass = "nolink"
-                '    childNode.PostBack = False
             End If
             node.Nodes.Add(childNode)
         Next
@@ -120,33 +100,11 @@ Partial Class manager_add_task
 
     Protected Sub initLoadRootNodes()
         LoadRootNodes()
-        'Session("treeViewState") = RadTreeView1.GetXml
     End Sub
-
-    'Protected Sub RadTreeView1_NodeClick(ByVal sender As Object, ByVal e As Telerik.Web.UI.RadTreeNodeEventArgs) Handles RadTreeView1.NodeClick
-    '    'Dim taskId = e.Node.Attributes("taskId")
-    '    'e.Node.Expanded = Not e.Node.Expanded
-    '    AddChildNodes(e.Node)
-    '    cacheTreeview(e.Node.Value)
-    'End Sub
 
     Protected Sub RadTreeView1_NodeExpand(ByVal sender As Object, ByVal e As RadTreeNodeEventArgs) Handles RadTreeView1.NodeExpand
         AddChildNodes(e.Node)
-        'cacheTreeview(e.Node.Value)
     End Sub
-
-    'Protected Sub cacheTreeview(ByVal nodeValue As String)
-    '    Dim treeViewState As String = CType(Session("treeViewState"), String)
-    '    Dim cachedTreeView As RadTreeView = New RadTreeView
-    '    cachedTreeView.LoadXmlString(treeViewState)
-
-    '    'it is important that the nodes have unique values so that they can be added to the cached treeview
-    '    Dim cachedNodeClicked As RadTreeNode = cachedTreeView.FindNodeByValue(nodeValue)
-    '    AddChildNodes(cachedNodeClicked)
-    '    cachedNodeClicked.ExpandMode = TreeNodeExpandMode.ClientSide
-    '    cachedNodeClicked.Expanded = True
-    '    Session("treeViewState") = cachedTreeView.GetXml
-    'End Sub
 
     Protected Sub btnAdd_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         ' iterate through all selected tasks nodes
@@ -182,8 +140,6 @@ Partial Class manager_add_task
 
     Private Function GetNodeData(ByVal sp As String, ByVal parentId As Integer) As DataTable
         ' get the roomId
-        'Dim roomId As String = CType(Me.Parent.FindControl("roomId"), HiddenField).Value
-        'Dim roomId As Integer = Session("roomid")
         Dim roomId As Integer = Request.QueryString("rid")
 
         ' create and execute sql command
