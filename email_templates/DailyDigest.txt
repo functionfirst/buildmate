@@ -28,8 +28,8 @@ a { color: #21759B; text-decoration: none;}
                 <tr>
                     <td width="580" valign="top" style="font-size: 14px">
                         <h2>Project manager - Daily Digest</h2>
-                        <p>Hey <strong><% firstName %></strong>,</p>
-                        <p>These are the projects that need your attention:</p>
+                        <p>Good morning <strong><% firstName %></strong>,</p>
+                        <p>We've identified a list of projects that need your attention below:</p>
                         <table width='100%' cellspacing='0' cellpadding='4' border='0'>
                         <thead>
                         <tr style="background: #333; color: fff;">

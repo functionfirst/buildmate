@@ -42,7 +42,7 @@
                             <div style="display: block; margin-left: 110px">
                                 <asp:HyperLink ID="link1" runat="server"
                                     Text='<%#Eval("taskName")%>'
-                                    NavigateUrl='<%# String.Format("~/edit_task.aspx?tid={0}", Eval("parentId")) %>'></asp:HyperLink>
+                                    NavigateUrl='<%# String.Format("~/admin/edit_task.aspx?tid={0}", Eval("parentId")) %>'></asp:HyperLink>
                             </div>
                         </div>
                     </ItemTemplate>

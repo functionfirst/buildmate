@@ -13,7 +13,7 @@ Partial Class services_client_email_project_notifications
 
     Protected Sub SendDigest()
         ' iterate through the user list
-        Dim sqlSelectCommand As String = "SELECT UserId, isNull(firstname, 'Subscriber') AS firstname, email " & _
+        Dim sqlSelectCommand As String = "SELECT UserId, isNull(firstname, '') AS firstname, email " & _
                 "FROM UserProfile " & _
                 "WHERE notifyByEmail=1 " & _
                 "AND email IS NOT NULL " & _

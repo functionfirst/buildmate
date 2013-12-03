@@ -125,7 +125,7 @@ Partial Class manager_add_task
 
     Protected Sub initLoadRootNodes()
         LoadRootNodes()
-        Session("treeViewState") = RadTreeView1.GetXml
+        'Session("treeViewState") = RadTreeView1.GetXml
     End Sub
 
     'Protected Sub RadTreeView1_NodeClick(ByVal sender As Object, ByVal e As Telerik.Web.UI.RadTreeNodeEventArgs) Handles RadTreeView1.NodeClick
@@ -138,29 +138,20 @@ Partial Class manager_add_task
     Protected Sub RadTreeView1_NodeExpand(ByVal sender As Object, ByVal e As RadTreeNodeEventArgs) Handles RadTreeView1.NodeExpand
         AddChildNodes(e.Node)
         'cacheTreeview(e.Node.Value)
-        'Dim treeViewState As String = CType(Session("treeViewState"), String)
-        'Dim cachedTreeView As RadTreeView = New RadTreeView
-        'cachedTreeView.LoadXmlString(treeViewState)
-
-        ''it is important that the nodes have unique values so that they can be added to the cached treeview
-        'Dim cachedNodeClicked As RadTreeNode = cachedTreeView.FindNodeByValue(e.Node.Value)
-        'AddChildNodes(cachedNodeClicked)
-        'cachedNodeClicked.ExpandMode = TreeNodeExpandMode.ClientSide
-        'cachedNodeClicked.Expanded = True
-        'Session("treeViewState") = cachedTreeView.GetXml
     End Sub
 
-    Protected Sub cacheTreeview(ByVal nodeValue As String)
-        Dim treeViewState As String = CType(Session("treeViewState"), String)
-        Dim cachedTreeView As RadTreeView = New RadTreeView
-        cachedTreeView.LoadXmlString(treeViewState)
+    'Protected Sub cacheTreeview(ByVal nodeValue As String)
+    '    Dim treeViewState As String = CType(Session("treeViewState"), String)
+    '    Dim cachedTreeView As RadTreeView = New RadTreeView
+    '    cachedTreeView.LoadXmlString(treeViewState)
 
-        Dim cachedNodeClicked As RadTreeNode = cachedTreeView.FindNodeByValue(nodeValue)
-        AddChildNodes(cachedNodeClicked)
-        cachedNodeClicked.ExpandMode = TreeNodeExpandMode.ClientSide
-        cachedNodeClicked.Expanded = True
-        Session("treeViewState") = cachedTreeView.GetXml
-    End Sub
+    '    'it is important that the nodes have unique values so that they can be added to the cached treeview
+    '    Dim cachedNodeClicked As RadTreeNode = cachedTreeView.FindNodeByValue(nodeValue)
+    '    AddChildNodes(cachedNodeClicked)
+    '    cachedNodeClicked.ExpandMode = TreeNodeExpandMode.ClientSide
+    '    cachedNodeClicked.Expanded = True
+    '    Session("treeViewState") = cachedTreeView.GetXml
+    'End Sub
 
     Protected Sub btnAdd_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         ' iterate through all selected tasks nodes
