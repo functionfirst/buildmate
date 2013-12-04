@@ -587,7 +587,7 @@
             <div runat="server" id="showupdate" class="md-footer">
                 <asp:Button ID="btnUpdateQty" runat="server"
                     CssClass="button button-secondary"
-                    OnClientClick="closeModal()"
+                    OnClientClick="hideModal()"
                     Text="Use this Total as the Task Quantity" />
 
                 <a href="#" class="button md-close">Close</a>
@@ -870,7 +870,7 @@
 
                     <div class="row">
                         <label title="Note" class="label">Note</label>
-                        <span style="display: table-cell; color: #900; font-weight: bold"><%#Eval("note")%>&nbsp;</span>
+                        <span style="display: table-cell; color: #900; font-weight: 600"><%#Eval("note")%>&nbsp;</span>
                     </div>
 
                         <div class="row">
@@ -919,7 +919,7 @@
                         <label for="lblProjectNotes" title="Note" class="label">Note</label>
 
                         <telerik:RadTextBox ID="rtbProjectNotes" runat="server"
-                            TextMode="MultiLine" Columns="120" Rows="4"
+                            TextMode="MultiLine" Columns="300" Rows="4" Width="500px"
                             Text='<%# Bind("note") %>' />
                     </div>
 
