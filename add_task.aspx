@@ -7,7 +7,6 @@
 function ClientNodeClicked(sender, eventArgs) {
     var node = eventArgs.get_node();
     node.toggle();
-
     if (node.get_checked()) {
         node.uncheck();
     } else {

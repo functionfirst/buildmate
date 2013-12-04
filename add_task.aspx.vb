@@ -61,7 +61,6 @@ Partial Class manager_add_task
                 node.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
                 node.Value = CType(row("id"), Integer).ToString
                 node.Checkable = False
-                node.CssClass = "has_pointer"
                 node.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
                 RadTreeView1.Nodes.Add(node)
             Next
@@ -88,7 +87,6 @@ Partial Class manager_add_task
             Dim childNode As RadTreeNode = New RadTreeNode
             childNode.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
             childNode.Value = CType(row("id"), Integer).ToString
-            childNode.CssClass = "has_pointer"
 
             If (CType(row("HasChildren"), Integer) > 0) Then
                 childNode.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
