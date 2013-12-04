@@ -53,11 +53,10 @@
                 <div class="nav">
                     <ul class="nav-options">
                         <li>
-                            <a href="#" class="toggle-help js-toggle-help"><span class="toggle-help-icon">!</span></a>
+                            <a href="#" class="toggle-help js-toggle-help"><span class="toggle-help-icon">?</span></a>
                         </li>
                         <li>
-                            <a href="#" class="toggle-options js-toggle-options">Hello, <strong>
-                                <asp:Label ID="lblFirstname" runat="server" /></strong></a>
+                            <a href="#" class="toggle-options js-toggle-options">Hello, <asp:Label ID="lblFirstname" runat="server" /></a>
 
                             <ul>
                                 <li><a class="options-icon options-settings" href="settings.aspx">Settings</a></li>
