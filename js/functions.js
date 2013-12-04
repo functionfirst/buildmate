@@ -23,6 +23,12 @@ $(document).ready(function () {
         });
     }
 
+    // toggle options menu
+    $('.js-toggle-options').on('click', function () {
+        toggleOptionsMenu();
+        //$(this).parents('.nav-options').toggleClass('active');
+    });
+
 
     // close modal if wrapper is clicked or button is closed
     $('body').on('click', '.md-wrapper, .md-close', function () {
@@ -30,9 +36,20 @@ $(document).ready(function () {
         return false;
     });
 
+    function toggleOptionsMenu() {
+        $('.nav-options').toggleClass('nav-options-active');
+        return false;
+    }
+
+    // Listener for escape action, like pressing escape or clicking outside a modal
+    //$('body').on('escapeAction', function () {
+    //    toggleOptionsMenu(false);
+    //});
+
     // close modal if escape is pressed
     $(document).keyup(function (e) {
         if (e.which == 27) {
+            //$('body').trigger('escapeAction');
             hideModal();
         }
         if ($("#variationMode").hasClass("active")) {

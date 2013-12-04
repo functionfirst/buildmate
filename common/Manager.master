@@ -52,14 +52,24 @@
 
                 <div class="nav">
                     <ul class="nav-options">
-                        <li><a href="http://getbuildmate.com/knowledgebase/">Help/Support</a></li>
-                        <li><a href="logout.aspx">Logout</a></li>
                         <li>
-                            <a href="#" class="toggle-help js-toggle-help"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+                            <a href="#" class="toggle-help js-toggle-help"><span class="toggle-help-icon">!</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="toggle-options js-toggle-options">Hello, <strong>
+                                <asp:Label ID="lblFirstname" runat="server" /></strong></a>
+
+                            <ul>
+                                <li><a class="options-icon options-settings" href="settings.aspx">Settings</a></li>
+                                <li><%--<a class="options-icon options-feedback" href="feedback.aspx">Feedback</a>--%></li>
+                                <li><a class="options-icon options-support" href="support.aspx">Support</a></li>
+                                <li><a class="options-icon options-help" target="_blank" href="http://getbuildmate.com/knowledgebase/">Knowledge Base</a></li>
+                                <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
+                            </ul>
                         </li>
                     </ul>
 
-                    <ul runat="server" id="nav">
+                    <ul runat="server" id="nav" class="nav-main">
                         <li>
                             <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/"><span></span>Dashboard</asp:HyperLink>
                         </li>
@@ -74,13 +84,6 @@
                         </li>
                         <li>
                             <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx"><span></span>Resources</asp:HyperLink>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx"><span></span>Support</asp:HyperLink>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="hlSettings" runat="server"
-                                NavigateUrl="~/settings.aspx" ToolTip="Settings"><span></span>Settings</asp:HyperLink>
                         </li>
                     </ul>
                 </div>

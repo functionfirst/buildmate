@@ -347,3 +347,12 @@
         SelectCommand="getSystemNotifications" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
 </asp:Content>
+
+<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
+    <div class="sidebar">
+        <h3>Dashboard</h3>
+        <p>
+            
+        </p>
+    </div>
+</asp:Content>

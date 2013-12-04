@@ -1,5 +1,4 @@
-﻿
-Partial Class manager_adhoc
+﻿Partial Class view_ticket
     Inherits MyBaseClass
 
     Protected Sub fvReply_ItemInserted(sender As Object, e As System.Web.UI.WebControls.FormViewInsertedEventArgs) Handles fvReply.ItemInserted
@@ -18,10 +17,5 @@ Partial Class manager_adhoc
         rReplies.DataBind()
 
         showNotification("Note Added", "Your note was successfully added")
-    End Sub
-
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Dim activeLink As HyperLink = CType(Master.FindControl("hlSupport"), HyperLink)
-        activeLink.CssClass = "active"
     End Sub
 End Class

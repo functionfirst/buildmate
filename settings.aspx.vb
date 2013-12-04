@@ -60,9 +60,6 @@ Partial Class settings
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Dim activeLink As HyperLink = CType(Master.FindControl("hlSettings"), HyperLink)
-        activeLink.CssClass = "active"
-
         showSubscriptionDate()
     End Sub
 

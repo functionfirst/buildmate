@@ -19,11 +19,6 @@ Partial Class manager_Default
         End Select
     End Sub
 
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Dim activeLink As HyperLink = CType(Master.FindControl("hlSupport"), HyperLink)
-        activeLink.CssClass = "active"
-    End Sub
-
     Protected Sub btnSend_Click(sender As Object, e As System.EventArgs) Handles btnSend.Click
         ' create and execute sql command
         Dim dbCon As New SqlConnection(ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)

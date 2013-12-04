@@ -65,7 +65,7 @@ Partial Class Manager
             ' get user profile information
             Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
             Dim myConn As New SqlConnection(connString)
-            Dim cmd As SqlCommand = New SqlCommand("SELECT firstname, surname, email, vatnumber, help, tooltips, subscription, paypalPayerId FROM UserProfile WHERE userId = @userId", myConn)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT name, email, vatnumber, help, tooltips, subscription, paypalPayerId FROM UserProfile WHERE userId = @userId", myConn)
             cmd.Parameters.AddWithValue("@userId", userId)
             Dim reader As SqlDataReader
 
@@ -80,11 +80,12 @@ Partial Class Manager
                     subscriptionDate = Session("subscriptionDate")
                     Session("paypalPayerId") = reader("paypalPayerId").ToString
                     paypalPayerId = Session("paypalPayerId").ToString
-                    Session("firstname") = reader("firstname").ToString
-                    Session("lastname") = reader("surname").ToString
+                    Session("name") = reader("name").ToString
                     Session("email") = reader("email").ToString
                     Session("vatnumber") = reader("vatnumber").ToString
                     user_email = Session("email")
+
+                    lblFirstname.Text = Session("name").ToString
                 End While
 
             Catch ex As Exception
