@@ -34,16 +34,21 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li class="active">Dashboard</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li class="active">Dashboard</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
  
     <div class="div33">
-        <asp:Panel ID="pOverdueTenders" runat="server" CssClass="box">
-            <h3>Overdue Projects</h3>
+        <div class="box">
+
+        <asp:Panel ID="pOverdueTenders" runat="server">
+            <h3>Reminders</h3>
+            <h4>Overdue Projects</h4>
 
             <div class="boxcontent">
                 <telerik:radgrid
@@ -89,8 +94,7 @@
 
 
 
-        <div class="box">
-            <h3>Projects Due</h3>
+            <h4>Projects Due</h4>
 
             <div class="boxcontent">
                 <div class="row">
@@ -153,7 +157,7 @@
 
 <div class="div33">
         <div class="box">
-            <h3>Project Statistics</h3>
+            <h3>Statistics</h3>
 
             <div class="boxcontent">
     
@@ -263,7 +267,7 @@
     <div class="div33 div-last">
         
         <div class="box">
-            <h3>Buildmate News</h3>
+            <h3>News</h3>
 
             <div class="boxcontent">
                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="NotificationDataSource">
@@ -283,28 +287,6 @@
             </div>
         </div>
     </div>
-
-    <ol id="chooseID" class="hide">
-        <li data-button="Start the Tour &raquo;" class="welcome">
-            <div class="joyride-container">
-                <h3>Welcome to BuildMate</h3>
-                <p>Click the button below to take a tour:</p>
-            </div>
-        </li>
-        <li data-id="ctl00_hlHome" class="nav-guide" data-options="tipLocation:right">
-            <div class="joyride-container">
-                <h6>Dashboard</h6>
-                <p>View Project Statistics and track Overdue Projects.</p>
-            </div>
-        </li>
-        <li data-id="ctl00_hlProjects" class="nav-guide" data-options="tipLocation:right">
-            <div class="joyride-container">
-                <h6>Projects</h6>
-                <p>Click here to open your Project list</p>
-            </div>
-        </li>
-    </ol>
-
     </div>
 
 
@@ -349,10 +331,24 @@
 </asp:Content>
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <div class="sidebar">
-        <h3>Dashboard</h3>
-        <p>
+    <div class="tour-block">
+        <div class="tour-inner">
+            <a href="#" class="close">&times;</a>
             
-        </p>
+            <h1>Dashboard <span>Take a Tour</span></h1>
+
+            <div class="tour-nav">
+                <ul>
+                    <li class="active"><a href="#">1. Overview</a></li>
+                    <li><a href="#">2. Reminders</a></li>
+                    <li><a href="#">3. Statistics</a></li>
+                    <li><a href="#">4. News</a></li>
+                </ul>
+            </div>
+            <div class="tour-content">
+
+                <iframe width="640" height="480" src="//www.youtube.com/embed/wHOYs7MUG3A" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
 </asp:Content>

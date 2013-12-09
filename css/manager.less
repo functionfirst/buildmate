@@ -6,10 +6,11 @@
 @import "modal.less";
 @import "search-panel.less";
 @import "help-panel.less";
-@import "sidebar.less";
+/*@import "sidebar.less";*/
 @import "wizard.less";
 @import "tabs.less";
 @import "responsive.less";
+@import "tour.less";
 
 * {
     -webkit-box-sizing: border-box;
@@ -131,7 +132,7 @@ a:hover,
     position: relative;
     clear: both;
     overflow: auto;
-    z-index: 50;
+    /*z-index: 50;*/
     height: 100%;
     -webkit-transition: all linear 0.3s;
     -moz-transition:    all linear 0.3s;
@@ -147,13 +148,15 @@ a:hover,
     color: #666;
 }
 
-
-.container {
-}
+    
+    .topbar-container,
+    .breadcrumb-container,
     .main-container {
-        padding: 20px;
-        float: left;
-        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .main-container {
+        padding: 20px 0;
     }
 
     fieldset { border: 1px solid #ccc; margin: 5px 5px 10px; padding: 10px }
@@ -181,7 +184,7 @@ a:hover,
     margin: 12px;
     text-indent: -999em;
     height: 26px;
-    width: 121px;
+    width: 48px;
     background: url("../images/logo.png") no-repeat
 }
 
@@ -721,7 +724,6 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
     width: 125px;
 }
 	
-	
 	/* table style */
 /*	#app .rgMasterTable th,
 	#app .rgMasterTable td {
@@ -788,7 +790,15 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
         font-size: 21px;
         border: 0;
     }
-    
+
+    h4 {
+        font-weight: 400;
+        margin: 10px 10px 0;
+        border: 0;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
     .boxcontent {
         margin: 10px;
     }

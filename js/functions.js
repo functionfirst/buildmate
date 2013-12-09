@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
 
     // toggle side panel
-    if ($('.sidebar').length === 0) {
+    if ($('.tour-block').length === 0) {
         $('.js-toggle-help').attr('disabled', 'disabled').unbind('click');
     } else {
         $('body').on('click', '.js-toggle-help', function () {
@@ -126,5 +126,5 @@ function validateModal() {
 }
 
 function toggleSidebar() {
-    $('body').toggleClass('show-sidebar');
+    $('body').toggleClass('show-tour');
 }

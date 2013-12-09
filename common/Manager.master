@@ -48,12 +48,14 @@
         
         <div class="container">
             <div class="topbar">
+                <div class="topbar-container">
+                    
                 <div class="brand">Buildmate</div>
 
                 <div class="nav">
                     <ul class="nav-options">
                         <li>
-                            <a href="#" class="toggle-help js-toggle-help"><span class="toggle-help-icon">?</span></a>
+                            <a href="#" class="toggle-help js-toggle-help"><span></span></a>
                         </li>
                         <li>
                             <a href="#" class="toggle-options js-toggle-options">Hello, <asp:Label ID="lblFirstname" runat="server" /></a>
@@ -85,6 +87,8 @@
                             <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx"><span></span>Resources</asp:HyperLink>
                         </li>
                     </ul>
+                </div>
+
                 </div>
             </div>
 
