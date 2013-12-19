@@ -170,7 +170,6 @@
                     <RowIndicatorColumn>
                     <HeaderStyle Width="20px"></HeaderStyle>
                     </RowIndicatorColumn>
-
                     <ExpandCollapseColumn>
                     <HeaderStyle Width="20px"></HeaderStyle>
                     </ExpandCollapseColumn>
@@ -287,6 +286,7 @@
             </div>
         </div>
     </div>
+        <div class="clear"></div>
     </div>
 
 
@@ -346,7 +346,6 @@
                 </ul>
             </div>
             <div class="tour-content">
-
                 <iframe width="640" height="480" src="//www.youtube.com/embed/wHOYs7MUG3A" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
