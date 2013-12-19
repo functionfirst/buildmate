@@ -1,4 +1,4 @@
-<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="projects.aspx.vb" Inherits="manager_Default" title="Projects - BuildMate" %>
+<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="projects.aspx.vb" Inherits="manager_Default" title="Projects - Buildmate" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -39,15 +39,17 @@
     </script>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li>
-                <a href="add_project.aspx" class="button button-create">New Project</a>
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li>
+                    <a href="add_project.aspx" class="button button-create">New Project</a>
+                </li>
+            </ul>
 
-        <ul class="breadcrumb-list">
-            <li class="active">Projects</li>
-        </ul>
+            <ul class="breadcrumb-list">
+                <li class="active">Projects</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
@@ -223,6 +225,7 @@
             </telerik:RadGrid>
     
         </asp:Panel>
+        <div class="clear"></div>
     </div>
 
 
