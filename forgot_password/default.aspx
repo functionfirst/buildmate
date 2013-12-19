@@ -61,6 +61,7 @@
                                 runat="server"
                                 ControlToValidate="UserName"
                                 Display="Dynamic"
+                                CssClass="required"
                                 ValidationGroup="PasswordRecovery1">
                                 An email address is required
                             </asp:RequiredFieldValidator>
@@ -72,6 +73,7 @@
                                 ControlToValidate="UserName"
                                 ValidationGroup="PasswordRecovery1"
                                 Display="Dynamic"
+                                CssClass="required"
                                 ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
                                 <div class="row">
                                     <label class="label">&nbsp;</label>
@@ -110,11 +112,9 @@
         </telerik:RadAjaxPanel>
 
                 
-        <div class="container centrealign">
-            <p>
-                <a href="../">Go back to login the page</a>
-            </p>
-        </div>
+        <p class="centrealign">
+            <a href="../">Go back to login the page</a>
+        </p>
     </div>
     </form>
 </body>

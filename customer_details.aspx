@@ -81,8 +81,8 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                             ControlToValidate="rtbName"
                             Display="Dynamic"
-                            ErrorMessage="Name">
-                            <span class="req"></span>
+                            CssClass="required">
+                            Name is required
                         </asp:RequiredFieldValidator>
                     </div>
                                                         

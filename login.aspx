@@ -1,4 +1,5 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="login.aspx.vb" Inherits="login" %>
+﻿
+<%@ Page Language="VB" AutoEventWireup="false" CodeFile="login.aspx.vb" Inherits="login" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
@@ -55,6 +56,7 @@
                                     ID="RequiredFieldValidator1"
                                     runat="server"
                                     Display="Dynamic"
+                                    CssClass="required"
                                     ControlToValidate="UserName">
                                     Username is required
                                 </asp:RequiredFieldValidator>
@@ -76,6 +78,7 @@
 
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
                                     ControlToValidate="Password"
+                                    CssClass="required"
                                     Display="Dynamic">
                                     Password is required
                                 </asp:RequiredFieldValidator>
@@ -102,11 +105,9 @@
                 </asp:Login>
             </div>
         
-        <div class="container centrealign">
-            <p>
-                <a href="/forgot_password/">Forgot your password?</a>
-            </p>
-        </div>
+        <p class="centrealign">
+            <a href="/forgot_password/">Forgot your password?</a>
+        </p>
     </form>
 
        
