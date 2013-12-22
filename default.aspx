@@ -333,20 +333,51 @@
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
     <div class="tour-block">
         <div class="tour-inner">
-            <a href="#" class="close">&times;</a>
+            <a href="#" class="close" data-tour="close">&times;</a>
             
             <h1>Dashboard <span>Take a Tour</span></h1>
 
-            <div class="tour-nav">
+            <div class="tour-nav" data-tour="menu">
                 <ul>
-                    <li class="active"><a href="#">1. Overview</a></li>
-                    <li><a href="#">2. Reminders</a></li>
-                    <li><a href="#">3. Statistics</a></li>
-                    <li><a href="#">4. News</a></li>
+                    <li class="active"><a href="#" data-tab="overview">1. Overview</a></li>
+                    <li><a href="#" data-tab="reminders">2. Reminders</a></li>
+                    <li><a href="#" data-tab="statistics">3. Statistics</a></li>
+                    <li><a href="#" data-tab="news">4. News</a></li>
                 </ul>
             </div>
             <div class="tour-content">
-                <iframe width="640" height="480" src="//www.youtube.com/embed/wHOYs7MUG3A" frameborder="0" allowfullscreen></iframe>
+                <div data-target="overview">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/wHOYs7MUG3A" frameborder="0" allowfullscreen></iframe>
+
+                    <div class="tour-control">
+                        Step 1
+                        <a href="#" data-tab-control="reminders">Next</a>
+                    </div>
+                </div>
+                
+                <div data-target="reminders" class="hide">
+                    Reminders
+                    <div class="tour-control">
+                        Step 1
+                        <a href="#" data-tab-control="statistics">Next</a>
+                    </div>
+                </div>
+
+                <div data-target="statistics" class="hide">
+                    Statistics
+                    <div class="tour-control">
+                        Step 1
+                        <a href="#" data-tab-control="news">Next</a>
+                    </div>
+                </div>
+
+                <div data-target="news" class="hide">
+                    News
+                    <div class="tour-control">
+                        Step 4
+                        <a href="#" class="restart" data-tab-control="overview">Restart</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

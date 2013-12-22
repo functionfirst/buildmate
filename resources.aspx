@@ -31,9 +31,11 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li class="active">Resources</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li class="active">Resources</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
@@ -46,7 +48,7 @@
                     runat="server"
                     Width="300"
                     CssClass="searchInput"
-                    EmptyMessage="Search by Name, Manufacturer or Part Id"
+                    EmptyMessage="Search by Name, Manufacturer or Part ID"
                     AutoPostBack="true" />
             </div>
         </div>
@@ -66,7 +68,7 @@
 
     <div class="clear"></div>
         <asp:Label ID="lblCount" runat="server" Visible="false">
-            <div class="successBox">Your search returned more than 1,000 results, please be more specific with your search</div>
+            <div class="successBox">We found more than 500 results matching your keywords, please be more specific with your search..</div>
         </asp:Label>
 
         <telerik:RadGrid
@@ -125,7 +127,6 @@
         </telerik:RadGrid>
         </div>
     </div>
-
     </div>
 
     <asp:SqlDataSource ID="allResourcesDataSource" runat="server"

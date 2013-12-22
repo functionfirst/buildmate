@@ -134,15 +134,17 @@
             </asp:FormView>
         </div>
     </div>
-
+    
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li><a href="#" data-target="addCustomer" class="js-open-modal button button-create">New Customer</a></li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li><a href="#" data-target="addCustomer" class="js-open-modal button button-create">New Customer</a></li>
+            </ul>
 
-        <ul class="breadcrumb-list">
-            <li class="active">Customers</li>
-        </ul>
+            <ul class="breadcrumb-list">
+                <li class="active">Customers</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">

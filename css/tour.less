@@ -21,6 +21,7 @@
     width: 860px;
     margin: 0 auto;
     padding: 10px;
+
     .close {
         float: right;
         color: #fff;
@@ -36,6 +37,41 @@
             display: block;
             color: #999;
             font-size: 14px;
+        }
+    }
+
+    .tour-control {
+        background: #333;
+        padding: 10px 14px;
+        position: relative;
+        -webkit-border-radius: 0 0 5px 5px;
+        -moz-border-radius: 0 0 5px 5px;
+        border-radius: 0 0 5px 5px;
+
+        a {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: inherit;
+            background: #89bc00;
+            padding: 10px 20px;
+            color: #fff;
+            -webkit-border-radius: 0 0 5px 0;
+            -moz-border-radius: 0 0 5px 0;
+            border-radius: 0 0 5px 0;
+
+            &:after {
+                background: url('/icons/icons.png') no-repeat -316px -118px;
+                content: " ";
+                height: 16px;
+                width: 16px;
+                margin-top: 3px;
+                position: absolute;
+            }
+        }
+
+        .restart:after {
+            background-position: 2px 0;
         }
     }
 
@@ -72,6 +108,7 @@
 
     .tour-content {
         margin-left: 200px;
+        color: #fff;
     }
 }
 

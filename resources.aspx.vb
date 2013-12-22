@@ -4,7 +4,7 @@
     Protected Sub allResourcesDataSource_Selected(sender As Object, e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles allResourcesDataSource.Selected
         Dim itemCount As Integer = e.AffectedRows
 
-        If itemCount >= 1000 Then
+        If itemCount >= 500 Then
             lblCount.Visible = True
         Else
             lblCount.Visible = False

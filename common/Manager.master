@@ -53,12 +53,12 @@
                 <div class="brand">Buildmate</div>
 
                 <div class="nav">
-                    <ul class="nav-options">
+                    <ul class="nav-options" data-target="options">
                         <li>
-                            <a href="#" class="toggle-help js-toggle-help"><span></span></a>
+                            <a href="#" class="toggle-help" data-tour="play"><span></span></a>
                         </li>
                         <li>
-                            <a href="#" class="toggle-options js-toggle-options">Hello, <asp:Label ID="lblFirstname" runat="server" /></a>
+                            <a href="#" class="toggle-options js-toggle-options" data-toggle-menu="options">Hello, <asp:Label ID="lblFirstname" runat="server" /></a>
 
                             <ul>
                                 <li><a class="options-icon options-settings" href="settings.aspx">Settings</a></li>

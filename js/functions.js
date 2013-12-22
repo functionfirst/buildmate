@@ -9,23 +9,40 @@ $(document).ready(function () {
         return false;
     });
 
-    $('body').on('click', '.sidebar-close', function () {
-        toggleSidebar();
+    // tour block - close button
+    $('body').on('click', 'a[data-tour="close"]', function () {
+        toggleVisibility('body', 'show-tour');
     });
 
-    // toggle side panel
+    // tour block - 'play' tour button
+    $('body').on('click', 'a[data-tour="play"]', function () {
+        toggleVisibility('body', 'show-tour');
+        return false;
+    });
+
+    // disable tour button if a tour doesn't exist on this page
     if ($('.tour-block').length === 0) {
-        $('.js-toggle-help').attr('disabled', 'disabled').unbind('click');
-    } else {
-        $('body').on('click', '.js-toggle-help', function () {
-            toggleSidebar();
-            return false;
-        });
+        $('a[data-tour="play"]').attr('disabled', 'disabled').unbind('click');
     }
+
+    // tabs for tour
+    $('[data-tour="menu"]').find('a[data-tab]').click(function () {
+        var target = $(this).data('tab');
+        $(this).parent().addClass('active').siblings().removeClass('active');
+        $('[data-target="' + target + '"]').removeClass('hide').siblings().addClass('hide');
+        return false;
+    });
+
+    // shortcut for tour tabs
+    $('[data-tab-control]').click(function () {
+        var target = $(this).data('tab-control');
+        $('a[data-tab="' + target + '"]').trigger('click');
+    });
 
     // toggle options menu
     $('.js-toggle-options').on('click', function () {
-        toggleOptionsMenu();
+        //var target = $(this).data("toggle-menu");
+        toggleVisibility('.nav-options', 'nav-options-active');
         return false;
     });
 
@@ -36,22 +53,14 @@ $(document).ready(function () {
         return false;
     });
 
-    function toggleOptionsMenu(set) {
-        if (set) {
-            $('.nav-options').removeClass('nav-options-active');
-        } else {
-            $('.nav-options').toggleClass('nav-options-active');
-        }
-    }
-
-
     // Listener for escape action, like pressing escape or clicking outside a modal
     $('body').on('escapeAction', function () {
-        toggleOptionsMenu(true);
+        toggleVisibility('body', 'show-tour', false)
+        toggleVisibility('.nav-options', 'nav-options-active', false);
     });
 
     $('.main-container').on('click', function () {
-        toggleOptionsMenu(true)
+        toggleVisibility('.nav-options', 'nav-options-active', false);
     });
 
     // close modal if escape is pressed
@@ -125,6 +134,15 @@ function validateModal() {
     return false;
 }
 
-function toggleSidebar() {
-    $('body').toggleClass('show-tour');
+function toggleVisibility(elem, klassName, set) {
+    //if (set) {
+    //    $(elem).addClas(klassName);
+    //} else if (!set) {
+    //    $(elem).removeClass(klassName);
+    //} else {
+    //    $(elem).toggleClass(klassName);
+    //}
+    console.log(elem, klassName, set);
+
+    $(elem).toggleClass(klassName, set);
 }

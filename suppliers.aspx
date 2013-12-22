@@ -127,13 +127,15 @@
     </div>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li><a href="#" data-target="addSupplier" class="js-open-modal button button-create">New Supplier</a></li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li><a href="#" data-target="addSupplier" class="js-open-modal button button-create">New Supplier</a></li>
+            </ul>
         
-        <ul class="breadcrumb-list">
-            <li class="active">Suppliers</li>
-        </ul>
+            <ul class="breadcrumb-list">
+                <li class="active">Suppliers</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
@@ -293,8 +295,21 @@
 
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <div class="sidebar">
-        <h3>Suppliers</h3>
+
+    <div class="tour-block">
+        <div class="tour-inner">
+            <a href="#" class="close">&times;</a>
+            
+            <h1>Suppliers <span>Take a Tour</span></h1>
+
+            <div class="tour-nav">
+                <ul>
+                    <li class="active"><a href="#">1. Suppliers</a></li>
+                    <li><a href="#">2. Unused Suppliers</a></li>
+                </ul>
+            </div>
+            <div class="tour-content">
+                <h3>Suppliers</h3>
         <p>
             Use the Supplier list to set your preferred priority, those at the top will be used first when checking resource prices.
         </p>
@@ -305,5 +320,7 @@
             The Unusers Suppliers list displays all of your suppliers that you aren't actively using. To be able
             to use these Suppliers in your Project you will need to select them and click 'Add this Supplier'.
         </p>
+            </div>
+        </div>
     </div>
 </asp:Content>
