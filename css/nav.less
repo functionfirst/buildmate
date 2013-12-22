@@ -171,11 +171,16 @@
             cursor: default;
             background-color: #333;
             color: #666;
+            
+            &:before ,
+            &:after {
+               display: none;
+            }
         }
 
-        .toggle-help[disabled='disabled']:after {
+        /*.toggle-help[disabled='disabled']:after {
             display: none;
-        }
+        }*/
 
         ul {
             position: absolute;

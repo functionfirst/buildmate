@@ -358,7 +358,7 @@
                 <div data-target="reminders" class="hide">
                     Reminders
                     <div class="tour-control">
-                        Step 1
+                        Step 2
                         <a href="#" data-tab-control="statistics">Next</a>
                     </div>
                 </div>
@@ -366,7 +366,7 @@
                 <div data-target="statistics" class="hide">
                     Statistics
                     <div class="tour-control">
-                        Step 1
+                        Step 3
                         <a href="#" data-tab-control="news">Next</a>
                     </div>
                 </div>
