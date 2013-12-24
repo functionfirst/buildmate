@@ -112,6 +112,7 @@ Partial Class manager_task_details
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim hlAddResources As HyperLink = CType(fvDefaultResources.FindControl("hlAddResources"), HyperLink)
         Dim activeLink As HyperLink = CType(Master.FindControl("hlProjects"), HyperLink)
         activeLink.CssClass = "active"
 
@@ -214,7 +215,6 @@ Partial Class manager_task_details
 
     Protected Sub rblResourceType_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles rblResourceType.SelectedIndexChanged
         rcbResources.Text = ""
-        lblUnitName.Text = ""
     End Sub
 
     Protected Sub rgResources_ItemCommand(ByVal source As Object, ByVal e As Telerik.Web.UI.GridCommandEventArgs) Handles rgResources.ItemCommand
@@ -457,7 +457,6 @@ Partial Class manager_task_details
         ' check item exists
         If dataTable.Rows.Count >= 1 Then
             Label14.Text = "Usage (" + dataTable.Rows.Item(0)("unit").ToString + "):"
-            'lblUnitName.Text = dataTable.Rows.Item(0)("unit").ToString
         End If
     End Sub
 

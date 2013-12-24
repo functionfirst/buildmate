@@ -14,15 +14,15 @@ $(document).ready(function () {
         toggleVisibility('body', 'show-tour');
     });
 
-    // tour block - 'play' tour button
-    $('body').on('click', 'a[data-tour="play"]', function () {
-        toggleVisibility('body', 'show-tour');
-        return false;
-    });
-
     // disable tour button if a tour doesn't exist on this page
     if ($('.tour-block').length === 0) {
         $('a[data-tour="play"]').attr('disabled', 'disabled').unbind('click');
+    } else {
+        // tour block - 'play' tour button
+        $('body').on('click', 'a[data-tour="play"]', function () {
+            toggleVisibility('body', 'show-tour');
+            return false;
+        });
     }
 
     // tabs for tour
@@ -135,14 +135,5 @@ function validateModal() {
 }
 
 function toggleVisibility(elem, klassName, set) {
-    //if (set) {
-    //    $(elem).addClas(klassName);
-    //} else if (!set) {
-    //    $(elem).removeClass(klassName);
-    //} else {
-    //    $(elem).toggleClass(klassName);
-    //}
-    console.log(elem, klassName, set);
-
     $(elem).toggleClass(klassName, set);
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Task Details - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="task_details.aspx.vb" Inherits="manager_task_details" %>
+﻿<%@ Page Title="Task Details - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="task_details.aspx.vb" Inherits="manager_task_details" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <%@ Register Src="~/controls/myCheckBox.ascx" TagName="myCheckbox" TagPrefix="myChk" %>
@@ -16,7 +16,7 @@
         return true;
     }
 </script>
-</asp:Content>
+</asp:Content>  
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">       
     <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
@@ -225,16 +225,15 @@
                         Text="Usage:"
                         CssClass="label"
                         AssociatedControlID="rntbUses" />
-                            <telerik:RadNumericTextBox
-                                ID="rntbUses"
-                                runat="server"
-                                Value="0"
-                                Width="60px"
-                                Type="Number"
-                                MinValue="0"
-                                NumberFormat-DecimalDigits="2" />
 
-                    <asp:Literal ID="lblUnitName" runat="server"></asp:Literal>
+                    <telerik:RadNumericTextBox
+                        ID="rntbUses"
+                        runat="server"
+                        Value="0"
+                        Width="60px"
+                        Type="Number"
+                        MinValue="0"
+                        NumberFormat-DecimalDigits="2" />
                 </div>
             </div>
 
@@ -596,40 +595,29 @@
     </div>
     
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li>
-                <asp:Panel ID="pAddAdditions" runat="server">
-                    <a href="#" data-target="addAddition" class="js-open-modal button button-create">Add an Addition</a>
-                </asp:Panel>
-            </li>
-            <li>
-                <asp:HyperLink ID="hlAddResources" runat="server"
-                    data-target="addResources"
-                    CssClass="js-open-modal button button-primary"
-                    Text="Add a Resource" />
-            </li>
-        </ul>
-        <ul class="breadcrumb-list">
-            <li>
-                <a href="projects.aspx">Projects</a>
-                <span class="divider">/</span>
-            </li>
-            <li>
-                <asp:HyperLink ID="hlBack" runat="server"
-                    NavigateUrl="project_details.aspx?pid={0}"
-                    Text="Project Details" />
-                <span class="divider">/</span>
-            </li>
-            <li>
-                <asp:HyperLink ID="hlBack2" runat="server"
-                    NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
-                    Text="Build Element Details" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Task Details
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li>
+                    <a href="projects.aspx">Projects</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <asp:HyperLink ID="hlBack" runat="server"
+                        NavigateUrl="project_details.aspx?pid={0}"
+                        Text="Project Details" />
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <asp:HyperLink ID="hlBack2" runat="server"
+                        NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
+                        Text="Build Element Details" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Task Details
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
@@ -695,7 +683,16 @@
             </div>
 
     <div class="box">
+        <div class="div66">
             <h3>Ad-hoc Additions</h3>
+        </div>
+        <div class="div33 last rightalign">
+            <asp:Panel ID="pAddAdditions" runat="server">
+                <p>
+                    <a href="#" data-target="addAddition" class="js-open-modal button button-create">Add an Addition</a>
+                </p>
+            </asp:Panel>
+        </div>
             
             <div class="boxcontent">
                 <telerik:RadGrid ID="rgAdditions" runat="server"
@@ -1156,11 +1153,12 @@
         </asp:Panel>
     
         <asp:Panel ID="pCurrentResources" runat="server" CssClass="box">
-            <h3>Current Resources</h3>
-
-            <div class="boxcontent">
-
-            <asp:FormView
+            <div class="div50">
+                <h3>Current Resources</h3>
+            </div>
+            
+            <div class="div50 last rightalign">
+                <asp:FormView
                 ID="fvDefaultResources"
                 DefaultMode="Edit"
                 runat="server"
@@ -1168,23 +1166,42 @@
                 RenderOuterTable="false"
                 DataSourceID="taskDataSource">
                 <EditItemTemplate>
-                    <asp:CheckBox ID="CheckBox1" runat="server" 
+                    <p>
+                        <a href="#">What is this?</a>
+                        <asp:Button ID="Button1" runat="server"
+                        CssClass="button button-primary"
+                        Text="Set as Default Resources"
+                        Visible='<%# IIF(Eval("isDefaultResource"), "False", "True") %>' />
+
+                    <asp:Button ID="Button2" runat="server"
+                        CssClass="button button-error"
+                        Text="Unset these Resources as Default"
+                        Visible='<%# IIf(Eval("isDefaultResource"), "True", "False") %>' />
+
+                    <%--<asp:CheckBox ID="CheckBox1" runat="server" 
                         AutoPostBack="true"
                         OnCheckedChanged="setDefaultResources"
                         Text="Set as default Task Resources"
-                        Visible='<%# IIF(Eval("isDefaultResource"), "False", "True") %>' />
+                        Visible='<%# IIF(Eval("isDefaultResource"), "False", "True") %>' />--%>
 
                         
-                    <asp:CheckBox ID="CheckBox2" runat="server" 
+                    <%--<asp:CheckBox ID="CheckBox2" runat="server" 
                         AutoPostBack="true"
                         OnCheckedChanged="setDefaultResources"
                         Text="Current default Task Resources"
                         Enabled="false"
                         Visible='<%# IIF(Eval("isDefaultResource"), "True", "False") %>'
-                        Checked='True' />
+                        Checked='True' />--%>
+                    
+                    <asp:HyperLink ID="hlAddResources" runat="server"
+                        data-target="addResources"
+                        CssClass="js-open-modal button button-create pull-right"
+                        Text="Add a Resource" />
+                    </p>
                 </EditItemTemplate>
             </asp:FormView>
-                
+            </div>
+            <div class="boxcontent">
             <div class="clear"></div>
 
             <asp:HiddenField ID="resourcePrice" runat="server" />
