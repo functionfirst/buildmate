@@ -14,8 +14,8 @@ Partial Class manager_Default
                 Dim id As String = CType(item.FindControl("hiddenId"), HiddenField).Value
 
                 ' check for direction of movement
-                Dim direction As Boolean = False
-                If (e.CommandName = "MoveUp") Then direction = True
+                Dim direction As Boolean = True
+                If (e.CommandName = "MoveUp") Then direction = False
                 changePosition(id, position, direction)
             End If
         End If
