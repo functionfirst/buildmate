@@ -50,29 +50,43 @@ Partial Class manager_Default
         ' hide delete option for build elements that were created before variation mode
         If (TypeOf (e.Item) Is GridDataItem) Then
             'Get the instance of the right type
-            Dim dataBoundItem As GridDataItem = e.Item
-            Dim deleteColumn = dataBoundItem("DeleteColumn")
-            Dim isLocked = dataBoundItem("isLocked").Text
+            Dim item As GridDataItem = e.Item
+            Dim deleteColumn = item("DeleteColumn")
+            Dim isLocked = item("isLocked").Text
 
-            If isLocked Then
-                deleteColumn.Visible = False
-            End If
 
             ' hide unresourced
-            Dim supplierId = dataBoundItem("supplierId").Text
-            Dim supplierName = dataBoundItem("supplierName").Text
-            Dim supplier = dataBoundItem("supplier")
+            Dim supplierId = item("supplierId").Text
+            Dim supplierName = item("supplierName").Text
+            Dim supplier = item("supplier")
             Dim hlSupplier As HyperLink = supplier.FindControl("hlSupplier")
             Dim lblSupplier As Label = supplier.FindControl("lblSupplier")
+            Dim lblIsYou As Label = supplier.FindControl("lblIsYou")
 
-            If supplierId = 1 Then
-                lblSupplier.Text = supplierName
-                lblSupplier.Visible = True
-            Else
-                hlSupplier.Text = supplierName
-                hlSupplier.NavigateUrl = String.Format("~/supplier_details.aspx?id={0}", supplierId)
-                hlSupplier.Visible = True
-                lblSupplier.Visible = False
+            hlSupplier.Text = supplierName
+            hlSupplier.NavigateUrl = String.Format("~/supplier_details.aspx?id={0}", supplierId)
+            hlSupplier.Visible = True
+            lblSupplier.Visible = False
+
+            ' don't allow user to delete themselves from the supplier list
+            ' indicate their supplier
+            If isLocked Then
+                deleteColumn.Visible = False
+                lblIsYou.Visible = True
+            End If
+
+
+            ' check for last or first item
+            Dim itemIndex = e.Item.DataSetIndex
+
+            If (itemIndex = 0) Then
+                ' first item
+                Dim lbUp As LinkButton = DirectCast(item("position").FindControl("lbUp"), LinkButton)
+                lbUp.Visible = False
+            ElseIf (itemIndex = e.Item.OwnerTableView.DataSourceCount - 1) Then
+                ' last item
+                Dim lbDown As LinkButton = DirectCast(item("position").FindControl("lbDown"), LinkButton)
+                lbDown.Visible = False
             End If
         End If
     End Sub

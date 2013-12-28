@@ -162,6 +162,7 @@
                                 <ItemTemplate>
                                     <asp:HyperLink ID="hlSupplier" runat="server" />
                                     <asp:Label ID="lblSupplier" runat="server" />
+                                    <asp:Label ID="lblIsYou" runat="server" Visible="false"><br /><small>This is you..</small></asp:Label>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
 
@@ -173,13 +174,13 @@
                                 <ItemTemplate>
                                     <asp:HiddenField ID="hiddenId" runat="server" Value='<%# Bind("id") %>' />
 
-                                    <asp:LinkButton ID="LinkButton1" runat="server"
+                                    <asp:LinkButton ID="lbUp" runat="server"
                                         CommandArgument='<%# eval("position") %>'
                                         CssClass="pinArrow"
                                         ToolTip="Move Up"
                                         CommandName="MoveUp">&uArr;</asp:LinkButton>
 
-                                    <asp:LinkButton ID="LinkButton2" runat="server" 
+                                    <asp:LinkButton ID="lbDown" runat="server" 
                                         CommandArgument='<%# eval("position") %>'
                                         ToolTip="Move Down"
                                         CssClass="pinArrow"
@@ -204,6 +205,7 @@
                                 HeaderText="supplierName"
                                 Visible="false"
                                 DataField="supplierName" />
+
 
                             <telerik:GridButtonColumn
                                 ConfirmText="Remove this Supplier?"
