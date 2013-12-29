@@ -132,8 +132,6 @@ Partial Class manager_Default
         Dim activeLink As HyperLink = CType(Master.FindControl("hlProjects"), HyperLink)
         activeLink.CssClass = "active"
 
-        checkIntroStatus()
-
         filterByStatus()
     End Sub
 
@@ -148,14 +146,5 @@ Partial Class manager_Default
             projectsDataSource.FilterExpression = filter
             projectsDataSource.DataBind()
         End If
-    End Sub
-
-    Protected Sub checkIntroStatus()
-        Dim checkForCustomer = hasCustomer()
-        Dim checkForProject = hasProject()
-
-        noCustomerPanel.Visible = Not checkForCustomer
-        noProjectPanel.Visible = checkForCustomer And Not checkForProject
-        projectPanel.Visible = checkForCustomer And checkForProject
     End Sub
 End Class

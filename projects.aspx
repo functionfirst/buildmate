@@ -53,98 +53,75 @@
     </div>
 
     <div class="main-container">
-
         <div id="lblDeleted" runat="server" class="errorBox" visible="false">
             <b>Project Deleted</b><br />
             The project was deleted successfully.
         </div>
 
-    
-        <asp:Panel ID="noCustomerPanel" runat="server" visible="true" CssClass="help-panel">
-            <h3>1. Before you begin you'll need to create your first Customer which you can assign a Project to.</h3>
-            <p>
-                Click the button below to create your first Customer.<br />
-                <small>Note, anytime you see a green button like this you'll be able to Add or Update something on the page.</small>
-            </p>
-            <p>
-                <a href="add_customer.aspx" class="button button-create">New Customer</a>
-            </p>
-        </asp:Panel>
-
-        <asp:Panel ID="noProjectPanel" runat="server" Visible="false" CssClass="help-panel">
-            <h3>2. You've created your first Customer so lets move on and create a Project for them.</h3>
-        
-            <p>Click the button below to create your first Project.</p>
-        
-            <p><a href="add_project.aspx" class="button button-create">New Project</a></p>
-        </asp:Panel>
-
-        <asp:Panel ID="projectPanel" runat="server">
-
-                <asp:Panel ID="pSearchProjects" runat="server" DefaultButton="btnApplyFilter">
-                    <div id="advSearch" class="search">
-                        <a href="#" class="toggleSearch"><span></span></a>
+        <asp:Panel ID="pSearchProjects" runat="server" DefaultButton="btnApplyFilter">
+            <div id="advSearch" class="search">
+                <a href="#" class="toggleSearch"><span></span></a>
              
-                        <telerik:RadTextBox
-                            ID="rtbKeywords"
-                            runat="server"
-                            CssClass="searchInput"
-                            EmptyMessage="Search by project name or description"
-                            Width="220px" />
+                <telerik:RadTextBox
+                    ID="rtbKeywords"
+                    runat="server"
+                    CssClass="searchInput"
+                    EmptyMessage="Search by project name or description"
+                    Width="220px" />
 
-                            <asp:LinkButton
-                                ID="btnRemoveFilter"
-                                runat="server"
-                                Text="clear" />
+                    <asp:LinkButton
+                        ID="btnRemoveFilter"
+                        runat="server"
+                        Text="clear" />
                                                                                                                                                                                                
-                            <div class="panel">
-                                <div class="row">
-                                    <asp:Label ID="Label2" CssClass="label" runat="server" AssociatedControlID="rcbStatus" Text="Project Status" />
-                                    <telerik:RadComboBox
-                                        ID="rcbStatus"
-                                        runat="server"
-                                        DataSourceID="statusDataSource"
-                                        DataTextField="status"
-                                        DataValueField="id" />
-                                </div>
-
-                            <div class="row">
-
-                                <asp:Label ID="Label3" CssClass="label" runat="server" AssociatedControlID="rcbProjectType" Text="Project Type" />
-                                <telerik:RadComboBox
-                                    ID="rcbProjectType"
-                                    runat="server"
-                                    DataSourceID="projectTypeDataSource"
-                                    DataTextField="projectType"
-                                    DataValueField="id" />
-                               </div>
-
-                            <div class="row">
-                                <asp:Label ID="Label4" CssClass="label" runat="server" AssociatedControlID="rdpStartDate" Text="Start Date" />
-
-                                <telerik:RadDatePicker ID="rdpStartDate" runat="server"
-                                    Calendar-ShowRowHeaders="false"
-                                    Width="100px" Calendar-FastNavigationStep="12" />
-                            </div>
-
-                            <div class="row">
-                                <asp:Label ID="Label5" CssClass="label" runat="server" AssociatedControlID="rdpEndDate" Text="Finish Date" />
-
-                                <telerik:RadDatePicker ID="rdpEndDate" runat="server" 
-                                    Calendar-ShowRowHeaders="false"
-                                    Width="100px" Calendar-FastNavigationStep="12" />
-                            </div>
-
-                            <div class="row">
-                                <asp:CheckBox ID="cbArchived" runat="server" Text="Include archived projects" />
-                            </div>
-
-                            <div class="row">
-                                <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filters"  />
-                            </div>
+                    <div class="panel">
+                        <div class="row">
+                            <asp:Label ID="Label2" CssClass="label" runat="server" AssociatedControlID="rcbStatus" Text="Project Status" />
+                            <telerik:RadComboBox
+                                ID="rcbStatus"
+                                runat="server"
+                                DataSourceID="statusDataSource"
+                                DataTextField="status"
+                                DataValueField="id" />
                         </div>
+
+                    <div class="row">
+
+                        <asp:Label ID="Label3" CssClass="label" runat="server" AssociatedControlID="rcbProjectType" Text="Project Type" />
+                        <telerik:RadComboBox
+                            ID="rcbProjectType"
+                            runat="server"
+                            DataSourceID="projectTypeDataSource"
+                            DataTextField="projectType"
+                            DataValueField="id" />
+                        </div>
+
+                    <div class="row">
+                        <asp:Label ID="Label4" CssClass="label" runat="server" AssociatedControlID="rdpStartDate" Text="Start Date" />
+
+                        <telerik:RadDatePicker ID="rdpStartDate" runat="server"
+                            Calendar-ShowRowHeaders="false"
+                            Width="100px" Calendar-FastNavigationStep="12" />
                     </div>
-                </asp:Panel>
+
+                    <div class="row">
+                        <asp:Label ID="Label5" CssClass="label" runat="server" AssociatedControlID="rdpEndDate" Text="Finish Date" />
+
+                        <telerik:RadDatePicker ID="rdpEndDate" runat="server" 
+                            Calendar-ShowRowHeaders="false"
+                            Width="100px" Calendar-FastNavigationStep="12" />
+                    </div>
+
+                    <div class="row">
+                        <asp:CheckBox ID="cbArchived" runat="server" Text="Include archived projects" />
+                    </div>
+
+                    <div class="row">
+                        <asp:Button ID="btnApplyFilter" runat="server" Text="Apply Filters" CssClass="button button-primary"  />
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
 
 
 
@@ -223,8 +200,6 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
-    
-        </asp:Panel>
         <div class="clear"></div>
     </div>
 
