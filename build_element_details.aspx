@@ -36,30 +36,32 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li>
-                <asp:HyperLink ID="hlAddTask" runat="server"
-                        CssClass="button button-create"
-                        OnLoad="hlAddTask_Load"
-                        Text="Add Tasks"
-                        NavigateUrl="add_task.aspx?pid={0}&rid={1}" />
-            </li>
-        </ul>
-        <ul class="breadcrumb-list">
-            <li>
-                <a href="projects.aspx">Projects</a>
-                <span class="divider">/</span>
-            </li>
-            <li>
-                <asp:HyperLink ID="hlBack" runat="server"
-                    NavigateUrl="project_details.aspx?pid={0}"
-                    Text="Project Details" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Build Element Details
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li>
+                    <asp:HyperLink ID="hlAddTask" runat="server"
+                            CssClass="button button-create"
+                            OnLoad="hlAddTask_Load"
+                            Text="Add Tasks"
+                            NavigateUrl="add_task.aspx?pid={0}&rid={1}" />
+                </li>
+            </ul>
+            <ul class="breadcrumb-list">
+                <li>
+                    <a href="projects.aspx">Projects</a>
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <asp:HyperLink ID="hlBack" runat="server"
+                        NavigateUrl="project_details.aspx?pid={0}"
+                        Text="Project Details" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Build Element Details
+                </li>
+            </ul>
+        </div>
     </div>
     
     <div class="main-container">

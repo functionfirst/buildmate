@@ -420,38 +420,40 @@
     
     
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li>
-                <asp:HyperLink ID="addBuildElementLink" runat="server"
-                    NavigateUrl="#"
-                    data-target="addBuildElement"
-                    CssClass="js-open-modal button button-create"
-                    Text="Add a Build Element" />
-            </li>
-            <li>
-                <a href="#" class="js-open-modal button button-primary" data-target="documents">Download a Document</a>
-            </li>
-            <li>
-                <a href="#" class="js-open-modal button" data-target="projectLogs">View Project Logs</a>
-            </li>
-            <li>
-                <asp:Button ID="btnArchive" runat="server"
-                    CssClass="button button-error" Text="Archive this Project" />
-            </li>
-            <li>
-                <asp:Button ID="btnUnarchive" runat="server"
-                    CssClass="button button-primary" Text="Unarchive this Project" />
-            </li>
-        </ul>
-        <ul class="breadcrumb-list">
-            <li>
-                <a href="projects.aspx">Projects</a>
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Project Details
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li>
+                    <asp:HyperLink ID="addBuildElementLink" runat="server"
+                        NavigateUrl="#"
+                        data-target="addBuildElement"
+                        CssClass="js-open-modal button button-create"
+                        Text="Add a Build Element" />
+                </li>
+                <li>
+                    <a href="#" class="js-open-modal button button-primary" data-target="documents">Download a Document</a>
+                </li>
+                <li>
+                    <a href="#" class="js-open-modal button" data-target="projectLogs">View Project Logs</a>
+                </li>
+                <li>
+                    <asp:Button ID="btnArchive" runat="server"
+                        CssClass="button button-error" Text="Archive this Project" />
+                </li>
+                <li>
+                    <asp:Button ID="btnUnarchive" runat="server"
+                        CssClass="button button-primary" Text="Unarchive this Project" />
+                </li>
+            </ul>
+            <ul class="breadcrumb-list">
+                <li>
+                    <a href="projects.aspx">Projects</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Project Details
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
