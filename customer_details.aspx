@@ -34,6 +34,7 @@
     </telerik:RadAjaxManagerProxy>
     
     <div class="breadcrumb">
+        <div class="breadcrumb-container">
         <ul class="breadcrumb-options">
             <li>
                 <asp:Button ID="btnArchive" runat="server"
@@ -55,6 +56,7 @@
                 Customer Details
             </li>
         </ul>
+        </div>
     </div>
 
     <div class="main-container">

@@ -61,18 +61,18 @@ Public Class MyBaseClass
         notification.Visible = False
     End Sub
 
-    Protected Function hasCustomer() As Boolean
-        Dim queryString As String = "SELECT COUNT(id) FROM UserContact WHERE userId = @userId;"
-        Using connection As New SqlConnection(connectionString)
-            Dim command As New SqlCommand(queryString, connection)
-            command.Parameters.AddWithValue("userId", Session("userId"))
-            connection.Open()
-            Dim rowCount = Convert.ToInt32(command.ExecuteScalar())
-            If rowCount > 0 Then Return True
-        End Using
+    'Protected Function hasCustomer() As Boolean
+    '    Dim queryString As String = "SELECT COUNT(id) FROM UserContact WHERE userId = @userId;"
+    '    Using connection As New SqlConnection(connectionString)
+    '        Dim command As New SqlCommand(queryString, connection)
+    '        command.Parameters.AddWithValue("userId", Session("userId"))
+    '        connection.Open()
+    '        Dim rowCount = Convert.ToInt32(command.ExecuteScalar())
+    '        If rowCount > 0 Then Return True
+    '    End Using
 
-        Return False
-    End Function
+    '    Return False
+    'End Function
 
     Protected Function hasProject() As Boolean
         Dim queryString As String = "SELECT COUNT(id) FROM Project WHERE userId = @userId;"

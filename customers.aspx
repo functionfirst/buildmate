@@ -148,91 +148,77 @@
     </div>
 
     <div class="main-container">
-        <asp:Panel ID="noCustomerPanel" runat="server" visible="false" CssClass="help-panel">
-            <h3>1. Adding a Customer</h3>
-
-            <p>
-                To start using Buildmate you'll need to create your first Customer. This will allow you to then create a Project and start pricing up your job.
-            </p>
-            <p>
-                <a href="add_customer.aspx" class="button button-primary">New Customer</a>
-            </p>
-        </asp:Panel>
-
-        <asp:Panel ID="customerPanel" runat="server">
-            <asp:Panel ID="pCustomerSearch" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
-                <telerik:RadTextBox
-                    ID="rtbFilter"
-                    runat="server"
-                    AutoPostBack="true"
-                    CssClass="search-input"
-                    EmptyMessage="Search by customer name or address"
-                    Width="220px" />
-
-                <asp:CheckBox
-                    ID="cbArchived"
-                    runat="server"
-                    AutoPostBack="true"
-                    Text="Include archived customers" />
-
-                <asp:Button
-                    ID="btnApplyFilter"
-                    runat="server"
-                    CssClass="button button-primary"
-                    Text="Apply Filters" />
-
-                <asp:LinkButton
-                        ID="btnRemoveFilter"
-                        runat="server"
-                        CssClass="button"
-                        Text="clear" />
-            </asp:Panel>
-    
-            <telerik:RadGrid
-                ID="rgCustomers"
+        <asp:Panel ID="pCustomerSearch" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
+            <telerik:RadTextBox
+                ID="rtbFilter"
                 runat="server"
-                EnableLinqExpressions="false"
-                DataSourceID="allCustomersDataSource"
-                AllowAutomaticDeletes="true"
-                AllowPaging="true"
-                EnableAJAX="True"
-                GridLines="None"
-                PageSize="20"
-                PagerStyle-Mode="NextPrev"
-                AutoGenerateColumns="false"
-                ShowStatusBar="true"
-                AllowSorting="true">
-                <MasterTableView
-                    DataSourceID="allCustomersDataSource"
-                    AutoGenerateColumns="False"
-                    FilterExpression=""
-                    GridLines="None"
-                    DataKeyNames="id"
-                    NoMasterRecordsText="&nbsp;No Customers were found.">
-                    <Columns>
-                        <telerik:GridTemplateColumn UniqueName="name" HeaderText="Name" SortExpression="name">
-                            <ItemTemplate>
-                                <asp:HyperLink ID="HyperLink1" runat="server"
-                                    NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("name") %></asp:HyperLink>
-                            </ItemTemplate>
-                        </telerik:GridTemplateColumn>
-                        
-                        <telerik:GridBoundColumn
-                            UniqueName="address"
-                            DataField="address"
-                            HeaderText="Address"
-                            SortExpression="address" />
+                AutoPostBack="true"
+                CssClass="search-input"
+                EmptyMessage="Search by customer name or address"
+                Width="220px" />
 
-                        <telerik:GridBoundColumn
-                            DataField="postcode"
-                            HeaderText="Postcode" 
-                            SortExpression="postcode"
-                            UniqueName="postcode" />
-                    </Columns>
-                </MasterTableView>
-            </telerik:RadGrid>
-        
+            <asp:CheckBox
+                ID="cbArchived"
+                runat="server"
+                AutoPostBack="true"
+                Text="Include archived customers" />
+
+            <asp:Button
+                ID="btnApplyFilter"
+                runat="server"
+                CssClass="button button-primary"
+                Text="Apply Filters" />
+
+            <asp:LinkButton
+                    ID="btnRemoveFilter"
+                    runat="server"
+                    CssClass="button"
+                    Text="clear" />
         </asp:Panel>
+    
+        <telerik:RadGrid
+            ID="rgCustomers"
+            runat="server"
+            EnableLinqExpressions="false"
+            DataSourceID="allCustomersDataSource"
+            AllowAutomaticDeletes="true"
+            AllowPaging="true"
+            EnableAJAX="True"
+            GridLines="None"
+            PageSize="20"
+            PagerStyle-Mode="NextPrev"
+            AutoGenerateColumns="false"
+            ShowStatusBar="true"
+            AllowSorting="true">
+            <MasterTableView
+                DataSourceID="allCustomersDataSource"
+                AutoGenerateColumns="False"
+                FilterExpression=""
+                GridLines="None"
+                DataKeyNames="id"
+                NoMasterRecordsText="&nbsp;You have not added any Customers yet.">
+                <Columns>
+                    <telerik:GridTemplateColumn UniqueName="name" HeaderText="Name" SortExpression="name">
+                        <ItemTemplate>
+                            <asp:HyperLink ID="HyperLink1" runat="server"
+                                NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("name") %></asp:HyperLink>
+                        </ItemTemplate>
+                    </telerik:GridTemplateColumn>
+                        
+                    <telerik:GridBoundColumn
+                        UniqueName="address"
+                        DataField="address"
+                        HeaderText="Address"
+                        SortExpression="address" />
+
+                    <telerik:GridBoundColumn
+                        DataField="postcode"
+                        HeaderText="Postcode" 
+                        SortExpression="postcode"
+                        UniqueName="postcode" />
+                </Columns>
+            </MasterTableView>
+        </telerik:RadGrid>
     </div>
 
     <asp:SqlDataSource

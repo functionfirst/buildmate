@@ -7,9 +7,9 @@ Partial Class manager_Default
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         activateNavigationLink("hlCustomers")
 
-        Dim customer = hasCustomer()
-        customerPanel.Visible = customer
-        noCustomerPanel.Visible = Not customer
+        'Dim customer = hasCustomer()
+        'customerPanel.Visible = customer
+        'noCustomerPanel.Visible = Not customer
     End Sub
 
     Protected Sub btnApplyFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnApplyFilter.Click

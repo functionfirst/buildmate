@@ -162,7 +162,7 @@
                 <MasterTableView
                     DataSourceID="projectsDataSource"
                     AutoGenerateColumns="False"
-                    NoMasterRecordsText="&nbsp;No Projects were found.">
+                    NoMasterRecordsText="&nbsp;You have not added a Project yet.">
                     <GroupByExpressions>
                         <telerik:GridGroupByExpression>
                             <GroupByFields>
