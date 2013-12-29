@@ -24,56 +24,52 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li>
-                <a href="support.aspx">Support</a>
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Ticket Details
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li>
+                    <a href="support.aspx">Support</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Ticket Details
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
+        <asp:FormView
+            ID="fvViewTicket"
+            runat="server"
+            RenderOuterTable="false"
+            DataKeyNames="id"
+            DataSourceID="viewTicketDataSource">
+            <ItemTemplate>
+                <h3><%# Eval("subject")%></h2>
 
-        <div class="div50">
-            <asp:FormView
-                ID="fvViewTicket"
-                runat="server"
-                DataKeyNames="id" Width="100%"
-                DataSourceID="viewTicketDataSource">
-                <ItemTemplate>
-                    <div class="box">
-                        <h3><%# Eval("subject")%></h2>
+                <asp:HiddenField
+                    ID="isLocked"
+                    runat="server"
+                    Value='<%#eval("isLocked") %>'/>
 
-                        <div class="boxcontent">
-                            <asp:HiddenField
-                                ID="isLocked"
-                                runat="server"
-                                Value='<%#eval("isLocked") %>'/>
-
-                            <asp:Image
-                                ID="Image1"
-                                runat="server"
-                                ImageUrl="~/icons/lock.png"
-                                ImageAlign="AbsMiddle"
-                                CssClass="floatright"
-                                Visible='<%#Eval("isLocked") %>' />
+                <asp:Image
+                    ID="Image1"
+                    runat="server"
+                    ImageUrl="~/icons/lock.png"
+                    ImageAlign="AbsMiddle"
+                    CssClass="floatright"
+                    Visible='<%#Eval("isLocked") %>' />
                     
-                            <%# Eval("content")%>
+                <%# Eval("content")%>
 
-                            <p>
-                                <small>
-                                    Created by <%#Eval("name")%> on 
-                                    <%#Eval("dateCreated", "{0:f}")%>
-                                </small>
-                            </p>
-
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:FormView>
+                <p>
+                    <small>
+                        Created by <%#Eval("name")%> on 
+                        <%#Eval("dateCreated", "{0:f}")%>
+                    </small>
+                </p>
+            </ItemTemplate>
+        </asp:FormView>
 
             <asp:Repeater
                 ID="rReplies"
@@ -81,6 +77,7 @@
                 DataSourceID="relatedTicketsDataSource">
 
                 <ItemTemplate>
+                    <hr />
                     <div class='<%# iif(eval("userId") = eval("mainUserId"), "", " admin_reply") %>'>
                         <%#Eval("repContent")%><br />
                         <small>
@@ -91,9 +88,7 @@
                     <hr />
                 </ItemTemplate>
             </asp:Repeater>
-        </div>
 
-        <div class="div50 div-last">
             <asp:FormView
                 ID="fvReply"
                 runat="server"
@@ -102,10 +97,6 @@
                 DataSourceID="viewTicketDataSource"
                 DefaultMode="Insert">
                 <InsertItemTemplate>
-                    <div class="box">
-                        <h3>Add a Note</h3>
-
-                        <div class="boxcontent">
                             <div class="row">
                                 <telerik:RadTextBox
                                     ID="rtbReplyContent"
@@ -113,6 +104,7 @@
                                     Text='<%#Bind("repContent") %>'
                                     TextMode="MultiLine"
                                     Height="60px"
+                                    EmptyMessage="Add a Note..."
                                     MaxLength="1000"
                                     Width="100%" />
                             </div>
@@ -137,11 +129,8 @@
                                     <span class="req"></span>&nbsp;Content is required.        
                                 </div>
                             </asp:RequiredFieldValidator>
-                        </div>
-                    </div>
                 </InsertItemTemplate>
             </asp:FormView>
-        </div>
     </div>
           
     <asp:SqlDataSource
