@@ -78,12 +78,14 @@
     </div>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li><a href="#" data-target="addTicket" class="js-open-modal button button-create">New Ticket</a></li>
-        </ul>
-        <ul class="breadcrumb-list">
-            <li class="active">Support</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li><a href="#" data-target="addTicket" class="js-open-modal button button-create">New Ticket</a></li>
+            </ul>
+            <ul class="breadcrumb-list">
+                <li class="active">Support</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
@@ -172,20 +174,35 @@
 </asp:Content>
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <div class="sidebar">
-        <h3>How to get help</h3>
+    <div class="tour-block">
+        <div class="tour-inner">
+            <a href="#" class="close" data-tour="close">&times;</a>
+            
+            <h1>Support <span>Take a Tour</span></h1>
 
-        <p>
-            If you can't find a solution to your problem in our <a href="http://getbuildmate.com/knowledgebase/" target="_blank">Knowledge Base</a>,
-            you can submit a ticket by selecting the 'Create a Ticket' button to the left.
-        </p>
-        
-        <h3>How it works..</h3>
+            <div class="tour-nav" data-tour="menu">
+                <ul>
+                    <li class="active"><a href="#" data-tab="overview">How to get help</a></li>
+                </ul>
+            </div>
+            <div class="tour-content">
+                <div data-target="overview">
+                    <h3>How to get help</h3>
 
-        <p>Once you submit your Ticket one of our Support team will be in touch with you as soon as possible.</p>
+                    <p>
+                        If you can't find a solution to your problem in our <a href="http://getbuildmate.com/knowledgebase/" target="_blank">Knowledge Base</a>,
+                        you can submit a ticket by selecting the 'Create a Ticket' button to the left.
+                    </p>
         
-        <p>Each time they respond you'll be able to read their reply by selecting the relevant Ticket from the list to the left.</p>
+                    <h3>How it works..</h3>
+
+                    <p>Once you submit your Ticket one of our Support team will be in touch with you as soon as possible.</p>
         
-        <p><strong>Note:</strong> We'll also send the response as an email to your registered email address.</p>
+                    <p>Each time they respond you'll be able to read their reply by selecting the relevant Ticket from the list to the left.</p>
+        
+                    <p><strong>Note:</strong> We'll also send the response as an email to your registered email address.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </asp:Content>
