@@ -75,17 +75,19 @@ function validateModal() {
     </script>
     
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li>
-                <asp:HyperLink ID="HyperLink1" runat="server"
-                    NavigateUrl="~/projects.aspx"
-                    Text="Projects" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Add a Project
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li>
+                    <asp:HyperLink ID="HyperLink1" runat="server"
+                        NavigateUrl="~/projects.aspx"
+                        Text="Projects" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Add a Project
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">

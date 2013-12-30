@@ -2,6 +2,20 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
+
+<telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
+    <AjaxSettings>
+        <telerik:AjaxSetting AjaxControlId="rmpProject">
+            <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="rblProjectSource" />
+                    <telerik:AjaxUpdatedControl ControlID="rgProjects" />
+            </UpdatedControls>
+        </telerik:AjaxSetting>
+    </AjaxSettings>
+</telerik:RadAjaxManagerProxy>
+
+
+
 <h3>2. Select a Project to copy <em>or</em> create a Blank project</h3>
 
 <asp:Panel ID="noProjectsExist" runat="server" Visible="false">
@@ -12,6 +26,11 @@
         To use a Template click Back and select a different Estimate Type.
     </p>
 </asp:Panel>
+
+<asp:RadioButtonList ID="rblProjectSource" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
+    <asp:ListItem Text="My Projects" Selected="True" />
+    <asp:ListItem Text="Buildmate Projects" />
+</asp:RadioButtonList>
 
 <telerik:RadGrid
     ID="rgProjects"
@@ -29,7 +48,7 @@
     <MasterTableView
         DataSourceID="projectsDataSource"
         AutoGenerateColumns="False"
-        NoMasterRecordsText="&nbsp;There are no Templates matching the Estimate Type you selected.">
+        NoMasterRecordsText="&nbsp;No Templates found.">
         <Columns>
             <telerik:GridTemplateColumn UniqueName="CheckBoxTemplateColumn">
                 <ItemTemplate>
@@ -111,7 +130,7 @@
     SelectCommand="
         SELECT Project.id, projectName, projectTypeId
         FROM Project
-        WHERE userID = @userId OR Project.id IN (SELECT ProjectId FROM ProjectTemplate)
+        WHERE userID = @userId
         ORDER BY projectName"
     FilterExpression="projectTypeId = {0}">
     <SelectParameters>
