@@ -1,6 +1,6 @@
 ﻿Imports Telerik.Web.UI
 
-Partial Class controls_projects_customer
+Partial Class controls_projects_Customer
     Inherits System.Web.UI.UserControl
 
     Dim customerId As String

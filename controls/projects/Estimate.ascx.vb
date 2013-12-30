@@ -1,6 +1,6 @@
 ﻿Imports Telerik.Web.UI
 
-Partial Class controls_projects_estimate
+Partial Class controls_projects_Estimate
     Inherits System.Web.UI.UserControl
 
     Protected Sub rblEstimateType_Init(sender As Object, e As EventArgs) Handles rblEstimateType.Init

@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.Data
 
-Partial Class controls_projects_details
+Partial Class controls_projects_Details
     Inherits System.Web.UI.UserControl
 
     Protected Sub OnClick_Validate()
