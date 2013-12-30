@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     // disable tour button if a tour doesn't exist on this page
     if ($('.tour-block').length === 0) {
-        //$('a[data-tour="play"]').attr('disabled', 'disabled').unbind('click');
+        $('a[data-tour="play"]').attr('disabled', 'disabled').unbind('click');
     } else {
         // tour block - 'play' tour button
         $('body').on('click', 'a[data-tour="play"]', function () {
