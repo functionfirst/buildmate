@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Notifications - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="notifications.aspx.vb" Inherits="notifications" %>
+﻿<%@ Page Title="Notifications - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="notifications.aspx.vb" Inherits="notifications" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

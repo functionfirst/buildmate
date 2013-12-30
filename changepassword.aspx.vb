@@ -18,7 +18,7 @@ Partial Class manager_account
     '            Dim username As String = user.UserName
     '            Dim mailTo As String = user.Email.ToString
     '            Dim body As String = "Dear " & username & ", " & "<br />Your New Password: <br />" & ChangePassword1.NewPassword.ToString
-    '            Dim subject As String = "Password Changed Successfully via BuildMate"
+    '            Dim subject As String = "Password Changed Successfully via Buildmate"
     '            Dim email As String = "support@buildmateapp.com"
 
     '            ' send mail
@@ -27,7 +27,7 @@ Partial Class manager_account
     '            Mailmsg.To.Clear()
 
     '            Mailmsg.To.Add(New System.Net.Mail.MailAddress(username & "<" & mailTo & ">"))
-    '            Mailmsg.From = New System.Net.Mail.MailAddress("BuildMate<support@buildmateapp.com>")
+    '            Mailmsg.From = New System.Net.Mail.MailAddress("Buildmate<support@buildmateapp.com>")
     '            Mailmsg.Subject = subject
     '            Mailmsg.Body = body
     '            obj.Send(Mailmsg)

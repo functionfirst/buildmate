@@ -10,7 +10,7 @@
     <h1>Subscription Cancelled</h1>
 
     <p>
-        You have chosen not to go ahead with a subscription to BuildMate.
+        You have chosen not to go ahead with a subscription to Buildmate.
     </p>
 </asp:Content>
 

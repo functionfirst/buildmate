@@ -28,7 +28,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
     <div class="login-form">
-            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">BuildMate</a></div>
+            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
 
         <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" CssClass="login-form-inner">
 
@@ -105,7 +105,7 @@
                 </SuccessTemplate>
                 <MailDefinition
                     From="support@buildmateapp.com"
-                    Subject="[BuildMate] Password Confirmation"
+                    Subject="[Buildmate] Password Confirmation"
                     IsBodyHtml="true"
                     BodyFileName="~/email_templates/RecoverPassword.txt" />
             </asp:PasswordRecovery>

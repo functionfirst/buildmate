@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false"
-    CodeFile="catalogue.aspx.vb" Inherits="catalogue" Title="Catalogue - BuildMate" %>
+    CodeFile="catalogue.aspx.vb" Inherits="catalogue" Title="Catalogue - Buildmate" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="View Resource - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="view_resource.aspx.vb" Inherits="view_resource" %>
+﻿<%@ Page Title="View Resource - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="view_resource.aspx.vb" Inherits="view_resource" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

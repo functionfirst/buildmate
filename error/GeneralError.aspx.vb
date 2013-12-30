@@ -17,7 +17,7 @@ Partial Class error_GeneralError
 
             Const ToAddress As String = "support@buildmateapp.com"
             Const FromAddress As String = "support@buildmateapp.com"
-            Const Subject As String = "[BuildMate] - Error Report"
+            Const Subject As String = "[Buildmate] - Error Report"
 
             Dim md As MailDefinition = New MailDefinition
             md.BodyFileName = "~/error/email_error.txt"

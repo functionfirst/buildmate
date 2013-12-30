@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add a Task - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="add_task.aspx.vb" Inherits="manager_add_task" %>
+﻿<%@ Page Title="Add a Task - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="add_task.aspx.vb" Inherits="manager_add_task" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -97,7 +97,7 @@ function ClientNodeClicked(sender, eventArgs) {
                 <h4>What does this mean?</h4>
                 
                 <p>
-                    You are currently subscribed to use BuildMate's free customer database.
+                    You are currently subscribed to use Buildmate's free customer database.
                 </p>
 
                 <ol>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Subscription - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="subscription.aspx.vb" Inherits="manager_subscription" %>
+﻿<%@ Page Title="Subscription - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="subscription.aspx.vb" Inherits="manager_subscription" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -39,7 +39,7 @@
             <h3>Subscription Details</h3>
 
             <div class="boxcontent">
-                <asp:literal ID="lblProfile" runat="server" Text="You are not currently subscribed to BuildMate." />
+                <asp:literal ID="lblProfile" runat="server" Text="You are not currently subscribed to Buildmate." />
                 
                 <asp:FormView ID="fvUserSubscriptionDetails" runat="server" DataSourceID="subscriptionDetailsDataSource">
                     <EmptyDataTemplate>
@@ -226,7 +226,7 @@
                     <em></em>
                     <span>
                         <strong>Cancel Subscription</strong>
-                        Once your current payment period ends you'll have limited access to BuildMate.
+                        Once your current payment period ends you'll have limited access to Buildmate.
                     </span>
                 </asp:LinkButton>    
             </asp:Panel>

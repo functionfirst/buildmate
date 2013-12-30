@@ -11,7 +11,7 @@ hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0 20px; }
                 <tr>
                     <td>
                         <p style="font-size: 11px; text-align: center; margin: 0 0 20px">
-                            You received this email because you're registered at BuildMate.<br />
+                            You received this email because you're registered at Buildmate.<br />
                             If you're not interested anymore, please <a href="http://buildmateapp.com/settings.aspx">unsubscribe</a>
                         </p>
                     </td>
@@ -28,7 +28,7 @@ hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0 20px; }
             <table border="0" cellspacing="0" cellpadding="0" width="600" align="center">
                 <tr>
                     <td width="380" valign="top" style="font-size: 14px">
-                        <h2>We've created your account for BuildMate!</h2>
+                        <h2>We've created your account for Buildmate!</h2>
 
                         <p>
                             Thanks for registering, we hope you enjoy and benefit from our website.
@@ -46,7 +46,7 @@ hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0 20px; }
 
                         <p>
                             All the best!,<br >
-                            The BuildMate Team
+                            The Buildmate Team
                         </p>
                     </td>
                     <td width="20"></td>

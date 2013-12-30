@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Build Element Details - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="build_element_details.aspx.vb" Inherits="manager_build_element_details" %>
+﻿<%@ Page Title="Build Element Details - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="build_element_details.aspx.vb" Inherits="manager_build_element_details" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -264,7 +264,7 @@
                 <h4>What does this mean?</h4>
                 
                 <p>
-                    You are currently subscribed to use BuildMate's free customer database.
+                    You are currently subscribed to use Buildmate's free customer database.
                 </p>
 
                 <ol>

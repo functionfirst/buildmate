@@ -1,4 +1,4 @@
-﻿<%@ Page Title="An unexpected error occurred - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="GeneralError.aspx.vb" Inherits="error_GeneralError" %>
+﻿<%@ Page Title="An unexpected error occurred - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="GeneralError.aspx.vb" Inherits="error_GeneralError" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
 

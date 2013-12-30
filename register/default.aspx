@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Register - BuildMate</title>
+    <title>Register - Buildmate</title>
     
     <link rel="stylesheet" type="text/css" href="~/css/manager.css" />    
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
     <div class="container container_small">
-        <div class="logo"><a href="http://www.getbuildmate.com" title="BuildMate">BuildMate</a></div>
+        <div class="logo"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
         
         <div class="box">
             <h3>Start your free 30 day trial</h3>

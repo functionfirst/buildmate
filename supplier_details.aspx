@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Supplier Details - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="supplier_details.aspx.vb" Inherits="manager_supplier_details" %>
+﻿<%@ Page Title="Supplier Details - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="supplier_details.aspx.vb" Inherits="manager_supplier_details" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

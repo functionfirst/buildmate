@@ -358,7 +358,7 @@ Partial Class manager_subscription
             ppPay.Add(NvpSetCustomerBillingAgreement.Request._RETURNURL, "http://buildmateapp.com/subscription.aspx")
             ppPay.Add(NvpSetCustomerBillingAgreement.Request._CANCELURL, "http://buildmateapp.com/subscription_cancel.aspx")
             ppPay.Add(NvpSetCustomerBillingAgreement.Request._BILLINGTYPE, NvpBillingCodeType.RecurringPayments)
-            ppPay.Add(NvpSetCustomerBillingAgreement.Request.BILLINGAGREEMENTDESCRIPTION, "BuildMate Subscription")
+            ppPay.Add(NvpSetCustomerBillingAgreement.Request.BILLINGAGREEMENTDESCRIPTION, "Buildmate Subscription")
             ppPay.Add(NvpSetCustomerBillingAgreement.Request.EMAIL, userEmail)
 
             ' post the API call
@@ -419,7 +419,7 @@ Partial Class manager_subscription
                 'Trace.Write("CURRENCYCODE: " & NvpCurrencyCodeType.PoundSterling)
                 'Trace.Write("FIRSTNAME: " & rtFirstname.Text)
                 'Trace.Write("LASTNAME: " & rtSurname.Text)
-                'Trace.Write("DESC: BuildMate Subscription (" & subscription & ")")
+                'Trace.Write("DESC: Buildmate Subscription (" & subscription & ")")
                 'Trace.Write("_BILLINGPERIOD: " & billingPeriod)
                 'Trace.Write("_BILLINGFREQUENCY: " & billingFrequency)
                 'Trace.Write("_AMT:" & billingAmount)
@@ -439,7 +439,7 @@ Partial Class manager_subscription
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request.CURRENCYCODE, NvpCurrencyCodeType.PoundSterling)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._FIRSTNAME, firstname)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._LASTNAME, surname)
-                ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._DESC, "BuildMate Subscription")
+                ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._DESC, "Buildmate Subscription")
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._BILLINGPERIOD, billingPeriod)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._BILLINGFREQUENCY, billingFrequency)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._AMT, billingAmount)

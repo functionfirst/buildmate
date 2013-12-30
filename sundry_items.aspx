@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Sundry Item Costs - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="sundry_items.aspx.vb" Inherits="manager_resource_costs" %>
+﻿<%@ Page Title="Sundry Item Costs - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="sundry_items.aspx.vb" Inherits="manager_resource_costs" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

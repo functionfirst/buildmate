@@ -1,5 +1,5 @@
 <%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false"
-    CodeFile="resource_details.aspx.vb" Inherits="resource_details" Title="Resource - BuildMate"  %>
+    CodeFile="resource_details.aspx.vb" Inherits="resource_details" Title="Resource - Buildmate"  %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

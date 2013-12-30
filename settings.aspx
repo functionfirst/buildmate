@@ -334,7 +334,7 @@
                         BodyFileName="~/email_templates/PasswordChanged.txt"
                         From="support@buildmateapp.com"
                         IsBodyHtml="true"
-                        Subject="[BuildMate] Your password has been changed"
+                        Subject="[Buildmate] Your password has been changed"
                     />
                 </asp:ChangePassword>
             </div>

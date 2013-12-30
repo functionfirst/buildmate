@@ -39,7 +39,7 @@ Partial Class manager_Default
         Mailmsg.To.Add(New System.Net.Mail.MailAddress(Session("email")))
         Mailmsg.Bcc.Add(New System.Net.Mail.MailAddress("support@buildmateapp.com"))
         Mailmsg.From = New System.Net.Mail.MailAddress("support@buildmateapp.com")
-        Mailmsg.Subject = String.Format("[BuildMate - Ticket ID: {0} - {1}]", newID, rtbSubject.Text)
+        Mailmsg.Subject = String.Format("[Buildmate - Ticket ID: {0} - {1}]", newID, rtbSubject.Text)
         Mailmsg.IsBodyHtml = True
         Mailmsg.Body = String.Format("<h1>Your ticket has been created</h1><p>Subject: {0}</p><p>Content: {1}</p><p>Ticket URL: <a href=""http://buildmateapp.com/view_ticket.aspx?id={2}"">http://buildmateapp.com/view_ticket.aspx?id={2}</a></p><p>Thank you for your email. Your ticket has been received and has been assigned a ticket number of [{2}]. Please keep this ticket number for your records and include it in the subject (including brackets) of all future emails regarding this issue. One of our agents will respond to you shortly.</p>", rtbSubject.Text, rtbContent.Text, newID)
         obj.Send(Mailmsg)

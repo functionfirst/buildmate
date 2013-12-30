@@ -107,7 +107,7 @@ Partial Class services_client_email_project_notifications
         Dim md As MailDefinition = New MailDefinition
         md.BodyFileName = "~/email_templates/DailyDigest.txt"
         md.From = "support@buildmateapp.com"
-        md.Subject = "[BuildMate] - Daily Digest"
+        md.Subject = "[Buildmate] - Daily Digest"
         md.Priority = MailPriority.Normal
         md.IsBodyHtml = True
 

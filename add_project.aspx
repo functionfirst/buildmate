@@ -1,4 +1,4 @@
-﻿    <%@ Page Title="Add a Project - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="add_project.aspx.vb" Inherits="manager_add_project" %>
+﻿    <%@ Page Title="Add a Project - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="add_project.aspx.vb" Inherits="manager_add_project" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

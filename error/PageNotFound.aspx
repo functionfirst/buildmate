@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Page Not Found - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="PageNotFound.aspx.vb" Inherits="error_PageNotFound" %>
+﻿<%@ Page Title="Page Not Found - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="PageNotFound.aspx.vb" Inherits="error_PageNotFound" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

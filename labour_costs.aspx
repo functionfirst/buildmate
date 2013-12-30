@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Labour Costs - BuildMate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="labour_costs.aspx.vb" Inherits="manager_resource_costs" %>
+﻿<%@ Page Title="Labour Costs - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="labour_costs.aspx.vb" Inherits="manager_resource_costs" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

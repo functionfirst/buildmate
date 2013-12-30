@@ -34,7 +34,7 @@ Public Class MyBaseClass
             Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
             Dim Mailmsg As New System.Net.Mail.MailMessage
             Mailmsg.To.Clear()
-            Mailmsg.To.Add(New System.Net.Mail.MailAddress("BuildMate<alan@buildmateapp.com>"))
+            Mailmsg.To.Add(New System.Net.Mail.MailAddress("Buildmate<alan@buildmateapp.com>"))
             Mailmsg.From = New System.Net.Mail.MailAddress("alan@buildmateapp.com")
             Mailmsg.Subject = "[Buildmate] - Error Report"
             Mailmsg.IsBodyHtml = False

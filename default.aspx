@@ -164,6 +164,7 @@
                 <telerik:RadGrid ID="rgStatistics" runat="server"
                     DataSourceID="statisticsDataSource" GridLines="None">
                     <MasterTableView
+                        NoMasterRecordsText="&nbsp;No projects available"
                         DataSourceID="statisticsDataSource"
                         AutoGenerateColumns="False"
                         ShowFooter="true">
