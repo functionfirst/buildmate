@@ -221,12 +221,12 @@
                                 DataField="returnDate" />
 
                             <telerik:GridBoundColumn
-                                UniqueName="creationDate"
+                                UniqueName="created_at"
                                 Headertext="Creation Date"
                                 HeaderStyle-HorizontalAlign="Center"
                                 ItemStyle-HorizontalAlign="Center"
                                 DataFormatString="{0:d}"
-                                DataField="creationDate" />
+                                DataField="created_at" />
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>

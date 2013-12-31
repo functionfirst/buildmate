@@ -31,7 +31,7 @@
         </telerik:GridBoundColumn>
         <telerik:GridBoundColumn DataField="company" HeaderText="Company Name" SortExpression="company" UniqueName="company">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="creationDate" HeaderText="Creation Date" SortExpression="creationDate" UniqueName="creationDate">
+        <telerik:GridBoundColumn DataField="created_at" HeaderText="Creation Date" SortExpression="created_at" UniqueName="created_at">
         </telerik:GridBoundColumn>
         <telerik:GridBoundColumn DataField="projectName" HeaderText="Project" SortExpression="projectName" UniqueName="projectName">
         </telerik:GridBoundColumn>
@@ -46,10 +46,9 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="
-            SELECT top 100 isNull(firstname + ' ' + surname, 'Unknown') AS customerName, email, company, projectName, subscription, creationDate
+            SELECT top 100 isNull(firstname + ' ' + surname, 'Unknown') AS customerName, email, company, projectName, subscription, created_at
             FROM Project
             LEFT JOIN UserProfile ON Project.userID = UserProfile.userid
-            ORDER BY creationDate DESC">
+            ORDER BY created_at DESC">
     </asp:SqlDataSource>
-    
 </asp:Content>
