@@ -35,23 +35,25 @@ function ClientNodeClicked(sender, eventArgs) {
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li>
-                <asp:HyperLink ID="hlBack" runat="server"
-                    NavigateUrl="project_details.aspx?pid={0}"
-                    Text="Project Details" />
-                <span class="divider">/</span>
-            </li>
-            <li>
-                <asp:HyperLink ID="hlBack2" runat="server"
-                    NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
-                    Text="Build Element Details" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Add Tasks
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li>
+                    <asp:HyperLink ID="hlBack" runat="server"
+                        NavigateUrl="project_details.aspx?pid={0}"
+                        Text="Project Details" />
+                    <span class="divider">/</span>
+                </li>
+                <li>
+                    <asp:HyperLink ID="hlBack2" runat="server"
+                        NavigateUrl="build_element_details.aspx?pid={0}&rid={1}"
+                        Text="Build Element Details" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Add Tasks
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
