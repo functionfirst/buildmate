@@ -566,8 +566,6 @@
                         </div>
                     </div>
                 
-                    </div>
-
                     <div class="box">
                         <h3>Profit &amp; Overheads</h3>
                     
