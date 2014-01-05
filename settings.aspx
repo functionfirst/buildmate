@@ -52,9 +52,11 @@
 
     
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li class="active">Settings</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li class="active">Settings</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
