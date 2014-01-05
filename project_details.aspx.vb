@@ -12,23 +12,23 @@ Partial Class manager_Default
 
     Protected Sub logChange(ByVal sender As Object, ByVal e As System.EventArgs)
         ' log change made to the project status
-        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+        'Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
 
-        Dim userId As String = Session("userId")
-        Dim projectId As String = Request("pid")
+        'Dim userId As String = Session("userId")
+        'Dim projectId As String = Request("pid")
         Dim rcbStatus As RadComboBox = CType(sender, RadComboBox)
-        Dim note As String = "Changed status to " & rcbStatus.Text
-        Dim sql As String = "INSERT INTO ProjectLog (userId, projectId, note, date) VALUES('" & userId & "', " & projectId & ", '" & note & "', getdate())"
+        'Dim note As String = "Changed status to " & rcbStatus.Text
+        'Dim sql As String = "INSERT INTO ProjectLog (userId, projectId, note, date) VALUES('" & userId & "', " & projectId & ", '" & note & "', getdate())"
 
-        Using conn As New SqlConnection(connString)
-            Dim cmd As New SqlCommand(sql, conn)
-            Try
-                conn.Open()
-                cmd.ExecuteScalar()
-            Catch ex As Exception
-                Trace.Write(ex.Message)
-            End Try
-        End Using
+        'Using conn As New SqlConnection(connString)
+        '    Dim cmd As New SqlCommand(sql, conn)
+        '    Try
+        '        conn.Open()
+        '        cmd.ExecuteScalar()
+        '    Catch ex As Exception
+        '        Trace.Write(ex.Message)
+        '    End Try
+        'End Using
 
         'Dim lblStatus = CType(FormView1.FindControl("lblStatus"), Panel)
         Dim updateButton = CType(FormView1.FindControl("updateButton"), Button)

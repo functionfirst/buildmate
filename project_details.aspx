@@ -178,7 +178,7 @@
                     <ItemTemplate>
                         <p>
                             <%#Container.DataItem("note")%><br />
-                            <small>on <%#DataBinder.Eval(Container.DataItem, "date", "{0:D}")%> at <%#DataBinder.Eval(Container.DataItem, "date", "{0:H:mm:ss}")%></small>
+                            <small>on <%#DataBinder.Eval(Container.DataItem, "created_at", "{0:D}")%> at <%#DataBinder.Eval(Container.DataItem, "created_at", "{0:H:mm:ss}")%></small>
                         </p>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -193,7 +193,6 @@
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="getProjectLogs" SelectCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:SessionParameter Name="UserId" SessionField="userid" />
             <asp:QueryStringParameter Name="projectId" QueryStringField="pid" />
         </SelectParameters>
     </asp:SqlDataSource>
@@ -813,7 +812,7 @@
                                     OnClientSelectedIndexChanged="checkVariationMode"
                                     OnSelectedIndexChanged="logChange" />
 
-                                <asp:HiddenField ID="hiddenStatusId" runat="server" Value='<%#Eval("projectStatusID") %>' />
+                                <asp:HiddenField ID="hiddenStatusId" runat="server" Value='<%#Eval("projectStatusID")%>' />
                                 <asp:HiddenField ID="hiddenIsLocked" runat="server" Value='<%#Eval("isLocked") %>' />
                                 <asp:HiddenField ID="hiddenStatus" runat="server" Value='<%#Eval("status") %>' />
                             </div>
@@ -1100,6 +1099,8 @@
         </SelectParameters>
         <UpdateParameters>
             <asp:SessionParameter Name="UserId" SessionField="UserId" />
+            <asp:SessionParameter Name="modified_by" SessionField="UserId" />
+            <asp:ControlParameter Name="OldStatusId" ControlID="hiddenStatusId" PropertyName="value" />
         </UpdateParameters>
     </asp:SqlDataSource>
 
