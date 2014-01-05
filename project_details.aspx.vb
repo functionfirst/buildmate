@@ -10,57 +10,6 @@ Partial Class manager_Default
 
     Dim isEditable As String
 
-    Protected Sub logChange(ByVal sender As Object, ByVal e As System.EventArgs)
-        ' log change made to the project status
-        'Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-
-        'Dim userId As String = Session("userId")
-        'Dim projectId As String = Request("pid")
-        Dim rcbStatus As RadComboBox = CType(sender, RadComboBox)
-        'Dim note As String = "Changed status to " & rcbStatus.Text
-        'Dim sql As String = "INSERT INTO ProjectLog (userId, projectId, note, date) VALUES('" & userId & "', " & projectId & ", '" & note & "', getdate())"
-
-        'Using conn As New SqlConnection(connString)
-        '    Dim cmd As New SqlCommand(sql, conn)
-        '    Try
-        '        conn.Open()
-        '        cmd.ExecuteScalar()
-        '    Catch ex As Exception
-        '        Trace.Write(ex.Message)
-        '    End Try
-        'End Using
-
-        'Dim lblStatus = CType(FormView1.FindControl("lblStatus"), Panel)
-        Dim updateButton = CType(FormView1.FindControl("updateButton"), Button)
-
-
-        Dim hiddenStatusId As Integer = CType(FormView1.FindControl("hiddenStatusId"), HiddenField).Value
-
-        '' check for status change that will lock down to variations only
-        'If (hiddenStatusId <= 2 And rcbStatus.SelectedValue <= 2) Or (hiddenStatusId >= 3 And rcbStatus.SelectedValue >= 3) Then
-        '    ' no change to status
-        '    lblStatus.Visible = False
-        '    updateButton.OnClientClick = ""
-        'ElseIf (hiddenStatusId <= 2 And rcbStatus.SelectedValue >= 3) Or (hiddenStatusId >= 3 And rcbStatus.SelectedValue <= 2) Then
-        '    ' changing status from normal to protected state
-        '    lblStatus.Visible = True
-        '    updateButton.OnClientClick = "if(!confirm('Click okay to move this project forward and only allow Variations from this point.')){return false;};"
-        'End If
-
-        ' check for status change that will lock down to variations only
-        If (hiddenStatusId <= 2 And rcbStatus.SelectedValue >= 3) Then
-            'updateButton.OnClientClick = "return showLockConfirmation()"
-
-            Dim sb As StringBuilder = New StringBuilder
-            sb.Append("<script type='text/javascript'>")
-            sb.Append("$(document).ready(function(){showVariationMode(); alert('test');});")
-            sb.Append("</script>")
-            ClientScript.RegisterClientScriptBlock(Me.GetType(), "showvarmode", sb.ToString())
-        Else
-            updateButton.OnClientClick = ""
-        End If
-    End Sub
-
     Protected Sub checkReturnStartDate(ByVal sender As Object, ByVal args As ServerValidateEventArgs)
         args.IsValid = True
 

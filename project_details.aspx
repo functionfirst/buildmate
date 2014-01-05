@@ -809,8 +809,7 @@
                                     DataSourceID="statusDataSource"
                                     DataTextField="status"
                                     DataValueField="id"
-                                    OnClientSelectedIndexChanged="checkVariationMode"
-                                    OnSelectedIndexChanged="logChange" />
+                                    OnClientSelectedIndexChanged="checkVariationMode" />
 
                                 <asp:HiddenField ID="hiddenStatusId" runat="server" Value='<%#Eval("projectStatusID")%>' />
                                 <asp:HiddenField ID="hiddenIsLocked" runat="server" Value='<%#Eval("isLocked") %>' />
