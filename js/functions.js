@@ -53,14 +53,26 @@ $(document).ready(function () {
         return false;
     });
 
+    // tooltips
+    $('body').on('click', '.tooltip', function () {
+        $(this).toggleClass('tooltip-active');
+        return false;
+    });
+
+    function hideTooltips() {
+        $('.tooltip').removeClass('tooltip-active');
+    }
+
     // Listener for escape action, like pressing escape or clicking outside a modal
     $('body').on('escapeAction', function () {
         toggleVisibility('body', 'show-tour', false)
         toggleVisibility('.nav-options', 'nav-options-active', false);
+        hideTooltips();
     });
 
     $('.main-container').on('click', function () {
         toggleVisibility('.nav-options', 'nav-options-active', false);
+        hideTooltips();
     });
 
     // close modal if escape is pressed

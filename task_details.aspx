@@ -1153,12 +1153,7 @@
         </asp:Panel>
     
         <asp:Panel ID="pCurrentResources" runat="server" CssClass="box">
-            <div class="div50">
-                <h3>Current Resources</h3>
-            </div>
-            
-            <div class="div50 last rightalign">
-                <asp:FormView
+            <asp:FormView
                 ID="fvDefaultResources"
                 DefaultMode="Edit"
                 runat="server"
@@ -1166,200 +1161,199 @@
                 RenderOuterTable="false"
                 DataSourceID="taskDataSource">
                 <EditItemTemplate>
-                    <p>
-                        <a href="#">What is this?</a>
-                        <asp:Button ID="Button1" runat="server"
-                        CssClass="button button-primary"
-                        Text="Set as Default Resources"
-                        Visible='<%# IIF(Eval("isDefaultResource"), "False", "True") %>' />
+                    <asp:PlaceHolder ID="phDefaultResources" runat="server"
+                        Visible='<%# IIf(Eval("isDefaultResource"), "True", "False") %>'>
+                        <div class="div50">
+                            <h3>Current Resources</h3>
+                            <small class="badge">These are your Default Resources</small>
+                        </div>
+            
+                        <div class="div50 last rightalign" style="margin: 10px 0;">
+                            <asp:HyperLink ID="hlAddResources" runat="server"
+                                data-target="addResources"
+                                CssClass="js-open-modal button button-create floatright"
+                                Style="margin-left: 10px"
+                                Text="Add a Resource" />
+                        </div>
+                    </asp:PlaceHolder>
 
-                    <asp:Button ID="Button2" runat="server"
-                        CssClass="button button-error"
-                        Text="Unset these Resources as Default"
-                        Visible='<%# IIf(Eval("isDefaultResource"), "True", "False") %>' />
+                    <asp:PlaceHolder ID="phSetDefaultResources" runat="server"
+                        Visible='<%# IIf(Eval("isDefaultResource"), "False", "True") %>'>
+                        <div class="div50">
+                            <h3>Current Resources</h3>
+                        </div>
+            
+                        <div class="div50 last rightalign" style="margin: 10px 0;">
+                            <a href="#" class="tooltip" data-tooltip="false" id="A2">What is this?
+                                <span class="tooltip-message">When Default Resources are enabled for this Task the Resources listed will be automatically added whenever you re-use this Task in the future.</span>
+                            </a>
 
-                    <%--<asp:CheckBox ID="CheckBox1" runat="server" 
-                        AutoPostBack="true"
-                        OnCheckedChanged="setDefaultResources"
-                        Text="Set as default Task Resources"
-                        Visible='<%# IIF(Eval("isDefaultResource"), "False", "True") %>' />--%>
-
-                        
-                    <%--<asp:CheckBox ID="CheckBox2" runat="server" 
-                        AutoPostBack="true"
-                        OnCheckedChanged="setDefaultResources"
-                        Text="Current default Task Resources"
-                        Enabled="false"
-                        Visible='<%# IIF(Eval("isDefaultResource"), "True", "False") %>'
-                        Checked='True' />--%>
-                    
-                    <asp:HyperLink ID="hlAddResources" runat="server"
-                        data-target="addResources"
-                        CssClass="js-open-modal button button-create pull-right"
-                        Text="Add a Resource" />
-                    </p>
+                            <asp:Button ID="btnSetDefaultResources" runat="server"
+                                CssClass="button button-primary"
+                                OnClick="setDefaultResources"
+                                Text="Set as Default Resources" />
+                        </div>
+                    </asp:PlaceHolder>
                 </EditItemTemplate>
             </asp:FormView>
-            </div>
-            <div class="boxcontent">
-            <div class="clear"></div>
 
-            <asp:HiddenField ID="resourcePrice" runat="server" />
+            <div class="clear boxcontent">
+                <asp:HiddenField ID="resourcePrice" runat="server" />
                     
-            <telerik:RadGrid ID="rgResources" runat="server"
-                AutoGenerateColumns="False"
-                AllowSorting="true"
-                AllowAutomaticDeletes="true"
-                AllowAutomaticUpdates="true"
-                DataSourceID="resourceDataSource"
-                ShowFooter="true"
-                GridLines="None">
-                <MasterTableView
-                    DataKeyNames="id"
-                    ShowFooter="true"
+                <telerik:RadGrid ID="rgResources" runat="server"
+                    AutoGenerateColumns="False"
+                    AllowSorting="true"
+                    AllowAutomaticDeletes="true"
+                    AllowAutomaticUpdates="true"
                     DataSourceID="resourceDataSource"
-                    EditMode="EditForms"
-                    NoMasterRecordsText="&nbsp;No resources were found.">
-                        <RowIndicatorColumn>
-                            <HeaderStyle Width="20px" />
-                        </RowIndicatorColumn>
-                        <ExpandCollapseColumn>
-                            <HeaderStyle Width="20px" />
-                        </ExpandCollapseColumn>
-                        <Columns>
-                            <telerik:GridTemplateColumn
-                                HeaderText="Resource"
-                                SortExpression="resourceName"
-                                UniqueName="resourceNameLink">
-                                <ItemTemplate>
-                                    <%#Eval("Qty")%> x 
-                                    <asp:LinkButton ID="lbEdit" runat="server"
-                                        CommandName="Edit"
-                                        Text='<%#Eval("resourceName")%>' /><br />
+                    ShowFooter="true"
+                    GridLines="None">
+                    <MasterTableView
+                        DataKeyNames="id"
+                        ShowFooter="true"
+                        DataSourceID="resourceDataSource"
+                        EditMode="EditForms"
+                        NoMasterRecordsText="&nbsp;No resources were found.">
+                            <RowIndicatorColumn>
+                                <HeaderStyle Width="20px" />
+                            </RowIndicatorColumn>
+                            <ExpandCollapseColumn>
+                                <HeaderStyle Width="20px" />
+                            </ExpandCollapseColumn>
+                            <Columns>
+                                <telerik:GridTemplateColumn
+                                    HeaderText="Resource"
+                                    SortExpression="resourceName"
+                                    UniqueName="resourceNameLink">
+                                    <ItemTemplate>
+                                        <%#Eval("Qty")%> x 
+                                        <asp:LinkButton ID="lbEdit" runat="server"
+                                            CommandName="Edit"
+                                            Text='<%#Eval("resourceName")%>' /><br />
                                     
-                                    <small style='color: #666'><strong><%#Eval("supplierName")%></strong> - <%#Eval("resourceType")%></small>
-                                </ItemTemplate>
-                            </telerik:GridTemplateColumn>
+                                        <small style='color: #666'><strong><%#Eval("supplierName")%></strong> - <%#Eval("resourceType")%></small>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
 
-                            <telerik:GridTemplateColumn
-                                HeaderText="Resource"
-                                SortExpression="resourceName"
-                                UniqueName="resourceName">
-                                <ItemTemplate>
-                                    <asp:Image ID="Image1" runat="server" src="/images/lck.gif" title="This Resource is locked" />
-                                    <%#Eval("Qty")%> x 
-                                    <asp:Literal ID="literalTitle" runat="server"
-                                        Text='<%#Eval("resourceName")%>' /><br />
+                                <telerik:GridTemplateColumn
+                                    HeaderText="Resource"
+                                    SortExpression="resourceName"
+                                    UniqueName="resourceName">
+                                    <ItemTemplate>
+                                        <asp:Image ID="Image1" runat="server" src="/images/lck.gif" title="This Resource is locked" />
+                                        <%#Eval("Qty")%> x 
+                                        <asp:Literal ID="literalTitle" runat="server"
+                                            Text='<%#Eval("resourceName")%>' /><br />
                                     
-                                    <small style='color: #666'><strong><%#Eval("supplierName")%></strong> - <%#Eval("resourceType")%></small>
-                                </ItemTemplate>
-                            </telerik:GridTemplateColumn>
+                                        <small style='color: #666'><strong><%#Eval("supplierName")%></strong> - <%#Eval("resourceType")%></small>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
                             
-                            <telerik:GridTemplateColumn 
-                                HeaderText="Useage"
-                                SortExpression="uses"
-                                UniqueName="uses"
-                                HeaderStyle-Width="20%"
-                                HeaderStyle-HorizontalAlign="Center"
-                                ItemStyle-HorizontalAlign="Center">
-                                <ItemTemplate>
-                                <%#Eval("uses")%>
+                                <telerik:GridTemplateColumn 
+                                    HeaderText="Useage"
+                                    SortExpression="uses"
+                                    UniqueName="uses"
+                                    HeaderStyle-Width="20%"
+                                    HeaderStyle-HorizontalAlign="Center"
+                                    ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                    <%#Eval("uses")%>
                                 
-                                <%#Eval("unit")%>
-                                </ItemTemplate>    
-                            </telerik:GridTemplateColumn>
+                                    <%#Eval("unit")%>
+                                    </ItemTemplate>    
+                                </telerik:GridTemplateColumn>
                                 
-                            <telerik:GridNumericColumn
-                                NumericType="Percent"
-                                DataField="waste"
-                                DataType="System.Double"
-                                ReadOnly="true"
-                                HeaderStyle-HorizontalAlign="Center"
-                                ItemStyle-HorizontalAlign="Center"
-                                HeaderText="Waste"
-                                DataFormatString="{0}%"
-                                SortExpression="waste"
-                                UniqueName="waste"
-                                HeaderStyle-Width="10%" />
+                                <telerik:GridNumericColumn
+                                    NumericType="Percent"
+                                    DataField="waste"
+                                    DataType="System.Double"
+                                    ReadOnly="true"
+                                    HeaderStyle-HorizontalAlign="Center"
+                                    ItemStyle-HorizontalAlign="Center"
+                                    HeaderText="Waste"
+                                    DataFormatString="{0}%"
+                                    SortExpression="waste"
+                                    UniqueName="waste"
+                                    HeaderStyle-Width="10%" />
                                 
-                            <telerik:GridNumericColumn
-                                NumericType="Currency"
-                                DataField="cost"
-                                HeaderStyle-HorizontalAlign="Right"
-                                ItemStyle-HorizontalAlign="Right"
-                                DataType="System.Double"
-                                HeaderText="Cost"
-                                ReadOnly="true"
-                                SortExpression="cost"
-                                UniqueName="cost"
-                                HeaderStyle-Width="20%"/>
+                                <telerik:GridNumericColumn
+                                    NumericType="Currency"
+                                    DataField="cost"
+                                    HeaderStyle-HorizontalAlign="Right"
+                                    ItemStyle-HorizontalAlign="Right"
+                                    DataType="System.Double"
+                                    HeaderText="Cost"
+                                    ReadOnly="true"
+                                    SortExpression="cost"
+                                    UniqueName="cost"
+                                    HeaderStyle-Width="20%"/>
                                 
-                            <telerik:GridButtonColumn
-                                ConfirmText="Delete this resource?"
-                                ConfirmTitle="Delete"
-                                ButtonType="ImageButton"
-                                CommandName="Delete"
-                                Text="Delete"
-                                UniqueName="DeleteColumn"
-                                HeaderStyle-Width="5%" />
-                        </Columns>
-                        <EditFormSettings EditFormType="Template">
-                            <FormTemplate>
-                             <div class="row">
-                                    <label title="Resource Name" class="label">Resource</label>
+                                <telerik:GridButtonColumn
+                                    ConfirmText="Delete this resource?"
+                                    ConfirmTitle="Delete"
+                                    ButtonType="ImageButton"
+                                    CommandName="Delete"
+                                    Text="Delete"
+                                    UniqueName="DeleteColumn"
+                                    HeaderStyle-Width="5%" />
+                            </Columns>
+                            <EditFormSettings EditFormType="Template">
+                                <FormTemplate>
+                                 <div class="row">
+                                        <label title="Resource Name" class="label">Resource</label>
 
-                                    <telerik:RadNumericTextBox ID="rntbQuantity" runat="server"
-                                        dbvalue='<%# Bind("qty") %>'
-                                        NumberFormat-DecimalDigits="0"
-                                        Width="50px"
-                                        MinValue="1"
-                                        Type="Number" /> 
-                                    x <%#Eval("resourceName")%>
-                                </div>
+                                        <telerik:RadNumericTextBox ID="rntbQuantity" runat="server"
+                                            dbvalue='<%# Bind("qty") %>'
+                                            NumberFormat-DecimalDigits="0"
+                                            Width="50px"
+                                            MinValue="1"
+                                            Type="Number" /> 
+                                        x <%#Eval("resourceName")%>
+                                    </div>
                                     
-                                <div class="row">
-                                    <label title="Useage" class="label">Useage</label>
+                                    <div class="row">
+                                        <label title="Useage" class="label">Useage</label>
                                         
-                                    <telerik:RadNumericTextBox ID="rntbUses" runat="server"
-                                        dbvalue='<%# Bind("uses") %>'
-                                        NumberFormat-DecimalDigits="2"
-                                        Width="80px"
-                                        Type="Number" />
-                                        <%#Eval("unit")%>
-                                </div>
+                                        <telerik:RadNumericTextBox ID="rntbUses" runat="server"
+                                            dbvalue='<%# Bind("uses") %>'
+                                            NumberFormat-DecimalDigits="2"
+                                            Width="80px"
+                                            Type="Number" />
+                                            <%#Eval("unit")%>
+                                    </div>
                                     
-                                <div class="row">
-                                    <label title="Cost" class="label">Cost</label>
-                                    <%#Eval("cost", "{0:C}")%>
-                                </div>
+                                    <div class="row">
+                                        <label title="Cost" class="label">Cost</label>
+                                        <%#Eval("cost", "{0:C}")%>
+                                    </div>
 
-                                <div class="row">
-                                    <label title="Supplier" class="label">Supplier</label>
-                                    <%#Eval("supplierName")%>
-                                </div>
+                                    <div class="row">
+                                        <label title="Supplier" class="label">Supplier</label>
+                                        <%#Eval("supplierName")%>
+                                    </div>
 
-                                <div class="row">
-                                    <label title="Waste Cost" class="label">Waste Cost</label>
-                                    <%#Eval("wasteCost", "{0:C}")%> (<%#Eval("waste")%>%)
-                                </div>
+                                    <div class="row">
+                                        <label title="Waste Cost" class="label">Waste Cost</label>
+                                        <%#Eval("wasteCost", "{0:C}")%> (<%#Eval("waste")%>%)
+                                    </div>
                                     
-                                <div class="row">
-                                    <label class="label">&nbsp;</label>
+                                    <div class="row">
+                                        <label class="label">&nbsp;</label>
 
-                                    <asp:Button ID="btnUpdate" runat="server"
-                                        Text="Update"
-                                        CssClass="button button-create"
-                                        CommandName="Update" />
+                                        <asp:Button ID="btnUpdate" runat="server"
+                                            Text="Update"
+                                            CssClass="button button-create"
+                                            CommandName="Update" />
 
-                                    <asp:LinkButton ID="btnCancel" runat="server"
-                                        Text="Cancel"
-                                        CssClass="button"
-                                        CommandName="Cancel" />
-                                </div>
-                            </FormTemplate>
-                        </EditFormSettings>
-                    </MasterTableView>
-                </telerik:RadGrid>
+                                        <asp:LinkButton ID="btnCancel" runat="server"
+                                            Text="Cancel"
+                                            CssClass="button"
+                                            CommandName="Cancel" />
+                                    </div>
+                                </FormTemplate>
+                            </EditFormSettings>
+                        </MasterTableView>
+                    </telerik:RadGrid>
             </div>
         </asp:Panel>
     </div>
