@@ -1099,7 +1099,7 @@
         <UpdateParameters>
             <asp:SessionParameter Name="UserId" SessionField="UserId" />
             <asp:SessionParameter Name="modified_by" SessionField="UserId" />
-            <asp:ControlParameter Name="OldStatusId" ControlID="hiddenStatusId" PropertyName="value" />
+            <asp:ControlParameter Name="OldStatusId" ControlID="ctl00$MainContent$FormView1$hiddenStatusId" PropertyName="value" />
         </UpdateParameters>
     </asp:SqlDataSource>
 
