@@ -515,7 +515,7 @@
                                 <small>
                                     <asp:Literal ID="Literal12" runat="server"
                                         Text='<%# Bind("materialVAT", "{0:c2}") %>' />
-                                </small
+                                </small>
                             </div>
                         
                             <div class='rowl'>
