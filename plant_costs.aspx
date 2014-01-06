@@ -18,15 +18,17 @@
     </telerik:RadAjaxManagerProxy>
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li>
-                <asp:HyperLink ID="HyperLink1" runat="server"
-                    NavigateUrl="~/project_details.aspx?pid={0}"
-                    Text="Project Details" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">Plant Costs</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li>
+                    <asp:HyperLink ID="HyperLink1" runat="server"
+                        NavigateUrl="~/project_details.aspx?pid={0}"
+                        Text="Project Details" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">Plant Costs</li>
+            </ul>
+        </div>
     </div>
     
     <div class="main-container">
