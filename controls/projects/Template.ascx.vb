@@ -87,19 +87,4 @@ Partial Class controls_projects_Template
         Dim hfProjectId As HiddenField = DirectCast(Me.NamingContainer.FindControl("hfProjectId"), HiddenField)
         hfProjectId.Value = projectId
     End Sub
-
-    Protected Sub rblProjectSource_SelectedIndexChanged(sender As Object, e As EventArgs) Handles rblProjectSource.SelectedIndexChanged
-        If rblProjectSource.SelectedIndex = 0 Then
-            projectsDataSource.SelectCommand = "SELECT Project.id, projectName, projectTypeId " & _
-                "FROM Project " & _
-                "WHERE userID = @userId " & _
-                "ORDER BY projectName"
-        Else
-            projectsDataSource.SelectCommand = "SELECT Project.id, projectName, projectTypeId " & _
-                "FROM Project " & _
-                "WHERE Project.id IN (SELECT ProjectId FROM ProjectTemplate) " & _
-                "ORDER BY projectName "
-        End If
-        projectsDataSource.DataBind()
-    End Sub
 End Class

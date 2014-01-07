@@ -28,8 +28,8 @@
 </asp:Panel>
 
 <asp:RadioButtonList ID="rblProjectSource" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
-    <asp:ListItem Text="My Projects" Selected="True" />
-    <asp:ListItem Text="Buildmate Projects" />
+    <asp:ListItem Text="My Projects" Value="1" Selected="True" />
+    <asp:ListItem Text="Buildmate Projects" Value="2" />
 </asp:RadioButtonList>
 
 <telerik:RadGrid
@@ -127,16 +127,15 @@
     
 <asp:SqlDataSource ID="projectsDataSource" runat="server"
     ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-    SelectCommand="
-        SELECT Project.id, projectName, projectTypeId
-        FROM Project
-        WHERE userID = @userId
-        ORDER BY projectName"
+    SelectCommand="PROJECT_select_template"
+    SelectCommandType="StoredProcedure"
     FilterExpression="projectTypeId = {0}">
     <SelectParameters>
         <asp:SessionParameter name="userId" SessionField="userId" />
+        <asp:ControlParameter Name="projectSource" ControlID="rblProjectSource" PropertyName="SelectedValue" DefaultValue="1" />
     </SelectParameters>
     <FilterParameters>
         <asp:ControlParameter ControlID="hfEstimateType" PropertyName="Value" DefaultValue="0" />
+        
     </FilterParameters>
 </asp:SqlDataSource>
