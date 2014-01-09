@@ -1,4 +1,4 @@
-﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Template.ascx.vb" Inherits="controls_projects_Template" %>
+﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="Template.ascx.vb" Inherits="controls_projects_Template" ClassName="ProjectTemplate" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
