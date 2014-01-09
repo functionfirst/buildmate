@@ -41,9 +41,13 @@ $(document).ready(function () {
 
     // toggle options menu
     $('.js-toggle-options').on('click', function () {
-        //var target = $(this).data("toggle-menu");
         toggleVisibility('.nav-options', 'nav-options-active');
         return false;
+    });
+
+    // close options menu after clicking
+    $('.options-icon').click(function () {
+        toggleVisibility('.nav-options', 'nav-options-active', false);
     });
 
 
