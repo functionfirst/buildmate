@@ -340,43 +340,43 @@
 
             <div class="tour-nav" data-tour="menu">
                 <ul>
-                    <li class="active"><a href="#" data-tab="overview">1. Overview</a></li>
-                    <li><a href="#" data-tab="reminders">2. Reminders</a></li>
-                    <li><a href="#" data-tab="statistics">3. Statistics</a></li>
-                    <li><a href="#" data-tab="news">4. News</a></li>
+                    <li class="active"><a href="#" data-tab="step1">1. Tour</a></li>
+                    <li><a href="#" data-tab="step2">2. Dashboard</a></li>
+                    <li><a href="#" data-tab="step3">3. Navigation</a></li>
+                    <li><a href="#" data-tab="step4">4. Help</a></li>
                 </ul>
             </div>
             <div class="tour-content">
-                <div data-target="overview">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/Fy2ozWDoM9M" frameborder="0" allowfullscreen></iframe>
+                <div data-target="step1">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/-CUMue4ZZdA" frameborder="0" allowfullscreen></iframe>
 
                     <div class="tour-control">
                         Step 1
-                        <a href="#" data-tab-control="reminders">Next</a>
+                        <a href="#" data-tab-control="step2">Next</a>
                     </div>
                 </div>
                 
-                <div data-target="reminders" class="hide">
-                    Reminders
+                <div data-target="step2" class="hide">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/cAhWcY1lawE" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 2
-                        <a href="#" data-tab-control="statistics">Next</a>
+                        <a href="#" data-tab-control="step3">Next</a>
                     </div>
                 </div>
 
-                <div data-target="statistics" class="hide">
-                    Statistics
+                <div data-target="step3" class="hide">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/YLeGiRyKxvg" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 3
-                        <a href="#" data-tab-control="news">Next</a>
+                        <a href="#" data-tab-control="step3">Next</a>
                     </div>
                 </div>
 
-                <div data-target="news" class="hide">
-                    News
+                <div data-target="step4" class="hide">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/qooYSng_mHU" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 4
-                        <a href="#" class="restart" data-tab-control="overview">Restart</a>
+                        <a href="#" class="restart" data-tab-control="step1">Restart</a>
                     </div>
                 </div>
             </div>
