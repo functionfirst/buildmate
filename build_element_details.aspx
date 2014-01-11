@@ -214,20 +214,20 @@
                         <label for="rntbSpacePrice" title="Cost" class="label">Cost</label>
                         <telerik:RadNumericTextBox ID="rntbSpacePrice" runat="server"
                             DBValue='<%# Bind("spacePrice") %>' Type="Currency"
-                            NumberFormat-DecimalDigits="2" Width="70px" EmptyMessage="£ (GBP)" />
+                            NumberFormat-DecimalDigits="2" Width="110px" EmptyMessage="£ (GBP)" />
                     </div>
                     
                     <div class="row">
                         <label for="rntbSubcontractPercent" title="Adjustment" class="label">Adjustment</label>
                         <telerik:RadNumericTextBox ID="rntbSubcontractPercent" runat="server"
-                            Width="60px" ShowSpinButtons="true" DBValue='<%#Bind("subcontractPercent") %>'
+                            Width="80px" ShowSpinButtons="true" DBValue='<%#Bind("subcontractPercent") %>'
                             MinValue="0" MaxValue="100" Type="Percent" NumberFormat-DecimalDigits="0" />
                     </div>
                     
                     <div class="row">
                         <label for="rntbSubcontractPercent" title="Completion" class="label">Completion</label>
                         <telerik:RadNumericTextBox ID="rntbCompletion" runat="server"
-                            Width="60px" ShowSpinButtons="true" DBValue='<%#Bind("completion") %>'
+                            Width="80px" ShowSpinButtons="true" DBValue='<%#Bind("completion") %>'
                             MinValue="0" MaxValue="100" Type="Percent" NumberFormat-DecimalDigits="0" />
                     </div>
             
