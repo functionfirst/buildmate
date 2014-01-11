@@ -297,31 +297,36 @@
 
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-
     <div class="tour-block">
         <div class="tour-inner">
-            <a href="#" class="close">&times;</a>
+            <a href="#" class="close" data-tour="close">&times;</a>
             
-            <h1>Suppliers <span>Take a Tour</span></h1>
+            <h1>Dashboard <span>Take a Tour</span></h1>
 
-            <div class="tour-nav">
+            <div class="tour-nav" data-tour="menu">
                 <ul>
-                    <li class="active"><a href="#">1. Suppliers</a></li>
-                    <li><a href="#">2. Unused Suppliers</a></li>
+                    <li class="active"><a href="#" data-tab="step1">1. Suppliers</a></li>
+                    <li><a href="#" data-tab="step2">2. Advanced Suppliers</a></li>
                 </ul>
             </div>
             <div class="tour-content">
-                <h3>Suppliers</h3>
-        <p>
-            Use the Supplier list to set your preferred priority, those at the top will be used first when checking resource prices.
-        </p>
+                <div data-target="step1">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/FnVXWuZkhpQ" frameborder="0" allowfullscreen></iframe>
 
-        <h3>Unused Suppliers</h3>
-
-        <p>
-            The Unusers Suppliers list displays all of your suppliers that you aren't actively using. To be able
-            to use these Suppliers in your Project you will need to select them and click 'Add this Supplier'.
-        </p>
+                    <div class="tour-control">
+                        Step 1
+                        <a href="#" data-tab-control="step2">Next</a>
+                    </div>
+                </div>
+                
+                <div data-target="step2" class="hide">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/xxx" frameborder="0" allowfullscreen></iframe>
+                    <div class="tour-control">
+                        Step 2
+                        <a href="#" class="restart" data-tab-control="step13">Restart</a>
+                    </div>
+                </div>
+              
             </div>
         </div>
     </div>

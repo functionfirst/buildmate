@@ -174,7 +174,7 @@
                 SortExpression="name"
                 DataTextField="name"
                 DataNavigateUrlFields="id"
-                DataNavigateUrlFormatString="customer_details.aspx?id={0}" />
+                DataNavigateUrlFormatString="~/customer_details.aspx?id={0}" />
          
             <telerik:GridBoundColumn
                 UniqueName="address"
