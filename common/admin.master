@@ -39,63 +39,65 @@
 
         <div class="container">
             <div class="topbar">
-                <div class="brand"><strong>Buildmate</strong> Administration</div>
+                <div class="topbar-container">
+                    <div class="brand"><strong>Buildmate</strong> Administration</div>
 
-                <div class="nav">
-                <asp:LoginView ID="LoginView2" runat="server">
-                    <LoggedInTemplate>
-                        <ul class="nav-options">
-                            <li><a href="logout.aspx">Logout</a></li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>
+                    <div class="nav">
+                    <asp:LoginView ID="LoginView2" runat="server">
+                        <LoggedInTemplate>
+                            <ul class="nav-options" data-target="options">
+                                <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
 
-                <ul id="nav">
-                    <li>
-                        <asp:HyperLink ID="hlHome" runat="server"
-                            NavigateUrl="~/admin/"><span></span>Overview</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlTopTasks" runat="server"
-                            NavigateUrl="~/admin/top_tasks.aspx"><span></span>Top Tasks</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlTasks" runat="server"
-                            NavigateUrl="~/admin/tasks.aspx"><span></span>Tasks</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlResources" runat="server"
-                            NavigateUrl="~/admin/resources.aspx"><span></span>Resources</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlSuppliers" runat="server"
-                            NavigateUrl="~/admin/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlSupport" runat="server"
-                            NavigateUrl="~/admin/support.aspx"><span></span>Support</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlKnowledgeBase" runat="server"
-                            NavigateUrl="~/admin/knowledge_base.aspx"><span></span>Knowledge Base</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlBlog" runat="server"
-                            NavigateUrl="~/admin/blog.aspx"><span></span>Blog</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlNotification" runat="server"
-                            NavigateUrl="~/admin/notification.aspx"><span></span>Notification</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="hlUsers" runat="server"
-                            NavigateUrl="~/admin/users.aspx"><span></span>Users</asp:HyperLink>
-                    </li>
-                    <li>
-                        <asp:HyperLink ID="HyperLink1" runat="server"
-                            NavigateUrl="~/admin/new_projects.aspx"><span></span>New Projects</asp:HyperLink>
-                    </li>
-                </ul>
+                    <ul id="nav" class="nav-main">
+                        <li>
+                            <asp:HyperLink ID="hlHome" runat="server"
+                                NavigateUrl="~/admin/"><span></span>Overview</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlTopTasks" runat="server"
+                                NavigateUrl="~/admin/top_tasks.aspx"><span></span>Top Tasks</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlTasks" runat="server"
+                                NavigateUrl="~/admin/tasks.aspx"><span></span>Tasks</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlResources" runat="server"
+                                NavigateUrl="~/admin/resources.aspx"><span></span>Resources</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlSuppliers" runat="server"
+                                NavigateUrl="~/admin/suppliers.aspx"><span></span>Suppliers</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlSupport" runat="server"
+                                NavigateUrl="~/admin/support.aspx"><span></span>Support</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlKnowledgeBase" runat="server"
+                                NavigateUrl="~/admin/knowledge_base.aspx"><span></span>Knowledge Base</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlBlog" runat="server"
+                                NavigateUrl="~/admin/blog.aspx"><span></span>Blog</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlNotification" runat="server"
+                                NavigateUrl="~/admin/notification.aspx"><span></span>Notification</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlUsers" runat="server"
+                                NavigateUrl="~/admin/users.aspx"><span></span>Users</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HyperLink1" runat="server"
+                                NavigateUrl="~/admin/new_projects.aspx"><span></span>New Projects</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
