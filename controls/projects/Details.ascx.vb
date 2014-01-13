@@ -83,6 +83,7 @@ Partial Class controls_projects_Details
         cmd.Connection = myConn
         cmd.CommandText = "copyBuildElementsToProject"
         cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@Userid", Session("userid"))
         cmd.Parameters.AddWithValue("@projectId", pid)
         cmd.Parameters.AddWithValue("@NewProjectId", npid)
         cmd.ExecuteNonQuery()
