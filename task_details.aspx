@@ -1187,6 +1187,12 @@
                             <a href="#" class="tooltip" data-tooltip="false" id="A2">What is this?
                                 <span class="tooltip-message">When Default Resources are enabled for this Task the Resources listed will be automatically added whenever you re-use this Task in the future.</span>
                             </a>
+                            
+                            <asp:HyperLink ID="HyperLink1" runat="server"
+                                data-target="addResources"
+                                CssClass="js-open-modal button button-create floatright"
+                                Style="margin-left: 10px"
+                                Text="Add a Resource" />
 
                             <asp:Button ID="btnSetDefaultResources" runat="server"
                                 CssClass="button button-primary"
