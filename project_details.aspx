@@ -589,12 +589,12 @@
                     </div>
                 
                     <asp:Panel ID="Panel3" runat="server" CssClass="box"
-                        Visible='<%# IIF((Eval("incDiscount") OR (Eval("incVAT")) AND Not isDbNull(Eval("vatNumber"))), "True", "False") %>'>
+                        Visible='<%# IIF((Eval("incDiscount") OR (Eval("incVAT")) AND Eval("vatNumber").length > 0), "True", "False") %>'>
                         <h3>Additions</h3>
 
                         <div class="boxcontent">
                             <asp:Panel ID="Panel2" runat="server" CssClass="rowl"
-                                Visible='<%# IIF((Eval("incVAT")), "True", "False") %>'>
+                                Visible='<%# IIF((Eval("incVAT") AND Eval("vatNumber").length > 0), "True", "False") %>'>
                                 <label title='VAT'><%#String.Format("VAT ({0:#0.00}%)", Eval("vatRate"))%></label>
                                 <asp:Literal ID="Literal10" runat="server" Text='<%# Eval("vatCost", "{0:c2}") %>' />
                             </asp:Panel>
