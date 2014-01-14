@@ -184,18 +184,20 @@
     </div>   
 
     <div class="breadcrumb">
-        <ul class="breadcrumb-options">
-            <li><a href="#" data-target="addResource" class="js-open-modal button button-create">New Supplier</a></li>
-        </ul>
-        <ul class="breadcrumb-list">
-            <li>
-                <a href="resources.aspx" title="Resources">Resources</a>
-                <span class="divider">/</span>
-            </li>
-            <li class="active">
-                Resource Details
-            </li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-options">
+                <li><a href="#" data-target="addResource" class="js-open-modal button button-create">New Supplier</a></li>
+            </ul>
+            <ul class="breadcrumb-list">
+                <li>
+                    <a href="resources.aspx" title="Resources">Resources</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Resource Details
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
