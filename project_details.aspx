@@ -110,6 +110,10 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
+
+    
+
+    <iframe id="document" width="1px" height="1px" runat="server"></iframe>
     
 
 
@@ -203,7 +207,6 @@
             <h3>Create a Document...</h3>
 
         <asp:Panel ID="pDocuments" runat="server">
-            <iframe id="document" width="1px" height="1px" runat="server"></iframe>
              <div class="md-details">
                 <div class="row">
                     <asp:Label
