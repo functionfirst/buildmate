@@ -21,18 +21,8 @@ Partial Class manager_subscription
         userId = Session("userId")
         paypalPayerId = Session("paypalPayerId")    ' check for paypalPayerId. Allows us to identify an account with a subscription, expired or otherwise
         token = Request.QueryString("token")
-        'Dim lockedAccount As Boolean = Convert.ToBoolean(Session("lockedAccount"))
 
-        ' if account expired show locked message
-        'If lockedAccount And IsNumeric(paypalPayerId) Then
-        '    ' subscription expired
-        '    lblError.Text = "<strong>Your subscription has expired.</strong><br />You will need to subscribe to re-gain full access to the system."
-        '    pError.Visible = True
-        'ElseIf lockedAccount Then
-        '    ' trial account expired (no paypal id)
-        '    lblError.Text = "<strong>Your free 30 day trial has ended.</strong><br />You will need to subscribe to gain full access to the system."
-        '    pError.Visible = True
-        'End If
+        'Dim lockedAccount As Boolean = Convert.ToBoolean(Session("lockedAccount"))
 
         ' If User has a PaypalPayerID display their payment profile details
         checkSubscription()
@@ -182,7 +172,7 @@ Partial Class manager_subscription
             btnSuspend.Visible = False
             btnCancel.Visible = False
 
-            SetCustomerBillingAgreement()       ' create a customer billing agreement
+            'SetCustomerBillingAgreement()       ' create a customer billing agreement
         End If
     End Sub
 
@@ -261,6 +251,7 @@ Partial Class manager_subscription
                 errorText += ppPay.ErrorList(0).Severity & "<br />"
                 errorText += ppPay.ErrorList(0).ShortMessage & "<br />"
                 errorText += ppPay.ErrorList(0).LongMessage
+                errorMsg.Text = errorText
                 'sendErrorToAdmin(errorText)
             End If
             getAccountStatus = "Error"

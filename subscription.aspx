@@ -6,9 +6,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
-    <p class="breadcrumb">
-        Subscription
-    </p>
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            Subscription
+        </div>
+    </div>
+
+    <asp:Literal ID="errorMsg" runat="server"></asp:Literal>
+
+    <div class="main-container">
 
     <asp:Panel ID="pError" runat="server" CssClass="errorBox" Visible="false">
         <p><asp:Label ID="lblError" runat="server" /></p>
@@ -39,7 +45,7 @@
             <h3>Subscription Details</h3>
 
             <div class="boxcontent">
-                <asp:literal ID="lblProfile" runat="server" Text="You are not currently subscribed to Buildmate." />
+                <asp:literal ID="lblProfile" runat="server" Text="No details were found, you can create a subscription using the form to the right." />
                 
                 <asp:FormView ID="fvUserSubscriptionDetails" runat="server" DataSourceID="subscriptionDetailsDataSource">
                     <EmptyDataTemplate>
@@ -168,7 +174,7 @@
         </asp:Panel>
     </div>
 
-    <div class="div50r">
+    <div class="div50 last">
         <asp:Panel ID="pPaypalPanel" runat="server" CssClass="box">
             <h3><asp:Label ID="Label1" runat="server" /></h3>
 
@@ -301,6 +307,8 @@
         </tr>
     </table>
     <!-- PayPal Logo -->
+
+        </div>
 
     <asp:SqlDataSource ID="subscriptionTypeDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
