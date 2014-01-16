@@ -17,64 +17,66 @@ Partial Class manager_add_task
         hlBack2.NavigateUrl = String.Format(hlBack2.NavigateUrl, Request.QueryString("pid"), Request.QueryString("rid"))
     End Sub
 
-    Private Function getFilters() As String
-        ' check for keyword filters
-        Dim filters As String = ""
+    'Private Function getFilters() As String
+    '    ' check for keyword filters
+    '    Dim filters As String = ""
 
-        If Len(rtbFilters.Text) >= 1 Then
-            Dim filter As String() = Split(rtbFilters.Text, " ")
+    '    If Len(rtbFilters.Text) >= 1 Then
+    '        Dim filter As String() = Split(rtbFilters.Text, " ")
 
-            ' iterate through each keyword entered
-            For Each keyword As String In filter
-                ' check at least 1 keyword exists
-                If Len(keyword) >= 1 Then
-                    ' check for first keyword
-                    If Len(filters) > 0 Then filters += " OR "
+    '        ' iterate through each keyword entered
+    '        For Each keyword As String In filter
+    '            ' check at least 1 keyword exists
+    '            If Len(keyword) >= 1 Then
+    '                ' check for first keyword
+    '                If Len(filters) > 0 Then filters += " OR "
 
-                    ' construct filter string
-                    filters += String.Format("(taskName LIKE '%%%" & keyword & "%%%' OR keywords LIKE '%%%" & keyword & "%%%')")
-                End If
-            Next
-        End If
+    '                ' construct filter string
+    '                filters += String.Format("(taskName LIKE '%%%" & keyword & "%%%' OR keywords LIKE '%%%" & keyword & "%%%')")
+    '            End If
+    '        Next
+    '    End If
 
-        Return filters
-    End Function
+    '    Return filters
+    'End Function
 
     Private Sub LoadRootNodes()
         RadTreeView1.Nodes.Clear()
         Session.Remove("expandedNodes")
 
         ' get keyword filters
-        Dim filters As String = getFilters()
+        'Dim filters As String = getFilters()
 
         ' define the datatable
         Dim sp As String = "TaskData_Select_Top_Level"
         Dim data As DataTable = GetNodeData(sp, 0)
-        Dim rows As DataRow() = data.Select(filters, "taskName")
+        Dim rows As DataRow() = data.Select("", "taskName")
+        'data.Select(filters, "taskName")
 
-        If (CType(rows.Length, Integer) = 0) Then
-            results.Text = "No Tasks were found matching your keywords."
-        Else
-            results.Text = ""
-            For Each row As DataRow In rows
-                Dim node As RadTreeNode = New RadTreeNode
-                node.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
-                node.Value = CType(row("id"), Integer).ToString
-                node.Checkable = False
-                node.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
-                RadTreeView1.Nodes.Add(node)
-            Next
-        End If
+        'If (CType(rows.Length, Integer) = 0) Then
+        '    results.Text = "No Tasks were found matching your keywords."
+        'Else
+        'results.Text = ""
+        For Each row As DataRow In rows
+            Dim node As RadTreeNode = New RadTreeNode
+            node.Text = HttpUtility.HtmlDecode(CType(row("taskName"), String))
+            node.Value = CType(row("id"), Integer).ToString
+            node.Checkable = False
+            node.ExpandMode = TreeNodeExpandMode.ServerSideCallBack
+            RadTreeView1.Nodes.Add(node)
+        Next
+        'End If
     End Sub
 
     Private Sub AddChildNodes(ByVal node As RadTreeNode)
         ' get keyword filters
-        Dim filters As String = getFilters()
+        'Dim filters As String = getFilters()
 
         ' defining the datatable
         Dim sp As String = "TaskData_Select_by_Parent"
         Dim data As DataTable = GetNodeData(sp, node.Value)
-        Dim rows As DataRow() = data.Select(filters, "taskName")
+        Dim rows As DataRow() = data.Select("", "taskName")
+        'data.Select(filters, "taskName")
 
         If rows.Length = 0 Then
             Dim childNode As RadTreeNode = New RadTreeNode

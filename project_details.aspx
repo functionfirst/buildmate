@@ -113,7 +113,7 @@
 
     
 
-    <iframe id="document" width="1px" height="1px" runat="server"></iframe>
+    <iframe id="document" width="1px" height="1px" runat="server" style="position: absolute"></iframe>
     
 
 
@@ -460,7 +460,7 @@
 
     <div class="main-container">
 
-        <asp:Panel ID="NoProjectPanel" runat="server" CssClass="box box-alert box-primary">
+        <asp:Panel ID="NoProjectPanel" runat="server" CssClass="box-alert box-primary">
             <h3>Project Error</h3>
             Either the selected project doesn't exist or you do not have permissions to view it, please select a project from the <a href="projects.aspx">Project list</a>.
         </asp:Panel>
@@ -480,7 +480,7 @@
                 DataSourceID="projectCostDataSource">
  
                 <ItemTemplate>
-                    <div class="box_total">
+                    <div class="box-alert box-primary centrealign ">
                         <h3>Estimate Total</h3>
 
                         <div class="boxcontent">

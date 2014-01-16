@@ -57,33 +57,18 @@ function ClientNodeClicked(sender, eventArgs) {
     </div>
 
     <div class="main-container">
-    <asp:Panel ID="pTaskFilters" runat="server" Visible="false">
-        <fieldset>
-            <legend title="Keywords">Keywords</legend>
-                            
-            <div class="row">
-                <telerik:RadTextBox ID="rtbFilters" runat="server" />
-                <asp:Button ID="btnFilter" runat="server" Text="Filter" />
-                <asp:Button ID="btnClear" runat="server" Text="Clear" />
+        <asp:Panel ID="pAddTasks" runat="server" Visible="false">
+            <telerik:RadTreeView runat="server" ID="RadTreeView1"
+                OnClientNodeClicked="ClientNodeClicked"
+                CheckBoxes="true"
+                Style="white-space: normal;"
+                ShowLineImages="true" />
+
+            <div class="form-actions">
+                <asp:LinkButton ID="btnAdd" runat="server" tooltip="Add Selected Task(s)"
+                        CssClass="button button-create" text="Add Selected Tasks" />
             </div>
-        </fieldset>
-    </asp:Panel>
-    
-    <asp:Panel ID="pAddTasks" runat="server" Visible="false">
-        <asp:Label ID="results" runat="server" />
-
-        <telerik:RadTreeView runat="server" ID="RadTreeView1"
-            OnClientNodeClicked="ClientNodeClicked"
-            CheckBoxes="true"
-            SingleExpandPath="true"
-            Style="white-space: normal;"
-            ShowLineImages="false" />
-
-        <div class="form-actions">
-            <asp:LinkButton ID="btnAdd" runat="server" tooltip="Add Selected Task(s)"
-                    CssClass="button button-create" text="Add Selected Tasks" />
-        </div>
-    </asp:Panel>
+        </asp:Panel>
 
     <asp:Panel ID="pLimitedTasks" runat="server" CssClass="box_info" Visible="false">
         <h3>Limited Subscription</h3>

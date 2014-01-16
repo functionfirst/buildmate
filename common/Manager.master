@@ -46,10 +46,8 @@
         </asp:Panel>
 
         
-        <div class="container">
-            <div class="topbar">
-                <div class="topbar-container">
-                    
+        <div class="topbar">
+            <div class="topbar-container">
                 <div class="brand">Buildmate</div>
 
                 <div class="nav">
@@ -87,14 +85,12 @@
                         </li>
                     </ul>
                 </div>
-
-                </div>
             </div>
-
-            <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
-            
-            <div class="md-wrapper" title="Click or press Esc to cancel"></div>
         </div>
+
+        <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
+            
+        <div class="md-wrapper" title="Click or press Esc to cancel"></div>
 
         <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
 
@@ -117,17 +113,14 @@
                         <br /><small>allowing you to edit your existing Build Elements.</small>
                     </li>
                 </ul>
-                
             </div>
         </div>
-   
     </form>
 
     <!-- js -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="/js/functions.js"></script>
 
-    
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     
     <script type="text/javascript">

@@ -36,8 +36,7 @@
 
     <div class="sidebar">
         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
-        <fieldset>
-            <legend title="Search Catalogue">Search Catalogue</legend>
+            Search Catalogue
             
             <div class="row">
                 <asp:Label ID="Label3" runat="server"
@@ -131,7 +130,6 @@
             <div class="row">
                 <asp:Button ID="btnApplyFilter" runat="server" Text="Search" />
             </div>
-        </fieldset>
     </asp:Panel>
     
     
