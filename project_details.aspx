@@ -460,7 +460,7 @@
 
     <div class="main-container">
 
-        <asp:Panel ID="NoProjectPanel" runat="server" CssClass="successBox">
+        <asp:Panel ID="NoProjectPanel" runat="server" CssClass="box box-alert box-primary">
             <h3>Project Error</h3>
             Either the selected project doesn't exist or you do not have permissions to view it, please select a project from the <a href="projects.aspx">Project list</a>.
         </asp:Panel>

@@ -14,7 +14,7 @@
         <p><asp:Label ID="lblError" runat="server" /></p>
     </asp:Panel>
 
-    <asp:Panel ID="pSuccess" runat="server" CssClass="successBox" Visible="false">
+    <asp:Panel ID="pSuccess" runat="server" CssClass="box box-alert box-primary" Visible="false">
         <p>Your subscription has been successfully created.</p>
     </asp:Panel>
     

@@ -152,7 +152,7 @@
             </asp:Panel>
 
             <asp:Label ID="lblCount" runat="server" Visible="false">
-                <div class="successBox">Your search returned more than 1,000 results, please be more specific with your search</div>
+                <div class="box box-alert box-primary">Your search returned more than 1,000 results, please be more specific with your search</div>
             </asp:Label>
 
             <telerik:RadGrid
