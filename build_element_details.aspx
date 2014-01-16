@@ -77,24 +77,8 @@
     <div class="div33">
         <asp:Panel ID="pBuildElementDetails" runat="server" CssClass="box">
 
-            <h3 id="readMode" runat="server">Build Element Details</h3>
+            <h3>Build Element Details</h3>
              
-            <h3 id="editMode" class="box_top_edit" runat="server" visible="false">Editing Build Element Details...</h3>
-
-            <div id="successbox" class="box_update" runat="server" visible="false">
-                <span>Build Element Details saved</span>
-            </div>
-            
-            <div id="insertbox" class="box_update" runat="server" visible="false">
-                <span>New Build Element saved</span>
-            </div>
-            
-            <div id="errorbox" class="box_error" runat="server" visible="false">
-                <span>The indicated fields are required</span>
-            </div>
-            
-            <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Error...." />
-            
             <div class="boxcontent">
             <asp:FormView
                 ID="fvElementDetails"

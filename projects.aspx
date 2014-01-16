@@ -53,11 +53,6 @@
     </div>
 
     <div class="main-container">
-        <div id="lblDeleted" runat="server" class="errorBox" visible="false">
-            <b>Project Deleted</b><br />
-            The project was deleted successfully.
-        </div>
-
         <asp:Panel ID="pSearchProjects" runat="server" DefaultButton="btnApplyFilter">
             <div id="advSearch" class="search">
                 <a href="#" class="toggleSearch"><span></span></a>

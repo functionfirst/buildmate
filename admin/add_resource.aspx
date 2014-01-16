@@ -28,7 +28,7 @@
         <h3>Resource Details</h3>
         
         <div class="boxcontent">
-            <div class="errorBox">
+            <div class="box box-info">
                 <p><strong>Note:</strong><br />Make sure you checked this resource doesn't already exist before you add it!</p>
             </div>
 
