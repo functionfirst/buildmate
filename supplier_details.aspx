@@ -32,12 +32,6 @@
     <div class="main-container">
 
         <h1>Supplier Details</h1>
-                        
-        <div id="errorbox" class="box_error" runat="server" visible="false">
-            <span>The following required fields are missing:
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#ffffff" ValidationGroup="editGroup" />
-            </span>
-        </div>
     
         <asp:FormView ID="fvSupplierDetails" runat="server" DataSourceId="supplierDataSource" DataKeyNames="id" RenderOuterTable="false" DefaultMode="Edit">
             <EditItemTemplate>

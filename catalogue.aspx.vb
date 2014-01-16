@@ -31,30 +31,6 @@ Partial Class catalogue
         Next
     End Sub
 
-    Protected Function checkForSupplier() As Boolean
-        Dim returnVal As Boolean = False
-        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-        Dim myConn As New SqlConnection(connString)
-        Dim cmd As New SqlCommand
-        cmd.Parameters.Clear()
-        cmd.CommandText = "SELECT TOP 1 Id FROM tblSuppliers WHERE userId = @userId"
-        cmd.Connection = myConn
-        cmd.Parameters.AddWithValue("@userId", Session("userId"))
-        Dim reader As SqlDataReader
-
-        Try
-            myConn.Open()
-            reader = cmd.ExecuteReader
-
-            If reader.HasRows Then returnVal = True
-
-        Catch ex As Exception
-            Trace.Write(ex.ToString)
-            myConn.Close()
-        End Try
-
-        Return returnVal
-    End Function
 
     'Private Const ItemsPerRequest As Integer = 100
 
@@ -142,20 +118,6 @@ Partial Class catalogue
 
     Protected Sub rcbResourceType_SelectedIndexChanged(ByVal o As Object, ByVal e As Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs) Handles rcbResourceType.SelectedIndexChanged
         rcbResources.Text = ""
-    End Sub
-
-    Protected Sub Page_Init(sender As Object, e As System.EventArgs) Handles Me.Init
-        Dim isCheckForSupplier As Boolean = checkForSupplier()
-
-        If isCheckForSupplier Then
-            pNoSupplier.Visible = False
-            Panel1.Visible = True
-            rgCatalogue.Visible = True
-        Else
-            pNoSupplier.Visible = True
-            Panel1.Visible = False
-            rgCatalogue.Visible = False
-        End If
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

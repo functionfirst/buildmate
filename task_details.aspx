@@ -842,15 +842,6 @@
     
     <div class="box">
         <h3>Task Details</h3>
-        <div id="editMode" class="box_top_edit" runat="server" visible="false"><span>Editing Task Details...</span></div>
-        
-        <div id="errorbox" runat="server" visible="false" class="box_error">
-            <span>The following required fields are missing:
-                <asp:ValidationSummary ID="ValidationSummary2" runat="server"
-                    ForeColor="#ffffff"
-                    ValidationGroup="editGroup" />
-            </span>
-        </div>
 
         <div class="boxcontent">
             <asp:FormView

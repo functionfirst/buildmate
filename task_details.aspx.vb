@@ -88,11 +88,6 @@ Partial Class manager_task_details
 
     Protected Sub Validate_Edit()
         Page.Validate("editGroup")
-        If Me.Page.IsValid Then
-            errorbox.Visible = False
-        Else
-            errorbox.Visible = True
-        End If
     End Sub
 
     Protected Sub fvTaskAdjustments_DataBound(sender As Object, e As System.EventArgs) Handles fvTaskAdjustments.DataBound
