@@ -492,16 +492,16 @@
                         <h3>Estimate Break-down</h3>
 
                         <div class="boxcontent">
-                            <div class='rowl'>
-                                <label title='Labour'>
+                            <div class='row row-long'>
+                                <label class="label">
                                     <asp:HyperLink ID="hpLabour" runat="server" CssClass="ajaxify"
                                         navigateurl="~/labour_costs.aspx?pid={0}" Text="Labour" />
                                 </label>
                                 <asp:Literal ID="litLabour" runat="server" Text='<%# Bind("labourCost", "{0:c2}") %>' />
                             </div>
                         
-                            <div class='rowl'>
-                                <label title='Materials'>
+                            <div class='row row-long'>
+                                <label class="label">
                                     <asp:HyperLink ID="hpMaterial" runat="server" 
                                         navigateurl="~/material_costs.aspx?pid={0}"
                                         Text="Materials" />                           
@@ -511,17 +511,17 @@
                                     Text='<%# Bind("materialCost", "{0:c2}") %>' /><br />
                             </div>
                         
-                            <div id="materialVAT" class="rowl" runat="server"
+                            <div id="materialVAT" class="row row-long" runat="server"
                                 visible='<%# IIF(Eval("materialVAT") >= 0, "True", "False") %>'>
-                                <label title="+ VAT" class="label"><small>&nbsp;+ VAT</small></label>
+                                <label class="label"><small>&nbsp;+ VAT</small></label>
                                 <small>
                                     <asp:Literal ID="Literal12" runat="server"
                                         Text='<%# Bind("materialVAT", "{0:c2}") %>' />
                                 </small>
                             </div>
                         
-                            <div class='rowl'>
-                                <label title='Plant &amp; Equipment'>
+                            <div class='row row-long'>
+                                <label class="label">
                                     <asp:HyperLink ID="hpPlantHire" runat="server"
                                         navigateurl="~/plant_costs.aspx?pid={0}"
                                         Text="Plant &amp; Equipment" />
@@ -530,17 +530,17 @@
                                     Text='<%# Bind("plantCost", "{0:c2}") %>' />
                             </div>
                         
-                            <div id="plantVAT" class="rowl" runat="server"
+                            <div id="plantVAT" class="row row-long" runat="server"
                                 Visible='<%# IIF(Eval("plantVAT") >= 0, "True", "False") %>'>
-                                <label title="+ VAT" class="label"><small>&nbsp;+ VAT</small></label>
+                                <label class="label"><small>&nbsp;+ VAT</small></label>
                                 <small>
                                     <asp:Literal ID="Literal13" runat="server"
                                         Text='<%# Bind("plantVAT", "{0:c2}") %>' />
                                 </small>
                             </div>
                         
-                            <div class='rowl'>
-                                <label title='Sundry Items'>
+                            <div class='row row-long'>
+                                <label class="label">
                                     <asp:HyperLink ID="hpSundryItems" runat="server" 
                                         navigateurl="~/sundry_items.aspx?pid={0}"
                                         Text="Sundry Items" />                                
@@ -549,8 +549,8 @@
                                 <asp:Literal ID="Literal3" runat="server" Text='<%# Bind("subcontractorTotal", "{0:c2}") %>' />
                             </div>
                         
-                            <div class='rowl'>
-                                <label title='Ad-hoc Costs'>
+                            <div class='row row-long'>
+                                <label class="label">
                                     <asp:HyperLink ID="hpAdhocCosts" runat="server" 
                                         navigateurl="~/adhoc_costs.aspx?pid={0}"
                                         Text="Ad-hoc Costs" />                                
@@ -558,11 +558,9 @@
 
                                 <asp:Literal ID="Literal4" runat="server" Text='<%# Bind("adhocCosts", "{0:c2}") %>' />
                             </div>
-                        
-                            <hr />
-                        
-                            <div class='rowl'>
-                                <label title='Subtotal'>Subtotal</label>
+
+                            <div class='row row-long row-footer'>
+                                <label class="label">Subtotal</label>
                                 <asp:Literal ID="Literal5" runat="server" Text='<%# Eval("subtotal", "{0:c2}") %>' />
                             </div>
                         </div>
@@ -572,20 +570,18 @@
                         <h3>Profit &amp; Overheads</h3>
                     
                         <div class="boxcontent">
-                            <div class='rowl'>
-                                <label title='Overhead'><%#Eval("overheadPercent", "Overhead ({0}%)") %></label>
+                            <div class='row row-long'>
+                                <label class="label"><%#Eval("overheadPercent", "Overhead ({0}%)") %></label>
                                 <asp:Literal ID="Literal6" runat="server" Text='<%# Eval("overhead", "{0:c2}") %>' />
                             </div>
                         
-                            <div class='rowl'>
-                                <label title='Profit'><%#Eval("profitPercent", "Profit ({0}%)") %></label>
+                            <div class='row row-long'>
+                                <label class="label"><%#Eval("profitPercent", "Profit ({0}%)") %></label>
                                 <asp:Literal ID="Literal7" runat="server" Text='<%# Eval("profit", "{0:c2}") %>' />
                             </div>
-                        
-                            <hr />
-                        
-                            <div class='rowl'>
-                                <label title='Subtotal'>Subtotal</label>
+
+                            <div class='row row-long row-footer'>
+                                <label class="label">Subtotal</label>
                                 <asp:Literal ID="Literal8" runat="server" Text='<%# Eval("profitOverheadTotal", "{0:c2}") %>' />
                             </div>
                         </div>
@@ -596,22 +592,20 @@
                         <h3>Additions</h3>
 
                         <div class="boxcontent">
-                            <asp:Panel ID="Panel2" runat="server" CssClass="rowl"
+                            <asp:Panel ID="Panel2" runat="server" CssClass="row row-long"
                                 Visible='<%# IIF((Eval("incVAT") AND Eval("vatNumber").length > 0), "True", "False") %>'>
-                                <label title='VAT'><%#String.Format("VAT ({0:#0.00}%)", Eval("vatRate"))%></label>
+                                <label class="label"><%#String.Format("VAT ({0:#0.00}%)", Eval("vatRate"))%></label>
                                 <asp:Literal ID="Literal10" runat="server" Text='<%# Eval("vatCost", "{0:c2}") %>' />
                             </asp:Panel>
                         
-                            <asp:Panel ID="Panel1" runat="server" CssClass="rowl"
+                            <asp:Panel ID="Panel1" runat="server" CssClass="row row-long"
                                 Visible='<%# IIF(Eval("incDiscount"), "True", "False") %>'>
-                                <label title='Contractor Discount'>Contractor Discount (2.5%)</label>
+                                <label class="label">Contractor Discount (2.5%)</label>
                                 <asp:Literal ID="Literal9" runat="server" Text='<%# Eval("discountCost", "{0:c2}") %>' />
                             </asp:Panel>
-                        
-                            <hr />
-                        
-                            <div class='rowl'>
-                                <label title='Subtotal'>Subtotal</label>
+
+                            <div class='row row-long row-footer'>
+                                <label class="label">Subtotal</label>
                                 <asp:Literal ID="Literal11" runat="server" Text='<%# Eval("additionalCost", "{0:c2}") %>' />
                             </div>
                         </div>

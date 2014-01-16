@@ -624,63 +624,62 @@
 
     <!-- task details -->
     <div class="div33">
-        <div class="box_total">
-            <h3>Task Break-down</h3>
+        <div class="box-alert box-primary">
+            <h3 class="centrealign">Task Break-down</h3>
                     
             <div class="boxcontent">
-                    
-    <asp:FormView
-        ID="fvTaskTotals"
-        runat="server"
-        RenderOuterTable="false"
-        DataSourceID="taskTotalsDataSource">
-        <ItemTemplate>
-                    <div class="row">
-                        <label title="Labour Cost" class="label">Labour Cost</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblLabourCost" runat="server"
-                                Text='<%#Bind("labourCost", "{0:C}") %>' />
+                <asp:FormView
+                    ID="fvTaskTotals"
+                    runat="server"
+                    RenderOuterTable="false"
+                    DataSourceID="taskTotalsDataSource">
+                    <ItemTemplate>
+                        <div class="row row-long">
+                            <label class="label">Labour Cost</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblLabourCost" runat="server"
+                                    Text='<%#Bind("labourCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <label title="Material Cost" class="label">Material Cost</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblMaterialCost" runat="server"
-                                Text='<%#Bind("materialCost", "{0:C}") %>' />
+                        <div class="row row-long">
+                            <label class="label">Material Cost</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblMaterialCost" runat="server"
+                                    Text='<%#Bind("materialCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
                     
-                    <div class="row">
-                        <label title="Plant &amp; Equipment Cost" class="label">Plant &amp; Equipment Cost</label>
+                        <div class="row row-long">
+                            <label class="label">Plant &amp; Equipment Cost</label>
                         
-                        <div class="rightalign">
-                            <asp:Label ID="lblPlantCost" runat="server"
-                                Text='<%#Bind("plantCost", "{0:C}") %>' />
+                            <div class="rightalign">
+                                <asp:Label ID="lblPlantCost" runat="server"
+                                    Text='<%#Bind("plantCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
                     
-                    <div class="row">
-                        <label title="Ad-hoc Cost" class="label">Ad-hoc Cost</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblAdhocCost" runat="server"
-                                Text='<%#Bind("adHocCost", "{0:C}") %>' />
+                        <div class="row row-long">
+                            <label class="label">Ad-hoc Cost</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblAdhocCost" runat="server"
+                                    Text='<%#Bind("adHocCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
 
-                    <hr />
+                        <hr />
                     
-                    <div class="row">
-                        <label title="Task Total" class="label">Task Total</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblTotalCost" runat="server"
-                                Text='<%#Bind("total", "{0:C}") %>' />
+                        <div class="row row-long">
+                            <label class="label">Task Total</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblTotalCost" runat="server"
+                                    Text='<%#Bind("total", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
-        </ItemTemplate>
-    </asp:FormView>
-                </div>
+                    </ItemTemplate>
+                </asp:FormView>
             </div>
+        </div>
 
     <div class="box">
         <div class="div66">
@@ -1135,9 +1134,8 @@
     </div>
 
 
-        
         <asp:Panel ID="pRequiresTaskQty" runat="server" Visible="false">
-            <div class="box_info">
+            <div class="box-alert box-primary">
                 You must enter a Task quantity before adding Resources to this Task. Click <strong>Edit Task Details</strong> to begin.
             </div>
         </asp:Panel>
