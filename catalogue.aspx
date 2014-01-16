@@ -28,16 +28,11 @@
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
-    <p class="breadcrumb">
-        Catalogue
-    </p>
-    
-    <asp:Panel ID="pNoSupplier" runat="server" Visible="false" CssClass="errorBox">
-        <p>
-            <strong>Supplier required</strong><br />
-            You will need to <a href="add_supplier.aspx">add your own supplier</a> before you can customise your Resource Catalogue.
-        </p>
-    </asp:Panel>
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            Catalogue
+        </div>
+    </div>
 
     <div class="sidebar">
         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
