@@ -24,7 +24,7 @@
     </p>
 
     <div class="box">
-        <div class="box_top">Catalogue Resource Details</div>
+        <h3>Catalogue Resource Details</h3>
                     
         <div class="boxcontent">
             <asp:FormView ID="fvCatalogue" runat="server"

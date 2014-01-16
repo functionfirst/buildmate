@@ -45,92 +45,96 @@
             DataKeyNames="id"
             DataSourceID="viewTicketDataSource">
             <ItemTemplate>
-                <h3><%# Eval("subject")%></h2>
-
-                <asp:HiddenField
-                    ID="isLocked"
-                    runat="server"
-                    Value='<%#eval("isLocked") %>'/>
-
-                <asp:Image
-                    ID="Image1"
-                    runat="server"
-                    ImageUrl="~/icons/lock.png"
-                    ImageAlign="AbsMiddle"
-                    CssClass="floatright"
-                    Visible='<%#Eval("isLocked") %>' />
+                <div class="box">
+                    <h3><%# Eval("subject")%></h2>
                     
-                <%# Eval("content")%>
+                    <div class="boxcontent">
+                        <asp:HiddenField
+                            ID="isLocked"
+                            runat="server"
+                            Value='<%#eval("isLocked") %>'/>
 
-                <p>
-                    <small>
-                        Created by <%#Eval("name")%> on 
-                        <%#Eval("dateCreated", "{0:f}")%>
-                    </small>
-                </p>
+                        <asp:Image
+                            ID="Image1"
+                            runat="server"
+                            ImageUrl="~/icons/lock.png"
+                            ImageAlign="AbsMiddle"
+                            CssClass="floatright"
+                            Visible='<%#Eval("isLocked") %>' />
+                    
+                        <%# Eval("content")%>
+
+                        <p>
+                            <small>
+                                Created by <%#Eval("name")%> on 
+                                <%#Eval("dateCreated", "{0:f}")%>
+                            </small>
+                        </p>
+                    </div>
+                </div>
             </ItemTemplate>
         </asp:FormView>
 
-            <asp:Repeater
-                ID="rReplies"
-                runat="server"
-                DataSourceID="relatedTicketsDataSource">
+        <asp:Repeater
+            ID="rReplies"
+            runat="server"
+            DataSourceID="relatedTicketsDataSource">
 
-                <ItemTemplate>
-                    <hr />
-                    <div class='<%# iif(eval("userId") = eval("mainUserId"), "", " admin_reply") %>'>
+            <ItemTemplate>
+                <div class='<%# iif(eval("userId") = eval("mainUserId"), "box", "box box-highlight") %>'>
+                    <div class="boxcontent">
                         <%#Eval("repContent")%><br />
                         <small>
                             By <strong><%#Eval("name")%></strong> on
                             <%#Eval("repDate", "{0:f}")%>
                         </small>
                     </div>
-                    <hr />
-                </ItemTemplate>
-            </asp:Repeater>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
 
-            <asp:FormView
-                ID="fvReply"
-                runat="server"
-                DataKeyNames="id"
-                Width="100%"
-                DataSourceID="viewTicketDataSource"
-                DefaultMode="Insert">
-                <InsertItemTemplate>
-                            <div class="row">
-                                <telerik:RadTextBox
-                                    ID="rtbReplyContent"
-                                    runat="server"
-                                    Text='<%#Bind("repContent") %>'
-                                    TextMode="MultiLine"
-                                    Height="60px"
-                                    EmptyMessage="Add a Note..."
-                                    MaxLength="1000"
-                                    Width="100%" />
-                            </div>
+        <asp:FormView
+            ID="fvReply"
+            runat="server"
+            DataKeyNames="id"
+            Width="100%"
+            DataSourceID="viewTicketDataSource"
+            DefaultMode="Insert">
+            <InsertItemTemplate>
+                <div class="row">
+                    <telerik:RadTextBox
+                        ID="rtbReplyContent"
+                        runat="server"
+                        Text='<%#Bind("repContent") %>'
+                        TextMode="MultiLine"
+                        Height="60px"
+                        EmptyMessage="Add a Note..."
+                        MaxLength="1000"
+                        Width="100%" />
+                </div>
 
-                            <div class="form-actions">
-                                <asp:Button ID="btnUpdate" runat="server"
-                                    Enabled='<%# Iif(eval("isLocked"), false, true) %>'
-                                    CausesValidation="True"
-                                    CommandName="Insert"
-                                    CssClass="button button-create"
-                                    Text="Add Note" />
-                            </div>
+                <div class="form-actions">
+                    <asp:Button ID="btnUpdate" runat="server"
+                        Enabled='<%# Iif(eval("isLocked"), false, true) %>'
+                        CausesValidation="True"
+                        CommandName="Insert"
+                        CssClass="button button-create"
+                        Text="Add Note" />
+                </div>
                     
-                            <asp:RequiredFieldValidator
-                                ID="RequiredFieldValidator1"
-                                runat="server"
-                                ErrorMessage="*required"
-                                Display="Dynamic"
-                                ControlToValidate="rtbReplyContent">
-                                <div class="row">
-                                    <label class="label">&nbsp;</label>
-                                    <span class="req"></span>&nbsp;Content is required.        
-                                </div>
-                            </asp:RequiredFieldValidator>
-                </InsertItemTemplate>
-            </asp:FormView>
+                <asp:RequiredFieldValidator
+                    ID="RequiredFieldValidator1"
+                    runat="server"
+                    ErrorMessage="*required"
+                    Display="Dynamic"
+                    ControlToValidate="rtbReplyContent">
+                    <div class="row">
+                        <label class="label">&nbsp;</label>
+                        <span class="req"></span>&nbsp;Content is required.        
+                    </div>
+                </asp:RequiredFieldValidator>
+            </InsertItemTemplate>
+        </asp:FormView>
     </div>
           
     <asp:SqlDataSource

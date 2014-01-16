@@ -7,7 +7,6 @@
 @import "search-panel.less";
 @import "help-panel.less";
 @import "login.less";
-/*@import "sidebar.less";*/
 @import "wizard.less";
 @import "tabs.less";
 @import "responsive.less";
@@ -48,9 +47,9 @@ html body .riSingle .riTextBox[type="text"] {
     padding: 4px 8px;
     min-height: 20px;
     max-width: 100%;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+    -webkit-border-radius:  3px;
+    -moz-border-radius:     3px;
+    border-radius:          3px;
 
     &:focus {
         outline: none;
@@ -90,10 +89,6 @@ a:hover,
 #app .RadGrid a:hover {
     color: #333;
 }
-
-.container {
-    background: #fff;
-}
 .project-details h4 {
     margin: 0;
     color: #333;
@@ -104,24 +99,18 @@ a:hover,
     color: #666;
 }
 
-    
-    .topbar-container,
-    .breadcrumb-container,
-    .main-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+.topbar-container,
+.breadcrumb-container,
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
     .main-container {
         padding: 20px 0;
     }
 
-    fieldset { border: 1px solid #ccc; margin: 5px 5px 10px; padding: 10px }
-
-    legend { color: #666; font-size: 11px }
-
 /* topbar */
-.topbar 
-{
+.topbar {
     position: fixed;
     z-index: 100;
     top: 0;
@@ -131,8 +120,6 @@ a:hover,
     -webkit-box-shadow: 0 0 6px rgba(0,0,0,0.6);
     -moz-box-shadow:    0 0 6px rgba(0,0,0,0.6);
     box-shadow:         0 0 6px rgba(0,0,0,0.6);
-
-    
     transition: all 0.5s;
 }
 .topbar .brand {
@@ -153,120 +140,15 @@ a:hover,
     width: 29px;
     margin-right: 5px;
 }
-/* notifications in topbar */
-.active .noticePoint {
-    display: block;
-}
-.noticePoint {
-    display: none;
-    position: absolute;
-    right: 100px;
-    z-index: 10;
-    width: 340px;
-    background: #fff;
-    top: 36px;
-    text-align: left;
-    text-shadow: none;
-    box-shadow: 0 0 3px rgba(0,0,0,0.2);
-}
-.noticePoint:before {
-    content: "";
-    border: 8px solid #fff;
-    border-color: transparent transparent #f3f3f3 transparent;
-    position: absolute;
-    z-index: 12;
-    top: -16px;
-    left: 50%;
-    margin-left: -4px;
-}
-.noticePoint a {
-    color: #21759B;
-    display: block;
-    padding: 5px 10px;
-    margin: 0;
-}
-.noticePoint a:hover {
-    color: #333;
-    background: #f5f5f5;
-}
-.noticePoint hr { border-top: 1px solid #eee; margin: 0; }
-
-.noticePoint strong,
-.noticePoint .viewall {
-    display: block;
-    background: #f3f3f3;
-    border: 1px solid #ddd;
-}
-.noticePoint strong {
-    padding: 5px 10px;
-    border-width: 0 0 1px;
-}
-.noticePoint .viewall 
-{
-    color: #21759B;
-    border-width: 1px 0 0;    
-    text-align: center;
-}
-
-
-.noticeBadge strong {
-    text-shadow: none;
-    border: 1px solid transparent;
-    position: relative;
-    padding: 2px 4px;
-    font-size: 11px;
-    min-width: 20px;
-    line-height: 20px;
-    text-align: center;
+.badge {
+    margin-left: 10px;
+    color: #fff;
+    background: #ccc;
+    border-radius: 10em;
+    padding: 0px 8px;
+    margin-bottom: 10px;
     display: inline-block;
-    font-weight: bold;
-    color: white;
-    background-color: #999;
-    -webkit-transition: background .1s linear;
-       -moz-transition: background .1s linear;
-         -o-transition: background .1s linear;
-            transition: background .1s linear;
 }
-.noticeBadge strong:before {
-    content: "";
-    display: block;
-    border: 8px solid red;
-    line-height: 5px;
-    border-color: transparent #999 transparent transparent;
-    position: absolute;
-    top: 13px;
-    right: 3px;
-}
-.noticeBadgeNew strong {
-    background-color: #953B39;
-}
-.noticeBadgeNew strong:before {
-    border-color: transparent #953B39 transparent transparent;
-}
-.noticeBadge:hover strong,
-.active .noticeBadge strong {
-    border-color: #ccc;
-}
-.active .noticeBadgeNew strong,
-.noticeBadgeNew:hover strong {
-    border-color: #b64846;
-}
-
-/* header */
-.header {
-    float: left;
-    width: 100px;
-    border-bottom: 1px solid #ddd;
-    background: #eee;
-    -webkit-box-shadow: inset 0 -1px 3px #ddd;
-       -moz-box-shadow: inset 0 -1px 3px #ddd;
-            box-shadow: inset 0 -1px 3px #ddd;
-} 
-   
-
- 
- 
-
 .clear { clear: both; }
 
 .floatleft { float: left; }
@@ -283,37 +165,6 @@ a:hover,
 
 .leftalign { text-align: left;}
 
-/* tabs */
-
-.tabs-vertical {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-right: 1px solid #ddd;
-    padding: 20px 0;
-}
-.tabs-vertical li {
-    margin: 5px 0 0;
-    text-align: right;
-}
-.tabs-vertical a {
-    display: block;
-    padding: 11px 10px 10px;
-    border: 1px solid transparent;
-    border-right: 0;
-    -webkit-transition: background .2s linear;
-       -moz-transition: background .2s linear;
-            transition: background .2s linear;
-}
-.tabs-vertical a.active {
-    display: block;
-    margin-right: -1px;
-    padding-right: 11px;
-    color: #333;
-    background: whiteSmoke;
-    border-color: #ddd;
-
-}
 /* advanced search */
 .search {
     position: relative;
@@ -321,16 +172,6 @@ a:hover,
     padding: 5px;
     width: 310px;
 }
-
-/*#app .search .searchInput {
-    background: url(../images/search.gif) no-repeat 4px 5px;
-    padding: 5px 5px 5px 20px;
-    border: 1px solid #ccc;
-    -webkit-border-radius: 3px;
-        -mozborder-radius: 3px;
-            border-radius: 3px;
-}*/
-
 .toggleSearch {
     line-height: 16px;
     height: 16px;
@@ -355,9 +196,9 @@ a:hover,
     position: absolute;
     z-index: 2;
     border-top: 0;
-    -webkit-border-radius: 0 0 5px 5px;
-       -moz-border-radius: 0 0 5px 5px;
-            border-radius: 0 0 5px 5px;
+    -webkit-border-radius:  0 0 5px 5px;
+    -moz-border-radius:     0 0 5px 5px;
+    border-radius:          0 0 5px 5px;
 }
 
 .search .panel .label {
@@ -382,68 +223,22 @@ a:hover,
 .search .panel input[type='checkbox'] {
     margin: 0 5px 0 0;
 }
+  
     
-/* paypal buttons */
-.paypal_btn {
-    display: block;
-    clear: both;
-    min-height: 24px;
-    height: auto !important;
-    height: 24px;
-    width: 270px;
-    margin: 10px auto;
-    font-weight: normal;
+/* suppliers pin arrow position */
+.pinArrow {
+    display: inline-block;
+    padding: 4px 6px;
+    color: #fff !important;
+    background: #21759B;
+    font-size: 16px;
+    -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+            border-radius: 4px;
 }
-.paypal_btn span {
-    margin-left: 40px;
-    display: block;
+.pinArrow:hover {
+    background: #333;
 }
-.paypal_btn strong {
-    display: block;
-    font-size: 15px;
-}
-.paypal_btn em {
-    float: left;
-    display: block;
-    height: 26px;
-    width: 26px;
-    margin: 5px 10px 0 0;
-    background: url(../icons/iconset.png) 0 -700px;
-}
-.paypal_cancel em {
-    background-position: 0 -540px;
-}
-.paypal_suspend em {
-    background-position: -347px -386px;
-}
-.paypal_reactivate em {
-    background-position: -39px -424px;
-}
-    
-    
-    
-    /* content */
-  /*  #MainContent_rcbCategory_i0_RadTreeView1 li { font-weight: bold; color: #666 }
-    
-    #MainContent_rcbCategory_i0_RadTreeView1 ul ul li span.rtIn { font-weight: normal; color: #21759B !important; cursor: pointer; }
-    
-    #MainContent_rcbCategory_i0_RadTreeView1 ul ul li:hover { color: #000}*/
-    
-    /* suppliers pin arrow position */
-    .pinArrow {
-        display: inline-block;
-        padding: 4px 6px;
-        color: #fff !important;
-        background: #21759B;
-        font-size: 16px;
-        -webkit-border-radius: 4px;
-           -moz-border-radius: 4px;
-                border-radius: 4px;
-    }
-    .pinArrow:hover 
-    {
-        background: #333;
-    }
     
     textarea { resize: vertical; }
     
@@ -469,7 +264,13 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
     }
     
     .completionBar div {
-        font-size: 12px; color: #fff; position: absolute; text-align: center; width: 100%; z-index: 3 }
+        font-size: 12px;
+        color: #fff;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 3;
+    }
     
     .completionBar span {
         position: absolute;
@@ -570,59 +371,54 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
         border-bottom: 1px solid #EEE;
         line-height: 30px;
         font-weight: 400;
-        /*font-size: 16px;*/
     }
 
     .cell { float: left; display: table-cell }
 
 
-    .loading { position: fixed; z-index: 9999; background: #fff; top: 0; left: 0; right: 0; bottom: 0; }
+    .loading {
+        position: fixed;
+        z-index: 9999;
+        background: #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 	.loading div {
-		position: fixed; width: 742px; left: 50%; margin-left: -371px; height: 100%;
+		position: fixed;
+        width: 742px;
+        left: 50%;
+        margin-left: -371px;
+        height: 100%;
 		text-indent: -200em;
 		background: url(../images/loading.gif) center no-repeat
 	}
 
-	#left {float: left; width: 50%; margin-right: 1% }
+	div.calcEnd {
+        height: 23px;
+        background: url(../images/calc_btm.gif) no-repeat bottom center;
+	}
 
-    #right { float: left; background: #bfdbff; width: 49%; }
-
-
-		div.calcEnd { height: 23px; background: url(../images/calc_btm.gif) no-repeat bottom center }
-
-		.calc, .calc tr, .calc td, .calc th { color: #fff}
-
-	
-	.inlineform { padding: 10px; background: #333; color: #fff }
-	
-	.inlineform td {  color: #fff }
-
+	.calc,
+    .calc tr,
+    .calc td,
+    .calc th {
+        color: #fff;
+	}
 
     /* FORMS & FILTER --------------- */
-    hr { border: 0; border-top: 1px solid #eee }
-
-    .control {
-        clear: both;
+    hr {
+        border: 0;
+        border-top: 1px solid #eee;
     }
 
-    .control-label {
-        float: left;
-        width: 120px;
-        font-weight: 600;
-    }
-
-    .control-body {
-        margin-left: 130px;
-    }
-
-    div.row, div.rowl, div.row_req {
+    .row {
         margin: 10px 0;
         clear: both;
     }
 
-    div.row label.label,
-    div.rowl label,
-    div.row_req label {
+    .label {
         margin-right: 10px;
         float: left;
         width: 120px;
@@ -634,19 +430,28 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
         text-transform: uppercase;
         margin-top: 1px;
     }
+   
+    .row-long {
+        text-align: right;
+           
+        .label {
+            width: 120px;
+            text-align: left;
+        }
+    }
 
+    .row-footer {
+        background: #eee;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+        margin: 0 -10px -10px;
+    }
+    
     .form-actions {
         margin: 10px 0;
         background: #eee;
         padding: 10px 10px 10px 130px;
     }
-   
-   div.rowl { text-align: right }
-    
-    div.rowl label {
-        width:120px;
-        text-align:left;
-    	}
     	
 	.disabled  { border: 0; background: #f3f3f3; color: #000}
 	
@@ -666,7 +471,8 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
 	
 
 /* filter style for multi-column combobox */
-.multipleRowsColumns .rcbItem, .multipleRowsColumns .rcbHovered {
+.multipleRowsColumns .rcbItem,
+.multipleRowsColumns .rcbHovered {
     float: left;
     margin: 0 1px;
     min-height: 13px;
@@ -675,9 +481,8 @@ div .RadGrid_Default .rgHeader, .RadGrid_Default th.rgResizeCol {
     width: 125px;
 }
 
-	   /* table style */
-    table.table 
-    {
+	/* table style */
+    table.table {
         border: 1px solid #cecece;
         border-collapse: collapse;
     }
@@ -759,7 +564,9 @@ div.RadTreeView_Default .rtHover .rtIn {
     .div66r,
     .div75,
     .div75r {
-        float: none; width: auto; margin: 0;
+        float: none;
+        width: auto;
+        margin: 0;
     }
 }
 
@@ -775,7 +582,9 @@ div.RadTreeView_Default .rtHover .rtIn {
         padding: 5px;
     }
     
-    .main_content { margin-top: 10px;}
+    .main_content {
+        margin-top: 10px;
+    }
     .topbar ul {
         float: none;
     }
@@ -785,10 +594,7 @@ div.RadTreeView_Default .rtHover .rtIn {
         float: none;
         padding: 5px;
     }
-    
-    .noticePoint {
-        left: 0;
-        position: static;
+    .topbar span.notext {
+        display: inline;
     }
-    .topbar span.notext { display: inline; }
 }

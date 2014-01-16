@@ -234,16 +234,13 @@
     </div>
     
     <div class="div66 div-last">
-        <asp:Panel ID="pLimitedTasks" runat="server" CssClass="box_info" Visible="false">
+        <asp:Panel ID="pLimitedTasks" runat="server" CssClass="box-alert box-primary" Visible="false">
             <h3>Limited Subscription</h3>
 
             <div class="boxcontent">
-                <ul>
-                   <li>
-                    <a href="settings.aspx">Update your subscription</a> to get instant access
-                    to Tasks &amp; Resources.
-                    </li>
-                </ul>
+                <a href="subscription.aspx" class="button button-large">Update your subscription</a>
+                
+                <p>Update your subscription to get instant access to Tasks &amp; Resources.</p>
                 
                 <h4>What does this mean?</h4>
                 

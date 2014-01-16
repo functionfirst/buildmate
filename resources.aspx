@@ -68,7 +68,7 @@
 
     <div class="clear"></div>
         <asp:Label ID="lblCount" runat="server" Visible="false">
-            <div class="successBox">We found more than 500 results matching your keywords, please be more specific with your search..</div>
+            <div class="box-alert box-primary">We found more than 500 results matching your keywords, please be more specific with your search..</div>
         </asp:Label>
 
         <telerik:RadGrid

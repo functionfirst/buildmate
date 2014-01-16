@@ -624,63 +624,62 @@
 
     <!-- task details -->
     <div class="div33">
-        <div class="box_total">
-            <h3>Task Break-down</h3>
+        <div class="box-alert box-primary">
+            <h3 class="centrealign">Task Break-down</h3>
                     
             <div class="boxcontent">
-                    
-    <asp:FormView
-        ID="fvTaskTotals"
-        runat="server"
-        RenderOuterTable="false"
-        DataSourceID="taskTotalsDataSource">
-        <ItemTemplate>
-                    <div class="row">
-                        <label title="Labour Cost" class="label">Labour Cost</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblLabourCost" runat="server"
-                                Text='<%#Bind("labourCost", "{0:C}") %>' />
+                <asp:FormView
+                    ID="fvTaskTotals"
+                    runat="server"
+                    RenderOuterTable="false"
+                    DataSourceID="taskTotalsDataSource">
+                    <ItemTemplate>
+                        <div class="row row-long">
+                            <label class="label">Labour Cost</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblLabourCost" runat="server"
+                                    Text='<%#Bind("labourCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <label title="Material Cost" class="label">Material Cost</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblMaterialCost" runat="server"
-                                Text='<%#Bind("materialCost", "{0:C}") %>' />
+                        <div class="row row-long">
+                            <label class="label">Material Cost</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblMaterialCost" runat="server"
+                                    Text='<%#Bind("materialCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
                     
-                    <div class="row">
-                        <label title="Plant &amp; Equipment Cost" class="label">Plant &amp; Equipment Cost</label>
+                        <div class="row row-long">
+                            <label class="label">Plant &amp; Equipment Cost</label>
                         
-                        <div class="rightalign">
-                            <asp:Label ID="lblPlantCost" runat="server"
-                                Text='<%#Bind("plantCost", "{0:C}") %>' />
+                            <div class="rightalign">
+                                <asp:Label ID="lblPlantCost" runat="server"
+                                    Text='<%#Bind("plantCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
                     
-                    <div class="row">
-                        <label title="Ad-hoc Cost" class="label">Ad-hoc Cost</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblAdhocCost" runat="server"
-                                Text='<%#Bind("adHocCost", "{0:C}") %>' />
+                        <div class="row row-long">
+                            <label class="label">Ad-hoc Cost</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblAdhocCost" runat="server"
+                                    Text='<%#Bind("adHocCost", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
 
-                    <hr />
+                        <hr />
                     
-                    <div class="row">
-                        <label title="Task Total" class="label">Task Total</label>
-                        <div class="rightalign">
-                            <asp:Label ID="lblTotalCost" runat="server"
-                                Text='<%#Bind("total", "{0:C}") %>' />
+                        <div class="row row-long">
+                            <label class="label">Task Total</label>
+                            <div class="rightalign">
+                                <asp:Label ID="lblTotalCost" runat="server"
+                                    Text='<%#Bind("total", "{0:C}") %>' />
+                            </div>
                         </div>
-                    </div>
-        </ItemTemplate>
-    </asp:FormView>
-                </div>
+                    </ItemTemplate>
+                </asp:FormView>
             </div>
+        </div>
 
     <div class="box">
         <div class="div66">
@@ -911,88 +910,87 @@
                             Text='<%# Bind("note") %>' />
                     </div>
 
-                        <div class="row">
-                            <asp:Label ID="Label5" runat="server"
-                                AssociatedControlID="rcbBuildPhaseId"
-                                Text="Build Phase"
-                                CssClass="label" />
+                    <div class="row">
+                        <asp:Label ID="Label5" runat="server"
+                            AssociatedControlID="rcbBuildPhaseId"
+                            Text="Build Phase"
+                            CssClass="label" />
                                 
-                            <telerik:RadComboBox ID="rcbBuildPhaseId" runat="server"
-                                Height="200px"
-                                SelectedValue='<%# Bind("buildPhaseId")%>'
-                                DataSourceID="buildPhaseDataSource"
-                                DataTextField="buildPhase"
-                                DataValueField="id" />
-                        </div>
+                        <telerik:RadComboBox ID="rcbBuildPhaseId" runat="server"
+                            Height="200px"
+                            SelectedValue='<%# Bind("buildPhaseId")%>'
+                            DataSourceID="buildPhaseDataSource"
+                            DataTextField="buildPhase"
+                            DataValueField="id" />
+                    </div>
 
-                        <div class="row">
-                            <asp:Label ID="Label11" runat="server"
-                                CssClass="label"
-                                Text="Quantity"
-                                AssociatedControlID="rntbQuantity" />
+                    <div class="row">
+                        <asp:Label ID="Label11" runat="server"
+                            CssClass="label"
+                            Text="Quantity"
+                            AssociatedControlID="rntbQuantity" />
 
-                            <telerik:RadNumericTextBox
-                                ID="rntbQuantity"
-                                runat="server"
-                                NumberFormat-DecimalDigits="2"
-                                Text='<%# Bind("qty") %>'
-                                Value="0"
-                                IncrementSettings-Step="1"
-                                Type="Number"
-                                CssClass="rightalign"
-                                Width="60px" />
+                        <telerik:RadNumericTextBox
+                            ID="rntbQuantity"
+                            runat="server"
+                            NumberFormat-DecimalDigits="2"
+                            Text='<%# Bind("qty") %>'
+                            Value="0"
+                            IncrementSettings-Step="1"
+                            Type="Number"
+                            CssClass="rightalign"
+                            Width="60px" />
 
-                            <asp:Label
-                                ID="Label2"
-                                runat="server"
-                                Text='<%# Eval("unit") %>' />
+                        <asp:Label
+                            ID="Label2"
+                            runat="server"
+                            Text='<%# Eval("unit") %>' />
                             
-                            <asp:RequiredFieldValidator
-                                ID="RequiredFieldValidator1"
-                                runat="server"
-                                ControlToValidate="rntbQuantity"
-                                Display="Dynamic"
-                                ErrorMessage="Quantity"
-                                ValidationGroup="editGroup">
-                                <span class="req"></span>
-                            </asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator1"
+                            runat="server"
+                            ControlToValidate="rntbQuantity"
+                            Display="Dynamic"
+                            ErrorMessage="Quantity"
+                            ValidationGroup="editGroup">
+                            <span class="req"></span>
+                        </asp:RequiredFieldValidator>
                             
-                            <a href="#" data-target="calculator" class="js-open-modal calc-open" title="Open Calculator">Calculator</a>
-                        </div>
+                        <a href="#" data-target="calculator" class="js-open-modal calc-open" title="Open Calculator">Calculator</a>
+                    </div>
                     
-                        <div class="row">
-                            <label title="Task Time" class="label">Task Time</label>
-                            <asp:Label ID="taskTimeLabel" runat="server" Text='<%# Eval("minutes") & " minutes per " & Eval("unit") %>' />
-                        </div>
+                    <div class="row">
+                        <label title="Task Time" class="label">Task Time</label>
+                        <asp:Label ID="taskTimeLabel" runat="server" Text='<%# Eval("minutes") & " minutes per " & Eval("unit") %>' />
+                    </div>
                         
-                        <div class="row">
-                            <label title="Estimated Time" class="label">Estimated Time</label>
-                            <asp:Label ID="Label6" runat="server" Text='<%# Eval("labourTime", "{0:N2}") & " minutes" %>' />
-                        </div>
+                    <div class="row">
+                        <label title="Estimated Time" class="label">Estimated Time</label>
+                        <asp:Label ID="Label6" runat="server" Text='<%# Eval("labourTime", "{0:N2}") & " minutes" %>' />
+                    </div>
 
-                        <div class="row">
-                            <label title="Total Time" class="label">Total Duration</label>
-                            <asp:Label ID="minutesLabel" runat="server" Text='<%# Eval("totalTime", "{0:N0}") & " minutes" %>' />
-                        </div>
+                    <div class="row">
+                        <label title="Total Time" class="label">Total Duration</label>
+                        <asp:Label ID="minutesLabel" runat="server" Text='<%# Eval("totalTime", "{0:N0}") & " minutes" %>' />
+                    </div>
     
-                        <div class="row">
-                            <label class="label">&nbsp;</label>
+                    <div class="row">
+                        <label class="label">&nbsp;</label>
 
-                            <asp:Button ID="UpdateButton" runat="server"
-                                CommandName="Update"
-                                CausesValidation="true"
-                                OnClick="Validate_Edit"
-                                CssClass="button button-create"
-                                ValidationGroup="editGroup"
-                                Text="Update" />
+                        <asp:Button ID="UpdateButton" runat="server"
+                            CommandName="Update"
+                            CausesValidation="true"
+                            OnClick="Validate_Edit"
+                            CssClass="button button-create"
+                            ValidationGroup="editGroup"
+                            Text="Update" />
  
-                            <asp:LinkButton ID="btnCancel" runat="server"
-                                CommandName="Cancel"
-                                CssClass="button"
-                                CausesValidation="false"
-                                Text="Cancel" />
-                        </div>
-                    </fieldset>
+                        <asp:LinkButton ID="btnCancel" runat="server"
+                            CommandName="Cancel"
+                            CssClass="button"
+                            CausesValidation="false"
+                            Text="Cancel" />
+                    </div>
                 </EditItemTemplate>
             </asp:FormView>
 
@@ -1136,9 +1134,8 @@
     </div>
 
 
-        
         <asp:Panel ID="pRequiresTaskQty" runat="server" Visible="false">
-            <div class="box_info">
+            <div class="box-alert box-primary">
                 You must enter a Task quantity before adding Resources to this Task. Click <strong>Edit Task Details</strong> to begin.
             </div>
         </asp:Panel>
