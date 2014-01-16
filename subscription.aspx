@@ -19,10 +19,6 @@
     <asp:Panel ID="pError" runat="server" CssClass="errorBox" Visible="false">
         <p><asp:Label ID="lblError" runat="server" /></p>
     </asp:Panel>
-
-    <asp:Panel ID="pSuccess" runat="server" CssClass="successBox" Visible="false">
-        <p>Your subscription has been successfully created.</p>
-    </asp:Panel>
     
     <asp:Panel ID="pErrorMessage" runat="server" CssClass="errorBox" Visible="false">
         <p>
@@ -39,8 +35,152 @@
             If this problem persists, please <a href="mailto:support@buildmateapp.com">contact support</a>
         </p>
     </asp:Panel>
-    
+ 
     <div class="div50">
+        <asp:panel ID="panelSubscribe" runat="server" CssClass="box box-primary" Visible="false">
+            <h3>You do not have a subscription</h3>
+                    
+            <div class="boxcontent">
+                <div class="row" runat="server" id="setSubscription">
+                    <asp:Label ID="Label2" runat="server"
+                        CssClass="label"
+                        AssociatedControlID="rblSubscription"
+                        Text="Subscription">Subscribe for:</asp:Label>
+                    
+                    <asp:RadioButtonList ID="rblSubscription" runat="server"
+                        DataSourceId="subscriptionTypeDataSource"
+                        DataTextField="subscription"
+                        DataValueField="id">
+                    </asp:RadioButtonList>
+                </div>
+
+                <div class="row">
+                    <label class="label">&nbsp;</label>
+                    <asp:Button ID="btnSubscribe" runat="server" CssClass="button button-large" Text="Create a Subscription" />
+                </div>
+            </div>
+        </asp:panel>
+
+        <asp:Panel ID="paneleSubscriptionActive" runat="server" CssClass="box box-primary" Visible="false">Active Subscription</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionPending" runat="server" CssClass="box box-secondary" Visible="false">Subscription pending approval</asp:Panel>
+        
+        <asp:Panel ID="panelSubscriptionCancelled" runat="server" CssClass="box box-secondary" Visible="false">Subscription Cancelled</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionSuspended" runat="server" CssClass="box box-secondary" Visible="false">Subscription Suspended</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionExpired" runat="server" CssClass="box box-secondary" Visible="false">Subscription Expired</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionError" runat="server" CssClass="box box-secondary" Visible="false">Subscription Error</asp:Panel>
+        
+        
+        <asp:Panel ID="pPaypalPanel" runat="server" CssClass="box box-primary">
+            <h3><asp:Label ID="Label1" runat="server" /></h3>
+
+            <asp:Panel ID="pSubscription" runat="server" CssClass="boxcontent">
+                
+                    
+            </asp:Panel>
+        </asp:Panel>
+
+        <div class="div50">
+            <asp:Panel ID="panelReactivate" runat="server" CssClass="box box-info" Visible="false">
+                <asp:Button
+                    ID="btnReactivate"
+                    runat="server"
+                    CssClass="button button-large"
+                    Text="Re-activate Subscription"
+                    OnClick="btnReactivate_Click" />
+            
+                <p>You'll start where you left off.</p>
+            </asp:Panel>
+        </div>
+
+        <div class="div50">
+            <asp:Panel ID="panelSuspend" runat="server" CssClass="box box-info" Visible="false">
+                <asp:Button
+                    ID="btnSuspend"
+                    runat="server"
+                    CssClass="button button-large"
+                    Text="Suspend Subscription"
+                    OnClick="btnSuspend_Click" />
+            
+                <small>If you decide to come back your data will still be here. In the meantime you'll still be able to access a limited version of Buildmate.</small>
+            </asp:Panel>
+        </div>
+
+        <div class="div50 last">
+            <asp:Panel ID="panelCancel" runat="server" CssClass="box box-info" Visible="false">
+                <asp:Button
+                    ID="btnCancel"
+                    runat="server"
+                    CssClass="button button-large"
+                    OnClick="btnCancel_Click" Text="Cancel Subscription" />
+                <small>Once your current payment period ends we'll automatically switch you over to the limited version of Buildmate.</small>
+            </asp:Panel>
+        </div>
+
+                    
+
+        <asp:FormView ID="fvConfirmSubscription" runat="server" 
+            DataSourceID="confirmSubscriptionDataSource"
+            Visible="false"
+            Width="100%">
+            <ItemTemplate>
+                <div class="box box-primary">
+                    <h3>Confirm your Subscription</h3>
+
+                    <div class="boxcontent">
+                        <p>Please enter your First name and Surname to activate your subscription.</p>
+
+                        <div class="row">
+                            <label class="label" title="First Name">First Name</label>
+                            <telerik:RadTextBox ID="rtFirstname" runat="server" Text='<%# Bind("firstname") %>' />
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                ControlToValidate="rtFirstname"
+                                ValidationGroup="confirmValidation"
+                                Display="Dynamic"
+                                ErrorMessage="First Name">
+                                <span class="req"></span>
+                            </asp:RequiredFieldValidator> 
+                        </div>
+
+                        <div class="row">
+                            <label class="label" title="Surname">Surname</label>
+                            <telerik:RadTextBox ID="rtSurname" runat="server" Text='<%# Bind("surname") %>' />
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                ControlToValidate="rtSurname"
+                                ValidationGroup="confirmValidation"
+                                Display="Dynamic"
+                                ErrorMessage="Surname">
+                                <span class="req"></span>
+                            </asp:RequiredFieldValidator> 
+                        </div>
+                        
+                        <div class="row">
+                            <label class="label" title="Payment Plan">Payment Plan</label>
+                        
+                            <asp:Label ID="subscriptionLabel" runat="server" Text='<%# Bind("subscription") %>' />
+                        </div>
+
+                        <div class="row">
+                            <label class="label">&nbsp;</label>
+                            <asp:Button ID="btnConfirmSubscription" runat="server"
+                                ValidationGroup="confirmValidation"
+                                CssClass="button button-large"
+                                OnClick="btnConfirmSubscription_OnClick"
+                                Text="Activate my Subscription" />
+                        </div>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:FormView>
+    </div>
+
+       
+    <div class="div50 last">
         <asp:Panel ID="pSubscriptionPanel" runat="server" CssClass="box">
             <h3>Subscription Details</h3>
 
@@ -174,127 +314,6 @@
         </asp:Panel>
     </div>
 
-    <div class="div50 last">
-        <asp:Panel ID="pPaypalPanel" runat="server" CssClass="box">
-            <h3><asp:Label ID="Label1" runat="server" /></h3>
-
-            <asp:Panel ID="pSubscription" runat="server" CssClass="boxcontent">
-                <div class="row" runat="server" id="setSubscription">
-                    <asp:Label ID="Label2" runat="server"
-                        CssClass="label"
-                        AssociatedControlID="rblSubscription"
-                        Text="Subscription">Subscribe now:</asp:Label>
-                    
-                    <asp:RadioButtonList ID="rblSubscription" runat="server"
-                        DataSourceId="subscriptionTypeDataSource"
-                        DataTextField="subscription"
-                        DataValueField="id">
-                    </asp:RadioButtonList>
-                </div>
-                    
-                <asp:panel ID="panelSubscribe" runat="server" CssClass="row">
-                    <label class="label">&nbsp;</label>
-
-                    <asp:ImageButton ID="btnSubscribe" runat="server"
-                        ImageUrl="~/images/paypal-subscribe.gif"
-                        OnClick="btnSubscribe_Click" />
-                </asp:panel>
-
-                <asp:LinkButton
-                    ID="btnReactivate"
-                    runat="server"
-                    CssClass="button paypal_btn paypal_reactivate"
-                    OnClick="btnReactivate_Click">
-                    <em></em>
-                    <span>
-                        <strong>Re-activate Subscription</strong>
-                        You'll start where you left off.
-                    </span>
-                </asp:LinkButton>
-                    
-                <asp:LinkButton
-                    ID="btnSuspend"
-                    runat="server"
-                    CssClass="button paypal_btn paypal_suspend"
-                    OnClick="btnSuspend_Click">
-                    <em></em>
-                    <span>
-                        <strong>Suspend Subscription</strong>
-                        You'll be able to come back and re-activate at any time.
-                    </span>
-                </asp:LinkButton>
-                    
-                <asp:LinkButton
-                    ID="btnCancel"
-                    runat="server"
-                    CssClass="button paypal_btn paypal_cancel"
-                    OnClick="btnCancel_Click">
-                    <em></em>
-                    <span>
-                        <strong>Cancel Subscription</strong>
-                        Once your current payment period ends you'll have limited access to Buildmate.
-                    </span>
-                </asp:LinkButton>    
-            </asp:Panel>
-        </asp:Panel>
-
-        <asp:FormView ID="fvConfirmSubscription" runat="server" 
-            DataSourceID="confirmSubscriptionDataSource"
-            Visible="false"
-            Width="100%">
-            <ItemTemplate>
-                <div class="box">
-                    <h3>Confirm your Subscription</h3>
-
-                    <div class="boxcontent">
-                        <p>Please enter your First name and Surname to activate your subscription.</p>
-
-                        <div class="row">
-                            <label class="label" title="First Name">First Name</label>
-                            <telerik:RadTextBox ID="rtFirstname" runat="server" Text='<%# Bind("firstname") %>' />
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                ControlToValidate="rtFirstname"
-                                ValidationGroup="confirmValidation"
-                                Display="Dynamic"
-                                ErrorMessage="First Name">
-                                <span class="req"></span>
-                            </asp:RequiredFieldValidator> 
-                        </div>
-
-                        <div class="row">
-                            <label class="label" title="Surname">Surname</label>
-                            <telerik:RadTextBox ID="rtSurname" runat="server" Text='<%# Bind("surname") %>' />
-
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                ControlToValidate="rtSurname"
-                                ValidationGroup="confirmValidation"
-                                Display="Dynamic"
-                                ErrorMessage="Surname">
-                                <span class="req"></span>
-                            </asp:RequiredFieldValidator> 
-                        </div>
-                        
-                        <div class="row">
-                            <label class="label" title="Payment Plan">Payment Plan</label>
-                        
-                            <asp:Label ID="subscriptionLabel" runat="server" Text='<%# Bind("subscription") %>' />
-                        </div>
-
-                        <div class="row">
-                            <label class="label">&nbsp;</label>
-                            <asp:Button ID="btnConfirmSubscription" runat="server"
-                                ValidationGroup="confirmValidation"
-                                OnClick="btnConfirmSubscription_OnClick"
-                                Text="Activate my Subscription" />
-                        </div>
-                    </div>
-                </div>
-            </ItemTemplate>
-        </asp:FormView>
-    </div>
-
-    
     <!-- PayPal Logo -->
     <table border="0" cellpadding="10" cellspacing="0" align="center">
         <tr>

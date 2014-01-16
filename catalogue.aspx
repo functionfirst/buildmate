@@ -32,7 +32,7 @@
         Catalogue
     </p>
     
-    <asp:Panel ID="pNoSupplier" runat="server" Visible="false" CssClass="errorBox">
+    <asp:Panel ID="pNoSupplier" runat="server" Visible="false" CssClass="box box-error">
         <p>
             <strong>Supplier required</strong><br />
             You will need to <a href="add_supplier.aspx">add your own supplier</a> before you can customise your Resource Catalogue.

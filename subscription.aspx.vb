@@ -7,8 +7,8 @@ Partial Class manager_subscription
     Inherits MyBaseClass
 
     Dim userId As String
-    Dim paypalPayerId As String
-    Dim token As String
+    'Dim paypalPayerId As String
+    'Dim token As String
 
     Const subscriptionActive As String = "Active"
     Const subscriptionPending As String = "Pending"
@@ -19,8 +19,8 @@ Partial Class manager_subscription
 
     Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
         userId = Session("userId")
-        paypalPayerId = Session("paypalPayerId")    ' check for paypalPayerId. Allows us to identify an account with a subscription, expired or otherwise
-        token = Request.QueryString("token")
+        'paypalPayerId = Session("paypalPayerId")    ' check for paypalPayerId. Allows us to identify an account with a subscription, expired or otherwise
+        'token = Request.QueryString("token")
 
         'Dim lockedAccount As Boolean = Convert.ToBoolean(Session("lockedAccount"))
 
@@ -28,22 +28,25 @@ Partial Class manager_subscription
         checkSubscription()
 
         ' Check for a subscription confirmation
-        showSubscriptionConfirmation()
+        'showSubscriptionConfirmation()
 
         ' Check if the subscription sign-up was successful
-        displaySuccess()
+        'displaySuccess()
     End Sub
 
-    Protected Sub displaySuccess()
-        ' Check if the subscription sign-up was successful
-        ' This comes as a redirect from CreateRecurringPaymentsProfile()
-        If Request.QueryString("subscription") = "success" Then
-            pSuccess.Visible = True
-        End If
-    End Sub
+    'Protected Sub displaySuccess()
+    '    ' Check if the subscription sign-up was successful
+    '    ' This comes as a redirect from CreateRecurringPaymentsProfile()
+    '    If Request.QueryString("subscription") = "success" Then
+    '        showNotification("Subscription Activated", "You have successfully subscribed to Buildmate. Thank you for your continued support :)")
+    '        pSuccess.Visible = True
+    '    End If
+    'End Sub
 
     Protected Sub showSubscriptionConfirmation()
-        ' Check if Token exists.
+        ' Check if Token was returned from paypal
+        Dim token As String = Request.QueryString("token")
+
         ' If so, the user is attempting to subscribe
         If Len(token) > 0 Then
             ' The user still needs to confirm their subscription
@@ -52,6 +55,7 @@ Partial Class manager_subscription
             ' show confirmation of the subscription details selected by the user
             'lblPaymentPlan.Text = subscription
             fvConfirmSubscription.Visible = True
+            'panelSubscribe.Visible = False
             'btnConfirmSubscription.Visible = True
             'Label1.Text = "Confirm your Subscription"
             'rtFirstname.Text = Session("firstname")
@@ -102,77 +106,102 @@ Partial Class manager_subscription
     'End Sub
 
     Protected Sub checkSubscription()
+        ' get existing token from somewhere??
+        Dim paypalPayerId As String = Session("paypalPayerId")
+
+        ' Check if the subscription sign-up was successful
+        ' This comes as a redirect from CreateRecurringPaymentsProfile()
+        If Request.QueryString("subscription") = "success" Then
+            showNotification("Subscription Activated", "You have successfully subscribed to Buildmate. Thank you for your continued support :)")
+            Return
+        End If
+
         ' check for existing paypalPayerId
         If Len(paypalPayerId) >= 1 Then
             ' profile exists - check if the profile is active
             Dim checkPayPalAccountStatus = getRecurringPaymentsProfileDetails(paypalPayerId)
 
+            checkPayPalAccountStatus = subscriptionPending
             Select Case checkPayPalAccountStatus
                 Case subscriptionActive
                     ' subscription is currently active
-                    Label1.Text = "Active Subscription"
-                    'rmpSubscription.SelectedIndex = 0
-                    setSubscription.Visible = False
-                    panelSubscribe.Visible = False
-                    btnReactivate.Visible = False
-                    btnSuspend.Visible = True ' display suspend button
-                    btnCancel.Visible = True ' display cancel button
+                    paneleSubscriptionActive.Visible = panelSuspend.Visible = panelCancel.Visible = True
 
                 Case subscriptionPending
                     ' subscription is pending approval?
-                    Label1.Text = "Subscription pending approval"
-                    setSubscription.Visible = False
-                    panelSubscribe.Visible = False
-                    btnReactivate.Visible = False
-                    btnSuspend.Visible = True ' display suspend button
-                    btnCancel.Visible = True ' display cancel button
+                    panelSubscriptionPending.Visible = panelSuspend.Visible = panelCancel.Visible = True
 
                 Case subscriptionCancelled
                     ' your subscription is currently cancelled
-                    Label1.Text = "Subscription Cancelled"
-                    setSubscription.Visible = True
-                    panelSubscribe.Visible = True
-                    btnReactivate.Visible = False
-                    btnSuspend.Visible = False
-                    btnCancel.Visible = False
+                    panelSubscriptionCancelled.Visible = setSubscription.Visible = panelReactivate.Visible = True
+                    'Label1.Text = "Subscription Cancelled"
+                    'setSubscription.Visible = True
+                    'panelSubscribe.Visible = True
+                    panelReactivate.Visible = True
+                    'btnReactivate.Visible = False
+                    'panelSuspend.Visible = False
+                    'panelCancel.Visible = False
 
-                    SetCustomerBillingAgreement()       ' create a customer billing agreement
+                    'SetCustomerBillingAgreement()       ' create a customer billing agreement
 
                 Case subscriptionSuspended
                     ' your subscription is currently suspended
                     ' display reactivate button.
                     ' display cancel button
+                    panelSubscriptionSuspended.Visible = panelReactivate.Visible = True
                     Label1.Text = "Subscription Suspended"
                     setSubscription.Visible = False
-                    panelSubscribe.Visible = False
-                    btnReactivate.Visible = True
+                    'panelSubscribe.Visible = False
+                    panelReactivate.Visible = True
+                    'btnReactivate.Visible = True
                     btnSuspend.Visible = False
                     btnCancel.Visible = True
 
                 Case subscriptionExpired
                     ' your subscription has expired
                     ' click here to renew your subscription
-                    Label1.Text = "Subscription Expired."
+                    panelSubscriptionExpired.Visible = setSubscription.Visible = True
+                    'Label1.Text = "Subscription Expired."
                     setSubscription.Visible = True
-                    panelSubscribe.Visible = True
-                    btnReactivate.Visible = False
+                    'panelSubscribe.Visible = True
+                    'btnReactivate.Visible = False
                     btnSuspend.Visible = False
                     btnCancel.Visible = False
                 Case subscriptionError
                     ' something bad happened. the paypalPayID might be wrong
-                    Label1.Text = "Error with Subscription"
+                    panelSubscriptionError.Visible = True
             End Select
-        ElseIf Len(token) = 0 Then
-            ' profile doesn't exist.
+        Else
+            ' PROFILE DOESN'T EXIST
+            confirmSubscription()
+
+
+            ' check for returned token in querystring or if we need to show the subscribe form
+
+
             ' display the subscribe via paypal button.
-            Label1.Text = "You do not have a subscription"
-            setSubscription.Visible = True
-            panelSubscribe.Visible = True
-            btnReactivate.Visible = False
-            btnSuspend.Visible = False
-            btnCancel.Visible = False
+            'Label1.Text = "You do not have a subscription"
+            'setSubscription.Visible = True
+            ''panelSubscribe.Visible = True
+            'btnReactivate.Visible = False
+            'btnSuspend.Visible = False
+            'btnCancel.Visible = False
 
             'SetCustomerBillingAgreement()       ' create a customer billing agreement
+        End If
+    End Sub
+
+    Protected Sub confirmSubscription()
+        Dim token As String = Request.QueryString("token")
+        Trace.Write("Token : " + token)
+        If Len(token) >= 1 Then
+            Trace.Write("confirm subscrtiption")
+            ' confirm subscription 
+            panelSubscribe.Visible = False
+            fvConfirmSubscription.Visible = True
+        Else
+            'Label1.Text = "You do not have a subscription"
+            panelSubscribe.Visible = True
         End If
     End Sub
 
@@ -260,31 +289,6 @@ Partial Class manager_subscription
         Return getAccountStatus
     End Function
 
-    Protected Sub btnSubscribe_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        ' check for paypal token generated by SetCustomerBillingAgreement
-        If Len(token) > 0 Then
-            ' get the subscription type from the selected radio button
-            Dim subscriptionType As String = rblSubscription.SelectedValue
-
-            ' save the currently selected subscription type to the users profile
-            Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-            Dim myConn As New SqlConnection(connString)
-            Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET subscriptionType = @subscriptionType WHERE userId = @userId", myConn)
-            cmd.Parameters.AddWithValue("@userId", userId)
-            cmd.Parameters.AddWithValue("@subscriptionType", subscriptionType)
-            Try
-                myConn.Open()
-                cmd.ExecuteReader()
-            Catch ex As Exception
-                Trace.Write(ex.ToString)
-                myConn.Close()
-            End Try
-
-            ' redirect the user to paypal where they can continue with the subscription
-            Response.Redirect("https://www.sandbox.paypal.com/webscr?cmd=_customer-billing-agreement&token=" & token)
-        End If
-    End Sub
-
     Protected Sub btnReactivate_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim profileId As String = ManageRecurringPaymentsProfileStatus("Reactivate")
         If profileId.Length > 0 Then
@@ -314,6 +318,7 @@ Partial Class manager_subscription
 
     ' This allows us to reactive, suspend or cancel the current subscription
     Protected Function ManageRecurringPaymentsProfileStatus(ByVal actionType As String) As String
+        Dim paypalPayerId As String = Session("paypalPayerId")
         ' manage the recurring payment
         Dim ppPay As NvpManageRecurringPaymentsProfileStatus = New NvpManageRecurringPaymentsProfileStatus
         ppPay.Add(NvpCommonRequest.USER, Application.Item("paypalUser"))
@@ -335,7 +340,8 @@ Partial Class manager_subscription
         End If
     End Function
 
-    Protected Sub SetCustomerBillingAgreement()
+    Protected Function generateToken() As String
+        Dim token As String = ""
         Dim userEmail As String = Session("email")
 
         If Len(userEmail) > 0 Then
@@ -356,7 +362,7 @@ Partial Class manager_subscription
             If ppPay.Post Then
                 ' successfully created a customer billing agreement
                 token = ppPay.Get(NvpSetCustomerBillingAgreement.Response.TOKEN)
-                panelSubscribe.Visible = True
+                'panelSubscribe.Visible = True
             Else
                 ' Error - Take appropriate action.
                 Label1.Text = ppPay.ErrorList(0).Code
@@ -365,7 +371,9 @@ Partial Class manager_subscription
                 Label1.Text += ppPay.ErrorList(0).LongMessage
             End If
         End If
-    End Sub
+
+        Return token
+    End Function
 
     Protected Sub btnConfirmSubscription_OnClick(ByVal sender As Object, ByVal e As System.EventArgs)
         CreateRecurringPaymentsProfile()
@@ -599,5 +607,37 @@ Partial Class manager_subscription
 
             Response.End()
         End Try
+    End Sub
+
+    Protected Sub btnSubscribe_Click(sender As Object, e As EventArgs) Handles btnSubscribe.Click
+        createSubscription()
+    End Sub
+
+    Protected Sub createSubscription()
+        'SetCustomerBillingAgreement()
+        Dim token = generateToken()
+
+        ' check we have the token that was just generated
+        If Len(token) > 0 Then
+            ' get the subscription type from the selected radio button
+            Dim subscriptionType As String = rblSubscription.SelectedValue
+
+            ' Update the user profile with the subscriptionType selected
+            Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+            Dim myConn As New SqlConnection(connString)
+            Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET subscriptionType = @subscriptionType WHERE userId = @userId", myConn)
+            cmd.Parameters.AddWithValue("@userId", userId)
+            cmd.Parameters.AddWithValue("@subscriptionType", subscriptionType)
+            Try
+                myConn.Open()
+                cmd.ExecuteReader()
+            Catch ex As Exception
+                Trace.Write(ex.ToString)
+                myConn.Close()
+            End Try
+
+            ' redirect the user to paypal where they can continue with the subscription
+            Response.Redirect("https://www.sandbox.paypal.com/webscr?cmd=_customer-billing-agreement&token=" & token)
+        End If
     End Sub
 End Class
