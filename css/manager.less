@@ -9,7 +9,6 @@
 @import "login.less";
 @import "wizard.less";
 @import "tabs.less";
-@import "responsive.less";
 @import "tour.less";
 @import "tooltips.less";
 @import "box.less";
@@ -554,49 +553,4 @@ div.RadTreeView_Default .rtHover .rtIn {
     color: #333;
 }
 
-/* responsive layout */
-@media (max-width: 979px) {
-    .div25,
-    .div25r,
-    .div33,
-    .div33r,
-    .div50,
-    .div50r,
-    .div66,
-    .div66r,
-    .div75,
-    .div75r {
-        float: none;
-        width: auto;
-        margin: 0;
-    }
-}
-
-
-@media (max-width: 480px) {
-    .topbar {
-        padding: 0;
-        text-align: left;
-        position: static;
-    }
-    .topbar h1 {
-        float: none;
-        padding: 5px;
-    }
-    
-    .main_content {
-        margin-top: 10px;
-    }
-    .topbar ul {
-        float: none;
-    }
-
-    .topbar li {
-        border-top: 1px solid #333;
-        float: none;
-        padding: 5px;
-    }
-    .topbar span.notext {
-        display: inline;
-    }
-}
+@import "responsive.less";
