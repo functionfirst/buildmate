@@ -61,17 +61,17 @@
             </div>
         </asp:panel>
 
-        <asp:Panel ID="paneleSubscriptionActive" runat="server" CssClass="box box-primary" Visible="false">Active Subscription</asp:Panel>
+        <asp:Panel ID="panelSubscriptionActive" runat="server" CssClass="box-alert box-success" Visible="false">Active Subscription</asp:Panel>
 
-        <asp:Panel ID="panelSubscriptionPending" runat="server" CssClass="box box-secondary" Visible="false">Subscription pending approval</asp:Panel>
+        <asp:Panel ID="panelSubscriptionPending" runat="server" CssClass="box-alert box-warning" Visible="false">Subscription pending approval</asp:Panel>
         
-        <asp:Panel ID="panelSubscriptionCancelled" runat="server" CssClass="box box-secondary" Visible="false">Subscription Cancelled</asp:Panel>
+        <asp:Panel ID="panelSubscriptionCancelled" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Cancelled</asp:Panel>
 
-        <asp:Panel ID="panelSubscriptionSuspended" runat="server" CssClass="box box-secondary" Visible="false">Subscription Suspended</asp:Panel>
+        <asp:Panel ID="panelSubscriptionSuspended" runat="server" CssClass="box-alert box-secondary" Visible="false">Subscription Suspended</asp:Panel>
 
-        <asp:Panel ID="panelSubscriptionExpired" runat="server" CssClass="box box-secondary" Visible="false">Subscription Expired</asp:Panel>
+        <asp:Panel ID="panelSubscriptionExpired" runat="server" CssClass="box-alert box-warning" Visible="false">Subscription Expired</asp:Panel>
 
-        <asp:Panel ID="panelSubscriptionError" runat="server" CssClass="box box-secondary" Visible="false">Subscription Error</asp:Panel>
+        <asp:Panel ID="panelSubscriptionError" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Error</asp:Panel>
         
         
         <asp:Panel ID="pPaypalPanel" runat="server" CssClass="box box-primary">
@@ -84,7 +84,7 @@
         </asp:Panel>
 
         <div class="div50">
-            <asp:Panel ID="panelReactivate" runat="server" CssClass="box box-info" Visible="false">
+            <asp:Panel ID="panelReactivate" runat="server" CssClass="box-alert box-info" Visible="false">
                 <asp:Button
                     ID="btnReactivate"
                     runat="server"
@@ -97,26 +97,35 @@
         </div>
 
         <div class="div50">
-            <asp:Panel ID="panelSuspend" runat="server" CssClass="box box-info" Visible="false">
-                <asp:Button
-                    ID="btnSuspend"
-                    runat="server"
-                    CssClass="button button-large"
-                    Text="Suspend Subscription"
-                    OnClick="btnSuspend_Click" />
+            <asp:Panel ID="panelSuspend" runat="server" CssClass="box-alert box-secondary" Visible="false">
+                <div class="boxcontent">
+                    <asp:Button
+                        ID="btnSuspend"
+                        runat="server"
+                        CssClass="button button-large"
+                        Text="Suspend Subscription"
+                        OnClick="btnSuspend_Click" /><br />
             
-                <small>If you decide to come back your data will still be here. In the meantime you'll still be able to access a limited version of Buildmate.</small>
+                    <small>While suspended you'll still be able to access the limited version of Buildmate.
+                    If you decide to re-active in the future simply come back to this page and click
+                    Re-activate Subscription.</small>
+                </div>
             </asp:Panel>
         </div>
 
         <div class="div50 last">
-            <asp:Panel ID="panelCancel" runat="server" CssClass="box box-info" Visible="false">
-                <asp:Button
-                    ID="btnCancel"
-                    runat="server"
-                    CssClass="button button-large"
-                    OnClick="btnCancel_Click" Text="Cancel Subscription" />
-                <small>Once your current payment period ends we'll automatically switch you over to the limited version of Buildmate.</small>
+            <asp:Panel ID="panelCancel" runat="server" CssClass="box-alert box-error" Visible="false">
+                <div class="boxcontent">
+                    <asp:Button
+                        ID="btnCancel"
+                        runat="server"
+                        CssClass="button button-large"
+                        OnClick="btnCancel_Click" Text="Cancel Subscription" /><br />
+                    
+                    <small>Once your current payment period ends we'll automatically switch you over to the
+                    limited version of Buildmate. Should you ever decide to come back your data will
+                    still be here.</small>
+                </div>
             </asp:Panel>
         </div>
 

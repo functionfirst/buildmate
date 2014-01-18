@@ -121,11 +121,12 @@ Partial Class manager_subscription
             ' profile exists - check if the profile is active
             Dim checkPayPalAccountStatus = getRecurringPaymentsProfileDetails(paypalPayerId)
 
-            checkPayPalAccountStatus = subscriptionPending
             Select Case checkPayPalAccountStatus
                 Case subscriptionActive
                     ' subscription is currently active
-                    paneleSubscriptionActive.Visible = panelSuspend.Visible = panelCancel.Visible = True
+                    panelSubscriptionActive.Visible = True
+                    panelSuspend.Visible = True
+                    panelCancel.Visible = True
 
                 Case subscriptionPending
                     ' subscription is pending approval?
