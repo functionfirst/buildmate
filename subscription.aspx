@@ -12,22 +12,13 @@
         </div>
     </div>
 
-    <asp:Literal ID="errorMsg" runat="server"></asp:Literal>
-
     <div class="main-container">
 
-    <asp:Panel ID="pError" runat="server" CssClass="errorBox" Visible="false">
+    <asp:Panel ID="pError" runat="server" CssClass="box-alert box-error" Visible="false">
         <p><asp:Label ID="lblError" runat="server" /></p>
     </asp:Panel>
     
-    <asp:Panel ID="pErrorMessage" runat="server" CssClass="errorBox" Visible="false">
-        <p>
-            <strong>Your subscription has expired.</strong><br />
-            You will need to subscribe to re-gain full access to the system.
-        </p>
-    </asp:Panel>
-    
-    <asp:Panel ID="pSubscriptionNotFound" runat="server" CssClass="errorBox" Visible="false">
+    <asp:Panel ID="pSubscriptionNotFound" runat="server" CssClass="box-alert box-error" Visible="false">
         <p>
             <strong>Error with Subscription</strong><br />
             We were unable to retrieve your PayPal Subscription details right now, please check again later.<br /><br />
@@ -73,28 +64,16 @@
 
         <asp:Panel ID="panelSubscriptionError" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Error</asp:Panel>
         
-        
-        <asp:Panel ID="pPaypalPanel" runat="server" CssClass="box box-primary">
-            <h3><asp:Label ID="Label1" runat="server" /></h3>
-
-            <asp:Panel ID="pSubscription" runat="server" CssClass="boxcontent">
-                
-                    
-            </asp:Panel>
-        </asp:Panel>
-
-        <div class="div50">
-            <asp:Panel ID="panelReactivate" runat="server" CssClass="box-alert box-info" Visible="false">
-                <asp:Button
-                    ID="btnReactivate"
-                    runat="server"
-                    CssClass="button button-large"
-                    Text="Re-activate Subscription"
-                    OnClick="btnReactivate_Click" />
+        <asp:Panel ID="panelReactivate" runat="server" CssClass="box-alert box-primary" Visible="false">
+            <asp:Button
+                ID="btnReactivate"
+                runat="server"
+                CssClass="button button-large"
+                Text="Re-activate Subscription"
+                OnClick="btnReactivate_Click" />
             
-                <p>You'll start where you left off.</p>
-            </asp:Panel>
-        </div>
+            <small>You're currently using the limited version of Buildmate. To take advantage of all the features of Buildmate simply re-activate your subscription above.</small>
+        </asp:Panel>
 
         <div class="div50">
             <asp:Panel ID="panelSuspend" runat="server" CssClass="box-alert box-secondary" Visible="false">
@@ -113,7 +92,7 @@
             </asp:Panel>
         </div>
 
-        <div class="div50 last">
+        <div class="div50 div-last">
             <asp:Panel ID="panelCancel" runat="server" CssClass="box-alert box-error" Visible="false">
                 <div class="boxcontent">
                     <asp:Button
@@ -187,9 +166,8 @@
             </ItemTemplate>
         </asp:FormView>
     </div>
-
        
-    <div class="div50 last">
+    <div class="div50 div-last">
         <asp:Panel ID="pSubscriptionPanel" runat="server" CssClass="box">
             <h3>Subscription Details</h3>
 
