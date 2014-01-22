@@ -28,7 +28,21 @@
     </asp:Panel>
  
     <div class="div50">
-        <asp:panel ID="panelSubscribe" runat="server" CssClass="box box-primary" Visible="false">
+
+        <asp:Panel ID="panelSubscriptionActive" runat="server" CssClass="box-alert box-success" Visible="false">Active Subscription</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionPending" runat="server" CssClass="box-alert box-warning" Visible="false">Subscription pending approval</asp:Panel>
+        
+        <asp:Panel ID="panelSubscriptionCancelled" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Cancelled</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionSuspended" runat="server" CssClass="box-alert box-secondary" Visible="false">Subscription Suspended</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionExpired" runat="server" CssClass="box-alert box-warning" Visible="false">Subscription Expired</asp:Panel>
+
+        <asp:Panel ID="panelSubscriptionError" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Error</asp:Panel>
+        
+        
+        <asp:panel ID="panelSubscribe" runat="server" CssClass="box-alert box-primary" Visible="false">
             <h3>You do not have a subscription</h3>
                     
             <div class="boxcontent">
@@ -52,18 +66,6 @@
             </div>
         </asp:panel>
 
-        <asp:Panel ID="panelSubscriptionActive" runat="server" CssClass="box-alert box-success" Visible="false">Active Subscription</asp:Panel>
-
-        <asp:Panel ID="panelSubscriptionPending" runat="server" CssClass="box-alert box-warning" Visible="false">Subscription pending approval</asp:Panel>
-        
-        <asp:Panel ID="panelSubscriptionCancelled" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Cancelled</asp:Panel>
-
-        <asp:Panel ID="panelSubscriptionSuspended" runat="server" CssClass="box-alert box-secondary" Visible="false">Subscription Suspended</asp:Panel>
-
-        <asp:Panel ID="panelSubscriptionExpired" runat="server" CssClass="box-alert box-warning" Visible="false">Subscription Expired</asp:Panel>
-
-        <asp:Panel ID="panelSubscriptionError" runat="server" CssClass="box-alert box-error" Visible="false">Subscription Error</asp:Panel>
-        
         <asp:Panel ID="panelReactivate" runat="server" CssClass="box-alert box-primary" Visible="false">
             <asp:Button
                 ID="btnReactivate"
@@ -115,7 +117,7 @@
             Visible="false"
             Width="100%">
             <ItemTemplate>
-                <div class="box box-primary">
+                <div class="box-alert box-primary">
                     <h3>Confirm your Subscription</h3>
 
                     <div class="boxcontent">
@@ -146,12 +148,6 @@
                                 <span class="req"></span>
                             </asp:RequiredFieldValidator> 
                         </div>
-                        
-                        <div class="row">
-                            <label class="label" title="Payment Plan">Payment Plan</label>
-                        
-                            <asp:Label ID="subscriptionLabel" runat="server" Text='<%# Bind("subscription") %>' />
-                        </div>
 
                         <div class="row">
                             <label class="label">&nbsp;</label>
@@ -172,8 +168,6 @@
             <h3>Subscription Details</h3>
 
             <div class="boxcontent">
-                <asp:literal ID="lblProfile" runat="server" Text="No details were found, you can create a subscription using the form to the right." />
-                
                 <asp:FormView ID="fvUserSubscriptionDetails" runat="server" DataSourceID="subscriptionDetailsDataSource">
                     <EmptyDataTemplate>
          

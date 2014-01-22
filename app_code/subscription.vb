@@ -4,15 +4,80 @@ Imports Encore.PayPal.Nvp
 
 Public Class subscription
 
-    Public userid As String
-    Public paypalPayerId As String
-    Public email As String
-    Public subscriptionType As Integer
+    'Public userid As String
+    'Public email As String
+    'Public subscriptionType As Integer
 
     Private paypalUser As String = HttpContext.Current.Application("paypalUser")
     Private paypalPwd As String = HttpContext.Current.Application("paypalPwd")
     Private paypalSignature As String = HttpContext.Current.Application("paypalSignature")
 
+    Private _userId As String
+    Public Property UserId() As String
+        Get
+            Return _userId
+        End Get
+        Private Set(ByVal value As String)
+            _userId = value
+        End Set
+    End Property
+
+    Private _email As String
+    Public Property Email() As String
+        Get
+            Return _email
+        End Get
+        Private Set(ByVal value As String)
+            _email = value
+        End Set
+    End Property
+
+    Private _subscriptionType As String
+    Public Property SubscriptionType() As String
+        Get
+            Return _subscriptionType
+        End Get
+        Private Set(ByVal value As String)
+            _subscriptionType = value
+        End Set
+    End Property
+
+    Private _token As String
+    Public Property Token() As String
+        Get
+            Return _token
+        End Get
+        Private Set(ByVal value As String)
+            _token = value
+        End Set
+    End Property
+
+    Private _paypalPayerId As String
+    Public Property PaypalPayerId() As String
+        Get
+            Return _paypalPayerId
+        End Get
+        Private Set(ByVal value As String)
+            _paypalPayerId = value
+        End Set
+    End Property
+
+    Public Sub setPaypalPayerIdFromSession(ByVal session As HttpSessionState)
+        Dim sessionPaypalPayerId = session("paypalPayerId")
+        If Not sessionPaypalPayerId Is Nothing Then
+            PaypalPayerId = sessionPaypalPayerId
+        End If
+    End Sub
+
+    Public Sub setSessionData(ByVal session As HttpSessionState)
+        UserId = session("userId")
+        Email = session("email")
+
+        Dim sessionPaypalPayerId = session("paypalPayerId")
+        If Not sessionPaypalPayerId Is Nothing Then
+            PaypalPayerId = sessionPaypalPayerId
+        End If
+    End Sub
 
     Protected Function generateProfileReference() As String
         Dim randomClass As New Random()
@@ -22,9 +87,9 @@ Public Class subscription
     End Function
 
     Public Function check() As String
-        Dim trace As TraceContext = New TraceContext(HttpContext.Current)
-        trace.Write(paypalPayerId)
-        If Not paypalPayerId Is Nothing Then
+        HttpContext.Current.Trace.Write("PaypalPayerId = " + PaypalPayerId)
+
+        If Not PaypalPayerId Is Nothing Then
             Return getRecurringPaymentsProfileDetails()
         End If
         Return "Error"
@@ -38,10 +103,54 @@ Public Class subscription
         ppPay.Add(NvpCommonRequest.USER, paypalUser)
         ppPay.Add(NvpCommonRequest.PWD, paypalPwd)
         ppPay.Add(NvpCommonRequest.SIGNATURE, paypalSignature)
-        ppPay.Add(NvpGetRecurringPaymentsProfileDetails.Request.PROFILEID, paypalPayerId)
+        ppPay.Add(NvpGetRecurringPaymentsProfileDetails.Request.PROFILEID, PaypalPayerId)
 
         ' post the API call
         If ppPay.Post Then
+
+            ' write paypal account details to UserSubscriptionDetail
+
+
+            HttpContext.Current.Trace.Write("Description", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.DESC))
+            HttpContext.Current.Trace.Write("Status", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.STATUS))
+            HttpContext.Current.Trace.Write("Subscriber", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.SUBSCRIBERNAME))
+            HttpContext.Current.Trace.Write("Account Ref", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.PROFILEREFERENCE))
+            HttpContext.Current.Trace.Write("Billing Period", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.BILLINGPERIOD))
+            HttpContext.Current.Trace.Write("Amount", String.Format("{0:c}", Double.Parse(ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.AMT))))
+            HttpContext.Current.Trace.Write("Start Date ", String.Format("{0:dd MMM yyyy}", Convert.ToDateTime(ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.PROFILESTARTDATE))))
+            HttpContext.Current.Trace.Write("Last Payment Date", String.Format("{0:dd MMM yyyy}", Convert.ToDateTime(ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.LASTPAYMENTDATE))))
+            HttpContext.Current.Trace.Write("Next Billing Date", String.Format("{0:dd MMM yyyy}", Convert.ToDateTime(ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.NEXTBILLINGDATE))))
+
+            HttpContext.Current.Trace.Write("Billing Amount", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.AUTOBILLOUTAMT))
+            HttpContext.Current.Trace.Write("MAXFAILEDPAYMENTS", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.MAXFAILEDPAYMENTS))
+            HttpContext.Current.Trace.Write("BILLINGFREQUENCY", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.BILLINGFREQUENCY))
+            HttpContext.Current.Trace.Write("TOTALBILLINGCYCLES", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.TOTALBILLINGCYCLES))
+
+            ' recurring payments summary
+            HttpContext.Current.Trace.Write("NUMCYCYLESCOMPLETED", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.NUMCYCLESCOMPLETED))
+            HttpContext.Current.Trace.Write("NUMCYCLESREMAINING", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.NUMCYCLESREMAINING))
+            HttpContext.Current.Trace.Write("OUTSTANDINGBALANCE", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.OUTSTANDINGBALANCE))
+            HttpContext.Current.Trace.Write("FAILEDPAYMENTCOUNT", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.FAILEDPAYMENTCOUNT))
+            HttpContext.Current.Trace.Write("LASTPAYMENTAMT", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.LASTPAYMENTAMT))
+
+            ' credit card details
+            HttpContext.Current.Trace.Write("ACCT", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.ACCT))
+            HttpContext.Current.Trace.Write("CREDITCARDTYPE", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.CREDITCARDTYPE))
+            HttpContext.Current.Trace.Write("EXPDATE", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.EXPDATE))
+            HttpContext.Current.Trace.Write("ISSUENUMBER", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.ISSUENUMBER))
+
+            ' payer info
+            HttpContext.Current.Trace.Write("First Name", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.FIRSTNAME))
+            HttpContext.Current.Trace.Write("Last Name", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.LASTNAME))
+
+            ' address
+            HttpContext.Current.Trace.Write("Street", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.STREET))
+            HttpContext.Current.Trace.Write("Street 2", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.STREET2))
+            HttpContext.Current.Trace.Write("City", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.CITY))
+            HttpContext.Current.Trace.Write("State", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.STATE))
+            HttpContext.Current.Trace.Write("Country", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.COUNTRYCODE))
+            HttpContext.Current.Trace.Write("Postcode", ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.ZIP))
+
             Return ppPay.Get(NvpGetRecurringPaymentsProfileDetails.Response.STATUS)
 
             '' 
@@ -108,7 +217,7 @@ Public Class subscription
         End If
     End Function
 
-    Public Function CreateRecurringPaymentsProfile(ByVal token As String, ByVal firstname As String, ByVal surname As String) As String
+    Public Function CreatePaymentProfile(ByVal firstname As String, ByVal surname As String) As String
         ' Generate a profile reference number
         Dim profileReference As String = generateProfileReference()
 
@@ -117,7 +226,7 @@ Public Class subscription
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim myConn As New SqlConnection(connString)
         Dim cmd As SqlCommand = New SqlCommand("SELECT billingAmount, billingFrequency, billingPeriod, UserSubscriptionType.subscription FROM UserProfile LEFT JOIN UserSubscriptionType ON UserSubscriptionType.id = subscriptionType WHERE userId = @userId", myConn)
-        cmd.Parameters.AddWithValue("@userId", Me.userid)
+        cmd.Parameters.AddWithValue("@userId", UserId)
         Dim reader As SqlDataReader
 
         Try
@@ -163,7 +272,7 @@ Public Class subscription
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._BILLINGPERIOD, billingPeriod)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._BILLINGFREQUENCY, billingFrequency)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._AMT, billingAmount)
-                ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._TOKEN, token)
+                ppPay.Add(NvpCreateRecurringPaymentsProfile.Request._TOKEN, Token)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request.MAXFAILEDPAYMENTS, 0)
                 ppPay.Add(NvpCreateRecurringPaymentsProfile.Request.AUTOBILLOUTAMT, NvpAutoBillType.AddToNextBilling)
 
@@ -179,10 +288,11 @@ Public Class subscription
 
                 ' post the API call
                 If ppPay.Post Then
-                    ' Payment was successful.
+                    ' Payment was successful
+
                     Dim profileId As String = ppPay.Get(NvpCreateRecurringPaymentsProfile.Response.PROFILEID)
                     savePaypalProfileId(profileId)
-                    logSubscriptionEvent("Payment was succcessful.")
+                    logSubscriptionEvent("Payment profile was succcessfully created.")
 
                     Return profileId
                     'Else
@@ -205,6 +315,7 @@ Public Class subscription
     End Function
 
     Public Function reactivate() As String
+        HttpContext.Current.Trace.Write("initial re-activate request")
         Return ManageRecurringPaymentsProfileStatus("Reactivate")
     End Function
 
@@ -222,7 +333,7 @@ Public Class subscription
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim myConn As New SqlConnection(connString)
         Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET paypalPayerId = @profileId WHERE userId = @userId", myConn)
-        cmd.Parameters.AddWithValue("@userId", Me.userid)
+        cmd.Parameters.AddWithValue("@userId", UserId)
         cmd.Parameters.AddWithValue("@profileId", profileId)
         Try
             myConn.Open()
@@ -238,6 +349,7 @@ Public Class subscription
     End Sub
 
     Protected Function ManageRecurringPaymentsProfileStatus(ByVal actionType As String) As String
+        HttpContext.Current.Trace.Write("Manage recurring payments profile status : " + actionType)
         ' manage the recurring payment
         Dim ppPay As NvpManageRecurringPaymentsProfileStatus = New NvpManageRecurringPaymentsProfileStatus
         ppPay.Add(NvpCommonRequest.USER, paypalUser)
@@ -247,23 +359,31 @@ Public Class subscription
         'ppPay.Add(NvpCommonRequest.USER, Application.Item("paypalUser"))
         'ppPay.Add(NvpCommonRequest.PWD, Application.Item("paypalPwd"))
         'ppPay.Add(NvpCommonRequest.SIGNATURE, Application.Item("paypalSignature"))
-        ppPay.Add(NvpManageRecurringPaymentsProfileStatus.Request.PROFILEID, paypalPayerId)
+        ppPay.Add(NvpManageRecurringPaymentsProfileStatus.Request.PROFILEID, PaypalPayerId)
         ppPay.Add(NvpManageRecurringPaymentsProfileStatus.Request.ACTION, actionType)
 
         ' post the API call
         If ppPay.Post Then
             logSubscriptionEvent(actionType)
+
+            HttpContext.Current.Trace.Write("log subscription event : " + actionType)
+            HttpContext.Current.Trace.Write("ppay.get profileid : " + ppPay.Get(NvpManageRecurringPaymentsProfileStatus.Response.PROFILEID))
+
             Return ppPay.Get(NvpManageRecurringPaymentsProfileStatus.Response.PROFILEID)
-            'Else
-            '    Dim errString As String = ppPay.ErrorList(0).Code
-            '    errString += ppPay.ErrorList(0).Severity
-            '    errString += ppPay.ErrorList(0).ShortMessage
-            '    errString += ppPay.ErrorList(0).LongMessage
+        Else
+            Dim errString As String = ppPay.ErrorList(0).Code
+            errString += ppPay.ErrorList(0).Severity
+            errString += ppPay.ErrorList(0).ShortMessage
+            errString += ppPay.ErrorList(0).LongMessage
 
             'displayErrorToClient(errString)
+            Return "Error message from ppay.post : " + errString
+            'trace.Write("Error message from ppay.post : " + errString)
+
         End If
         Return False
     End Function
+
 
     ' Logs any paypal related events to the UserSubscriptionLog table
     Protected Sub logSubscriptionEvent(ByVal actionDescription As String)
@@ -271,8 +391,9 @@ Public Class subscription
         Try
             Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
             Dim myConn As New SqlConnection(connString)
-            Dim myCmd As New SqlCommand("INSERT INTO UserSubscriptionLog(UserId, ActionDescription, UserIPAddress) VALUES (@UserId, @ActionDescription, @UserIPAddress);", myConn)
-            myCmd.Parameters.AddWithValue("@UserId", Me.userid)
+            Dim myCmd As New SqlCommand("INSERT INTO UserSubscriptionLog(UserId, PaypalPayerId, ActionDescription, UserIPAddress) VALUES (@UserId, @PaypalPayerId, @ActionDescription, @UserIPAddress);", myConn)
+            myCmd.Parameters.AddWithValue("@UserId", UserId)
+            myCmd.Parameters.AddWithValue("@PaypalPayerId", PaypalPayerId)
             myCmd.Parameters.AddWithValue("@ActionDescription", actionDescription)
             myCmd.Parameters.AddWithValue("@UserIPAddress", UserIPAddress)
 
@@ -288,27 +409,45 @@ Public Class subscription
         End Try
     End Sub
 
-    Public Function create(ByVal subscriptionType As Integer) As String
-        'Dim userId As String = Session("userId")
-        Dim token = generateToken()
+    Public Sub create(ByVal subType As Integer)
+        ' create a new billing agreement with paypal
+        generateToken()
 
-        If Not token Is Nothing Then
-            ' get the subscription type from the selected radio button
-            subscriptionType = subscriptionType
-            update()
-            Return token
-        End If
-        Return False
-    End Function
+        HttpContext.Current.Trace.Write("generate token done, so token is: " + Token)
 
-    Protected Sub update()
+        'If Not Token Is Nothing Then
+        '    ' store the new subscription type
+        '    update(subType)
+        'End If
+    End Sub
+
+    Public Sub confirm(ByVal tkn As String)
+        'HttpContext.Current.Trace.Write("Confirm ")
+        Token = tkn
+        logSubscriptionEvent("Customer completed initial step in Paypal sign-up. Awaiting confirmation.")
+    End Sub
+
+    Public Sub confirmComplete(ByVal tkn As String)
+        'HttpContext.Current.Trace.Write("Confirm ")
+        Token = tkn
+        logSubscriptionEvent("Customer completed Paypal sign-up.")
+        createUserSubscriptionDetails()
+    End Sub
+
+    Protected Sub createUserSubscriptionDetails()
+        ' create or update user subscription details
+
+    End Sub
+
+    Protected Sub update(ByVal subscriptionType As Integer)
         ' Update the users subscription information
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim myConn As New SqlConnection(connString)
         Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET subscriptionType = @subscriptionType WHERE userId = @userId", myConn)
-        cmd.Parameters.AddWithValue("@userId", Me.userid)
-        cmd.Parameters.AddWithValue("@subscriptionType", Me.subscriptionType)
+        cmd.Parameters.AddWithValue("@userId", UserId)
+        cmd.Parameters.AddWithValue("@subscriptionType", subscriptionType)
         Try
+            logSubscriptionEvent("Updated userprofile to Subscription Type : " + subscriptionType)
             myConn.Open()
             cmd.ExecuteReader()
         Catch ex As Exception
@@ -316,8 +455,10 @@ Public Class subscription
         End Try
     End Sub
 
-    Protected Function generateToken() As String
-        If Not Me.email Is Nothing Then
+    Protected Sub generateToken()
+        HttpContext.Current.Trace.Write("Check for email :" + Email)
+
+        If Not Email Is Nothing Then
             ' create the DoDirectpayment object
             Dim ppPay As NvpSetCustomerBillingAgreement = New NvpSetCustomerBillingAgreement
             ppPay.Add(NvpCommonRequest.USER, paypalUser)
@@ -329,12 +470,15 @@ Public Class subscription
             ppPay.Add(NvpSetCustomerBillingAgreement.Request._CANCELURL, "http://buildmateapp.com/subscription_cancel.aspx")
             ppPay.Add(NvpSetCustomerBillingAgreement.Request._BILLINGTYPE, NvpBillingCodeType.RecurringPayments)
             ppPay.Add(NvpSetCustomerBillingAgreement.Request.BILLINGAGREEMENTDESCRIPTION, "Buildmate Subscription")
-            ppPay.Add(NvpSetCustomerBillingAgreement.Request.EMAIL, Me.email)
+            ppPay.Add(NvpSetCustomerBillingAgreement.Request.EMAIL, Email)
 
             ' post the API call
             If ppPay.Post Then
                 ' successfully created a customer billing agreement
-                Return ppPay.Get(NvpSetCustomerBillingAgreement.Response.TOKEN)
+                logSubscriptionEvent("Created a customer billing agreement")
+                Token = ppPay.Get(NvpSetCustomerBillingAgreement.Response.TOKEN)
+
+                HttpContext.Current.Trace.Write("Within generate token method. Token = " + Token)
                 'Else
                 ' Error - Take appropriate action.
                 'Dim errorString As String = ppPay.ErrorList(0).Code
@@ -342,9 +486,10 @@ Public Class subscription
                 'errorString += ppPay.ErrorList(0).ShortMessage
                 'errorString += ppPay.ErrorList(0).LongMessage
                 'displayErrorToClient(errorString)
+            Else
+                logSubscriptionEvent("Error while trying to create a customer billing agreement")
+                Token = False
             End If
         End If
-
-        Return False
-    End Function
+    End Sub
 End Class

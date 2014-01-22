@@ -16,9 +16,10 @@ Partial Class manager_subscription
     Const subscriptionError As String = "Error"
 
     Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
-        subscription.userid = Session("userId")
-        subscription.email = Session("email")
-        subscription.paypalPayerId = Session("paypalPayerId")
+        'subscription.userid = Session("userId")
+        'subscription.email = Session("email")
+        subscription.setSessionData(Session)
+        'subscription.setPaypalPayerIdFromSession(Session)
 
         checkSubscription()
     End Sub
@@ -35,6 +36,9 @@ Partial Class manager_subscription
             showNotification("Subscription Activated", "You have successfully subscribed to Buildmate. Thank you for your continued support :)")
             Return
         End If
+
+        ' check for a new subscription sign-up
+        confirmNewSubscription()
 
         Dim accountStatus As String = subscription.check()
 
@@ -59,13 +63,13 @@ Partial Class manager_subscription
             Case subscriptionCancelled
                 ' your subscription is currently cancelled
                 panelSubscriptionCancelled.Visible = True
-                setSubscription.Visible = True
-
-                panelReactivate.Visible = True
+                'setSubscription.Visible = True
+                'panelSubscribe.Visible = True
+                'panelReactivate.Visible = True
                 'Label1.Text = "Subscription Cancelled"
                 'setSubscription.Visible = True
                 'panelSubscribe.Visible = True
-                panelReactivate.Visible = True
+                'panelReactivate.Visible = True
                 'btnReactivate.Visible = False
                 'panelSuspend.Visible = False
                 'panelCancel.Visible = False
@@ -99,29 +103,46 @@ Partial Class manager_subscription
                 ' something bad happened. the paypalPayID might be wrong
                 panelSubscriptionError.Visible = True
                 pSubscriptionNotFound.Visible = True
-                confirmSubscription()
+                'confirmSubscription()
         End Select
     End Sub
 
-    Protected Sub confirmSubscription()
-        Dim token As String = Request.QueryString("token")
-        If Not token Is Nothing Then
-            ' confirm subscription 
-            panelSubscribe.Visible = False
+    Protected Sub confirmNewSubscription()
+        Dim queryToken = Request.QueryString("token")
+        Trace.Write("Query Token = " + queryToken)
+        Trace.Write("Subscription.token = " + subscription.Token)
+        If Not queryToken Is Nothing Then
+            subscription.confirm(queryToken)
+            'subscription.Token = queryToken
+            ' display confirm subscription form
+            'subscription.Token
+            'subscription.setToken(queryToken)
             fvConfirmSubscription.Visible = True
         Else
-            'Label1.Text = "You do not have a subscription"
             panelSubscribe.Visible = True
         End If
+
+
+        ''subscription.token = Request.QueryString("token")
+        ''Dim token As String = Request.QueryString("token")
+        'If Not token Is Nothing Then
+        '    ' confirm subscription 
+        '    panelSubscribe.Visible = False
+        '    fvConfirmSubscription.Visible = True
+        'Else
+        '    'Label1.Text = "You do not have a subscription"
+        '    panelSubscribe.Visible = True
+        'End If
     End Sub
 
-    Protected Sub createLabel(ByVal label As String, ByVal body As String)
-        lblProfile.Text += "<div class='row'><label class='label'>" & label & "</label>&nbsp;" & body & "</div>"
-    End Sub
+    'Protected Sub createLabel(ByVal label As String, ByVal body As String)
+    '    lblProfile.Text += "<div class='row'><label class='label'>" & label & "</label>&nbsp;" & body & "</div>"
+    'End Sub
 
     Protected Sub btnReactivate_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim profileId As String = subscription.reactivate()
-        If Not profileId Is Nothing Then Response.Redirect("subscription.aspx")
+        Trace.Write(profileId)
+        'If Not profileId Is Nothing Then Response.Redirect("subscription.aspx")
     End Sub
 
     Protected Sub btnSuspend_Click(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -142,10 +163,11 @@ Partial Class manager_subscription
     Protected Sub btnConfirmSubscription_OnClick(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim firstname As String = CType(fvConfirmSubscription.FindControl("rtFirstName"), RadTextBox).Text.ToString
         Dim surname As String = CType(fvConfirmSubscription.FindControl("rtSurname"), RadTextBox).Text.ToString
-        Dim token As String = Request.QueryString("token")
-        Dim profileId As String = subscription.CreateRecurringPaymentsProfile(token, firstname, surname)
+        'Dim token As String = Request.QueryString("token")
+        subscription.CreatePaymentProfile(firstname, surname)
+        'subscription.PaypalPayerId
 
-        If Not profileId Is Nothing Then
+        If Not subscription.PaypalPayerId Is Nothing Then
             Response.Redirect("subscription.aspx?subscription=success")
         Else
             ' there was an error
@@ -161,10 +183,14 @@ Partial Class manager_subscription
 
     Protected Sub btnSubscribe_Click(sender As Object, e As EventArgs) Handles btnSubscribe.Click
         Dim subscriptionType As String = rblSubscription.SelectedValue
-        Dim token As String = subscription.create(subscriptionType)
-        If Not token Is Nothing Then
+        subscription.create(subscriptionType)
+        'Dim token As String = subscription.create(subscriptionType)
+        If Not subscription.Token Is Nothing Then
             ' redirect the user to paypal where they can continue with the subscription
-            Response.Redirect("https://www.sandbox.paypal.com/webscr?cmd=_customer-billing-agreement&token=" & token)
+            Response.Redirect("https://www.sandbox.paypal.com/webscr?cmd=_customer-billing-agreement&token=" & subscription.Token)
+        Else
+            lblError.Text = "<b>Subscription Problem</b><br />There was a problem while trying to create a payment token."
+            pError.Visible = True
         End If
     End Sub
 End Class
