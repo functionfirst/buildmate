@@ -60,7 +60,6 @@
 
                             <ul>
                                 <li><a class="options-icon options-settings" href="settings.aspx">Settings</a></li>
-                                <li><a class="options-icon options-subscription" href="subscription.aspx">Subscription</a></li>
                                 <li><a class="options-icon options-support" href="support.aspx">Support</a></li>
                                 <li><a class="options-icon options-help" target="_blank" href="http://getbuildmate.com/knowledgebase/">Knowledge Base</a></li>
                                 <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
