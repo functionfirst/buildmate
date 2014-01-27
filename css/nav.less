@@ -51,179 +51,205 @@
         }
     }
 
-    .nav-options {
-        float: right;
-        font-size: 13px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
+.nav-options {
+    float: left;
+    font-size: 13px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    li {
+        float: left;
+
+        a {
+            color: #ddd;
+            display: block;
+            padding: 15px;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        ul {
+            z-index: 150;
+        }
 
         li {
-            float: left;
-
             a {
-                color: #ddd;
-                display: block;
-                padding: 15px;
                 &:hover {
                     color: #fff;
-                }
-            }
-
-            ul {
-                z-index: 150;
-            }
-
-            li {
-                a {
-                    &:hover {
-                        color: #fff;
-                        background: #292929;
-                    }
-                }
-            }
-            
-            .toggle-options {
-                padding-right: 25px;
-                position: relative;
-                z-index: 10;
-
-                &:before {
-                    border: 5px solid #fff;
-                    content: " ";
-                    right: 10px;
-                    margin-top: 8px;
-                    position: absolute;
-                    border-color: #999 transparent transparent transparent;
+                    background: #292929;
                 }
             }
         }
 
-        .toggle-help {
-            margin: 10px;
-            padding: 5px;
+        .toggle-options {
+            padding-right: 25px;
+            position: relative;
+            z-index: 10;
+
+            &:before {
+                border: 5px solid #fff;
+                content: " ";
+                right: 10px;
+                margin-top: 8px;
+                position: absolute;
+                border-color: #999 transparent transparent transparent;
+            }
+        }
+    }
+
+    .toggle-help {
+        margin: 10px;
+        padding: 5px;
+        background: #89bc00;
+        color: #fff;
+        font-weight: bold;
+        display: block;
+        height: 30px;
+        width: 40px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 24px;
+        position: relative;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+
+        span {
+            display: block;
+            margin: 4px 0 0 13px;
+            border: 6px solid #fff;
+            border-color: transparent transparent transparent #fff;
+        }
+
+        &:after {
+            content: "Take a Tour";
+            position: absolute;
+            display: none;
+            z-index: 10;
+            padding: 5px 10px;
+            font-size: 11px;
+            margin-left: -35px;
+            width: 80px;
+            text-align: center;
             background: #89bc00;
             color: #fff;
-            font-weight: bold;
-            display: block;
-            height: 30px;
-            width: 40px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 24px;
-            position: relative;
+            top: 40px;
+            -webkit-transition: opacity .2s linear;
+            -moz-transition: opacity .2s linear;
+            transition: opacity .2s linear;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
 
-            -webkit-border-radius:  3px;
-            -moz-border-radius:     3px;
-            border-radius:          3px;
+        &:before {
+            position: absolute;
+            content: " ";
+            display: none;
+            top: 30px;
+            left: 15px;
+            border: 5px solid transparent;
+            border-color: transparent transparent #89bc00 transparent;
+        }
 
-            span {
-                display: block;
-                margin: 4px 0 0 13px;
-                border: 6px solid #fff;
-                border-color: transparent transparent transparent #fff;
-            }
-
+        &:hover {
             &:after {
-                content : "Take a Tour";
-                position: absolute;
-                display: none;
-                z-index: 10;
-                padding: 5px 10px;
-                font-size: 11px;
-                margin-left: -35px;
-                width: 80px;
-                text-align: center;
-                background: #89bc00;
-                color: #fff;
-                top: 40px;
-                -webkit-transition: opacity .2s linear;
-                -moz-transition:    opacity .2s linear;
-                transition:         opacity .2s linear;
-
-                -webkit-border-radius:  3px;
-                -moz-border-radius:     3px;
-                border-radius:          3px;
+                display: block;
             }
 
             &:before {
-                position: absolute;
-                content: " ";
-                display: none;
-                top: 30px;
-                left: 15px;
-                border: 5px solid transparent;
-                border-color: transparent transparent #89bc00 transparent;
-            }
-
-            &:hover {
-                &:after {
-                    display: block;
-                }
-                &:before {
-                    display: block;
-                }
+                display: block;
             }
         }
+    }
 
         .toggle-help[disabled='disabled'] {
             cursor: default;
             background-color: #333;
             color: #666;
-            
-            &:before ,
+
+            &:before,
             &:after {
-               display: none;
+                display: none;
+            }
+        }
+    /*.toggle-help[disabled='disabled']:after {
+            display: none;
+        }*/
+    ul {
+        position: absolute;
+        left: -999em;
+        background: #222;
+        margin: 10px 0;
+        padding: 0;
+        list-style: none;
+        width: 20em;
+        /*-webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;*/
+        -webkit-box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+
+        li {
+            float: none;
+            /*border-top: 1px solid #292929;*/
+            a {
+                display: block;
+                padding: 6px 12px;
+                line-height: 18px;
+
+                small {
+                    color: #999;
+                    /*display: block;*/
+                    font-size: 10px;
+                    float: right;
+                }
             }
         }
 
-        /*.toggle-help[disabled='disabled']:after {
-            display: none;
-        }*/
-
-        ul {
-            position: absolute;
-            left: -999em;
-            background: #222;
-            margin: 10px;
-            padding: 5px;
-            list-style: none;
-
-            -webkit-border-radius:  5px;
-            -moz-border-radius:     5px;
-            border-radius:          5px;
-
-            -webkit-box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-            -moz-box-shadow:    0 3px 8px rgba(0,0,0,0.3);
-            box-shadow:         0 3px 8px rgba(0,0,0,0.3);
-
-            li {
-                float: none;
-
-                a {
-                    padding: 3px;
-                    width: 12em;
-                }
+            li + li {
+                border-top: 1px solid #292929;
             }
 
-            &:before {
+        .nav-header {
+            color: #999;
+            text-transform: uppercase;
+            font-size: 10px;
+            padding: 3px 6px;
+            background: #111;
+            border-top: 0;
+        }
+        /*.nav-divider {
+            border-top: 1px solid #000;
+        }*/
+        /*&:before {
                 position: absolute;
                 content: " ";
                 display: block;
                 top: -10px;
-                right: 10px;
+                left: 10px;
                 border: 5px solid #222;
                 border-color: transparent transparent #222 transparent;
-            }
+            }*/
+    }
+}
+    .nav-options.active {
+        ul {
+            left: 0;
         }
     }
-
-    .nav-options-active {
-        ul {
-            right: 0;
-            left: auto;
-        }
+    
+    .nav-options-right {
+        float: right;
+    }
+    .nav-options-right.active {
+        right: 0;
+        left: auto;
     }
 
 .show-sidebar {
