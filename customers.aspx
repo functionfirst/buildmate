@@ -3,7 +3,6 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
-    
     <asp:Panel ID="addCustomerScript" runat="server" Visible="false">
         <script>
             $(document).ready(function () {
@@ -11,7 +10,6 @@
             });
         </script>
     </asp:Panel>
-
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">
