@@ -40,8 +40,9 @@ $(document).ready(function () {
     });
 
     // toggle options menu
-    $('.js-toggle-options').on('click', function () {
-        toggleVisibility('.nav-options', 'nav-options-active');
+    $('[data-toggle-menu]').on('click', function () {
+        var target = $(this).data("toggle-menu");
+        toggleVisibility('[data-target="'+target+'"]', 'active');
         return false;
     });
 
@@ -70,12 +71,14 @@ $(document).ready(function () {
     // Listener for escape action, like pressing escape or clicking outside a modal
     $('body').on('escapeAction', function () {
         toggleVisibility('body', 'show-tour', false)
-        toggleVisibility('.nav-options', 'nav-options-active', false);
+        //toggleVisibility('.nav-options', 'nav-options-active', false);
+        toggleVisibility('[data-target]', 'active', false);
         hideTooltips();
     });
 
     $('.main-container').on('click', function () {
         toggleVisibility('.nav-options', 'nav-options-active', false);
+        toggleVisibility('[data-target]', 'active', false);
         hideTooltips();
     });
 
@@ -94,12 +97,12 @@ $(document).ready(function () {
         $("#variationMode").toggleClass("active");
     });
 
-    $(".notice").live("click", function () {
-        $(this).fadeOut();
-    });
+    //$(".notice").on("click", function () {
+    //    $(this).fadeOut();
+    //});
 
     // show advanced search
-    $(".toggleSearch").live("click", function () {
+    $(".toggleSearch").on("click", function () {
         $(this).parent().toggleClass('active');
     });
 
