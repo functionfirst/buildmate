@@ -4,8 +4,22 @@ Imports System.Data.SqlClient
 Partial Class manager_Default
     Inherits MyBaseClass
 
+    Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
+        'addCustomerShortcut()
+    End Sub
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         activateNavigationLink("hlCustomers")
+        addCustomerShortcut()
+    End Sub
+
+    Protected Sub addCustomerShortcut()
+        Dim action As String = Request.QueryString("action")
+        Trace.Write(action)
+        If action = "add_customer" Then
+            addCustomerScript.Visible = True
+            'addCustomer.CssClass = "md-window md-show"
+        End If
     End Sub
 
     Protected Sub btnApplyFilter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnApplyFilter.Click

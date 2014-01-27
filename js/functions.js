@@ -42,9 +42,11 @@ $(document).ready(function () {
     // toggle options menu
     $('[data-toggle-menu]').on('click', function () {
         var target = $(this).data("toggle-menu");
+        $('[data-target]').not('[data-target="'+target+'"]').removeClass("active")
         toggleVisibility('[data-target="'+target+'"]', 'active');
         return false;
     });
+
 
     // close options menu after clicking
     $('.options-icon').click(function () {

@@ -2,7 +2,17 @@
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
-<asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server"></asp:Content>
+<asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
+    
+    <asp:Panel ID="addCustomerScript" runat="server" Visible="false">
+        <script>
+            $(document).ready(function () {
+                $('.js-open-modal').click();
+            });
+        </script>
+    </asp:Panel>
+
+</asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">
 
@@ -30,7 +40,7 @@
 
     
     <!-- begin add customer -->
-    <div id="addCustomer" class="md-window">
+    <asp:Panel ID="addCustomer" runat="server" class="md-window">
         <div class="md-content">
             <h3>Adding a Customer..</h3>
 
@@ -133,12 +143,12 @@
                 </InsertItemTemplate>
             </asp:FormView>
         </div>
-    </div>
+    </asp:Panel>
     
     <div class="breadcrumb">
         <div class="breadcrumb-container">
             <ul class="breadcrumb-options">
-                <li><a href="#" data-target="addCustomer" class="js-open-modal button button-create">New Customer</a></li>
+                <li><a href="#" data-target="ctl00_MainContent_addCustomer" class="js-open-modal button button-create">New Customer</a></li>
             </ul>
 
             <ul class="breadcrumb-list">
@@ -220,6 +230,7 @@
             </MasterTableView>
         </telerik:RadGrid>
     </div>
+
 
     <asp:SqlDataSource
         ID="allCustomersDataSource"
