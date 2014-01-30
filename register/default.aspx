@@ -26,7 +26,7 @@
     </div>
         
     <p class="copy_footer">
-        &copy; 2012 Pyramid Estimator Ltd &bull;
+        &copy; 2014 Buildmate Software Ltd &bull;
         <a href="http://www.getbuildmate.com/contact/">Contact</a> &bull;
         <a href="http://www.getbuildmate.com/privacy/">Privacy</a> &bull;
         <a href="http://www.getbuildmate.com/terms/">Terms of Use</a>

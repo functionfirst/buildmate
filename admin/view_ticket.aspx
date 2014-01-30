@@ -1,4 +1,4 @@
-﻿<%@ Page Title="View Ticket - My PyramidEstimator" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="view_ticket.aspx.vb" Inherits="view_ticket" %>
+﻿<%@ Page Title="View Ticket - Buildmate" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="view_ticket.aspx.vb" Inherits="view_ticket" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

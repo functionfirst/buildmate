@@ -245,7 +245,7 @@
                                 runat="server"
                                 title="Discontinued"
                                 visible='<%#(IIF(Eval("discontinued"),"true", "false"))%>'
-                                style="display: block; width: 16px; height: 16px; background: url(http://www.pyramidestimator.com/icons/error.png)"></span>
+                                style="display: block; width: 16px; height: 16px; background: url(http://www.buildmateapp.com/icons/error.png)"></span>
                         </ItemTemplate>
                     </telerik:GridTemplateColumn>
                     <telerik:GridHyperLinkColumn

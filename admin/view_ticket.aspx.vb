@@ -64,8 +64,8 @@ Partial Class view_ticket
 
         Dim md As MailDefinition = New MailDefinition
         md.BodyFileName = "~/email_templates/" + email_template
-        md.From = "support@pyramidestimator.com"
-        md.Subject = "Support Ticket ID: " + Request.QueryString("id") + " - Pyramid Estimator"
+        md.From = "support@buildmateapp.com"
+        md.Subject = "[Buildmate] Support Ticket: " + Request.QueryString("id")
         md.Priority = MailPriority.Normal
         md.IsBodyHtml = True
 
@@ -80,19 +80,6 @@ Partial Class view_ticket
         Dim msg As System.Net.Mail.MailMessage = fileMsg
 
         Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
-        'obj.Host = "smtp.pyramidestimator.com"
-        'obj.UseDefaultCredentials = True
         obj.Send(msg)
-
-        '' send email notification to admin
-        'Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
-        'Dim Mailmsg As New System.Net.Mail.MailMessage
-        'Mailmsg.To.Clear()
-        'Mailmsg.To.Add(New System.Net.Mail.MailAddress(toEmail.Text))
-        'Mailmsg.From = New System.Net.Mail.MailAddress("support@pyramidestimator.com")
-        'Mailmsg.Subject = "Ticket Updated - ID: " + Request.QueryString("id") + " - Pyramid Estimator"
-        'Mailmsg.IsBodyHtml = True
-        'Mailmsg.Body = bodytext
-        'obj.Send(Mailmsg)
     End Sub
 End Class

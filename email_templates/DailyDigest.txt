@@ -56,7 +56,7 @@ a { color: #21759B; text-decoration: none;}
                         
                         <p>
                             <strong>Address:</strong><br />
-                            <em><strong>Pyramid Estimator Ltd</strong></em><br />
+                            <em><strong>Buildmate Software Ltd</strong></em><br />
                             Exchange Building<br />
                             66 Church Street<br />
                             Hartlepool<br />
@@ -73,7 +73,7 @@ a { color: #21759B; text-decoration: none;}
                 <tr>
                     <td>
                         <p style="font-size: 11px; color: #666; margin: 0 0 40px">
-                            &copy; 2011 Pyramid Estimator Ltd &bull;
+                            &copy; 2014 Buildmate Software Ltd &bull;
                             <a href="http://www.getbuildmate.com/contact/">Contact</a> &bull;
                             <a href="http://www.getbuildate.com/privacy/">Privacy</a> &bull;
                             <a href="http://www.getbuildmate.com/terms/">Terms</a>

@@ -21,7 +21,6 @@
 
     Sub Session_Start(ByVal sender As Object, ByVal e As EventArgs)
         ' Code that runs when a new session is started
-        'Session("filepath") = "C:\inetpub\wwwroot\pyramidestimator\"
         Session("filepath") = "C:\HostingSpaces\getbuild\buildmateapp.com\wwwroot\"
         
         ' Set a Session Start Time
