@@ -197,20 +197,12 @@
                                 DataField="projectType" />
 
                             <telerik:GridBoundColumn
-                                UniqueName="startDate"
-                                Headertext="Start Date"
+                                UniqueName="created_at"
+                                Headertext="Creation Date"
                                 HeaderStyle-HorizontalAlign="Center"
                                 ItemStyle-HorizontalAlign="Center"
                                 DataFormatString="{0:d}"
-                                DataField="startDate" />
-
-                            <telerik:GridBoundColumn
-                                UniqueName="completionDate"
-                                Headertext="Completion Date"
-                                HeaderStyle-HorizontalAlign="Center"
-                                ItemStyle-HorizontalAlign="Center"
-                                DataFormatString="{0:d}"
-                                DataField="completionDate" />
+                                DataField="created_at" />
 
                             <telerik:GridBoundColumn
                                 UniqueName="returnDate"
@@ -219,14 +211,6 @@
                                 ItemStyle-HorizontalAlign="Center"
                                 DataFormatString="{0:d}"
                                 DataField="returnDate" />
-
-                            <telerik:GridBoundColumn
-                                UniqueName="created_at"
-                                Headertext="Creation Date"
-                                HeaderStyle-HorizontalAlign="Center"
-                                ItemStyle-HorizontalAlign="Center"
-                                DataFormatString="{0:d}"
-                                DataField="created_at" />
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>

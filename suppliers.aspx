@@ -295,7 +295,6 @@
         SelectCommandType="StoredProcedure" />
  </asp:Content>
 
-
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
     <div class="tour-block">
         <div class="tour-inner">
