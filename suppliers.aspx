@@ -301,7 +301,7 @@
         <div class="tour-inner">
             <a href="#" class="close" data-tour="close">&times;</a>
             
-            <h1>Dashboard <span>Take a Tour</span></h1>
+            <h1>Suppliers <span>Take a Tour</span></h1>
 
             <div class="tour-nav" data-tour="menu">
                 <ul>
