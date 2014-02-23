@@ -4,7 +4,13 @@
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
     <script>
-        $('body').addClass('show-help-note');
+        setTimeout(function () {
+            $('body').addClass('show-toggle-help');
+
+            $('.toggle-help').hover(function () {
+                $('body').removeClass('show-toggle-help');
+            })
+        }, 2000);
     </script>
 </asp:Content>
 

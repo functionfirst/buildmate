@@ -54,7 +54,6 @@
                     <ul class="nav-options nav-options-right" data-target="options">
                         <li>
                             <a href="#" class="toggle-help" data-tour="play"><span></span></a>
-                            <div class="toggle-help-note">View help videos</div>
                         </li>
                         <li>
                             <a href="#" class="toggle-options js-toggle-options" data-toggle-menu="options">Hello, <asp:Label ID="lblFirstname" runat="server" /></a>
