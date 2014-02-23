@@ -3,7 +3,9 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
-
+    <script>
+        $('body').addClass('show-help-note');
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">

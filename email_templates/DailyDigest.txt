@@ -1,87 +1,75 @@
 ﻿<style>
 body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12px; color: #2c2c2c; background: #efefea; }
-hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0 20px; }
-a { color: #21759B; text-decoration: none;}
 </style>
 
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" style="background:#efefea">
     <tr>
         <td>
-            <table border="0" cellspacing="0" cellpadding="0" width="600" align="center">
+            <table border="0" cellspacing="0" cellpadding="5" width="600" align="center">
                 <tr>
-                    <td>
-                        <p style="font-size: 11px; text-align: center; margin: 0 0 20px">
-                            You received this email because you're registered at Buildmate.<br />
-                            If you're not interested anymore, please <a href="http://buildmateapp.com/settings.aspx">unsubscribe</a>
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a href='http://www.getbuildmate.com/'><img src='http://images.getbuildmate.com/logo_s.png' width='227' height='53' border='0' /></a></td>
-                </tr>
-                <tr>
-                    <td><hr /></td>
+                    <td style="padding-top: 10px; padding-bottom: 20px;"><a href='http://www.getbuildmate.com/'><img src='https://buildmateapp.com/images/logo_black.png' width='121' height='26' border='0' /></a></td>
                 </tr>
             </table>
 
-            <table border="0" cellspacing="0" cellpadding="0" width="820" align="center">
-                <tr>
-                    <td width="580" valign="top" style="font-size: 14px">
-                        <h2>Project manager - Daily Digest</h2>
-                        <p>Good morning <strong><% firstName %></strong>,</p>
-                        <p>We've identified a list of projects that need your attention below:</p>
-                        <table width='100%' cellspacing='0' cellpadding='4' border='0'>
-                        <thead>
-                        <tr style="background: #333; color: fff;">
-                            <th style="padding: 5px; text-align: left">Project Name</th>
-                            <th style="padding: 5px">Return Date</th>
-                            <th style="padding: 5px">Status</th>
-                        </tr>
-                        </thead>
-                        <% bodyText %>
-                        </table>
-                    </td>
-                    <td width="40"></td>
-                    <td width="200" valign="top">
-						<h3>Drop us a line:</h3>
+            <center style="width: 100%">
+                <table style="padding: 20px;background: #fff;border:1px solid #ddd">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0" width="540px" align="center" >
+                                <tr>
+                                    <td width="580" valign="top">
+                                        <h2 style="font-size: 29px;line-height: 36px;font-weight: 400;color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom: 0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">Project Daily Digest</h2>
+                                        
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 16px;line-height: 24px;">Good morning <strong><% firstName %></strong>,</p>
+                                        
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 16px;line-height: 24px;">We've identified a list of projects that need your attention below.</p>
 
-                        <p>
-                            If you would like to contact us, feel free to get in touch!
-                        </p>
-                        
-                        <p>
-                            <strong>Email:</strong><br />
-                            <a href="mailto:support@buildmateapp.com">support@buildmateapp.com</a>
-                        </p>
-                        
-                        <p>
-                            <strong>Address:</strong><br />
-                            <em><strong>Buildmate Software Ltd</strong></em><br />
-                            Exchange Building<br />
-                            66 Church Street<br />
-                            Hartlepool<br />
-                            TS24 7DN
-                        </p>
-                    </td>
-                </tr>
-            </table>
+                                        <table width='100%' cellspacing='0' cellpadding='4' border='0'>
+                                            <thead>
+                                            <tr style="background: #eaeaea; font-size:13px">
+                                                <th style="padding: 5px; text-align: left">Project Name</th>
+                                                <th style="padding: 5px">Return Date</th>
+                                                <th style="text-align: center;padding: 5px">Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% bodyText %>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </center>
 
-            <table border="0" cellspacing="0" cellpadding="0" width="600" align="center">
-                <tr>
-                    <td><hr style="margin: 20px 0 10px" /></td>
-                </tr>
-                <tr>
-                    <td>
-                        <p style="font-size: 11px; color: #666; margin: 0 0 40px">
+            <center style="width: 100%">
+                <table style="border-top-width: 1px;border-top-style: dotted;border-top-color: #cccccc;border-spacing: 0;border-collapse: collapse;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;vertical-align: top;width: 580px;margin-top: 20px;margin-bottom: 0;margin-right: auto;margin-left: auto;text-align: inherit;">
+                    <tr>
+                        <td>
+                            <p style="color:#777;font-size:12px;margin-top:10px;margin-bottom:10px;margin-right:0;margin-left:0;display:block;font-family:'Helvetica','Arial',sans-serif;font-weight:normal;padding-top:0;padding-right:0;padding-left:0;text-align:left;padding-bottom:0;line-height:20px">
+                                You received this email because you're registered at Buildmate.
+                                <a href="http://buildmateapp.com/unsubscribe/?token=<% token %>" style="text-decoration:none!important;color:#21759b" target="_blank">Click to unsubscribe</a>.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+            <center style="width: 100%; background: #dddddd">
+                <table style="border-spacing: 0;border-collapse: collapse;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;vertical-align: top;text-align: left;margin-top: 0;margin-bottom: 0;margin-right: auto;margin-left: auto;width: 580px;">
+                    <tr>
+                        <td style="font-size: 12px;color: #777;padding-top: 15px;padding-bottom: 15px;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                            <strong>Buildmate Software Ltd</strong> Exchange Building, 66 Church Street, Hartlepool, TS24 7DN<br />
                             &copy; 2014 Buildmate Software Ltd &bull;
-                            <a href="http://www.getbuildmate.com/contact/">Contact</a> &bull;
-                            <a href="http://www.getbuildate.com/privacy/">Privacy</a> &bull;
-                            <a href="http://www.getbuildmate.com/terms/">Terms</a>
-                        </p>
-                    </td>
-                </tr>
-            </table>
-
+                            <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
+                            <a href="http://www.getbuildate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a> &bull;
+                            <a href="http://www.getbuildmate.com/terms/" style="color:#21759b;text-decoration:none!important;">Terms</a>
+                        </td>
+                    </tr>
+                </table>
+            </center>
         </td>
     </tr>
 </table>
