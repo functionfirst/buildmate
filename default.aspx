@@ -10,7 +10,7 @@
             $('.toggle-help').hover(function () {
                 $('body').removeClass('show-toggle-help');
             })
-        }, 2000);
+        }, 4000);
     </script>
 </asp:Content>
 
