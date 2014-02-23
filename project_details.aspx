@@ -327,23 +327,6 @@
                             DataValueField="buildElementTypeId" />
                     </div>
 
-                    <div class="row">
-                        <asp:Label ID="Label1" runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rntbCompletion"
-                            Text="Completion (%)" />
-                    
-                        <telerik:RadNumericTextBox ID="rntbCompletion" runat="server"
-                            Width="60px"
-                            ShowSpinButtons="true"
-                            EmptyMessage="0 %"
-                            dbValue='<%#Bind("completion") %>'
-                            MinValue="0"
-                            MaxValue="100"
-                            Type="Percent"
-                            NumberFormat-DecimalDigits="0" />
-                    </div>
-
                     <h4>Additional Costs</h4>
                     
                     <div class="row">
