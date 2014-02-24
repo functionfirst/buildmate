@@ -67,12 +67,21 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
             <center style="width: 100%; background: #dddddd; margin-top: 20px">
                 <table style="border-spacing: 0;border-collapse: collapse;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;vertical-align: top;text-align: left;margin-top: 0;margin-bottom: 0;margin-right: auto;margin-left: auto;width: 580px;">
                     <tr>
-                        <td style="font-size: 12px;color: #777;padding-top: 15px;padding-bottom: 15px;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
-                            <strong>Buildmate Software Ltd</strong> Exchange Building, 66 Church Street, Hartlepool, TS24 7DN<br />
-                            &copy; 2014 Buildmate Software Ltd &bull;
-                            <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
-                            <a href="http://www.getbuildate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a> &bull;
-                            <a href="http://www.getbuildmate.com/terms/" style="color:#21759b;text-decoration:none!important;">Terms</a>
+                        <td style="padding-top:15px;padding-bottom:15px;padding-right:0;padding-left:0">
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                <strong>Buildmate Software Ltd</strong> Exchange Building, 66 Church Street, Hartlepool, TS24 7DN
+                            </p>
+
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                &copy; 2014 Buildmate Software Ltd &bull;
+                                <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
+                                <a href="http://www.getbuildate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a><br />
+                            </p>
+
+
+                            <p style="font-size: 11px;color: #777;margin-top:5px;margin-bottom:5px;padding-top:0;padding-bottom:0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                By using Buildmate you agree to the <a href="http://www.getbuildmate.com/terms/" style="color:#21759b;text-decoration:none!important;">terms and conditions</a> that govern it's use.    
+                            </p>
                         </td>
                     </tr>
                 </table>
