@@ -3,7 +3,7 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="login-page">
 <head runat="server">
     <meta charset="utf-8" />
     <title>Untitled Page</title>

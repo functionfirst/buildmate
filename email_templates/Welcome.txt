@@ -1,0 +1,117 @@
+﻿<style>
+body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12px; color: #2c2c2c; background: #efefea; }
+</style>
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%" style="background:#efefea">
+    <tr>
+        <td>
+            <table border="0" cellspacing="0" cellpadding="5" width="600" align="center">
+                <tr>
+                    <td style="padding-top: 10px; padding-bottom: 20px;"><a href='http://www.getbuildmate.com/'><img src='https://buildmateapp.com/images/logo_black.png' width='121' height='26' border='0' /></a></td>
+                </tr>
+            </table>
+            
+
+            <center style="width: 100%">
+                <table style="padding: 20px;background: #fff;border:1px solid #ddd">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0" width="540" align="center">
+                                <tr>
+                                    <td valign="top" style="font-size: 14px">
+                                        <h2 style="font-size: 29px;line-height: 36px;font-weight: 400;color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom: 0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">Welcome to Buildmate</h2>
+
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;">
+                                            Thank you for registering with Buildmate. We hope you enjoy and benefit from the website.
+                                        </p>
+
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;">
+                                            Here are your login details:<br />
+                                            &nbsp;&nbsp; <strong>Email:</strong> <% UserName %><br />
+                                            &nbsp;&nbsp; <strong>Password:</strong> <% Password %><br />
+                                        </p>
+
+                                        <h3 style="font-size: 21px;line-height: 28px;font-weight: 400;color: #444444;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom: 0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">What's Next?</h3>
+
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;margin-top: 10px;margin-bottom:10px;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;">
+                                            Before you get started we recommend watching some of our <a href="http://www.youtube.com/user/Buildmateapp" style="color:#21759b;text-decoration:none!important;">instruction videos</a>.
+                                        </p>
+
+                                        <center style="width:100%">
+                                            <table border="0" cellspacing="0" cellpadding="0" width="500" align="center">
+                                                <tr>
+                                                    <td>
+                                                        <p>
+                                                            <a href="http://www.youtube.com/watch?v=-CUMue4ZZdA" style="color:#21759b;text-decoration:none!important;display:block;">
+                                                                <img src="http://images.getbuildmate.com/snap.gif" alt="Buildmate Tour on YouTube" style="display:block;" width="500" height="289">
+                                                            </a>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </center>
+
+                                        <h3 style="font-size: 21px;line-height: 28px;font-weight: 400;color: #444444;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom: 0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">Skip the Tour</h3>
+
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;margin-top: 10px;margin-bottom:10px;">
+                                            If you want to skip the tour and get started right away just click 'Login to Buildmate' below.
+                                        </p>
+
+                                        <center width="100%">
+                                            <p>
+                                                <a href="http://buildmateapp.com/" style="color:#21759b;text-decoration:none!important;display:inline-block;font-size:14px;background:#89bc00;color:#fff;padding:21px 33px">Login to Buildmate</a>
+                                            </p>
+                                        </center>
+
+
+                                        <h3 style="font-size: 21px;line-height: 28px;font-weight: 400;color: #444444;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom: 0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">Getting Help</h3>
+
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;margin-top: 10px;margin-bottom:10px;">
+                                            If you need help at any time, you can look for more information in our Knowledge Base, send us details in a Support Ticket or email our Support Team.
+                                        </p>
+
+                                        <center width="100%">
+                                            <p>
+                                                <a href="http://getbuildmate.com/knowledgebase/" style="color:#21759b;text-decoration:none!important;display:inline-block;font-size:14px;background:#2e7cd5;color:#fff;padding:12px 18px">Read the Knowledge Base</a>
+                                                <a href="http://buildmateapp.com/support.aspx" style="color:#21759b;text-decoration:none!important;display:inline-block;font-size:14px;background:#42b8dd;color:#fff;padding:12px 18px">Submit a Support Ticket</a>
+                                                <a href="mailto:support@buildmateapp.com" style="color:#21759b;text-decoration:none!important;display:inline-block;font-size:14px;background:#999999;color:#fff;padding:12px 18px">Email Support</a>
+                                            </p>
+                                        </center>
+
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;">
+                                            Thanks again,<br >
+                                            The Buildmate Team
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+            <center style="width: 100%; background: #dddddd; margin-top: 20px">
+                <table style="border-spacing: 0;border-collapse: collapse;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;vertical-align: top;text-align: left;margin-top: 0;margin-bottom: 0;margin-right: auto;margin-left: auto;width: 580px;">
+                    <tr>
+                        <td style="padding-top:15px;padding-bottom:15px;padding-right:0;padding-left:0">
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                <strong>Buildmate Software Ltd</strong> Exchange Building, 66 Church Street, Hartlepool, TS24 7DN
+                            </p>
+
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                &copy; 2014 Buildmate Software Ltd &bull;
+                                <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
+                                <a href="http://www.getbuildate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a><br />
+                            </p>
+
+
+                            <p style="font-size: 11px;color: #777;margin-top:5px;margin-bottom:5px;padding-top:0;padding-bottom:0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                By using Buildmate you agree to the <a href="http://www.getbuildmate.com/terms/" style="color:#21759b;text-decoration:none!important;">terms and conditions</a> that govern it's use.    
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </td>
+    </tr>
+</table>

@@ -5,9 +5,9 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="Server">
     <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlId="Panel1">
+            <telerik:AjaxSetting AjaxControlId="pUnsubscribe">
                 <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="Panel1" />
+                        <telerik:AjaxUpdatedControl ControlID="pUnsubscribe" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -17,7 +17,7 @@
 
     <p>Enter your email address below to unsubscribe from all Buildmate email subscriptions.</p>
 
-    <asp:Panel ID="Panel2" runat="server" DefaultButton="btnUnsubscribe">
+    <asp:Panel ID="pUnsubscribe" runat="server" DefaultButton="btnUnsubscribe">
         <div class="row">
             <telerik:RadTextBox
                 ID="emailAddr"

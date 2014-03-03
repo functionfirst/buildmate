@@ -94,11 +94,11 @@
                                 <asp:Button
                                     ID="btnLogin"
                                     runat="server"
-                                    CssClass="button button-create"
+                                    CssClass="button button-large button-create"
                                     CommandName="Login"
                                     Text="Login" />
                                    
-                                <a href="http://getbuildmate.com/signup/" class="button">Register</a>
+                                <a href="/register/" class="button button-large button-secondary">Register</a>
                             </div>
                         </asp:Panel>
                     </LayoutTemplate>

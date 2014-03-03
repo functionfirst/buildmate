@@ -96,8 +96,6 @@
                                 ValidationGroup="PasswordRecovery1"
                                 Text="Recover your Password" />
                         </div>
-                               
-                                
                     </asp:Panel>
                 </UserNameTemplate>
                 <SuccessTemplate>
