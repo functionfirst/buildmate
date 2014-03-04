@@ -104,7 +104,7 @@ $(document).ready(function () {
     //});
 
     // show advanced search
-    $(".toggleSearch").on("click", function () {
+    $("body").on("click", ".toggleSearch", function () {
         $(this).parent().toggleClass('active');
     });
 
