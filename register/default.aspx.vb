@@ -14,22 +14,6 @@ Partial Class login
         Catch ex As Exception
             Trace.Write(ex.ToString())
         End Try
-
-
-        '' send confirmation to support
-        'Try
-        '    Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
-        '    Dim Mailmsg As New System.Net.Mail.MailMessage
-        '    Mailmsg.To.Clear()
-        '    Mailmsg.To.Add(New System.Net.Mail.MailAddress("Buildmate<alan@buildmateapp.com>"))
-        '    Mailmsg.From = New System.Net.Mail.MailAddress("alan@buildmateapp.com")
-        '    Mailmsg.Subject = "[Buildmate] - New User Sign-up"
-        '    Mailmsg.IsBodyHtml = True
-        '    Mailmsg.Body = ""
-        '    obj.Send(Mailmsg)
-        'Catch ex As Exception
-        '    Trace.Write(ex.ToString)
-        'End Try
     End Sub
 
     Function CreateMessage() As System.Net.Mail.MailMessage
@@ -45,11 +29,9 @@ Partial Class login
 
         Dim fileMsg As System.Net.Mail.MailMessage
         fileMsg = md.CreateMailMessage(CreateUserWizard1.UserName, replacements, Me)
+        fileMsg.To.Clear()
+        fileMsg.To.Add(New MailAddress("support@buildmateapp.com"))
         Return fileMsg
-
-        'Dim textMsg As System.Net.Mail.MailMessage
-        'textMsg = md.CreateMailMessage(sourceTo.Text, replacements, sourceBodyText.Text, Me)
-        'Return textMsg
     End Function
 
     Protected Sub CreateUserWizard1_CreatingUser(sender As Object, e As LoginCancelEventArgs) Handles CreateUserWizard1.CreatingUser

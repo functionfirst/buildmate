@@ -64,7 +64,7 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
                             <strong>Buildmate Software Ltd</strong> Exchange Building, 66 Church Street, Hartlepool, TS24 7DN<br />
                             &copy; 2014 Buildmate Software Ltd &bull;
                             <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
-                            <a href="http://www.getbuildate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a> &bull;
+                            <a href="http://www.getbuildmate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a> &bull;
                             <a href="http://www.getbuildmate.com/terms/" style="color:#21759b;text-decoration:none!important;">Terms</a>
                         </td>
                     </tr>

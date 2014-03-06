@@ -101,7 +101,7 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
                             <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
                                 &copy; 2014 Buildmate Software Ltd &bull;
                                 <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
-                                <a href="http://www.getbuildate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a><br />
+                                <a href="http://www.getbuildmate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a><br />
                             </p>
 
 
