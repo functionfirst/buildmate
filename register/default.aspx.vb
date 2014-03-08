@@ -30,7 +30,8 @@ Partial Class login
         Dim fileMsg As System.Net.Mail.MailMessage
         fileMsg = md.CreateMailMessage(CreateUserWizard1.UserName, replacements, Me)
         fileMsg.To.Clear()
-        fileMsg.To.Add(New MailAddress("support@buildmateapp.com"))
+        fileMsg.To.Add(New MailAddress("alan@buildmateapp.com"))
+        fileMsg.To.Add(New MailAddress("steve@buildmateapp.com"))
         Return fileMsg
     End Function
 
