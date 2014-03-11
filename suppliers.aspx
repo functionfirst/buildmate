@@ -304,8 +304,9 @@
 
             <div class="tour-nav" data-tour="menu">
                 <ul>
-                    <li class="active"><a href="#" data-tab="step1">1. Suppliers</a></li>
-                    <li><a href="#" data-tab="step2">2. Advanced Suppliers</a></li>
+                    <li class="active"><a href="#" data-tab="step1">1. Introduction</a></li>
+                    <li><a href="#" data-tab="step2">2. Adding Suppliers</a></li>
+                    <li><a href="#" data-tab="step2">2. Adding Suppliers to Resources</a></li>
                 </ul>
             </div>
             <div class="tour-content">
@@ -319,10 +320,18 @@
                 </div>
                 
                 <div data-target="step2" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/xxx" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/sP6F9wvzFgg" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 2
-                        <a href="#" class="restart" data-tab-control="step13">Restart</a>
+                        <a href="#" class="restart" data-tab-control="step3">Restart</a>
+                    </div>
+                </div>
+                
+                <div data-target="step2" class="hide">
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/hFtee57N7_4" frameborder="0" allowfullscreen></iframe>
+                    <div class="tour-control">
+                        Step 3
+                        <a href="#" class="restart" data-tab-control="step1">Restart</a>
                     </div>
                 </div>
               
