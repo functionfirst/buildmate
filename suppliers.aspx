@@ -306,7 +306,7 @@
                 <ul>
                     <li class="active"><a href="#" data-tab="step1">1. Introduction</a></li>
                     <li><a href="#" data-tab="step2">2. Adding Suppliers</a></li>
-                    <li><a href="#" data-tab="step2">2. Adding Suppliers to Resources</a></li>
+                    <li><a href="#" data-tab="step3">3. Adding Suppliers to Resources</a></li>
                 </ul>
             </div>
             <div class="tour-content">
@@ -327,7 +327,7 @@
                     </div>
                 </div>
                 
-                <div data-target="step2" class="hide">
+                <div data-target="step3" class="hide">
                     <iframe width="640" height="480" src="//www.youtube.com/embed/hFtee57N7_4" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 3
