@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add a Blog" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="add_notification.aspx.vb" Inherits="add_notification" %>
+﻿<%@ Page Title="Add a Notification" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="add_notification.aspx.vb" Inherits="add_notification" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
