@@ -17,15 +17,15 @@
     </telerik:RadAjaxManagerProxy>
 
    <p class="breadcrumb">
-        <a href="blog.aspx">Blog</a>
-        &raquo; Add a Blog
+        <a href="notification.aspx">Notifications</a>
+        &raquo; Add a Notification
     </p>
 
     <asp:FormView ID="FormView1" runat="server" 
         DataSourceID="notificationDataSource" DefaultMode="Insert">
         <InsertItemTemplate>
             <div class="box">
-                <h3 class="box_top_edit">Add a Blog..</h3>
+                <h3 class="box_top_edit">Add a Notification..</h3>
 
                 <div class="boxcontent">
                     <div class="row">
@@ -80,7 +80,7 @@
                     <div class="row">
                         <label class="label">&nbsp;</label>
                         <asp:Button ID="InsertButton" runat="server" CausesValidation="True" 
-                        CommandName="Insert" Text="Add Blog" />
+                        CommandName="Insert" Text="Add Notification" />
                     </div>
                 </div>
             </div>
