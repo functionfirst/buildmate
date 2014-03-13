@@ -311,7 +311,7 @@
             </div>
             <div class="tour-content">
                 <div data-target="step1">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/FnVXWuZkhpQ" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/6B5RhtE_dOw" frameborder="0" allowfullscreen></iframe>
 
                     <div class="tour-control">
                         Step 1
@@ -334,7 +334,6 @@
                         <a href="#" class="restart" data-tab-control="step1">Restart</a>
                     </div>
                 </div>
-              
             </div>
         </div>
     </div>
