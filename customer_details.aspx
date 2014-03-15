@@ -61,6 +61,8 @@
 
     <div class="main-container">
         <div class="div50">
+        <h3>Customer Details</h3>
+
             <asp:FormView ID="fvCustomerDetails"
                 runat="server"
                 DefaultMode="Edit"
@@ -163,59 +165,55 @@
         </div>
 
         <div class="div50 div-last">
-            <div class="box">
-                <h3>Customer Projects</h3>
+            <h3>Customer Projects</h3>
             
-                <div class="boxcontent">
-                    <telerik:RadGrid
-                    ID="rgProjects"
-                    runat="server"
+                <telerik:RadGrid
+                ID="rgProjects"
+                runat="server"
+                DataSourceID="projectsDataSource"
+                GridLines="None"
+                AutoGenerateColumns="False">
+                <MasterTableView
+                NoMasterRecordsText="&nbsp;No Projects were found for this customer"
                     DataSourceID="projectsDataSource"
-                    GridLines="None"
-                    AutoGenerateColumns="False">
-                    <MasterTableView
-                    NoMasterRecordsText="&nbsp;No Projects were found for this customer"
-                        DataSourceID="projectsDataSource"
-                        DataKeyNames="id">
-                        <Columns>
-                            <telerik:GridHyperLinkColumn
-                                UniqueName="projectLink"
-                                HeaderText="Project Name"
-                                DataTextField="projectName"
-                                DataNavigateUrlFields="id"
-                                DataTextFormatString="{0}"
-                                DataNavigateUrlFormatString="~/project_details.aspx?pid={0}" />
+                    DataKeyNames="id">
+                    <Columns>
+                        <telerik:GridHyperLinkColumn
+                            UniqueName="projectLink"
+                            HeaderText="Project Name"
+                            DataTextField="projectName"
+                            DataNavigateUrlFields="id"
+                            DataTextFormatString="{0}"
+                            DataNavigateUrlFormatString="~/project_details.aspx?pid={0}" />
                             
-                            <telerik:GridBoundColumn
-                                UniqueName="status"
-                                Headertext="Status"
-                                DataField="status" />
+                        <telerik:GridBoundColumn
+                            UniqueName="status"
+                            Headertext="Status"
+                            DataField="status" />
                             
-                            <telerik:GridBoundColumn
-                                UniqueName="projectType"
-                                Headertext="Type"
-                                DataField="projectType" />
+                        <telerik:GridBoundColumn
+                            UniqueName="projectType"
+                            Headertext="Type"
+                            DataField="projectType" />
 
-                            <telerik:GridBoundColumn
-                                UniqueName="created_at"
-                                Headertext="Creation Date"
-                                HeaderStyle-HorizontalAlign="Center"
-                                ItemStyle-HorizontalAlign="Center"
-                                DataFormatString="{0:d}"
-                                DataField="created_at" />
+                        <telerik:GridBoundColumn
+                            UniqueName="created_at"
+                            Headertext="Creation Date"
+                            HeaderStyle-HorizontalAlign="Center"
+                            ItemStyle-HorizontalAlign="Center"
+                            DataFormatString="{0:d}"
+                            DataField="created_at" />
 
-                            <telerik:GridBoundColumn
-                                UniqueName="returnDate"
-                                Headertext="Return Date"
-                                HeaderStyle-HorizontalAlign="Center"
-                                ItemStyle-HorizontalAlign="Center"
-                                DataFormatString="{0:d}"
-                                DataField="returnDate" />
-                        </Columns>
-                    </MasterTableView>
-                </telerik:RadGrid>
-                </div>
-            </div>
+                        <telerik:GridBoundColumn
+                            UniqueName="returnDate"
+                            Headertext="Return Date"
+                            HeaderStyle-HorizontalAlign="Center"
+                            ItemStyle-HorizontalAlign="Center"
+                            DataFormatString="{0:d}"
+                            DataField="returnDate" />
+                    </Columns>
+                </MasterTableView>
+            </telerik:RadGrid>
         </div>
 
     </div>

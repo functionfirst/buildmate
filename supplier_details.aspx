@@ -19,19 +19,20 @@
     </telerik:RadAjaxManagerProxy>
    
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li><asp:HyperLink ID="HyperLink4" runat="server"
-                NavigateUrl="~/suppliers.aspx"
-                Text="Suppliers" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">Supplier Details</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li><asp:HyperLink ID="HyperLink4" runat="server"
+                    NavigateUrl="~/suppliers.aspx"
+                    Text="Suppliers" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">Supplier Details</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
-
-        <h1>Supplier Details</h1>
+        <h3>Supplier Details</h3>
     
         <asp:FormView ID="fvSupplierDetails" runat="server" DataSourceId="supplierDataSource" DataKeyNames="id" RenderOuterTable="false" DefaultMode="Edit">
             <EditItemTemplate>
