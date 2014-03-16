@@ -74,7 +74,6 @@
                 <h3>Contact Details</h3>
 
                 <asp:FormView ID="fvContactDetails" runat="server"
-                            RenderOuterTable="false"
                             DefaultMode="Edit"
                             DataSourceID="userProfileDataSource">
                             <EditItemTemplate>
@@ -191,7 +190,6 @@
                 <h3>Company Details</h3>
     
                 <asp:FormView ID="fvCompanyDetails" runat="server"
-                    RenderOuterTable="false"
                     DefaultMode="Edit"
                     DataSourceID="userProfileCompanyDataSource">
                     <EditItemTemplate>
@@ -245,7 +243,6 @@
                 <h3>Company Logo</h3>
         
                 <asp:FormView ID="fvCompanyLogo" runat="server"
-                    RenderOuterTable="false"
                     DataSourceID="updateImageDataSource">
                     <ItemTemplate>
                         <div class="row">
@@ -284,7 +281,7 @@
             <div class="tab-container" id="password">
                 <h3>Change Password</h3>
 
-                <asp:ChangePassword ID="ChangePassword1" runat="server" RenderOuterTable="false">
+                <asp:ChangePassword ID="ChangePassword1" runat="server">
                     <ChangePasswordTemplate>
                         <asp:ValidationSummary ID="ValidationSummary2" runat="server"
                             ValidationGroup="ChangePassword1" HeaderText="The following fields are required:" />
@@ -347,7 +344,6 @@
                 <asp:FormView DefaultMode="Edit"
                     ID="fvNotifications"
                     runat="server"
-                    RenderOuterTable="false"
                     DataSourceID="dsNotifications">
                     <EditItemTemplate>
                         <div class="row">

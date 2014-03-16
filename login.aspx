@@ -35,7 +35,7 @@
             <div class="login-form-inner">
                 <h1>Login</h1>
 
-                <asp:Login ID="Login1" runat="server" RenderOuterTable="false">
+                <asp:Login ID="Login1" runat="server">
                     <LayoutTemplate>
                         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnLogin">
                             <div class="row">

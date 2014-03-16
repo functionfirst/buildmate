@@ -42,7 +42,6 @@
             <h3>Adding a Supplier..</h3>
             
             <asp:FormView ID="fvSupplierInsert" runat="server"
-                RenderOuterTable="false"
                 DataSourceId="insertSupplierDataSource"
                 DataKeyNames="id"
                 DefaultMode="Insert">

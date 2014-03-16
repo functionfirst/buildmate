@@ -66,7 +66,6 @@
             <asp:FormView ID="fvCustomerDetails"
                 runat="server"
                 DefaultMode="Edit"
-                RenderOuterTable="false"
                 DataSourceId="customerDataSource"
                 DataKeyNames="id">
                 <EditItemTemplate> 
@@ -80,8 +79,7 @@
                             Text='<%#Bind("name")%>'
                             Width="300px"
                             EmptyMessage="Name" />
-                               
-                                    
+
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                             ControlToValidate="rtbName"
                             Display="Dynamic"

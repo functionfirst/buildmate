@@ -18,7 +18,6 @@
 
 <asp:FormView ID="fvCreateProject" runat="server"
     DataKeyNames="id"
-    RenderOuterTable="false"
     DefaultMode="Insert"
     DataSourceID="insertProjectDataSource">
     <InsertItemTemplate>

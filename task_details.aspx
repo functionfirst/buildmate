@@ -248,7 +248,6 @@
     <div id="addAddition" class="md-window">
         <div class="md-content">
             <asp:FormView ID="fvAddAdhoc" runat="server"
-                RenderOuterTable="false"
                 DefaultMode="Insert"
                 DataSourceID="additionsDataSource"
                 DataKeyNames="id">
@@ -380,7 +379,6 @@
                 </p>
                 
                 <asp:FormView ID="fvAddCalc" runat="server"
-                    RenderOuterTable="false"
                     Visible="false"
                     DefaultMode="Insert"
                     EnableViewState="false"
@@ -630,8 +628,7 @@
             <div class="boxcontent">
                 <asp:FormView
                     ID="fvTaskTotals"
-                    runat="server"
-                    RenderOuterTable="false"
+                    runat="server""
                     DataSourceID="taskTotalsDataSource">
                     <ItemTemplate>
                         <div class="row row-long">
@@ -847,7 +844,6 @@
                 ID="fvTaskAdjustments"
                 runat="server"
                 DataKeyNames="id"
-                RenderOuterTable="false"
                 DataSourceID="taskDataSource">
                 <ItemTemplate>
                     <div class="row">
@@ -997,7 +993,6 @@
             <asp:FormView
                 ID="fvCompletion"
                 runat="server"
-                RenderOuterTable="false"
                 DataSourceID="completionDataSource"
                 DataKeyNames="id">
                 <EditItemTemplate>
@@ -1146,7 +1141,6 @@
                 DefaultMode="Edit"
                 runat="server"
                 DataKeyNames="id"
-                RenderOuterTable="false"
                 DataSourceID="taskDataSource">
                 <EditItemTemplate>
                     <asp:PlaceHolder ID="phDefaultResources" runat="server"

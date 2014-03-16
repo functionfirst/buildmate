@@ -288,8 +288,7 @@
                 EnableViewState="false"
                 DefaultMode="Insert"
                 DataSourceID="AllSpacesDataSource"
-                DataKeyNames="id"
-                RenderOuterTable="false">
+                DataKeyNames="id">
                 <InsertItemTemplate>
                 <asp:Panel ID="Panel4" runat="server" DefaultButton="btnInsert">
                     <div class="md-details">
@@ -459,7 +458,7 @@
 
  
         <div class="div25">
-            <asp:FormView ID="fvProjectCosts" runat="server" RenderOuterTable="false"
+            <asp:FormView ID="fvProjectCosts" runat="server"
                 DataSourceID="projectCostDataSource">
  
                 <ItemTemplate>
@@ -601,7 +600,6 @@
            <div class="box">
                 <asp:FormView ID="FormView1" runat="server"
                     DataKeyNames="id"
-                    RenderOuterTable="false"
                     DataSourceID="SqlDataSource1">
                      <ItemTemplate>
                         <h3><asp:Label ID="Label2" runat="server" Text='<%# Bind("projectName") %>' /></h3>

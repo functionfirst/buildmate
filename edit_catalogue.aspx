@@ -38,7 +38,7 @@
         <h3>Resource Supplier Details</h3>
         
         
-            <asp:FormView ID="fvCatalogueDetails" runat="server" DataKeyNames="id" RenderOuterTable="false" DefaultMode="Edit" 
+            <asp:FormView ID="fvCatalogueDetails" runat="server" DataKeyNames="id" DefaultMode="Edit" 
                 DataSourceID="catalogueDS">
                 <EditItemTemplate>
                     <div class="row">
