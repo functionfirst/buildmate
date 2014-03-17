@@ -599,7 +599,7 @@
        <div class="div75 div-last">
            <div class="box">
                 <asp:FormView ID="FormView1" runat="server"
-                    DataKeyNames="id"
+                    DataKeyNames="id" Width="100%"
                     DataSourceID="SqlDataSource1">
                      <ItemTemplate>
                         <h3><asp:Label ID="Label2" runat="server" Text='<%# Bind("projectName") %>' /></h3>
@@ -689,7 +689,8 @@
                                     Visible='<%# IIF(Eval("incDiscount"), "False", "True") %>' />
                             </div>
                     
-                            <div class="form-actions">
+                            <div class="row">
+                                <label class="label">&nbsp;</label>
                                 <asp:Button ID="editButton" runat="server" CommandName="Edit"
                                 CausesValidation="False" Text="Edit Project" CssClass="button" />
                             </div>
