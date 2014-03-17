@@ -28,8 +28,6 @@
 
         <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" />
 
-        <telerik:RadFormDecorator ID="RadFormDecorator1" runat="server" Enabled="false" />
-
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" CssClass="loading" Transparency="50"
             IsSticky="true" MinDisplayTime="800" InitialDelayTime="500">
             <div class="inner_container"></div>

@@ -47,7 +47,6 @@
                 runat="server"
                 DataSourceId="insertCustomerDataSource"
                 DefaultMode="Insert"
-                RenderOuterTable="false"
                 DataKeyNames="id">
                 <InsertItemTemplate>
                     <asp:Panel ID="pCustomerInsert" runat="server" DefaultButton="btnInsert">

@@ -164,6 +164,16 @@ a:hover,
 
 .leftalign { text-align: left;}
 
+.main-container:before,
+.main-container:after {
+    content: " ";
+    display: table;
+}
+
+.main-container:after {
+    clear: both;
+}
+
 /* advanced search */
 .search {
     position: relative;

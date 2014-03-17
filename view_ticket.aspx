@@ -41,7 +41,6 @@
         <asp:FormView
             ID="fvViewTicket"
             runat="server"
-            RenderOuterTable="false"
             DataKeyNames="id"
             DataSourceID="viewTicketDataSource">
             <ItemTemplate>

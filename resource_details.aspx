@@ -46,7 +46,6 @@
             <asp:FormView
                 ID="fvResourceInsert"
                 runat="server"
-                RenderOuterTable="false"
                 EnableViewState="false"
                 DefaultMode="Insert"
                 DataSourceID="catalogueDataSource"

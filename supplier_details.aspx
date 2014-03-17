@@ -3,6 +3,28 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<script type="text/javascript">
+    var currentLoadingPanel = null;
+    var currentUpdatedControl = null;
+    function RequestStart(sender, args) {
+        currentLoadingPanel = $find("#ctl00_RadAjaxLoadingPanel1");
+        if (args.get_eventTarget() == "#ctl00_MainContent_fvSupplierDetails_btnUpdate") {
+            currentUpdatedControl = "fvSupplierDetails";
+            currentLoadingPanel.show(currentUpdatedControl);
+        }
+    }
+   function ResponseEnd() {
+       if (currentLoadingPanel != null) {
+           currentLoadingPanel.hide(currentUpdatedControl);
+       }
+       currentUpdatedControl = null;
+       currentLoadingPanel = null;
+   }
+
+   function showLoading() {
+       $('#ctl00_RadAjaxLoadingPanel1').css({'opacity': 0.5}).show();
+   }
+</script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -19,21 +41,22 @@
     </telerik:RadAjaxManagerProxy>
    
     <div class="breadcrumb">
-        <ul class="breadcrumb-list">
-            <li><asp:HyperLink ID="HyperLink4" runat="server"
-                NavigateUrl="~/suppliers.aspx"
-                Text="Suppliers" />
-                <span class="divider">/</span>
-            </li>
-            <li class="active">Supplier Details</li>
-        </ul>
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li><asp:HyperLink ID="HyperLink4" runat="server"
+                    NavigateUrl="~/suppliers.aspx"
+                    Text="Suppliers" />
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">Supplier Details</li>
+            </ul>
+        </div>
     </div>
 
     <div class="main-container">
-
-        <h1>Supplier Details</h1>
+        <h3>Supplier Details</h3>
     
-        <asp:FormView ID="fvSupplierDetails" runat="server" DataSourceId="supplierDataSource" DataKeyNames="id" RenderOuterTable="false" DefaultMode="Edit">
+        <asp:FormView ID="fvSupplierDetails" runat="server" DataSourceId="supplierDataSource" DataKeyNames="id" DefaultMode="Edit">
             <EditItemTemplate>
                 <div class="row">
                     <label for="rtbSupplierName" title="Supplier Name" class="label">Supplier Name*</label>
@@ -95,7 +118,7 @@
                 
                 <div class=" form-actions">
                     <asp:Button ID="btnUpdate" runat="server" CommandName="Update" CssClass="button button-create"
-                        OnClick="Validate_OnClick" Text="Save Changes" />
+                        OnClick="Validate_OnClick" Text="Save Changes" OnClientClick="showLoading()" />
                 </div>
             </EditItemTemplate>
         </asp:FormView>
