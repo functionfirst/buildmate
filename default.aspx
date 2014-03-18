@@ -365,7 +365,7 @@
                 </div>
                 
                 <div data-target="step2" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/cAhWcY1lawE" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/WS9IRaYryg8" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 2
                         <a href="#" data-tab-control="step3">Next</a>
@@ -373,7 +373,7 @@
                 </div>
 
                 <div data-target="step3" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/YLeGiRyKxvg" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 3
                         <a href="#" data-tab-control="step3">Next</a>
@@ -381,7 +381,7 @@
                 </div>
 
                 <div data-target="step4" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/qooYSng_mHU" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/5VdfodBie2o" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 4
                         <a href="#" class="restart" data-tab-control="step1">Restart</a>
