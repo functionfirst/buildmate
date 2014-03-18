@@ -1140,6 +1140,7 @@
                 ID="fvDefaultResources"
                 DefaultMode="Edit"
                 runat="server"
+                RenderOuterTable="false"
                 DataKeyNames="id"
                 DataSourceID="taskDataSource">
                 <EditItemTemplate>
