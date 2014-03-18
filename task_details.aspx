@@ -628,7 +628,7 @@
             <div class="boxcontent">
                 <asp:FormView
                     ID="fvTaskTotals"
-                    runat="server""
+                    runat="server"
                     DataSourceID="taskTotalsDataSource">
                     <ItemTemplate>
                         <div class="row row-long">
