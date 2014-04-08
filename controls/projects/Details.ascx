@@ -145,7 +145,17 @@
                 CssClass="formw"
                 Text='<%# Bind("retentionPercentage") %>'
                 Type="Percent" />
-        </div>         
+        </div>
+        
+        <div class="row">
+            <asp:Label ID="lblLabelTenderType" runat="server"
+                AssociatedControlID="rcbTenderType"
+                CssClass="label"
+                Text="Tender Type" />
+
+            <telerik:RadComboBox ID="rcbTenderType" runat="server" SelectedValue='<%# Bind("tenderTypeId") %>'
+                DataSourceID="tenderTypeDataSource" DataTextField="tenderType" DataValueField="id" />
+        </div>        
         
         <div class="form-actions">
             <asp:LinkButton ID="lbBack" runat="server" CssClass="button" OnClick="lbBack_Click">
@@ -157,7 +167,7 @@
                 Text="Create Project"
                 OnClick="OnClick_Validate"
                 ValidationGroup="projectGroup" />
-
+                
         </div>
     </InsertItemTemplate>
 </asp:FormView>
@@ -180,3 +190,7 @@
 <asp:SqlDataSource ID="retentionTypeDataSource" runat="server"
     ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
     SelectCommand="SELECT [id], [retentionType] FROM ProjectRetentionType" />
+
+<asp:SqlDataSource ID="tenderTypeDataSource" runat="server"
+    ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+    SelectCommand="getProjectTenderTypes" SelectCommandType="StoredProcedure" />
