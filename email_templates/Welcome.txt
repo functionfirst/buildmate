@@ -42,7 +42,7 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
                                                 <tr>
                                                     <td>
                                                         <p>
-                                                            <a href="http://www.youtube.com/watch?v=-CUMue4ZZdA" style="color:#21759b;text-decoration:none!important;display:block;">
+                                                            <a href="http://www.youtube.com/watch?v=As_8TH8wwHM" style="color:#21759b;text-decoration:none!important;display:block;">
                                                                 <img src="http://images.getbuildmate.com/snap.gif" alt="Buildmate Tour on YouTube" style="display:block;" width="500" height="289">
                                                             </a>
                                                         </p>
