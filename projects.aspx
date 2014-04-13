@@ -244,7 +244,7 @@
             </div>
             <div class="tour-content">
                 <div data-target="step1">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/zkCOndfs6MM" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="480" src="//www.youtube.com/embed/oB15uiihBO4" frameborder="0" allowfullscreen></iframe>
 
                     <div class="tour-control">
                         Step 1
