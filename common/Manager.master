@@ -83,7 +83,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <a href="<%# DataBinder.Eval(Container.DataItem, "id", "/project_details.aspx?pid={0}")%>"><%#eval("projectName") %>
-                                                <small><%# DataBinder.Eval(Container.DataItem, "created_at", "{0:d MMM yyyy}") %></small>
+                                                <small><%# DataBinder.Eval(Container.DataItem, "modified_at", "{0:d MMM yyyy}")%></small>
                                             </a>
                                         </li>
                                     </ItemTemplate>
@@ -139,7 +139,7 @@
         </div>
 
         <asp:SqlDataSource ID="recentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-            SelectCommand="SELECT TOP 5 id, projectName, created_at FROM Project WHERE userid = @UserId ORDER BY created_at DESC">
+            SelectCommand="SELECT TOP 5 id, projectName, modified_at FROM Project WHERE userid = @UserId ORDER BY modified_at DESC">
             <SelectParameters>
                 <asp:SessionParameter Name="UserId" SessionField="userId" />
             </SelectParameters>
