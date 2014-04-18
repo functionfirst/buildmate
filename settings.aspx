@@ -192,6 +192,7 @@
     
                 <asp:FormView ID="fvCompanyDetails" runat="server"
                     DefaultMode="Edit"
+                    Width="100%"
                     DataSourceID="userProfileCompanyDataSource">
                     <EditItemTemplate>
                         <div class="row">
