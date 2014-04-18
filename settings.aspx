@@ -75,6 +75,7 @@
 
                 <asp:FormView ID="fvContactDetails" runat="server"
                             DefaultMode="Edit"
+                    Width="100%"
                             DataSourceID="userProfileDataSource">
                             <EditItemTemplate>
                                 <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
