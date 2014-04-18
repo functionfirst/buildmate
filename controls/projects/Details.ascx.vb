@@ -26,11 +26,6 @@ Partial Class controls_projects_Details
     Private Sub GoToPageView(ByVal pageViewId As String)
         Dim multiPage As RadMultiPage = DirectCast(Me.NamingContainer.FindControl("rmpProject"), RadMultiPage)
         Dim templatePageView As RadPageView = multiPage.FindPageViewByID(pageViewId)
-        'If templatePageView Is Nothing Then
-        '    templatePageView = New RadPageView()
-        '    templatePageView.ID = pageViewId
-        '    multiPage.PageViews.Add(templatePageView)
-        'End If
         templatePageView.Selected = True
     End Sub
 
@@ -89,5 +84,27 @@ Partial Class controls_projects_Details
         cmd.ExecuteNonQuery()
 
         Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=copy", npid))
+    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        getProfitOverhead()
+    End Sub
+
+    Protected Sub getProfitOverhead()
+        Dim rntbOverhead As RadNumericTextBox = fvCreateProject.FindControl("rntbOverhead")
+        Dim rntbProfit As RadNumericTextBox = fvCreateProject.FindControl("rntbProfit")
+
+        Dim sqlSelectCommand As String = "SELECT defaultOverhead, defaultProfit FROM UserProfile WHERE userid = @userid;"
+        Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
+        adapter.SelectCommand.Parameters.AddWithValue("@userid", Session("userId"))
+
+        Dim dataTable As New DataTable
+        adapter.Fill(dataTable)
+
+        ' check item exists
+        If dataTable.Rows.Count >= 1 Then
+            rntbOverhead.Value = dataTable.Rows.Item(0)("defaultOverhead").ToString()
+            rntbProfit.Value = dataTable.Rows.Item(0)("defaultprofit").ToString()
+        End If
     End Sub
 End Class

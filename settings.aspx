@@ -226,6 +226,30 @@
                                 NumberFormat-DecimalDigits="2"
                                 Type="Percent" />
                         </div>
+                
+                        <div class="row">
+                            <asp:Label ID="Label2" runat="server"
+                                Text="Overhead"
+                                CssClass="label"
+                                AssociatedControlID="rntbOverhead" />
+                        
+                            <telerik:RadNumericTextBox ID="rntbOverhead" runat="server"
+                                Value='<%#Bind("defaultOverhead")%>' Width="55px"
+                                NumberFormat-DecimalDigits="2"
+                                Type="Percent" />
+                        </div>
+                
+                        <div class="row">
+                            <asp:Label ID="Label3" runat="server"
+                                Text="Profit"
+                                CssClass="label"
+                                AssociatedControlID="rntbProfit" />
+                        
+                            <telerik:RadNumericTextBox ID="rntbProfit" runat="server"
+                                Value='<%#Bind("defaultProfit")%>' Width="55px"
+                                NumberFormat-DecimalDigits="2"
+                                Type="Percent" />
+                        </div>
                     
                         <div class="form-actions">
                             <asp:Button ID="btnUpdate" runat="server"

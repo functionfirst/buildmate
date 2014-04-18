@@ -155,7 +155,23 @@
 
             <telerik:RadComboBox ID="rcbTenderType" runat="server" SelectedValue='<%# Bind("tenderTypeId") %>'
                 DataSourceID="tenderTypeDataSource" DataTextField="tenderType" DataValueField="id" />
-        </div>        
+        </div>
+        
+        <div class="row">
+            <asp:Label ID="lblLabelOverhead" runat="server"
+                AssociatedControlID="rntbOverhead"
+                CssClass="label"
+                Text="Overhead (%)" />
+
+            <telerik:RadNumericTextBox ID="rntbOverhead" runat="server" width="80px" ShowSpinButtons="true"
+                Type="Percent" MinValue="-100" MaxValue="100" Text='<%#Bind("overhead")%>' />
+        </div>
+                    
+        <div class="row">
+            <label for="rntbProfit" title="Profit (%)" class="label">Profit (%)</label>
+            <telerik:RadNumericTextBox ID="rntbProfit" runat="server" width="80px" ShowSpinButtons="true"
+                Type="Percent" MinValue="-100" MaxValue="100" Text='<%#Bind("profit")%>' />
+        </div>   
         
         <div class="form-actions">
             <asp:LinkButton ID="lbBack" runat="server" CssClass="button" OnClick="lbBack_Click">
