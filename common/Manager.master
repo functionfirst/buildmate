@@ -145,10 +145,18 @@
             </SelectParameters>
         </asp:SqlDataSource>
     </form>
-
     <!-- js -->
     <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="/js/functions.js"></script>
+
+    <asp:Panel ID="pLaunchHelp" runat="server">
+        <script>
+            $(document).ready(function () {
+                $('a[data-tour="play"]').click();
+            });
+        </script>
+    </asp:Panel>
+
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     

@@ -63,8 +63,11 @@ Partial Class controls_projects_Details
         Dim newProjectId As Integer = e.Command.Parameters("@newId").Value
         If projectId.Value >= 1 Then
             CopyExistingProject(projectId.Value, newProjectId)
-        Else
+        ElseIf newProjectId >= 1 Then
             Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=new", newProjectId))
+        Else
+            ' error
+            'showNotification("Something went wrong")
         End If
     End Sub
 
@@ -87,7 +90,7 @@ Partial Class controls_projects_Details
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        getProfitOverhead()
+        'getProfitOverhead()
     End Sub
 
     Protected Sub getProfitOverhead()
