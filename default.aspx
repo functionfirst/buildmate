@@ -376,7 +376,7 @@
                     <iframe width="640" height="480" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
                     <div class="tour-control">
                         Step 3
-                        <a href="#" data-tab-control="step3">Next</a>
+                        <a href="#" data-tab-control="step4">Next</a>
                     </div>
                 </div>
 
