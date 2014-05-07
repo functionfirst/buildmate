@@ -7,6 +7,9 @@ var tour = {
     },
     hide: function () {
         toggleVisibility('body', 'show-tour', false);
+    },
+    alert: function () {
+        toggleVisibility('body', 'show-tour-alert', true);
     }
 }
 
@@ -22,7 +25,7 @@ $(document).ready(function () {
     // tour block - close button
     $('body').on('click', 'a[data-tour="close"]', function () {
         tour.hide();
-        console.log("show confirmation window about tour");
+        tour.alert();
     });
 
     // tour block - close when clicking modal

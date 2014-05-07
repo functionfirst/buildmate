@@ -1,4 +1,45 @@
-﻿.tour-inner {
+﻿.tour-alert {
+    position: fixed;
+    width: 400px;
+    background: #222;
+    z-index: 1200;
+    left: 50%;
+    top: 0;
+    margin-top: -129px;
+    margin-left: -200px;
+    padding: 20px;
+    visibility: hidden;
+    
+    zoom: 1;
+    filter: alpha(opacity=0);
+    opacity: 0;
+
+    -webkit-box-shadow: 0 0 15px 1px rgba(0,0,0,0.4);
+    -moz-box-shadow:    0 0 15px 1px rgba(0,0,0,0.4);
+    box-shadow:         0 0 15px 1px rgba(0,0,0,0.4);
+
+    -webkit-border-radius:  2px;
+    -moz-border-radius:     2px;
+    border-radius:          2px;
+
+    
+    -webkit-transition: opacity .3s linear, top .2s linear, visibility .3s linear;
+    -moz-transition:    opacity .3s linear, top .2s linear, visibility .3s linear;
+    transition:         opacity .3s linear, top .2s linear, visibility .3s linear;
+
+    h2 {
+        border: 0;
+        color: #fff;
+    }
+
+    p {
+        line-height: 21px;
+        line-height: 1,6em;
+        color: #fff;
+    }
+}
+
+.tour-inner {
     position: fixed;
     z-index: 1100;
     padding: 40px;
@@ -59,41 +100,6 @@
         color: #fff;
         border: 0;
     }
-
-    /*.tour-control {
-        background: #333;
-        padding: 10px 14px;
-        position: relative;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-
-        a {
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: inherit;
-            background: #21759b;
-            padding: 10px 20px;
-            color: #fff;
-            -webkit-border-radius: 0 5px 5px 0;
-            -moz-border-radius: 0 5px 5px 0;
-            border-radius: 0 5px 5px 0;
-
-            &:after {
-                background: url('/icons/icons.png') no-repeat -316px -118px;
-                content: " ";
-                height: 16px;
-                width: 16px;
-                margin-top: 3px;
-                position: absolute;
-            }
-        }
-
-        .restart:after {
-            background-position: 2px 0;
-        }
-    }*/
 
     .tour-nav {
         float: left;
@@ -171,5 +177,13 @@
                     display: none;
                 }
             }
+    }
+}
+
+.show-tour-alert {
+    .tour-alert {
+        top: 20%;
+        opacity: 1;
+        visibility: visible;
     }
 }

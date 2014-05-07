@@ -26,7 +26,16 @@
     <form runat="server" id="form1">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" />
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+            <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="pTourAlert">
+                     <UpdatedControls>
+                         <telerik:AjaxUpdatedControl ControlID="pTourAlert" />
+                         <telerik:AjaxUpdatedControl ControlID="hfTour" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
 
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" CssClass="loading" Transparency="50"
             IsSticky="true" MinDisplayTime="800" InitialDelayTime="500">
@@ -142,30 +151,46 @@
             </div>
         </div>
 
+        <asp:Panel ID="pTourAlert" runat="server" CssClass="tour-alert">
+            <h2>Buildmate Tour</h2>
+
+            <p>
+                Once you're familiar with Buildmate you can stop the video Tours appearing by clicking the "Don't show me again" button below.
+            </p>
+
+            <p>To view them again later you can click the green Play button at the top of the page.</p>
+            
+            <asp:Button ID="btnTourConfirm" runat="server" CssClass="button button-large button-primary" Text="Keep showing the Tour" />
+            <asp:Button ID="btnTourCancel" runat="server" CssClass="button button-large" Text="Don't show me again" />
+        </asp:Panel>
+
+        <asp:HiddenField ID="hfTour" runat="server" Value="1" />
+
         <asp:SqlDataSource ID="recentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
             SelectCommand="SELECT TOP 5 id, projectName, modified_at FROM Project WHERE userid = @UserId ORDER BY modified_at DESC">
             <SelectParameters>
                 <asp:SessionParameter Name="UserId" SessionField="userId" />
             </SelectParameters>
         </asp:SqlDataSource>
+        
+        <!-- js -->
+        <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="/js/functions.js"></script>
+
+        <telerik:RadCodeBlock ID="rcbLaunchHelp" runat="server">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var hideTour = document.getElementById('<%= hfTour.ClientId %>');
+                    if (hideTour.value == 1) {
+                        $('a[data-tour="play"]').click();
+                    }
+                });
+                <%--function AjaxReq(args) {
+                    $find("<%= RadAjaxPanel1.ClientID %>").ajaxRequestWithTarget("<%= Button1.UniqueID %>", '');
+                }--%>
+            </script>
+        </telerik:RadCodeBlock>
     </form>
-    <!-- js -->
-    <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="/js/functions.js"></script>
-
-    <asp:Panel ID="pLaunchHelp" runat="server">
-        <script>
-            $(document).ready(function () {
-                $('a[data-tour="play"]').click();
-            });
-        </script>
-    </asp:Panel>
-
-
-    <asp:Panel ID="Panel1" runat="server">
-
-
-    </asp:Panel>
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     

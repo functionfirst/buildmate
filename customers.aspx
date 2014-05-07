@@ -264,26 +264,16 @@
 
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <div class="tour-block">
-        <div class="tour-inner">
-            <a href="#" class="close" data-tour="close">&times;</a>
-            
-            <h1>Customers <span>Take a Tour</span></h1>
+    <h1>Customers <span>Take a Tour</span></h1>
 
-            <div class="tour-nav" data-tour="menu">
-                <ul>
-                    <li class="active"><a href="#" data-tab="step1">1. Customers</a>
-                </ul>
-            </div>
-            <div class="tour-content">
-                <div data-target="step1">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/KqLtuhRMCmA" frameborder="0" allowfullscreen></iframe>
-
-                    <div class="tour-control">
-                        Step 1
-                    </div>
-                </div>
-            </div>
+    <div class="tour-nav" data-tour="menu">
+        <ul>
+            <li class="active"><a href="#" data-tab="step1">1. Customers</a>
+        </ul>
+    </div>
+    <div class="tour-content">
+        <div data-target="step1">
+            <iframe width="640" height="480" src="//www.youtube.com/embed/KqLtuhRMCmA" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </asp:Content>
