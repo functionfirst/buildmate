@@ -114,7 +114,11 @@
             
         <div class="md-wrapper" title="Click or press Esc to cancel"></div>
 
-        <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
+        <div class="tour-inner">
+            <a href="#" class="close" data-tour="close">&times;</a>
+            
+            <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
+        </div>
 
         <div id="variationMode" class="variationMode">
             <a href="#" class="openVariatonMode" title="You are in Variation Mode"><span>Variation Mode</span></a>
@@ -157,6 +161,11 @@
         </script>
     </asp:Panel>
 
+
+    <asp:Panel ID="Panel1" runat="server">
+
+
+    </asp:Panel>
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     

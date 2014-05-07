@@ -1,5 +1,15 @@
 var mside = false; // initialise mouse-inside
 
+
+var tour = {
+    show: function () {
+        toggleVisibility('body', 'show-tour', true);
+    },
+    hide: function () {
+        toggleVisibility('body', 'show-tour', false);
+    }
+}
+
 $(document).ready(function () {
     // open the related modal window
     // pass the div id as the rel attribute
@@ -11,16 +21,22 @@ $(document).ready(function () {
 
     // tour block - close button
     $('body').on('click', 'a[data-tour="close"]', function () {
-        toggleVisibility('body', 'show-tour');
+        tour.hide();
+        console.log("show confirmation window about tour");
+    });
+
+    // tour block - close when clicking modal
+    $('body').on('click', '.md-wrapper', function () {
+        tour.hide();
     });
 
     // disable tour button if a tour doesn't exist on this page
-    if ($('.tour-block').length === 0) {
+    if ($('.tour-content').length === 0) {
         $('a[data-tour="play"]').attr('disabled', 'disabled').unbind('click');
     } else {
         // tour block - 'play' tour button
         $('body').on('click', 'a[data-tour="play"]', function () {
-            toggleVisibility('body', 'show-tour');
+            tour.show();
             return false;
         });
     }

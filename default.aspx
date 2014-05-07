@@ -340,54 +340,33 @@
 </asp:Content>
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <div class="tour-block">
-        <div class="tour-inner">
-            <a href="#" class="close" data-tour="close">&times;</a>
-            
-            <h1>Dashboard <span>Take a Tour</span></h1>
 
-            <div class="tour-nav" data-tour="menu">
-                <ul>
-                    <li class="active"><a href="#" data-tab="step1">1. Tour</a></li>
-                    <li><a href="#" data-tab="step2">2. Dashboard</a></li>
-                    <li><a href="#" data-tab="step3">3. Navigation</a></li>
-                    <li><a href="#" data-tab="step4">4. Help</a></li>
-                </ul>
-            </div>
-            <div class="tour-content">
-                <div data-target="step1">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/As_8TH8wwHM" frameborder="0" allowfullscreen></iframe>
+    <h1>Dashboard <span>Take a Tour</span></h1>
 
-                    <div class="tour-control">
-                        Step 1
-                        <a href="#" data-tab-control="step2">Next</a>
-                    </div>
-                </div>
+    <div class="tour-nav" data-tour="menu">
+        <ul>
+            <li class="active"><a href="#" data-tab="step1">1. Tour</a></li>
+            <li><a href="#" data-tab="step2">2. Dashboard</a></li>
+            <li><a href="#" data-tab="step3">3. Navigation</a></li>
+            <li><a href="#" data-tab="step4">4. Help</a></li>
+        </ul>
+    </div>
+
+    <div class="tour-content">
+        <div data-target="step1">
+            <iframe width="640" height="480" src="//www.youtube.com/embed/As_8TH8wwHM" frameborder="0" allowfullscreen></iframe>
+        </div>
                 
-                <div data-target="step2" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/WS9IRaYryg8" frameborder="0" allowfullscreen></iframe>
-                    <div class="tour-control">
-                        Step 2
-                        <a href="#" data-tab-control="step3">Next</a>
-                    </div>
-                </div>
+        <div data-target="step2" class="hide">
+            <iframe width="640" height="480" src="//www.youtube.com/embed/WS9IRaYryg8" frameborder="0" allowfullscreen></iframe>
+        </div>
 
-                <div data-target="step3" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
-                    <div class="tour-control">
-                        Step 3
-                        <a href="#" data-tab-control="step4">Next</a>
-                    </div>
-                </div>
+        <div data-target="step3" class="hide">
+            <iframe width="640" height="480" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
+        </div>
 
-                <div data-target="step4" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/5VdfodBie2o" frameborder="0" allowfullscreen></iframe>
-                    <div class="tour-control">
-                        Step 4
-                        <a href="#" class="restart" data-tab-control="step1">Restart</a>
-                    </div>
-                </div>
-            </div>
+        <div data-target="step4" class="hide">
+            <iframe width="640" height="480" src="//www.youtube.com/embed/5VdfodBie2o" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </asp:Content>
