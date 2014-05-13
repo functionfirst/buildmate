@@ -7,10 +7,12 @@ var tour = {
     },
     hide: function () {
         toggleVisibility('body', 'show-tour', false);
-    },
-    alert: function () {
-        toggleVisibility('body', 'show-tour-alert', true);
     }
+}
+
+// ajax call to set the account help flag
+function setHelp(el) {
+    $.get("settings.aspx?help=" + $(el.target).prop("checked"));
 }
 
 $(document).ready(function () {
@@ -22,16 +24,14 @@ $(document).ready(function () {
         return false;
     });
 
-    // tour block - close button
-    $('body').on('click', 'a[data-tour="close"]', function () {
+    // tour block - close button or modal
+    $('body').on('click', '.md-wrapper, a[data-tour="close"]', function () {
         tour.hide();
-        tour.alert();
     });
 
-    // tour block - close when clicking modal
-    $('body').on('click', '.md-wrapper', function () {
-        tour.hide();
-    });
+
+    // change help settings when checkbox changes
+    $('#ctl00_cbHelp').change(setHelp);
 
     // disable tour button if a tour doesn't exist on this page
     if ($('.tour-content').length === 0) {

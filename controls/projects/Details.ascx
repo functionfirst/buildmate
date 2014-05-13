@@ -193,7 +193,6 @@
     InsertCommand="insertProject" InsertCommandType="StoredProcedure">
     <InsertParameters>
         <asp:SessionParameter Name="userId" SessionField="UserId" />
-        <asp:SessionParameter Name="created_by" SessionField="UserId" />
         <asp:ControlParameter Name="projectTypeId" ControlID="hfEstimateType" PropertyName="Value" />
         <asp:ControlParameter Name="customerId" ControlID="hfCustomerId" PropertyName="Value" Type="Int64" />
         <asp:Parameter Name="statusId" Type="Byte" DefaultValue="1" />

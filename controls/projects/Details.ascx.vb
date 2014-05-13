@@ -44,6 +44,10 @@ Partial Class controls_projects_Details
         End If
     End Sub
 
+    Protected Sub fvCreateProject_DataBound(sender As Object, e As EventArgs) Handles fvCreateProject.DataBound
+        getProfitOverhead()
+    End Sub
+
     Protected Sub fvCreateProject_ItemCreated(ByVal sender As Object, ByVal e As System.EventArgs) Handles fvCreateProject.ItemCreated
         If fvCreateProject.CurrentMode = FormViewMode.Insert Then
             ' set attributes to force popup calendar to open upwards
@@ -89,9 +93,13 @@ Partial Class controls_projects_Details
         Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=copy", npid))
     End Sub
 
-    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'getProfitOverhead()
-    End Sub
+    'Protected Sub Page_DataBinding(sender As Object, e As EventArgs) Handles Me.DataBinding
+    '    getProfitOverhead()
+    'End Sub
+
+    'Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+    '    getProfitOverhead()
+    'End Sub
 
     Protected Sub getProfitOverhead()
         Dim rntbOverhead As RadNumericTextBox = fvCreateProject.FindControl("rntbOverhead")

@@ -125,6 +125,12 @@
 
         <div class="tour-inner">
             <a href="#" class="close" data-tour="close">&times;</a>
+
+            <label class="tour-checkbox">
+                <asp:CheckBox ID="cbHelp" runat="server" />
+                Show video help
+                <small>This will display the pop-up tour videos automatically.</small>
+            </label>
             
             <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
         </div>
@@ -151,20 +157,7 @@
             </div>
         </div>
 
-        <asp:Panel ID="pTourAlert" runat="server" CssClass="tour-alert">
-            <h2>Buildmate Tour</h2>
-
-            <p>
-                Once you're familiar with Buildmate you can stop the video Tours appearing by clicking the "Don't show me again" button below.
-            </p>
-
-            <p>To view them again later you can click the green Play button at the top of the page.</p>
-            
-            <asp:Button ID="btnTourConfirm" runat="server" CssClass="button button-large button-primary" Text="Keep showing the Tour" />
-            <asp:Button ID="btnTourCancel" runat="server" CssClass="button button-large" Text="Don't show me again" />
-        </asp:Panel>
-
-        <asp:HiddenField ID="hfTour" runat="server" Value="1" />
+        <asp:HiddenField ID="hfTour" runat="server" Value="0" />
 
         <asp:SqlDataSource ID="recentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
             SelectCommand="SELECT TOP 5 id, projectName, modified_at FROM Project WHERE userid = @UserId ORDER BY modified_at DESC">

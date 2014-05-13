@@ -8,7 +8,6 @@ Partial Class Manager
     Dim userId As String = user.ProviderUserKey.ToString
     Dim subscriptionDate As Date
     Dim paypalPayerId As String
-    Dim showHelp As Boolean
     Public user_email As String
 
     Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
@@ -24,9 +23,6 @@ Partial Class Manager
             hlAddVariation.NavigateUrl = String.Format("~/project_details.aspx?pid={0}&action=add_variation", Request.QueryString("pid"))
             hlProjectStatus.NavigateUrl = String.Format("~/project_details.aspx?pid={0}", Request.QueryString("pid"))
         End If
-
-        ' check if tour alert has been confirmed already this session
-        If Session("tour_alert") Then pTourAlert.Visible = False
 
         '' check subscription date and calculate access permissions
         'Dim dateDiff As TimeSpan = DateTime.Today - Convert.ToDateTime(subscriptionDate)
@@ -79,7 +75,14 @@ Partial Class Manager
 
                 While reader.Read
                     Session("help") = reader("help").ToString
-                    showHelp = Session("help")
+
+                    Dim showHelp As Boolean = Session("help")
+
+                    If showHelp Then
+                        cbHelp.Checked = True
+                        hfTour.Value = 1
+                    End If
+
                     Session("tooltips") = reader("tooltips").ToString
                     Session("subscriptionDate") = reader("subscription").ToString
                     subscriptionDate = Session("subscriptionDate")
@@ -97,43 +100,6 @@ Partial Class Manager
                 Trace.Write(ex.ToString)
                 myConn.Close()
             End Try
-        End If
-    End Sub
-
-    Protected Sub btnTourCancel_Click(sender As Object, e As EventArgs) Handles btnTourCancel.Click
-        Session("tour_alert") = True
-        showHelp = 0
-        Session("help") = showHelp
-        pTourAlert.Visible = False
-        hfTour.Value = 0
-
-        ' update user profile to record the fact we don't want to see the help any more
-        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-        Dim myConn As New SqlConnection(connString)
-        Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET help=0 WHERE userId = @userId", myConn)
-        cmd.Parameters.AddWithValue("@userId", userId)
-
-        Try
-            myConn.Open()
-            cmd.ExecuteScalar()
-
-        Catch ex As Exception
-            Trace.Write(ex.ToString)
-            myConn.Close()
-        End Try
-    End Sub
-
-    Protected Sub btnTourConfirm_Click(sender As Object, e As EventArgs) Handles btnTourConfirm.Click
-        Session("tour_alert") = True
-        pTourAlert.Visible = False
-    End Sub
-
-    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ' if help is false then don't pop-up the tour window
-        If Not showHelp Then
-            hfTour.Value = 0
-            pTourAlert.Visible = False
-            Session("tour_alert") = True
         End If
     End Sub
 End Class
