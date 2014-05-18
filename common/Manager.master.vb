@@ -75,6 +75,14 @@ Partial Class Manager
 
                 While reader.Read
                     Session("help") = reader("help").ToString
+
+                    Dim showHelp As Boolean = Session("help")
+
+                    If showHelp Then
+                        cbHelp.Checked = True
+                        hfTour.Value = 1
+                    End If
+
                     Session("tooltips") = reader("tooltips").ToString
                     Session("subscriptionDate") = reader("subscription").ToString
                     subscriptionDate = Session("subscriptionDate")

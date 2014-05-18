@@ -145,7 +145,33 @@
                 CssClass="formw"
                 Text='<%# Bind("retentionPercentage") %>'
                 Type="Percent" />
-        </div>         
+        </div>
+        
+        <div class="row">
+            <asp:Label ID="lblLabelTenderType" runat="server"
+                AssociatedControlID="rcbTenderType"
+                CssClass="label"
+                Text="Tender Type" />
+
+            <telerik:RadComboBox ID="rcbTenderType" runat="server" SelectedValue='<%# Bind("tenderTypeId") %>'
+                DataSourceID="tenderTypeDataSource" DataTextField="tenderType" DataValueField="id" />
+        </div>
+        
+        <div class="row">
+            <asp:Label ID="lblLabelOverhead" runat="server"
+                AssociatedControlID="rntbOverhead"
+                CssClass="label"
+                Text="Overhead (%)" />
+
+            <telerik:RadNumericTextBox ID="rntbOverhead" runat="server" width="80px" ShowSpinButtons="true"
+                Type="Percent" MinValue="-100" MaxValue="100" Text='<%#Bind("overhead")%>' />
+        </div>
+                    
+        <div class="row">
+            <label for="rntbProfit" title="Profit (%)" class="label">Profit (%)</label>
+            <telerik:RadNumericTextBox ID="rntbProfit" runat="server" width="80px" ShowSpinButtons="true"
+                Type="Percent" MinValue="-100" MaxValue="100" Text='<%#Bind("profit")%>' />
+        </div>   
         
         <div class="form-actions">
             <asp:LinkButton ID="lbBack" runat="server" CssClass="button" OnClick="lbBack_Click">
@@ -157,7 +183,7 @@
                 Text="Create Project"
                 OnClick="OnClick_Validate"
                 ValidationGroup="projectGroup" />
-
+                
         </div>
     </InsertItemTemplate>
 </asp:FormView>
@@ -167,7 +193,6 @@
     InsertCommand="insertProject" InsertCommandType="StoredProcedure">
     <InsertParameters>
         <asp:SessionParameter Name="userId" SessionField="UserId" />
-        <asp:SessionParameter Name="created_by" SessionField="UserId" />
         <asp:ControlParameter Name="projectTypeId" ControlID="hfEstimateType" PropertyName="Value" />
         <asp:ControlParameter Name="customerId" ControlID="hfCustomerId" PropertyName="Value" Type="Int64" />
         <asp:Parameter Name="statusId" Type="Byte" DefaultValue="1" />
@@ -180,3 +205,7 @@
 <asp:SqlDataSource ID="retentionTypeDataSource" runat="server"
     ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
     SelectCommand="SELECT [id], [retentionType] FROM ProjectRetentionType" />
+
+<asp:SqlDataSource ID="tenderTypeDataSource" runat="server"
+    ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+    SelectCommand="getProjectTenderTypes" SelectCommandType="StoredProcedure" />

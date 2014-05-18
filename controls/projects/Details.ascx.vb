@@ -26,11 +26,6 @@ Partial Class controls_projects_Details
     Private Sub GoToPageView(ByVal pageViewId As String)
         Dim multiPage As RadMultiPage = DirectCast(Me.NamingContainer.FindControl("rmpProject"), RadMultiPage)
         Dim templatePageView As RadPageView = multiPage.FindPageViewByID(pageViewId)
-        'If templatePageView Is Nothing Then
-        '    templatePageView = New RadPageView()
-        '    templatePageView.ID = pageViewId
-        '    multiPage.PageViews.Add(templatePageView)
-        'End If
         templatePageView.Selected = True
     End Sub
 
@@ -47,6 +42,10 @@ Partial Class controls_projects_Details
             rdpCompletionDate.MinDate = Nothing
             CompareValidator1.Enabled = False
         End If
+    End Sub
+
+    Protected Sub fvCreateProject_DataBound(sender As Object, e As EventArgs) Handles fvCreateProject.DataBound
+        getProfitOverhead()
     End Sub
 
     Protected Sub fvCreateProject_ItemCreated(ByVal sender As Object, ByVal e As System.EventArgs) Handles fvCreateProject.ItemCreated
@@ -68,8 +67,11 @@ Partial Class controls_projects_Details
         Dim newProjectId As Integer = e.Command.Parameters("@newId").Value
         If projectId.Value >= 1 Then
             CopyExistingProject(projectId.Value, newProjectId)
-        Else
+        ElseIf newProjectId >= 1 Then
             Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=new", newProjectId))
+        Else
+            ' error
+            'showNotification("Something went wrong")
         End If
     End Sub
 
@@ -89,5 +91,31 @@ Partial Class controls_projects_Details
         cmd.ExecuteNonQuery()
 
         Response.Redirect(String.Format("~/project_details.aspx?pid={0}&action=copy", npid))
+    End Sub
+
+    'Protected Sub Page_DataBinding(sender As Object, e As EventArgs) Handles Me.DataBinding
+    '    getProfitOverhead()
+    'End Sub
+
+    'Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+    '    getProfitOverhead()
+    'End Sub
+
+    Protected Sub getProfitOverhead()
+        Dim rntbOverhead As RadNumericTextBox = fvCreateProject.FindControl("rntbOverhead")
+        Dim rntbProfit As RadNumericTextBox = fvCreateProject.FindControl("rntbProfit")
+
+        Dim sqlSelectCommand As String = "SELECT defaultOverhead, defaultProfit FROM UserProfile WHERE userid = @userid;"
+        Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
+        adapter.SelectCommand.Parameters.AddWithValue("@userid", Session("userId"))
+
+        Dim dataTable As New DataTable
+        adapter.Fill(dataTable)
+
+        ' check item exists
+        If dataTable.Rows.Count >= 1 Then
+            rntbOverhead.Value = dataTable.Rows.Item(0)("defaultOverhead").ToString()
+            rntbProfit.Value = dataTable.Rows.Item(0)("defaultprofit").ToString()
+        End If
     End Sub
 End Class

@@ -26,7 +26,16 @@
     <form runat="server" id="form1">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" />
+        <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+            <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="pTourAlert">
+                     <UpdatedControls>
+                         <telerik:AjaxUpdatedControl ControlID="pTourAlert" />
+                         <telerik:AjaxUpdatedControl ControlID="hfTour" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>
 
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server" CssClass="loading" Transparency="50"
             IsSticky="true" MinDisplayTime="800" InitialDelayTime="500">
@@ -83,7 +92,7 @@
                                     <ItemTemplate>
                                         <li>
                                             <a href="<%# DataBinder.Eval(Container.DataItem, "id", "/project_details.aspx?pid={0}")%>"><%#eval("projectName") %>
-                                                <small><%# DataBinder.Eval(Container.DataItem, "created_at", "{0:d MMM yyyy}") %></small>
+                                                <small><%# DataBinder.Eval(Container.DataItem, "modified_at", "{0:d MMM yyyy}")%></small>
                                             </a>
                                         </li>
                                     </ItemTemplate>
@@ -114,7 +123,17 @@
             
         <div class="md-wrapper" title="Click or press Esc to cancel"></div>
 
-        <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
+        <div class="tour-inner">
+            <a href="#" class="close" data-tour="close">&times;</a>
+
+            <label class="tour-checkbox">
+                <asp:CheckBox ID="cbHelp" runat="server" />
+                Show video help
+                <small>This will display the pop-up help videos automatically.</small>
+            </label>
+            
+            <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
+        </div>
 
         <div id="variationMode" class="variationMode">
             <a href="#" class="openVariatonMode" title="You are in Variation Mode"><span>Variation Mode</span></a>
@@ -138,17 +157,33 @@
             </div>
         </div>
 
+        <asp:HiddenField ID="hfTour" runat="server" Value="0" />
+
         <asp:SqlDataSource ID="recentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-            SelectCommand="SELECT TOP 5 id, projectName, created_at FROM Project WHERE userid = @UserId ORDER BY created_at DESC">
+            SelectCommand="SELECT TOP 5 id, projectName, modified_at FROM Project WHERE userid = @UserId ORDER BY modified_at DESC">
             <SelectParameters>
                 <asp:SessionParameter Name="UserId" SessionField="userId" />
             </SelectParameters>
         </asp:SqlDataSource>
-    </form>
+        
+        <!-- js -->
+        <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="/js/functions.js"></script>
 
-    <!-- js -->
-    <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="/js/functions.js"></script>
+        <telerik:RadCodeBlock ID="rcbLaunchHelp" runat="server">
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var hideTour = document.getElementById('<%= hfTour.ClientId %>');
+                    if (hideTour.value == 1) {
+                        $('a[data-tour="play"]').click();
+                    }
+                });
+                <%--function AjaxReq(args) {
+                    $find("<%= RadAjaxPanel1.ClientID %>").ajaxRequestWithTarget("<%= Button1.UniqueID %>", '');
+                }--%>
+            </script>
+        </telerik:RadCodeBlock>
+    </form>
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     

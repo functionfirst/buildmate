@@ -629,6 +629,7 @@
                 <asp:FormView
                     ID="fvTaskTotals"
                     runat="server"
+                    Width="100%"
                     DataSourceID="taskTotalsDataSource">
                     <ItemTemplate>
                         <div class="row row-long">

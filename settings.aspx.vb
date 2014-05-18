@@ -61,6 +61,8 @@ Partial Class settings
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         showSubscriptionDate()
+
+        updateHelpSettings()
     End Sub
 
     Private Sub showSubscriptionDate()
@@ -77,5 +79,30 @@ Partial Class settings
 
     Protected Sub fvNotifications_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvNotifications.ItemUpdated
         showNotification("Notification Settings Updated", "Your changes have been saved successfully")
+    End Sub
+
+    Protected Sub updateHelpSettings()
+        Dim help As String = Request.QueryString("help")
+
+
+        If Not IsNothing(help) Then
+            If help.Length > 0 Then
+                ' update user profile to record the fact we don't want to see the help any more
+                Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+                Dim myConn As New SqlConnection(connString)
+                Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET help=@help WHERE userId = @userId", myConn)
+                cmd.Parameters.AddWithValue("@userId", Session("userid"))
+                cmd.Parameters.AddWithValue("@help", help)
+
+                Try
+                    myConn.Open()
+                    cmd.ExecuteScalar()
+
+                Catch ex As Exception
+                    Trace.Write(ex.ToString)
+                    myConn.Close()
+                End Try
+            End If
+        End If
     End Sub
 End Class

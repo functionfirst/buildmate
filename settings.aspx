@@ -75,6 +75,7 @@
 
                 <asp:FormView ID="fvContactDetails" runat="server"
                             DefaultMode="Edit"
+                    Width="100%"
                             DataSourceID="userProfileDataSource">
                             <EditItemTemplate>
                                 <asp:Panel ID="Panel1" runat="server" DefaultButton="btnUpdate">
@@ -191,6 +192,7 @@
     
                 <asp:FormView ID="fvCompanyDetails" runat="server"
                     DefaultMode="Edit"
+                    Width="100%"
                     DataSourceID="userProfileCompanyDataSource">
                     <EditItemTemplate>
                         <div class="row">
@@ -223,6 +225,30 @@
                         
                             <telerik:RadNumericTextBox ID="rntbVAT" runat="server"
                                 Value='<%#Bind("vat") %>' Width="55px"
+                                NumberFormat-DecimalDigits="2"
+                                Type="Percent" />
+                        </div>
+                
+                        <div class="row">
+                            <asp:Label ID="Label2" runat="server"
+                                Text="Overhead"
+                                CssClass="label"
+                                AssociatedControlID="rntbOverhead" />
+                        
+                            <telerik:RadNumericTextBox ID="rntbOverhead" runat="server"
+                                Value='<%#Bind("defaultOverhead")%>' Width="55px"
+                                NumberFormat-DecimalDigits="2"
+                                Type="Percent" />
+                        </div>
+                
+                        <div class="row">
+                            <asp:Label ID="Label3" runat="server"
+                                Text="Profit"
+                                CssClass="label"
+                                AssociatedControlID="rntbProfit" />
+                        
+                            <telerik:RadNumericTextBox ID="rntbProfit" runat="server"
+                                Value='<%#Bind("defaultProfit")%>' Width="55px"
                                 NumberFormat-DecimalDigits="2"
                                 Type="Percent" />
                         </div>
@@ -449,26 +475,17 @@
 
 
 <asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <div class="tour-block">
-        <div class="tour-inner">
-            <a href="#" class="close" data-tour="close">&times;</a>
-            
-            <h1>Settings <span>Take a Tour</span></h1>
+    <h1>Settings <span>Take a Tour</span></h1>
 
-            <div class="tour-nav" data-tour="menu">
-                <ul>
-                    <li class="active"><a href="#" data-tab="step1">1. Settings</a>
-                </ul>
-            </div>
-            <div class="tour-content">
-                <div data-target="step1">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/_5G47Bx2sPQ" frameborder="0" allowfullscreen></iframe>
+    <div class="tour-nav" data-tour="menu">
+        <ul>
+            <li class="active"><a href="#" data-tab="step1">1. Settings</a>
+        </ul>
+    </div>
 
-                    <div class="tour-control">
-                        Step 1
-                    </div>
-                </div>
-            </div>
+    <div class="tour-content">
+        <div data-target="step1">
+            <iframe width="640" height="480" src="//www.youtube.com/embed/_5G47Bx2sPQ" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </asp:Content>
