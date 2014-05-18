@@ -129,7 +129,7 @@
             <label class="tour-checkbox">
                 <asp:CheckBox ID="cbHelp" runat="server" />
                 Show video help
-                <small>This will display the pop-up tour videos automatically.</small>
+                <small>This will display the pop-up help videos automatically.</small>
             </label>
             
             <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
