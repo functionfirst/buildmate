@@ -84,22 +84,25 @@ Partial Class settings
     Protected Sub updateHelpSettings()
         Dim help As String = Request.QueryString("help")
 
-        If help.Length > 0 Then
-            ' update user profile to record the fact we don't want to see the help any more
-            Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-            Dim myConn As New SqlConnection(connString)
-            Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET help=@help WHERE userId = @userId", myConn)
-            cmd.Parameters.AddWithValue("@userId", Session("userid"))
-            cmd.Parameters.AddWithValue("@help", help)
 
-            Try
-                myConn.Open()
-                cmd.ExecuteScalar()
+        If Not IsNothing(help) Then
+            If help.Length > 0 Then
+                ' update user profile to record the fact we don't want to see the help any more
+                Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+                Dim myConn As New SqlConnection(connString)
+                Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET help=@help WHERE userId = @userId", myConn)
+                cmd.Parameters.AddWithValue("@userId", Session("userid"))
+                cmd.Parameters.AddWithValue("@help", help)
 
-            Catch ex As Exception
-                Trace.Write(ex.ToString)
-                myConn.Close()
-            End Try
+                Try
+                    myConn.Open()
+                    cmd.ExecuteScalar()
+
+                Catch ex As Exception
+                    Trace.Write(ex.ToString)
+                    myConn.Close()
+                End Try
+            End If
         End If
     End Sub
 End Class
