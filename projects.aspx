@@ -227,7 +227,7 @@
                 </telerik:RadGrid>
             </div>
 
-            <div class="tab-container tab-container-active" id="archived">
+            <div class="tab-container" id="archived">
                 <telerik:RadGrid
                     ID="rgArchived"
                     runat="server"
