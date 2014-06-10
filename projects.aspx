@@ -11,6 +11,9 @@
                 return false;
             });
 
+            if (window.location.hash === '#archived') {
+                $('#archiveTabLink').click();
+            }
         });
 
         function showTab(tabId) {
@@ -145,8 +148,8 @@
 
          <div class="tabs">
             <ul class="tab-nav">
-                <li class="active"><a href="#currentProjects">Current Projects</a></li>
-                <li><a href="#archived">Archived</a></li>
+                <li class="active"><a href="#currentProjects" id="currentTabLink">Current Projects</a></li>
+                <li><a href="#archived" id="archiveTabLink">Archived</a></li>
             </ul>
             
             <div class="tab-container tab-container-active" id="currentProjects">
