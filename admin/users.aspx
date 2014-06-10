@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="users.aspx.vb" Inherits="users" %>
+﻿<%@ Page Title="Users" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="users.aspx.vb" Inherits="users" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -7,9 +7,15 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
+       
+
+    <p class="breadcrumb">
+        Users
+    </p>
+
     <telerik:RadGrid ID="rgUsers" runat="server" DataSourceID="SqlDataSource1" 
         GridLines="None">
-<MasterTableView DataSourceID="SqlDataSource1" AutoGenerateColumns="False">
+<MasterTableView DataSourceID="SqlDataSource1" AutoGenerateColumns="False" AllowSorting="true">
 <RowIndicatorColumn>
 <HeaderStyle Width="20px"></HeaderStyle>
 </RowIndicatorColumn>
