@@ -168,6 +168,37 @@
             <h3>Statistics</h3>
 
             <div class="boxcontent">
+                <ul class="stats">
+                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="statisticsDataSource">
+                        <ItemTemplate>
+                            <li class="stats-<%#Eval("projectStatusId") %>">
+                                <a href="/projects.aspx?status=<%# Eval("projectStatusId")%>">
+                                    <%#Eval("totalCount") %>
+                                    <small>
+                                        <%#Eval("status") %>
+                                        <span><%# DataBinder.Eval(Container.DataItem, "totalValue", "{0:C2}") %></span>
+                                    </small>
+                                </a>
+                            </li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+         
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="Repeater3" runat="server" DataSourceID="archivedProjects">
+                        <ItemTemplate>
+                            <li class="stats-12">
+                                <a href="projects.aspx#archived">
+                                    <%#Eval("totalCount")%>
+                                    <small>
+                                        Archived
+                                    </small>
+                                </a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
     
                 <telerik:RadGrid ID="rgStatistics" runat="server"
                     DataSourceID="statisticsDataSource" GridLines="None">
@@ -321,6 +352,14 @@
         <SelectParameters>
             <asp:SessionParameter Name="userId" SessionField="userId" />
             <asp:ControlParameter Name="days" ControlID="rcbDays" PropertyName="SelectedValue"  />
+        </SelectParameters>
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="archivedProjects" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
+        SelectCommand="SELECT count(id) as totalCount FROM Project WHERE userid = @userId and archived = 1">
+        <SelectParameters>
+            <asp:SessionParameter Name="userId" SessionField="userId" />
         </SelectParameters>
     </asp:SqlDataSource>
     

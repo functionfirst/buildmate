@@ -213,46 +213,86 @@ a:hover,
 .search-box .button {
     margin-left: 130px;
 }
-
-/*.search .panel {
-    display: none;
-    width: 310px;
-    padding: 10px;
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    left: -1px;
-    position: absolute;
-    z-index: 2;
-    border-top: 0;
-    -webkit-border-radius:  0 0 5px 5px;
-    -moz-border-radius:     0 0 5px 5px;
-    border-radius:          0 0 5px 5px;
-}*/
-
-/*.search .panel .label {
-    float: none;
-    width: 100%;
-    text-align: left;
-}
-.search .row { margin: 0 0 5px 20px; }
-.search.active {
-    background: #f8f8f8;
-    border-color: #ddd;
-    -webkit-border-radius: 5px 5px 0 0;
-       -moz-border-radius: 5px 5px 0 0;
-            border-radius: 5px 5px 0 0;
-}
-.search.active .toggleSearch span {
-    background-position: 1px -16px;
-}*/
 .search.active {
     display: block;
 }
-/*.search .panel input[type='checkbox'] {
-    margin: 0 5px 0 0;
-}*/
-  
-    
+
+/* dashboard stats */
+
+.stats {
+    margin: 0 0 10px;
+    padding: 0;
+    list-style: none;
+}
+.stats li+li {
+    margin-top: 1px;
+}
+
+.stats a {
+    position: relative;
+    display: block;
+    font-size: 24px;
+    background: #f8f8f8;
+    color: #fff;
+    padding: 8px;
+    zoom: 1;
+    -webkit-border-radius:  3px;
+    -moz-border-radius:     3px;
+    border-radius:          3px;
+    -webkit-transition:     background .3s linear;
+    -moz-transition:        background .3s linear;
+    transition:             background .3s linear;
+}
+.stats a:hover {
+	filter: alpha(opacity=80);
+	opacity: 0.8;
+}
+
+.stats small {
+    display: block;
+    font-size: 11px;
+}
+
+.stats small span {
+    float: right;
+}
+
+/* Unassigned */
+.stats-1 a ,
+.stats-1 a small:before { background-color: #575e5c; }
+/* Estimating  */
+.stats-2 a ,
+.stats-2 a small:before { background-color: #464b4a; }
+/* Submitted */
+.stats-3 a ,
+.stats-3 a small:before { background-color: #aec3d0; }
+/* In Progress */
+.stats-4 a ,
+.stats-4 a small:before { background-color: #7d9fb3; } 
+/* Deferred */
+.stats-5 a ,
+.stats-5 a small:before { background-color: #5c87a0; } 
+/* Pending*/
+.stats-6 a ,
+.stats-6 a small:before { background-color: #4a6c80; }
+/* lost*/
+.stats-7 a ,
+.stats-7 a small:before { background-color: #b93d30; }
+/* Completed */
+.stats-8 a ,
+.stats-8 a small:before { background-color: #3e9d8a ; }
+/* Invoiced */
+.stats-10 a ,
+.stats-10 a small:before { background-color: #0e856d; }
+/* Paid */
+.stats-11 a ,
+.stats-11 a small:before { background-color: #0b6a57; }
+/* Archived */
+.stats-12 a ,
+.stats-12 a small:before { background-color: #e74c3c; }
+
+
+
 /* suppliers pin arrow position */
 .pinArrow {
     display: inline-block;
