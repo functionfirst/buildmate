@@ -220,12 +220,12 @@ a:hover,
 /* dashboard stats */
 
 .stats {
-    margin: 0 0 10px;
+    margin: 0;
     padding: 0;
     list-style: none;
 }
 .stats li+li {
-    margin-top: 1px;
+    margin-top: 2px;
 }
 
 .stats a {
@@ -234,8 +234,7 @@ a:hover,
     font-size: 24px;
     background: #f8f8f8;
     color: #333;
-    padding: 8px 8px 8px 30px;
-    zoom: 1;
+    padding: 8px 8px 4px 34px;
     -webkit-border-radius:  3px;
     -moz-border-radius:     3px;
     border-radius:          3px;
@@ -247,16 +246,17 @@ a:hover,
     content : " ";
     position: absolute;
     left: 10px;
-    top: 20px;
+    top: 18px;
+    border: 3px solid #ddd;
     height: 10px;
     width: 10px;
-    -webkit-border-radius:  5px;
-    -moz-border-radius:     5px;
-    border-radius:          5px;
+    -webkit-border-radius:  10px;
+    -moz-border-radius:     10px;
+    border-radius:          10px;
 }
+
 .stats a:hover {
-	filter: alpha(opacity=80);
-	opacity: 0.8;
+    background-color: #eee;
 }
 
 .stats small {
@@ -269,27 +269,27 @@ a:hover,
 }
 
 /* Unassigned */
-.stats-1 a small:before { background-color: #575e5c; }
+.stats-1 a small:before { border-color: #575e5c; }
 /* Estimating  */
-.stats-2 a small:before { background-color: #464b4a; }
+.stats-2 a small:before { border-color: #464b4a; }
 /* Submitted */
-.stats-3 a small:before { background-color: #aec3d0; }
+.stats-3 a small:before { border-color: #aec3d0; }
 /* In Progress */
-.stats-4 a small:before { background-color: #7d9fb3; } 
+.stats-4 a small:before { border-color: #7d9fb3; } 
 /* Deferred */
-.stats-5 a small:before { background-color: #5c87a0; } 
+.stats-5 a small:before { border-color: #5c87a0; } 
 /* Pending*/
-.stats-6 a small:before { background-color: #4a6c80; }
+.stats-6 a small:before { border-color: #4a6c80; }
 /* lost*/
-.stats-7 a small:before { background-color: #b93d30; }
+.stats-7 a small:before { border-color: #b93d30; }
 /* Completed */
-.stats-8 a small:before { background-color: #3e9d8a ; }
+.stats-8 a small:before { border-color: #3e9d8a ; }
 /* Invoiced */
-.stats-10 a small:before { background-color: #0e856d; }
-/* Paid 
-.stats-11 a small:before { background-color: #0b6a57; }
+.stats-10 a small:before { border-color: #0e856d; }
+/* Paid */
+.stats-11 a small:before { border-color: #0b6a57; }
 /* Archived */
-.stats-12 a small:before { background-color: #e74c3c; }
+.stats-12 a small:before { border-color: #e74c3c; }
 
 
 

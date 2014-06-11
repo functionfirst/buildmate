@@ -200,7 +200,7 @@
                     </asp:Repeater>
                 </ul>
     
-                <telerik:RadGrid ID="rgStatistics" runat="server"
+                <telerik:RadGrid ID="rgStatistics" runat="server" Visible="false" Enabled="false"
                     DataSourceID="statisticsDataSource" GridLines="None">
                     <MasterTableView
                         NoMasterRecordsText="&nbsp;No projects available"
