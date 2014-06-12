@@ -168,39 +168,7 @@
             <h3>Statistics</h3>
 
             <div class="boxcontent">
-                <ul class="stats">
-                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="statisticsDataSource">
-                        <ItemTemplate>
-                            <li class="stats-<%#Eval("projectStatusId") %>">
-                                <a href="/projects.aspx?status=<%# Eval("projectStatusId")%>">
-                                    <%#Eval("totalCount") %>
-                                    <small>
-                                        <%#Eval("status") %>
-                                        <span><%# DataBinder.Eval(Container.DataItem, "totalValue", "{0:C2}") %></span>
-                                    </small>
-                                </a>
-                            </li>
-                        </ItemTemplate>
-                        <FooterTemplate>
-         
-                        </FooterTemplate>
-                    </asp:Repeater>
-
-                    <asp:Repeater ID="Repeater3" runat="server" DataSourceID="archivedProjects">
-                        <ItemTemplate>
-                            <li class="stats-12">
-                                <a href="projects.aspx#archived">
-                                    <%#Eval("totalCount")%>
-                                    <small>
-                                        Archived
-                                    </small>
-                                </a>
-                            </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </ul>
-    
-                <telerik:RadGrid ID="rgStatistics" runat="server" Visible="false" Enabled="false"
+                <telerik:RadGrid ID="rgStatistics" runat="server"
                     DataSourceID="statisticsDataSource" GridLines="None">
                     <MasterTableView
                         NoMasterRecordsText="&nbsp;No projects available"
@@ -246,6 +214,25 @@
                     </MasterTableView>
                 </telerik:RadGrid>
     
+                <br />
+
+                <asp:Repeater ID="Repeater3" runat="server" DataSourceID="archivedProjects">
+                    <ItemTemplate>
+                        <table class="table" width="100%" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th class="leftalign">Archived</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="projects.aspx#archived"><%#Eval("totalCount")%> projects</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ItemTemplate>
+                </asp:Repeater>
+
                 <br />
         
                 <asp:FormView ID="fvStatistics" runat="server" DataSourceID="analysisDataSource" Width="100%">
