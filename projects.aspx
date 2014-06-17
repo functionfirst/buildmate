@@ -99,7 +99,7 @@
                 runat="server"
                 Text="clear" />
 
-          <div id="advSearch" class="search">
+          <div id="advSearch" class="advanced-search">
                     <div class="panel">
                         <div class="row">
                             <asp:Label ID="Label2" CssClass="label" runat="server" AssociatedControlID="rcbStatus" Text="Project Status" />
