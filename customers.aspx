@@ -45,6 +45,7 @@
             <asp:FormView
                 ID="fvCustomerInsert"
                 runat="server"
+                Width="100%"
                 DataSourceId="insertCustomerDataSource"
                 DefaultMode="Insert"
                 DataKeyNames="id">

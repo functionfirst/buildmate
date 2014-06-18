@@ -168,7 +168,6 @@
             <h3>Statistics</h3>
 
             <div class="boxcontent">
-    
                 <telerik:RadGrid ID="rgStatistics" runat="server"
                     DataSourceID="statisticsDataSource" GridLines="None">
                     <MasterTableView
@@ -215,6 +214,25 @@
                     </MasterTableView>
                 </telerik:RadGrid>
     
+                <br />
+
+                <asp:Repeater ID="Repeater3" runat="server" DataSourceID="archivedProjects">
+                    <ItemTemplate>
+                        <table class="table" width="100%" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th class="leftalign">Archived</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="projects.aspx#archived"><%#Eval("totalCount")%> projects</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </ItemTemplate>
+                </asp:Repeater>
+
                 <br />
         
                 <asp:FormView ID="fvStatistics" runat="server" DataSourceID="analysisDataSource" Width="100%">
@@ -321,6 +339,14 @@
         <SelectParameters>
             <asp:SessionParameter Name="userId" SessionField="userId" />
             <asp:ControlParameter Name="days" ControlID="rcbDays" PropertyName="SelectedValue"  />
+        </SelectParameters>
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="archivedProjects" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
+        SelectCommand="SELECT count(id) as totalCount FROM Project WHERE userid = @userId and archived = 1">
+        <SelectParameters>
+            <asp:SessionParameter Name="userId" SessionField="userId" />
         </SelectParameters>
     </asp:SqlDataSource>
     

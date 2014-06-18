@@ -175,65 +175,50 @@ a:hover,
 }
 
 /* advanced search */
-.search {
-    position: relative;
+.search-box {
+    margin: 0 0 10px;
+}
+.advanced-search {
+    position: absolute;
     border: 1px solid transparent;
     padding: 5px;
     width: 310px;
+    display: none;
+    background: #fff;
+
+    -webkit-box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+    -moz-box-shadow:    0 5px 12px rgba(0,0,0,0.2);
+    box-shadow:         0 5px 12px rgba(0,0,0,0.2);
 }
 .toggleSearch {
-    line-height: 16px;
-    height: 16px;
-    margin: 0;
-}
-.toggleSearch span {
-    background: url(../images/toggle.gif) no-repeat 1px 1px;
-    display: block;
-    height: 16px;
-    width: 16px;
-    float: left;
-    margin: 6px 6px 0 0;
-}
-
-.search .panel {
-    display: none;
-    width: 310px;
-    padding: 10px;
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-    left: -1px;
     position: absolute;
-    z-index: 2;
-    border-top: 0;
-    -webkit-border-radius:  0 0 5px 5px;
-    -moz-border-radius:     0 0 5px 5px;
-    border-radius:          0 0 5px 5px;
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+    margin-left: -28px;
+}
+.toggleSearch span:before {
+    content : " ";
+    border-style: solid;
+    border-width: 5px;
+    border-color: #999 transparent transparent transparent;
+    margin-top: 8px;
+    margin-left: 5px;
+    position: absolute;
+}
+.toggleSearch:hover span:before {
+    border-top-color: #333;
 }
 
-.search .panel .label {
-    float: none;
-    width: 100%;
-    text-align: left;
+.search-box .button {
+    margin-left: 130px;
 }
-.search .row { margin: 0 0 5px 20px; }
-.search.active {
-    background: #f8f8f8;
-    border-color: #ddd;
-    -webkit-border-radius: 5px 5px 0 0;
-       -moz-border-radius: 5px 5px 0 0;
-            border-radius: 5px 5px 0 0;
-}
-.search.active .toggleSearch span {
-    background-position: 1px -16px;
-}
-.search.active .panel {
+.advanced-search.active {
     display: block;
 }
-.search .panel input[type='checkbox'] {
-    margin: 0 5px 0 0;
-}
-  
-    
+
+
+
 /* suppliers pin arrow position */
 .pinArrow {
     display: inline-block;

@@ -123,8 +123,10 @@ $(document).ready(function () {
     //});
 
     // show advanced search
-    $("body").on("click", ".toggleSearch", function () {
-        $(this).parent().toggleClass('active');
+    $("body").on("click", ".toggleSearch", function (e) {
+        e.preventDefault();
+        var target = $(this).attr('href');
+        $(target).toggleClass('active');
     });
 
     $('body').on('click', '.flash', function () {

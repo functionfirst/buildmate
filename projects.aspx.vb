@@ -27,7 +27,6 @@ Partial Class manager_Default
         rcbStatus.SelectedValue = 0
         rcbProjectType.SelectedIndex = 0
         rtbKeywords.Text = ""
-        cbArchived.Checked = False
 
         rdpStartDate.SelectedDate = Nothing
         rdpEndDate.SelectedDate = Nothing
@@ -62,13 +61,6 @@ Partial Class manager_Default
 
         ' check project status filter
         If rcbStatus.SelectedIndex > 0 Then filter += " AND projectStatusId = " & rcbStatus.SelectedValue
-
-        ' check archived filter
-        If cbArchived.Checked Then
-            filter = filter & " AND archived >= 0"
-        Else
-            filter = filter & " AND archived = 0"
-        End If
 
         addGroupingToGrid()
 
