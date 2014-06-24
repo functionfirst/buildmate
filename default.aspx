@@ -63,6 +63,8 @@
                     id="rgOverdueProjects"
                     runat="server"
                     EnableViewState="false"
+                    AllowPaging="true"
+                    PageSize="10"
                     DatasourceId="overdueDataSource"
                     Gridlines="None">
                     <MasterTableView
@@ -130,6 +132,8 @@
                 <telerik:radgrid
                     id="rgPendingProjects"
                     runat="server"
+                    AllowPaging="true"
+                    PageSize="10"
                     datasourceid="pendingDataSource"
                     gridlines="None">
                     <MasterTableView
