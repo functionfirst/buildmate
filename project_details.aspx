@@ -30,18 +30,6 @@
     line-height: 14px;
 }
 </style>
-
-<script type="text/javascript">
-    function checkVariationMode(item) {
-        var currentStatus = $("#ctl00_MainContent_FormView1_hiddenStatusId").val();
-        var newStatus = item._value;
-        if (currentStatus <= 2 && newStatus >= 3) {
-            showVariationMode();
-        } else {
-            hideVariationMode();
-        }
-    }
-</script>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="Server">
@@ -459,6 +447,7 @@
  
         <div class="div25">
             <asp:FormView ID="fvProjectCosts" runat="server"
+                Width="100%"
                 DataSourceID="projectCostDataSource">
  
                 <ItemTemplate>
