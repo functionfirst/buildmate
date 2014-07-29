@@ -73,7 +73,7 @@
         <div class="breadcrumb-container">
             <ul class="breadcrumb-options">
                 <li>
-                    <a href="add_project.aspx" class="button button-create">New Project</a>
+                    <a href="add_project.aspx" class="button button-create" data-step="1" data-intro="Click to create your project" data-position="left">New Project</a>
                 </li>
             </ul>
 
@@ -89,11 +89,13 @@
         <telerik:RadTextBox
             ID="rtbKeywords"
             runat="server"
+            data-step="3"
+            data-intro="Search your active projects"
             CssClass="searchInput"
             EmptyMessage="Search by project name or description"
             Width="310px" />
                 
-        <a href="#advSearch" class="toggleSearch"><span></span></a>
+        <a href="#advSearch" class="toggleSearch" data-step="4" data-intro="Advanced search options"><span></span></a>
             <asp:LinkButton
                 ID="btnRemoveFilter"
                 runat="server"
@@ -148,8 +150,8 @@
 
          <div class="tabs">
             <ul class="tab-nav">
-                <li class="active"><a href="#currentProjects" id="currentTabLink">Current Projects</a></li>
-                <li><a href="#archived" id="archiveTabLink">Archived</a></li>
+                <li class="active" data-step="1" data-intro="View a list of your active projects"><a href="#currentProjects" id="currentTabLink">Current Projects</a></li>
+                <li data-step="2" data-intro="View a list of your archived projects"><a href="#archived" id="archiveTabLink">Archived</a></li>
             </ul>
             
             <div class="tab-container tab-container-active" id="currentProjects">
