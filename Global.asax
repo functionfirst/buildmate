@@ -11,12 +11,6 @@
         Application.Add("paypalUser", "alan_1345295613_biz_api1.functionfirst.co.uk")
         Application.Add("paypalPwd", "1345295653")
         Application.Add("paypalSignature", "ARXIhtcX7pMA7.bx2ERwIEeOnZnxAppM9Z63ZNdnJQJwyIDewS.RUztt")
-        
-        RouteTable.Routes.MapHttpRoute("API", "api/{controller}/{action}", New With {.id = System.Web.Http.RouteParameter.Optional})
-        
-
-        GlobalConfiguration.Configuration.Formatters.Clear()
-        GlobalConfiguration.Configuration.Formatters.Add(New System.Net.Http.Formatting.JsonMediaTypeFormatter())
     End Sub
  
     Sub Application_End(ByVal sender As Object, ByVal e As EventArgs)
