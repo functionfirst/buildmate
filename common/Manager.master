@@ -189,16 +189,32 @@
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
     
-    <script type="text/javascript">
-        var _mfq = _mfq || [];
+        <!-- mouseflow -->
+        <script type="text/javascript">
+            var _mfq = _mfq || [];
 
-        _mfq.push(["setVariable", "email", "<%= user_email %>"]);
+            _mfq.push(["setVariable", "email", "<%= user_email %>"]);
 
-        (function () {
-            var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
-            mf.src = "//cdn.mouseflow.com/projects/14253c8b-9914-4c12-9ff3-e5e56ce2c250.js";
-            document.getElementsByTagName("head")[0].appendChild(mf);
-        })();
-    </script>
+            (function () {
+                var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+                mf.src = "//cdn.mouseflow.com/projects/14253c8b-9914-4c12-9ff3-e5e56ce2c250.js";
+                document.getElementsByTagName("head")[0].appendChild(mf);
+            })();
+        </script>
+
+        <!-- Begin Inspectlet Embed Code -->
+        <script type="text/javascript" id="inspectletjs">
+            window.__insp = window.__insp || [];
+            __insp.push(['wid', 1587999144]);
+            (function () {
+                function __ldinsp() { var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); }
+                if (window.attachEvent) {
+                    window.attachEvent('onload', __ldinsp);
+                } else {
+                    window.addEventListener('load', __ldinsp, false);
+                }
+            })();
+        </script>
+        <!-- End Inspectlet Embed Code -->
     </body>
 </html>
