@@ -18,7 +18,7 @@ Partial Class login
 
     Function CreateMessage() As System.Net.Mail.MailMessage
         Dim md As MailDefinition = New MailDefinition
-        md.BodyFileName = "~/email_templates/NewAccount.txt"
+        md.BodyFileName = "~/email_templates/NewAccount.html"
         md.From = "Buildmate<support@buildmateapp.com>"
         md.IsBodyHtml = True
         md.Subject = "[Buildmate] New User Sign-up"

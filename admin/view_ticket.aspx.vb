@@ -10,7 +10,7 @@ Partial Class view_ticket
         updateSupportTicket(True)
 
         ' send an email notification to the user
-        sendNotification("support_closed.txt", "")
+        sendNotification("SupportClosed.html", "")
     End Sub
 
     Protected Sub btnOpen_OnClick()
@@ -18,7 +18,7 @@ Partial Class view_ticket
         updateSupportTicket(False)
 
         ' send email notification to the user
-        sendNotification("support_opened.txt", "")
+        sendNotification("SupportOpened.html", "")
     End Sub
 
     Protected Sub updateSupportTicket(ByVal isLocked As Boolean)
@@ -50,7 +50,7 @@ Partial Class view_ticket
         dbCon.Close()
 
         ' send email notification to the user
-        sendNotification("support_reply.txt", rtbReplyContent.Text)
+        sendNotification("SupportReply.html", rtbReplyContent.Text)
 
         ' reset/reload
         rtbReplyContent.Text = ""

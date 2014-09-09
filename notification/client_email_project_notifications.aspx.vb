@@ -1,12 +1,16 @@
 Imports System.Data.SqlClient
 Imports System.Data
 Imports System.Net.Mail
+Imports FollowupEmail
 
 Partial Class services_client_email_project_notifications
     Inherits System.Web.UI.Page
 
+    Dim followup As FollowupEmail = New FollowupEmail
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         getSubscriberList()
+        followup.Send()
     End Sub
 
     Protected Sub getSubscriberList()
@@ -168,7 +172,7 @@ Partial Class services_client_email_project_notifications
 
     Function CreateMessage(ByVal toAddr As String, ByVal firstName As String, ByVal bodyText As String, ByVal token As String) As System.Net.Mail.MailMessage
         Dim md As MailDefinition = New MailDefinition
-        md.BodyFileName = "~/email_templates/DailyDigest.txt"
+        md.BodyFileName = "~/email_templates/DailyDigest.html"
         md.From = "support@buildmateapp.com"
         md.Subject = "[Buildmate] - Daily Digest"
         md.Priority = MailPriority.Normal

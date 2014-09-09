@@ -356,7 +356,7 @@
                         <div class="row">Your password has been changed!</div>
                     </SuccessTemplate>
                     <MailDefinition
-                        BodyFileName="~/email_templates/PasswordChanged.txt"
+                        BodyFileName="~/email_templates/PasswordChanged.html"
                         From="support@buildmateapp.com"
                         IsBodyHtml="true"
                         Subject="[Buildmate] Your password has been changed"
