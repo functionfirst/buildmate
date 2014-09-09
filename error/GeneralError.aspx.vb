@@ -20,7 +20,7 @@ Partial Class error_GeneralError
             Const Subject As String = "[Buildmate] - Error Report"
 
             Dim md As MailDefinition = New MailDefinition
-            md.BodyFileName = "~/error/email_error.txt"
+            md.BodyFileName = "~/email_templates/Error.html"
             md.From = FromAddress
             md.Subject = Subject
             md.Priority = MailPriority.Normal

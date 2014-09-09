@@ -105,7 +105,7 @@
                     From="support@buildmateapp.com"
                     Subject="[Buildmate] Password Confirmation"
                     IsBodyHtml="true"
-                    BodyFileName="~/email_templates/RecoverPassword.txt" />
+                    BodyFileName="~/email_templates/RecoverPassword.html" />
             </asp:PasswordRecovery>
         </telerik:RadAjaxPanel>
 
