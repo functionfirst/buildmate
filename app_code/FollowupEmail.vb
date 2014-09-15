@@ -2,6 +2,7 @@
 Imports System.Net.Mail
 Imports System.Data.SqlClient
 Imports System.Data
+Imports System.Diagnostics
 
 Public Class FollowupEmail
 
@@ -25,15 +26,15 @@ Public Class FollowupEmail
 
             For Each dr In dataTable.Rows
                 Dim Userid As String = dr("UserId").ToString()
-                Dim firstName As String = dr("firstname")
-                Dim email As String = dr("email")
+                Dim firstName As String = dr("firstname").ToString()
+                Dim email As String = dr("email").ToString()
 
-                    ' email the daily digest for this user
+                ' email the daily digest for this user
                 SendMessage(email, firstName, Userid)
             Next
         Catch ex As Exception
-                'Trace.Write(ex.ToString)
-            End Try
+            Trace.Write(ex.ToString)
+        End Try
     End Sub
 
     Protected Sub SendMessage(ByVal toAddr As String, ByVal firstName As String, ByVal userid As String)
@@ -45,7 +46,7 @@ Public Class FollowupEmail
                 sc = New SmtpClient()
                 sc.Send(msg)
 
-                FollowupSent(userId)
+                FollowupSent(userid)
             Catch ex As Exception
                 ' do nothing
             End Try
@@ -63,7 +64,7 @@ Public Class FollowupEmail
         Dim replacements As ListDictionary = New ListDictionary
         replacements.Add("<% Firstname %>", firstName)
         Dim fileMsg As System.Net.Mail.MailMessage
-        fileMsg = md.CreateMailMessage(toAddr, replacements, Me)
+        fileMsg = md.CreateMailMessage(toAddr, replacements, New System.Web.UI.Control)
         Return fileMsg
     End Function
 
