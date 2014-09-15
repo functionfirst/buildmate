@@ -102,7 +102,7 @@
                 From="support@buildmateapp.com"
                 Subject="[Buildmate] Welcome to Buildmate"
                 IsBodyHtml="true"
-                BodyFileName="~/email_templates/Welcome.txt" />
+                BodyFileName="~/email_templates/Welcome.html" />
         </asp:CreateUserWizard>
     </asp:Panel>
 </asp:Content>
