@@ -56,7 +56,7 @@ Public Class FollowupEmail
     Protected Function CreateMessage(ByVal toAddr As String, ByVal firstName As String) As System.Net.Mail.MailMessage
         Dim md As MailDefinition = New MailDefinition
         md.BodyFileName = "~/email_templates/Followup.html"
-        md.From = "support@buildmateapp.com"
+        md.From = "steve@buildmateapp.com"
         md.Subject = "[Buildmate] - Introduction"
         md.Priority = MailPriority.Normal
         md.IsBodyHtml = True
