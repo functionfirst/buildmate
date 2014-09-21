@@ -16,10 +16,6 @@ function setHelp(el) {
 }
 
 $(document).ready(function () {
-    // tour
-    introJs().start();
-
-
     // open the related modal window
     // pass the div id as the rel attribute
     $('body').on('click', '.js-open-modal', function () {
