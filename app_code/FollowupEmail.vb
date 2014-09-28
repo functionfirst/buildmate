@@ -15,6 +15,7 @@ Public Class FollowupEmail
             " FROM aspnet_Membership" & _
             " LEFT JOIN UserProfile ON aspnet_Membership.UserId = UserProfile.userid" & _
             " WHERE aspnet_Membership.Email Is Not null" & _
+            " AND datediff(DD, createDate, getdate()) > 1" & _
             " AND notifyByEmail=1" & _
             " AND NOT EXISTS(" & _
             " 	SELECT * FROM EmailNotification WHERE userid = aspnet_Membership.UserId AND EmailType='FOLLOWUP'" & _
