@@ -143,27 +143,4 @@
         runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="getResourceTypes" SelectCommandType="StoredProcedure" />
-    
-</asp:Content>
-
-
-<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <h1>Resources <span>Take a Tour</span></h1>
-
-    <div class="tour-nav" data-tour="menu">
-        <ul>
-            <li class="active"><a href="#" data-tab="step1">1. Introduction</a></li>
-            <li><a href="#" data-tab="step2">2. Adding Resources</a></li>
-        </ul>
-    </div>
-
-    <div class="tour-content">
-        <div data-target="step1">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/lFoRphIIcmQ" frameborder="0" allowfullscreen></iframe>
-        </div>
-                
-        <div data-target="step2" class="hide">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/HZVaNAClGGg" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
 </asp:Content>

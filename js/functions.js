@@ -1,20 +1,5 @@
 var mside = false; // initialise mouse-inside
 
-
-var tour = {
-    show: function () {
-        toggleVisibility('body', 'show-tour', true);
-    },
-    hide: function () {
-        toggleVisibility('body', 'show-tour', false);
-    }
-}
-
-// ajax call to set the account help flag
-function setHelp(el) {
-    $.get("settings.aspx?help=" + $(el.target).prop("checked"));
-}
-
 $(document).ready(function () {
     // open the related modal window
     // pass the div id as the rel attribute
@@ -23,26 +8,6 @@ $(document).ready(function () {
         $('body, '+ target).addClass('md-show');
         return false;
     });
-
-    // tour block - close button or modal
-    $('body').on('click', '.md-wrapper, a[data-tour="close"]', function () {
-        tour.hide();
-    });
-
-
-    // change help settings when checkbox changes
-    $('#ctl00_cbHelp').change(setHelp);
-
-    // disable tour button if a tour doesn't exist on this page
-    if ($('.tour-content').length === 0) {
-        $('a[data-tour="play"]').attr('disabled', 'disabled').unbind('click');
-    } else {
-        // tour block - 'play' tour button
-        $('body').on('click', 'a[data-tour="play"]', function () {
-            tour.show();
-            return false;
-        });
-    }
 
     // tabs for tour
     $('[data-tour="menu"]').find('a[data-tab]').click(function () {
@@ -117,10 +82,6 @@ $(document).ready(function () {
     $(".openVariatonMode").click(function () {
         $("#variationMode").toggleClass("active");
     });
-
-    //$(".notice").on("click", function () {
-    //    $(this).fadeOut();
-    //});
 
     // show advanced search
     $("body").on("click", ".toggleSearch", function (e) {

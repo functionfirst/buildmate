@@ -98,8 +98,14 @@
                                 <li><a href="/customers.aspx?action=add_customer">Add a Customer</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx">Suppliers</asp:HyperLink>
+                        <li class="nav-options" data-target="suppliers">
+                            <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx" class="toggle-options" data-toggle-menu="suppliers">Suppliers</asp:HyperLink>
+
+                            <ul>
+                                <li class="nav-header">Suppliers</li>
+                                <li><a href="/suppliers.aspx">View all Supploers</a></li>
+                                <li><a href="/suppliers.aspx?action=add_supplier">Add a Supplier</a></li>
+                            </ul>
                         </li>
                         <li>
                             <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx">Resources</asp:HyperLink>
@@ -131,18 +137,6 @@
             
         <div class="md-wrapper" title="Click or press Esc to cancel"></div>
 
-        <div class="tour-inner">
-            <a href="#" class="close" data-tour="close">&times;</a>
-
-            <label class="tour-checkbox">
-                <asp:CheckBox ID="cbHelp" runat="server" />
-                Show video help
-                <small>This will display the pop-up help videos automatically.</small>
-            </label>
-            
-            <asp:ContentPlaceHolder id="Sidebar" runat="server"></asp:ContentPlaceHolder>
-        </div>
-
         <div id="variationMode" class="variationMode">
             <a href="#" class="openVariatonMode" title="You are in Variation Mode"><span>Variation Mode</span></a>
             <div>
@@ -165,8 +159,6 @@
             </div>
         </div>
 
-        <asp:HiddenField ID="hfTour" runat="server" Value="0" />
-
         <asp:SqlDataSource ID="recentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
             SelectCommand="SELECT TOP 5 id, projectName, modified_at FROM Project WHERE userid = @UserId ORDER BY modified_at DESC">
             <SelectParameters>
@@ -177,20 +169,6 @@
         <!-- js -->
         <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
         <script type="text/javascript" src="/js/functions.js"></script>
-
-        <telerik:RadCodeBlock ID="rcbLaunchHelp" runat="server">
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    var hideTour = document.getElementById('<%= hfTour.ClientId %>');
-                    if (hideTour.value == 1) {
-                        $('a[data-tour="play"]').click();
-                    }
-                });
-                <%--function AjaxReq(args) {
-                    $find("<%= RadAjaxPanel1.ClientID %>").ajaxRequestWithTarget("<%= Button1.UniqueID %>", '');
-                }--%>
-            </script>
-        </telerik:RadCodeBlock>
     </form>
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>

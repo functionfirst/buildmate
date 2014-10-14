@@ -355,34 +355,3 @@
         SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
  </asp:Content>
-
-<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-<h1>Projects <span>Take a Tour</span></h1>
-
-<div class="tour-nav" data-tour="menu">
-    <ul>
-        <li class="active"><a href="#" data-tab="step1">1. Introduction</a></li>
-        <li><a href="#" data-tab="step2">2. Creating Projects</a></li>
-        <li><a href="#" data-tab="step3">3. Build Elements</a></li>
-        <li><a href="#" data-tab="step4">4. Tasks</a></li>
-    </ul>
-</div>
-
-<div class="tour-content">
-    <div data-target="step1">
-        <iframe width="640" height="480" src="//www.youtube.com/embed/oB15uiihBO4" frameborder="0" allowfullscreen></iframe>
-    </div>
-                
-    <div data-target="step2" class="hide">
-        <iframe width="640" height="480" src="//www.youtube.com/embed/vR0tY0_HuhE" frameborder="0" allowfullscreen></iframe>
-    </div>
-                
-    <div data-target="step3" class="hide">
-        <iframe width="640" height="480" src="//www.youtube.com/embed/V40sfqKKmEU" frameborder="0" allowfullscreen></iframe>
-    </div>
-                
-    <div data-target="step4" class="hide">
-        <iframe width="640" height="480" src="//www.youtube.com/embed/w7qJyXVeSBA" frameborder="0" allowfullscreen></iframe>
-    </div>
-</div>
-</asp:Content>

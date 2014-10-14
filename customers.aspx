@@ -262,19 +262,3 @@
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="getProjectPaymentTerms" /> 
 </asp:Content>
-
-
-<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-    <h1>Customers <span>Take a Tour</span></h1>
-
-    <div class="tour-nav" data-tour="menu">
-        <ul>
-            <li class="active"><a href="#" data-tab="step1">1. Customers</a>
-        </ul>
-    </div>
-    <div class="tour-content">
-        <div data-target="step1">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/KqLtuhRMCmA" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-</asp:Content>

@@ -11,7 +11,6 @@ Partial Class manager_Default
 
     Protected Sub addCustomerShortcut()
         Dim action As String = Request.QueryString("action")
-        Trace.Write(action)
         If action = "add_customer" Then
             addCustomerScript.Visible = True
         End If

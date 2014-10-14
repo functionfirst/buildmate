@@ -368,35 +368,3 @@
         SelectCommand="getSystemNotifications" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
 </asp:Content>
-
-<asp:Content ID="SidebarContent" ContentPlaceHolderID="Sidebar" Runat="Server">
-
-    <h1>Dashboard <span>Take a Tour</span></h1>
-
-    <div class="tour-nav" data-tour="menu">
-        <ul>
-            <li class="active"><a href="#" data-tab="step1">1. Tour</a></li>
-            <li><a href="#" data-tab="step2">2. Dashboard</a></li>
-            <li><a href="#" data-tab="step3">3. Navigation</a></li>
-            <li><a href="#" data-tab="step4">4. Help</a></li>
-        </ul>
-    </div>
-
-    <div class="tour-content">
-        <div data-target="step1">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/As_8TH8wwHM" frameborder="0" allowfullscreen></iframe>
-        </div>
-                
-        <div data-target="step2" class="hide">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/WS9IRaYryg8" frameborder="0" allowfullscreen></iframe>
-        </div>
-
-        <div data-target="step3" class="hide">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
-        </div>
-
-        <div data-target="step4" class="hide">
-            <iframe width="640" height="480" src="//www.youtube.com/embed/5VdfodBie2o" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-</asp:Content>
