@@ -92,8 +92,6 @@ Partial Class Manager
                     Session("email") = reader("email").ToString
                     Session("vatnumber") = reader("vatnumber").ToString
                     user_email = Session("email")
-
-                    lblFirstname.Text = Session("name").ToString
                 End While
 
             Catch ex As Exception
