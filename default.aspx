@@ -3,15 +3,6 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
-    <script>
-        setTimeout(function () {
-            $('body').addClass('show-toggle-help');
-
-            $('.toggle-help').hover(function () {
-                $('body').removeClass('show-toggle-help');
-            })
-        }, 4000);
-    </script>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">
