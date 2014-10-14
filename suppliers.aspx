@@ -3,6 +3,13 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
+    <asp:Panel ID="addSupplierScript" runat="server" Visible="false">
+        <script>
+            $(document).ready(function () {
+                $('.js-open-modal').click();
+            });
+        </script>
+    </asp:Panel>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -43,6 +50,7 @@
             
             <asp:FormView ID="fvSupplierInsert" runat="server"
                 DataSourceId="insertSupplierDataSource"
+                Width="100%"
                 DataKeyNames="id"
                 DefaultMode="Insert">
                 <InsertItemTemplate>

@@ -140,7 +140,17 @@ Partial Class manager_Default
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlSuppliers"), HyperLink)
         activeLink.CssClass = "active"
+
+        addSupplierShortcut()
     End Sub
+
+    Protected Sub addSupplierShortcut()
+        Dim action As String = Request.QueryString("action")
+        If action = "add_supplier" Then
+            addSupplierScript.Visible = True
+        End If
+    End Sub
+
 
     Protected Sub fvSupplierInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvSupplierInsert.ItemInserted
         rgSuppliers.DataBind()
