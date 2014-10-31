@@ -21,7 +21,7 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-
+    f
 <body id="app">  
     <form runat="server" id="form1">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -58,54 +58,18 @@
                 <div class="brand">Buildmate</div>
 
                 <div class="nav">
-                    <ul class="nav-options nav-options-right" data-target="options">
-                        <li>
-                            <a href="#" class="toggle-help" data-tour="play"><span></span></a>
-                        </li>
-                    </ul>
-
                     <ul runat="server" id="nav" class="nav-main">
                         <li>
-                            <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/"><span></span>Dashboard</asp:HyperLink>
+                            <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/">Dashboard</asp:HyperLink>
                         </li>
-                        <li class="nav-options" data-target="projects">
-                            <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx" class="toggle-options" data-toggle-menu="projects">Projects</asp:HyperLink>
-                            <ul>
-                                <li class="nav-header">Projects</li>
-                                <li><a href="/projects.aspx">View all Projects</a></li>
-                                <li><a href="/add_project.aspx">Add a Project</a></li>
-
-                                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="recentDataSource">
-                                    <HeaderTemplate>
-                                        <li class="nav-header"">Recent Projects</li>
-                                    </HeaderTemplate>
-                                    <ItemTemplate>
-                                        <li>
-                                            <a href="<%# DataBinder.Eval(Container.DataItem, "id", "/project_details.aspx?pid={0}")%>"><%#eval("projectName") %>
-                                                <small><%# DataBinder.Eval(Container.DataItem, "modified_at", "{0:d MMM yyyy}")%></small>
-                                            </a>
-                                        </li>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </ul>
+                        <li class="nav-options">
+                            <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx">Projects</asp:HyperLink>
                         </li>
-                        <li class="nav-options" data-target="customers">
-                            <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx" class="toggle-options" data-toggle-menu="customers">Customers</asp:HyperLink>
-
-                            <ul>
-                                <li class="nav-header">Customers</li>
-                                <li><a href="/customers.aspx">View all Customers</a></li>
-                                <li><a href="/customers.aspx?action=add_customer">Add a Customer</a></li>
-                            </ul>
+                        <li class="nav-options">
+                            <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx">Customers</asp:HyperLink>
                         </li>
-                        <li class="nav-options" data-target="suppliers">
-                            <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx" class="toggle-options" data-toggle-menu="suppliers">Suppliers</asp:HyperLink>
-
-                            <ul>
-                                <li class="nav-header">Suppliers</li>
-                                <li><a href="/suppliers.aspx">View all Supploers</a></li>
-                                <li><a href="/suppliers.aspx?action=add_supplier">Add a Supplier</a></li>
-                            </ul>
+                        <li class="nav-options">
+                            <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx">Suppliers</asp:HyperLink>
                         </li>
                         <li>
                             <asp:HyperLink ID="hlResources" runat="server" NavigateUrl="~/resources.aspx">Resources</asp:HyperLink>
@@ -114,7 +78,7 @@
                             <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx">Support</asp:HyperLink>
                         </li>
                         <li class="nav-options" data-target="help">
-                            <a href="#" class="toggle-options" data-toggle-menu="help">Help</a>
+                            <a href="#" data-toggle-menu="help">Help</a>
 
                             <ul>
                                 <li class="nav-header">Help</li>
@@ -158,13 +122,6 @@
                 </ul>
             </div>
         </div>
-
-        <asp:SqlDataSource ID="recentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-            SelectCommand="SELECT TOP 5 id, projectName, modified_at FROM Project WHERE userid = @UserId ORDER BY modified_at DESC">
-            <SelectParameters>
-                <asp:SessionParameter Name="UserId" SessionField="userId" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         
         <!-- js -->
         <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
