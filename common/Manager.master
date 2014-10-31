@@ -21,7 +21,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-    f
 <body id="app">  
     <form runat="server" id="form1">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -62,13 +61,13 @@
                         <li>
                             <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/">Dashboard</asp:HyperLink>
                         </li>
-                        <li class="nav-options">
+                        <li>
                             <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx">Projects</asp:HyperLink>
                         </li>
-                        <li class="nav-options">
+                        <li>
                             <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx">Customers</asp:HyperLink>
                         </li>
-                        <li class="nav-options">
+                        <li>
                             <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx">Suppliers</asp:HyperLink>
                         </li>
                         <li>
@@ -77,7 +76,7 @@
                         <li>
                             <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx">Support</asp:HyperLink>
                         </li>
-                        <li class="nav-options" data-target="help">
+                        <li class="nav-menu" data-target="help">
                             <a href="#" data-toggle-menu="help">Help</a>
 
                             <ul>
