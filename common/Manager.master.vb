@@ -65,7 +65,7 @@ Partial Class Manager
             ' get user profile information
             Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
             Dim myConn As New SqlConnection(connString)
-            Dim cmd As SqlCommand = New SqlCommand("SELECT name, email, vatnumber, help, tooltips, subscription, paypalPayerId FROM UserProfile WHERE userId = @userId", myConn)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT name, email, vatnumber, help, tourPhase, tooltips, subscription, paypalPayerId FROM UserProfile WHERE userId = @userId", myConn)
             cmd.Parameters.AddWithValue("@userId", userId)
             Dim reader As SqlDataReader
 
@@ -80,6 +80,7 @@ Partial Class Manager
                     Session("paypalPayerId") = reader("paypalPayerId").ToString
                     paypalPayerId = Session("paypalPayerId").ToString
                     Session("name") = reader("name").ToString
+                    Session("tourPhase") = reader("tourPhase").ToString
                     Session("email") = reader("email").ToString
                     Session("vatnumber") = reader("vatnumber").ToString
                     user_email = Session("email")
@@ -89,6 +90,25 @@ Partial Class Manager
                 Trace.Write(ex.ToString)
                 myConn.Close()
             End Try
+        End If
+    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+        setTour()
+    End Sub
+
+    Protected Sub setTour()
+        ' Define the name and type of the client scripts on the page.
+        Dim csname1 As String = "TourScript"
+        Dim cstype As Type = Me.GetType()
+
+        ' Get a ClientScriptManager reference from the Page class.
+        Dim cs As ClientScriptManager = Page.ClientScript
+
+        ' Check to see if the startup script is already registered.
+        If (Not cs.IsStartupScriptRegistered(cstype, csname1)) Then
+            Dim cstext1 As String = "var tour = { current_phase : " + Session("tourPhase") + "};"
+            cs.RegisterStartupScript(cstype, csname1, cstext1, True)
         End If
     End Sub
 End Class

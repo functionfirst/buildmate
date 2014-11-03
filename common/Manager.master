@@ -51,11 +51,28 @@
             </p>
         </asp:Panel>
 
-        
         <div class="topbar">
             <div class="topbar-container">
                 <div class="brand">Buildmate</div>
+                <div class="nav nav-right">
+                    <ul class="nav-main">
+                        <li class="nav-menu" data-target="help">
+                            <a href="#" data-toggle-menu="help">Help</a>
 
+                            <ul>
+                                <li class="nav-header">Help</li>
+                                <li><a href="videos.aspx">How to Video's</a></li>
+                                <li><a target="_blank" href="http://getbuildmate.com/knowledgebase/">Knowledge Base</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlSettings" runat="server" NavigateUrl="~/settings.aspx">Settings</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlLogout" runat="server" NavigateUrl="~/logout.aspx">Logout</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
                 <div class="nav">
                     <ul runat="server" id="nav" class="nav-main">
                         <li>
@@ -75,21 +92,6 @@
                         </li>
                         <li>
                             <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support.aspx">Support</asp:HyperLink>
-                        </li>
-                        <li class="nav-menu" data-target="help">
-                            <a href="#" data-toggle-menu="help">Help</a>
-
-                            <ul>
-                                <li class="nav-header">Help</li>
-                                <li><a href="videos.aspx">How to Video's</a></li>
-                                <li><a target="_blank" href="http://getbuildmate.com/knowledgebase/">Knowledge Base</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="hlSettings" runat="server" NavigateUrl="~/settings.aspx">Settings</asp:HyperLink>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="hlLogout" runat="server" NavigateUrl="~/logout.aspx">Logout</asp:HyperLink>
                         </li>
                     </ul>
                 </div>
@@ -121,6 +123,7 @@
                 </ul>
             </div>
         </div>
+
         
         <!-- js -->
         <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>

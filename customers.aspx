@@ -27,16 +27,9 @@
                      <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlId="fvCustomerInsert">
-                <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="rgCustomers" />
-                     <telerik:AjaxUpdatedControl ControlID="fvCustomerInsert" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
-
-    
+  
     <!-- begin add customer -->
     <asp:Panel ID="addCustomer" runat="server" class="md-window">
         <div class="md-content">
@@ -52,6 +45,15 @@
                 <InsertItemTemplate>
                     <asp:Panel ID="pCustomerInsert" runat="server" DefaultButton="btnInsert">
                         <div class="md-details">
+
+                            <asp:Panel ID="pTour01" runat="server">
+                                <div class="tour-box">
+                                    <p>Enter your customer details in the form below. The <strong>*</strong> next to Name, Address and Postcode mean you must complete these boxes to continue.</p>
+                                    
+                                    <p>Once you've entered all of your customer information, click the <strong>Add Customer</strong> button at the bottom of the window.</p>
+                                </div>
+                            </asp:Panel>
+
                             <div class="row">
                                 <label for="rtbName" title="Name" class="label">Name*</label>
                     
@@ -156,77 +158,93 @@
     </div>
 
     <div class="main-container">
-        <asp:Panel ID="pCustomerSearch" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
-            <telerik:RadTextBox
-                ID="rtbFilter"
-                runat="server"
-                AutoPostBack="true"
-                CssClass="search-input"
-                EmptyMessage="Search by customer name or address"
-                Width="220px" />
+                    
+        <asp:Panel ID="pTour0" runat="server">
+            <div class="tour-box">
+                <h2>Customer Management</h2>
 
-            <asp:CheckBox
-                ID="cbArchived"
-                runat="server"
-                AutoPostBack="true"
-                Text="Include archived customers" />
+                <p>On this page you will manage all of your Customer information such as contact details and addresses. This is
+                    also where you'll add New Customers which is the next step on this Tour.</p>
 
-            <asp:Button
-                ID="btnApplyFilter"
-                runat="server"
-                CssClass="button button-primary"
-                Text="Apply Filters" />
-
-            <asp:LinkButton
-                    ID="btnRemoveFilter"
-                    runat="server"
-                    CssClass="button"
-                    Text="clear" />
+                <p>To add a Customer click the flashing green <strong>New Customer</strong> button to the top right of this page (This will pop open a new window).</p>
+            </div>
         </asp:Panel>
-    
-        <telerik:RadGrid
-            ID="rgCustomers"
-            runat="server"
-            EnableLinqExpressions="false"
-            DataSourceID="allCustomersDataSource"
-            AllowAutomaticDeletes="true"
-            AllowPaging="true"
-            EnableAJAX="True"
-            GridLines="None"
-            PageSize="20"
-            PagerStyle-Mode="NextPrev"
-            AutoGenerateColumns="false"
-            ShowStatusBar="true"
-            AllowSorting="true">
-            <MasterTableView
-                DataSourceID="allCustomersDataSource"
-                AutoGenerateColumns="False"
-                FilterExpression=""
-                GridLines="None"
-                DataKeyNames="id"
-                NoMasterRecordsText="&nbsp;You have not added any Customers yet.">
-                <Columns>
-                    <telerik:GridTemplateColumn UniqueName="name" HeaderText="Name" SortExpression="name">
-                        <ItemTemplate>
-                            <asp:HyperLink ID="HyperLink1" runat="server"
-                                NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("name") %></asp:HyperLink>
-                        </ItemTemplate>
-                    </telerik:GridTemplateColumn>
-                        
-                    <telerik:GridBoundColumn
-                        UniqueName="address"
-                        DataField="address"
-                        HeaderText="Address"
-                        SortExpression="address" />
 
-                    <telerik:GridBoundColumn
-                        DataField="postcode"
-                        HeaderText="Postcode" 
-                        SortExpression="postcode"
-                        UniqueName="postcode" />
-                </Columns>
-            </MasterTableView>
-        </telerik:RadGrid>
+
+        <asp:Panel ID="pMainPanel" runat="server" Visible="true">
+            <asp:Panel ID="pCustomerSearch" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
+                <telerik:RadTextBox
+                    ID="rtbFilter"
+                    runat="server"
+                    AutoPostBack="true"
+                    CssClass="search-input"
+                    EmptyMessage="Search by customer name or address"
+                    Width="220px" />
+
+                <asp:CheckBox
+                    ID="cbArchived"
+                    runat="server"
+                    AutoPostBack="true"
+                    Text="Include archived customers" />
+
+                <asp:Button
+                    ID="btnApplyFilter"
+                    runat="server"
+                    CssClass="button button-primary"
+                    Text="Apply Filters" />
+
+                <asp:LinkButton
+                        ID="btnRemoveFilter"
+                        runat="server"
+                        CssClass="button"
+                        Text="clear" />
+            </asp:Panel>
+    
+            <telerik:RadGrid
+                ID="rgCustomers"
+                runat="server"
+                EnableLinqExpressions="false"
+                DataSourceID="allCustomersDataSource"
+                AllowAutomaticDeletes="true"
+                AllowPaging="true"
+                EnableAJAX="True"
+                GridLines="None"
+                PageSize="20"
+                PagerStyle-Mode="NextPrev"
+                AutoGenerateColumns="false"
+                ShowStatusBar="true"
+                AllowSorting="true">
+                <MasterTableView
+                    DataSourceID="allCustomersDataSource"
+                    AutoGenerateColumns="False"
+                    FilterExpression=""
+                    GridLines="None"
+                    DataKeyNames="id"
+                    NoMasterRecordsText="&nbsp;You have not added any Customers yet.">
+                    <Columns>
+                        <telerik:GridTemplateColumn UniqueName="name" HeaderText="Name" SortExpression="name">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server"
+                                    NavigateUrl='<%#Eval("id", "~/customer_details.aspx?id={0}")%>'><%#Eval("name") %></asp:HyperLink>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        
+                        <telerik:GridBoundColumn
+                            UniqueName="address"
+                            DataField="address"
+                            HeaderText="Address"
+                            SortExpression="address" />
+
+                        <telerik:GridBoundColumn
+                            DataField="postcode"
+                            HeaderText="Postcode" 
+                            SortExpression="postcode"
+                            UniqueName="postcode" />
+                    </Columns>
+                </MasterTableView>
+            </telerik:RadGrid>
+
+        </asp:Panel>
     </div>
 
 

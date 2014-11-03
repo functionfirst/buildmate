@@ -56,6 +56,7 @@ Partial Class manager_Default
     End Sub
 
     Protected Sub fvCustomerInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvCustomerInsert.ItemInserted
-        rgCustomers.DataBind()
+        'rgCustomers.DataBind()
+        Response.Redirect("~/customers.aspx")
     End Sub
 End Class

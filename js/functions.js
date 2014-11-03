@@ -31,6 +31,7 @@ $(document).ready(function () {
         return false;
     });
 
+    var tour = getTour();
 
     // close options menu after clicking
     $('.options-icon').click(function () {
@@ -139,4 +140,16 @@ function validateModal() {
 
 function toggleVisibility(elem, klassName, set) {
     $(elem).toggleClass(klassName, set);
+}
+
+function getTour() {
+    $.ajax({
+        url: '/js/tour.js',
+        data : { phase : tour.phase },
+        success: function (callback) {
+            if (callback && typeof (callback) === "function") {
+                callback();
+            }
+        }
+    });
 }
