@@ -45,15 +45,6 @@
                 <InsertItemTemplate>
                     <asp:Panel ID="pCustomerInsert" runat="server" DefaultButton="btnInsert">
                         <div class="md-details">
-
-                            <asp:Panel ID="pTour01" runat="server">
-                                <div class="tour-box">
-                                    <p>Enter your customer details in the form below. The <strong>*</strong> next to Name, Address and Postcode mean you must complete these boxes to continue.</p>
-                                    
-                                    <p>Once you've entered all of your customer information, click the <strong>Add Customer</strong> button at the bottom of the window.</p>
-                                </div>
-                            </asp:Panel>
-
                             <div class="row">
                                 <label for="rtbName" title="Name" class="label">Name*</label>
                     
@@ -158,19 +149,6 @@
     </div>
 
     <div class="main-container">
-                    
-        <asp:Panel ID="pTour0" runat="server">
-            <div class="tour-box">
-                <h2>Customer Management</h2>
-
-                <p>On this page you will manage all of your Customer information such as contact details and addresses. This is
-                    also where you'll add New Customers which is the next step on this Tour.</p>
-
-                <p>To add a Customer click the flashing green <strong>New Customer</strong> button to the top right of this page (This will pop open a new window).</p>
-            </div>
-        </asp:Panel>
-
-
         <asp:Panel ID="pMainPanel" runat="server" Visible="true">
             <asp:Panel ID="pCustomerSearch" runat="server" DefaultButton="btnApplyFilter" CssClass="search-panel">
                 <telerik:RadTextBox

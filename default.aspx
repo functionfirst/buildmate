@@ -48,26 +48,6 @@
     </div>
 
     <div class="main-container">
-        
-    <asp:Panel ID="pTour0" runat="server">
-        <div class="tour-box">
-            <h2>Welcome to Buildmate</h2>
-
-            <p>To get started we're going to walk you through how to add your first Customer.</p>
-
-            <p>Click the <strong>Customers</strong> link above to begin.</p>
-        </div>
-    </asp:Panel>
-
-    <asp:Panel ID="pTour1" runat="server">
-        <div class="tour-box">
-            <h2>Creating Projects</h2>
-
-            <p>Now that you've successfully create a Customer the next step of the Tour will guide you through creating a Project.</p>
-
-            <p>Click the <strong>Projects</strong> link above to begin.</p>
-        </div>
-    </asp:Panel>
 
     <asp:Panel ID="pMainPanel" runat="server">
         <div class="div33">

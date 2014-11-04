@@ -97,6 +97,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 // check for the next unread notification
 function notificationCheck() {
     
@@ -143,13 +145,17 @@ function toggleVisibility(elem, klassName, set) {
 }
 
 function getTour() {
+    var uri = (tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.js';
     $.ajax({
-        url: '/js/tour.js',
-        data : { phase : tour.phase },
-        success: function (callback) {
-            if (callback && typeof (callback) === "function") {
-                callback();
-            }
+        url: 'tour/' + uri,
+        success: function (response) {
+            runTour(eval(response)[0]);
         }
     });
+}
+
+function runTour(data) {
+    $(data.hide).hide();
+    $(data.blink).addClass('blink-me');
+    $('#tour').html( data.content );
 }

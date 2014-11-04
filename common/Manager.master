@@ -51,6 +51,10 @@
             </p>
         </asp:Panel>
 
+        <div id="tour" class="tour-window">
+
+        </div>
+
         <div class="topbar">
             <div class="topbar-container">
                 <div class="brand">Buildmate</div>

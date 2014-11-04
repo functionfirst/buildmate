@@ -34,6 +34,63 @@
     100% { opacity: 1.0; }
 }
 
+.tour-window {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background-color: #6cb5f4;
+    padding: 10px;
+    color: #fff;
+    max-width: 400px;
+    z-index: 1100;
+    /*border: 1px solid #ccc;*/
+    /*-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow:    0 0 10px rgba(0,0,0,0.2);
+    box-shadow:         0 0 10px rgba(0,0,0,0.2);*/
+    -webkit-border-radius:  5px;
+    -moz-border-radius:     5px;
+    border-radius:          5px;
+    
+    -webkit-animation-name: tour-in;
+    -webkit-animation-duration: .4s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+
+    -moz-animation-name: tour-in;
+    -moz-animation-duration: .4s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: 1;
+
+    animation-name: tour-in;
+    animation-duration: .4s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+
+    h2 {
+        border: 0;
+        color: #fff;
+    }
+}
+
+
+@-moz-keyframes tour-in {  
+    0% { transform: translate(-50px,0); }
+    50% { transform: translate(-20px,0); }
+    100% { transform: translate(0,0); }
+}
+
+@-webkit-keyframes tour-in {
+    0% { transform: translate(-50px,0); }
+    50% { transform: translate(-20px,0); }
+    100% { transform: translate(0,0); }
+}
+
+@keyframes tour-in {
+    0% { transform: translate(-50px,0); }
+    50% { transform: translate(-20px,0); }
+    100% { transform: translate(0,0); }
+}
+
 .tour-box {
     background-color: #6cb5f4;
     padding: 10px;

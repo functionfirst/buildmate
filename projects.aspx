@@ -84,6 +84,8 @@
     </div>
 
     <div class="main-container">
+
+        <asp:Panel ID="pMainPanel" runat="server">
         <asp:Panel ID="pSearchProjects" runat="server" DefaultButton="btnApplyFilter" CssClass="search-box">
   
         <telerik:RadTextBox
@@ -309,10 +311,8 @@
             </div>
         </div>
 
-
-
-
-        <div class="clear"></div>
+            <div class="clear"></div>
+        </asp:Panel>
     </div>
 
 
