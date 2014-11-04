@@ -100,28 +100,12 @@ $(document).ready(function () {
 
 
 // check for the next unread notification
-function notificationCheck() {
-    
-}
-
 function showVariationMode() {
     $("#variationMode").addClass("active");
 }
 
 function hideVariationMode() {
     $("#variationMode").removeClass("active");
-}
-
-/* notifications */
-// hide notification
-$(".dismiss").click(function () {
-    $(this).parent().fadeOut();
-    notificationCheck($(this).attr("rel"));
-    return false;
-})
-
-function setMessage(text) {
-    alert(text);
 }
 
 function hideModal() {
