@@ -1,5 +1,7 @@
 var mside = false; // initialise mouse-inside
 
+var bm = bm || {}; // namespace buildmate
+
 $(document).ready(function () {
     // open the related modal window
     // pass the div id as the rel attribute
@@ -31,7 +33,8 @@ $(document).ready(function () {
         return false;
     });
 
-    var tour = getTour();
+    bm.tour.getTour();
+    //var tour = getTour();
 
     // close options menu after clicking
     $('.options-icon').click(function () {
@@ -128,18 +131,26 @@ function toggleVisibility(elem, klassName, set) {
     $(elem).toggleClass(klassName, set);
 }
 
-function getTour() {
-    var uri = (tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.js';
-    $.ajax({
-        url: 'tour/' + uri,
-        success: function (response) {
-            runTour(eval(response)[0]);
-        }
-    });
-}
 
-function runTour(data) {
-    $(data.hide).hide();
-    $(data.blink).addClass('blink-me');
-    $('#tour').html( data.content );
+// buildmate tour controls
+bm.tour = {
+    getTour: function( data ) {
+        var uri = 'tour/' + (bm.tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.js';
+
+        $.ajax({
+            url: uri,
+            success: function (response) {
+                bm.tour.runTour(eval(response)[0]);
+            },
+            error: function () {
+                $('#tour').hide();
+            }
+        });
+    },
+
+    runTour: function( data ) {
+        $(data.hide).hide();
+        $(data.blink).addClass('blink-me');
+        $('#tour').html(data.content);
+    }
 }

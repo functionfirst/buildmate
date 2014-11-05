@@ -107,7 +107,7 @@ Partial Class Manager
 
         ' Check to see if the startup script is already registered.
         If (Not cs.IsStartupScriptRegistered(cstype, csname1)) Then
-            Dim cstext1 As String = "var tour = { current_phase : " + Session("tourPhase") + "};"
+            Dim cstext1 As String = "bm.tour.current_phase = " + Session("tourPhase") + ";"
             cs.RegisterStartupScript(cstype, csname1, cstext1, True)
         End If
     End Sub
