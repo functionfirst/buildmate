@@ -1,0 +1,5 @@
+[{
+	"hide" 		: "#MainContent_pMainPanel, #hlProjects, #hlSuppliers, #hlResources, #hlSupport",
+	"blink" 	: "#hlCustomers",
+	"content" 	: "<h2>Welcome to Buildmate</h2><h3>Quick Guide to adding your first customer</h3><p>Click the Customers link above to begin.</p>"
+}]

@@ -33,7 +33,7 @@ $(document).ready(function () {
         return false;
     });
 
-    bm.tour.getTour();
+    bm.tour.get();
     //var tour = getTour();
 
     // close options menu after clicking
@@ -134,21 +134,16 @@ function toggleVisibility(elem, klassName, set) {
 
 // buildmate tour controls
 bm.tour = {
-    getTour: function( data ) {
-        var uri = 'tour/' + (bm.tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.js';
-
-        $.ajax({
-            url: uri,
-            success: function (response) {
-                bm.tour.runTour(eval(response)[0]);
-            },
-            error: function () {
-                $('#tour').hide();
-            }
+    get: function( data ) {
+        var uri = 'tour/' + (bm.tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.json';
+        console.log(uri);
+        $.getJSON(uri, function (json) {
+            bm.tour.process(json[0]);
         });
     },
 
-    runTour: function( data ) {
+    process: function (data) {
+        console.log(data);
         $(data.hide).hide();
         $(data.blink).addClass('blink-me');
         $('#tour').html(data.content);
