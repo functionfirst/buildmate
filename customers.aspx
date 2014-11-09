@@ -139,7 +139,7 @@
     <div class="breadcrumb">
         <div class="breadcrumb-container">
             <ul class="breadcrumb-options">
-                <li><a href="#" data-target="ctl00_MainContent_addCustomer" class="js-open-modal button button-create">New Customer</a></li>
+                <li><a href="#" data-target="MainContent_addCustomer" class="js-open-modal button button-create">New Customer</a></li>
             </ul>
 
             <ul class="breadcrumb-list">
