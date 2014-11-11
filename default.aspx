@@ -3,13 +3,6 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
-    <asp:Panel ID="pTour0Script" runat="server" visible="false">
-        <script>
-            $(document).ready(function () {
-                $('#ctl00_hlCustomers').addClass('blink_me');
-            });
-        </script>
-    </asp:Panel>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">

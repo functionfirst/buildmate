@@ -3,38 +3,16 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<script type="text/javascript">
-    var currentLoadingPanel = null;
-    var currentUpdatedControl = null;
-    function RequestStart(sender, args) {
-        currentLoadingPanel = $find("#ctl00_RadAjaxLoadingPanel1");
-        if (args.get_eventTarget() == "#ctl00_MainContent_fvSupplierDetails_btnUpdate") {
-            currentUpdatedControl = "fvSupplierDetails";
-            currentLoadingPanel.show(currentUpdatedControl);
-        }
-    }
-   function ResponseEnd() {
-       if (currentLoadingPanel != null) {
-           currentLoadingPanel.hide(currentUpdatedControl);
-       }
-       currentUpdatedControl = null;
-       currentLoadingPanel = null;
-   }
-
-   function showLoading() {
-       $('#ctl00_RadAjaxLoadingPanel1').css({'opacity': 0.5}).show();
-   }
-</script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
- <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
+    <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlId="fvSupplierDetails">
                 <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="fvSupplierDetails" />
-                     <telerik:AjaxUpdatedControl ControlID="notification" />
+                        <telerik:AjaxUpdatedControl ControlID="fvSupplierDetails" />
+                        <telerik:AjaxUpdatedControl ControlID="notification" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -118,7 +96,7 @@
                 
                 <div class=" form-actions">
                     <asp:Button ID="btnUpdate" runat="server" CommandName="Update" CssClass="button button-create"
-                        OnClick="Validate_OnClick" Text="Save Changes" OnClientClick="showLoading()" />
+                        OnClick="Validate_OnClick" Text="Save Changes" />
                 </div>
             </EditItemTemplate>
         </asp:FormView>
