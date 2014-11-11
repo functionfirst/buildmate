@@ -135,6 +135,7 @@ function toggleVisibility(elem, klassName, set) {
 bm.tour = {
     get: function( data ) {
         var uri = 'tour/' + (bm.tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.json';
+        console.log(uri);
         $.getJSON(uri, function (json) {
             bm.tour.process(json[0]);
         })
@@ -144,6 +145,7 @@ bm.tour = {
     },
 
     process: function (data) {
+        console.log(data);
         $(data.hide).hide();
         $(data.blink).addClass('blink-me');
         $('#tour').find('.container').html(data.content);
