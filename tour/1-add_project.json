@@ -1,0 +1,5 @@
+[{
+    "hide"		: "#MainContent_pTour1, #MainContent_pMainPanel, #hlSuppliers, #hlResources, #hlSupport",
+    "blink"		: ".button-primary",
+    "content" 	: "<h2>Project Wizard</h2><p>This wizard will guide you through the 4-step process for creating a New Project.</p><p>Start by selecting the Estimate Type for your new project."
+}]
