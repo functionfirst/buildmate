@@ -1,5 +1,5 @@
 [{
 	"hide" 		: "#MainContent_pMainPanel, #hlSuppliers, #hlResources, #hlSupport",
 	"blink" 	: "#hlProjects",
-	"content" 	: "<h2>Managing Projects</h2><p>Now you've created your first Customer, the next step is to create a Project for them.</p><p>Click Projects in the top menu to get starated.</p>"
+	"content" 	: "<h2>Tutorial :- Let’s get you estimating</h2><p>Create or Add your first project. Click the Projects link above to begin.</p>"
 }]

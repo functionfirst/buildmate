@@ -1,5 +1,5 @@
 [{
 	"hide" 		: "#MainContent_pMainPanel, #hlProjects, #hlSuppliers, #hlResources, #hlSupport",
 	"blink" 	: "#hlCustomers",
-	"content" 	: "<h2>Welcome to Buildmate</h2><h3>Quick Guide to adding your first customer</h3><p>Click the Customers link above to begin.</p>"
+	"content" 	: "<h2>Welcome to Buildmate - Estimating made simple</h2><h3>Tutorial :- Let’s get you estimating</h3><p>Add your first Customer. Click the Customers link above to begin.</p>"
 }]
