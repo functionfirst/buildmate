@@ -146,6 +146,6 @@ bm.tour = {
     process: function (data) {
         $(data.hide).hide();
         $(data.blink).addClass('blink-me');
-        $('#tour').html(data.content);
+        $('#tour').find('.container').html(data.content);
     }
 }
