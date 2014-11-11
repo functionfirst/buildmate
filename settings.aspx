@@ -373,9 +373,9 @@
                     DataSourceID="dsNotifications">
                     <EditItemTemplate>
                         <div class="row">
-                            <label for="ctl00_MainContent_fvNotifications_CheckBox1">
+                            <label for="cbNotifyByEmail">
                                 <asp:CheckBox
-                                    ID="CheckBox1"
+                                    ID="cbNotifyByEmail"
                                     runat="server"
                                     checked='<%#Bind("notifyByEmail") %>' />
                             Receive email Notifications</label>

@@ -32,9 +32,6 @@
     padding: 0 5px 0 0;
     line-height: 14px;
 }
-
-.ctl00MainContentrcbCustomerPanel { float: left; }
-
 </style>
 
 <script type="text/javascript">
