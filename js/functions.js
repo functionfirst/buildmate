@@ -145,9 +145,12 @@ bm.tour = {
     },
 
     process: function (data) {
-        console.log(data);
+        var elem = $('#tour').find('.container');
         $(data.hide).hide();
         $(data.blink).addClass('blink-me');
-        $('#tour').find('.container').html(data.content).css('background-image', 'url(/tour/images/' + data.image + ')');
+        elem.html(data.content);
+        if (data.image) {
+            elem.css('background-image', 'url(/tour/images/' + data.image + ')');
+        }
     }
 }
