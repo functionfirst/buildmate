@@ -1,5 +1,5 @@
 [{
-    "hide"		: "#MainContent_pTour1, #MainContent_pMainPanel, #hlSuppliers, #hlResources, #hlSupport",
+    "hide"		: "#pMainPanel, #hlSuppliers, #hlResources, #hlSupport",
     "blink"		: ".button-create",
-    "content" 	: "<h2>Creating a Project</h2><p>Here you can manage all of your Projects, as well as create New Projects.</p><p>To add your first Project click the flashing green <strong>New Project</strong> button to the top right of this page.</p>"
+    "content" 	: "<h2>Creating a Project</h2><p>Here you can manage all of your Projects, as well as create New Projects.</p><p>To add your first Project click the flashing green <strong>New Project</strong> button to the right.</p>"
 }]

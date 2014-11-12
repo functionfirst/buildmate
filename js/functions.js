@@ -148,6 +148,6 @@ bm.tour = {
         console.log(data);
         $(data.hide).hide();
         $(data.blink).addClass('blink-me');
-        $('#tour').find('.container').html(data.content);
+        $('#tour').find('.container').html(data.content).css('background-image', 'url(/tour/images/' + data.image + ')');
     }
 }
