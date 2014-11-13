@@ -133,10 +133,13 @@ function toggleVisibility(elem, klassName, set) {
 
 // buildmate tour controls
 bm.tour = {
-    get: function( data ) {
-        var uri = 'tour/' + (bm.tour.current_phase + window.location.pathname).replace('.aspx', '').replace('/', '-') + '.json';
+    get: function (data) {
+        var path = window.location.pathname.replace(".aspx", "");
+        path = path === '/' ? '/default' : path
+        var uri = "tour{0}.json".replace("{0}", path);
+
         $.getJSON(uri, function (json) {
-            bm.tour.process(json[0]);
+            bm.tour.process(json[bm.tour.current_phase]);
         })
         .fail(function () {
             $('#tour').hide();
