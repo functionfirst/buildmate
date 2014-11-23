@@ -1,0 +1,16 @@
+[{
+	"comment"   : "PHASE 0",
+	"hide"		: "#pMainPanel, #hlProjects, #hlSuppliers, #hlResources, #hlSupport",
+    "blink"		: ".button-create",
+    "content" 	: "<h2>Customer Management</h2><p>On this page you will manage all of your Customer information such as contact details and addresses. This is also where you'll add New Customers which is the next step on this Tour.</p><p>To add a Customer click the flashing green <strong>New Customer</strong> button to the top right of this page (This will pop open a new window).</p>"
+}, {
+	"comment"   : "PHASE 1",
+    "hide"		: "#hlSuppliers, #hlResources, #hlSupport",
+    "blink"		: "#hlProjects",
+	"content" 	: "<h2>Managing Projects</h2><p>Now you've created your first Customer, the next step is to create a Project for them.</p><p>Click Projects in the top menu to get started.</p>"
+},{
+	"comment"   : "PHASE 2",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport",
+	"blink" 	: "#hlSuppliers",
+	"content" 	: "<h2>Managing Suppliers</h2><p>With your Customers and Projects in place the next step is understanding more about Suppliers</p> <p>Click the Suppliers link above to begin.</p>"
+}]

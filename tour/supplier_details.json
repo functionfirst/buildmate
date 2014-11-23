@@ -1,0 +1,10 @@
+[{
+	"comment"	: "PHASE 0"
+},{
+	"comment"	: "PHASE 1"
+},{
+	"comment"	: "PHASE 2",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport",
+	"blink" 	: ".button-create",
+	"content" 	: "<h2>Editing a Supplier</h2><p>Here you can manage the name and contact information of each of your Suppliers.</p><p>If you're editing 'Your Company', we strongly recommend renaming this to your Company name.</p>"
+}]

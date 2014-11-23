@@ -1,0 +1,10 @@
+[{
+	"comment"	: "PHASE 0"
+},{
+	"comment"	: "PHASE 1"
+},{
+	"comment"	: "PHASE 2",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport",
+	"blink" 	: ".button-create",
+	"content" 	: "<h2>Using Suppliers</h2><p>Suppliers are the names of the companies you use for Materials, Plant or Labour.</p><p>You'll already see a Supplier in this list called 'Your Company', this represents you.</p><p>Start by adding a new Supplier. This could be your local Builders Merchant or online shop, such as Screwfix"
+}]

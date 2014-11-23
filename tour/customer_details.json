@@ -1,0 +1,8 @@
+[{
+	"comment"   : "PHASE 0"
+},{
+	"comment"   : "PHASE 1",
+    "hide"		: "#hlSuppliers, #hlResources, #hlSupport",
+    "blink"		: "#hlProjects",
+	"content" 	: "<h2>Customer Details</h2><p>Here you can update your Customers contact information as well as see a convenient list of Projects for this Customer.</p>"
+}]
