@@ -1,0 +1,30 @@
+[{
+	"comment"   : "PHASE 0"
+},
+{
+	"comment"   : "PHASE 1"
+},
+{
+	"comment"   : "PHASE 2"
+},
+{
+	"comment"   : "PHASE 3"
+},
+{
+	"comment"   : "PHASE 4"
+},
+{
+	"comment"   : "PHASE 5"
+},
+{
+	"comment"   : "PHASE 6"
+},
+{
+	"comment"   : "PHASE 7"
+},
+{
+	"comment"   : "PHASE 8",
+	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "",
+	"content" 	: "<h2>Linking Resources to your Suppliers</h2><p></p>"
+}]

@@ -1,10 +1,36 @@
 [{
 	"comment"	: "PHASE 0"
-},{
+},
+{
 	"comment"	: "PHASE 1"
-},{
-	"comment"	: "PHASE 2",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport",
-	"blink" 	: ".button-create",
-	"content" 	: "<h2>Using Suppliers</h2><p>Suppliers are the names of the companies you use for Materials, Plant or Labour.</p><p>You'll already see a Supplier in this list called 'Your Company', this represents you.</p><p>Start by adding a new Supplier. This could be your local Builders Merchant or online shop, such as Screwfix"
+},
+{
+	"comment"	: "PHASE 2"
+},
+{
+	"comment"	: "PHASE 3"
+},
+{
+	"comment"	: "PHASE 4"
+},
+{
+	"comment"	: "PHASE 5"
+},
+{
+	"comment"	: "PHASE 6",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings, .button-create",
+	"blink" 	: "table td:first-child a",
+	"content" 	: "<h2>Using Suppliers</h2><p>Suppliers are the names of the companies you use for Labour, Materials or Plant.</p><p>You'll already see a Supplier in this list called 'Your Company', this represents you.</p><p>Click the flashing link in the list below to update Your Company.</p>"
+},
+{
+	"comment"	: "PHASE 7",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: ".breadcrumb .button-create",
+	"content"   : "<h2>Adding a New Supplier</h2><p>To add your local Builders Merchant or online shop, such as Screwfix, click the 'New Supplier' button below.</p><p>Once the pop-up window appears, enter your Supplier details then click 'Add Supplier to save your changes.</p>"
+},
+{
+	"comment"	: "PHASE 7",
+	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlResources",
+	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
 }]

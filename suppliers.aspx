@@ -170,7 +170,6 @@
                                     <ItemTemplate>
                                         <asp:HyperLink ID="hlSupplier" runat="server" />
                                         <asp:Label ID="lblSupplier" runat="server" />
-                                        <asp:Label ID="lblIsYou" runat="server" Visible="false"><br /><small>This is you..</small></asp:Label>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
 

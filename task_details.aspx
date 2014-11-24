@@ -249,6 +249,7 @@
         <div class="md-content">
             <asp:FormView ID="fvAddAdhoc" runat="server"
                 DefaultMode="Insert"
+                Width="100%"
                 DataSourceID="additionsDataSource"
                 DataKeyNames="id">
                 <InsertItemTemplate>
@@ -942,16 +943,14 @@
                             ID="Label2"
                             runat="server"
                             Text='<%# Eval("unit") %>' />
-                            
+
                         <asp:RequiredFieldValidator
-                            ID="RequiredFieldValidator1"
+                            ID="RequiredFieldValidator3"
                             runat="server"
-                            ControlToValidate="rntbQuantity"
                             Display="Dynamic"
-                            ErrorMessage="Quantity"
-                            ValidationGroup="editGroup">
-                            <span class="req"></span>
-                        </asp:RequiredFieldValidator>
+                            ControlToValidate="rntbQuantity"
+                            ValidationGroup="editGroup"
+                            ErrorMessage="Quantity"><span class="req"></span></asp:RequiredFieldValidator>
                             
                         <a href="#" data-target="calculator" class="js-open-modal calc-open" title="Open Calculator">Calculator</a>
                     </div>

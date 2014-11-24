@@ -1,0 +1,30 @@
+[{
+	"comment"   : "PHASE 0"
+},
+{
+	"comment"   : "PHASE 1"
+},
+{
+	"comment"   : "PHASE 2"
+},
+{
+	"comment"   : "PHASE 3"
+},
+{
+	"comment"   : "PHASE 4",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: ".button-default",
+	"content" 	: "<h2>Managing your Task</h2><p>To start using Resources effectively you'll need to first add a Quantity to this Task.</p><p>Click the 'Edit Task Details' button below to edit your Task, enter a Quantity then click 'Update' to save your changes.</p>"
+},
+{
+	"comment"   : "PHASE 5",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: "#pCurrentResources .button-create",
+	"content" 	: "<h2>Adding Resources to your Task</h2><p>To start adding Resources, click the 'Add a Resource' button below.</p><p>You can search for a Resource by typing into the RESOURCE field shown in the pop-up window that appears.</p><p>Set your Quantity and Usage then click the 'Add Resource' button.</p>"
+},
+{
+	"comment"   : "PHASE 6",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlSuppliers",
+	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
+}]

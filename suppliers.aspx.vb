@@ -61,7 +61,6 @@ Partial Class manager_Default
             Dim supplier = item("supplier")
             Dim hlSupplier As HyperLink = supplier.FindControl("hlSupplier")
             Dim lblSupplier As Label = supplier.FindControl("lblSupplier")
-            Dim lblIsYou As Label = supplier.FindControl("lblIsYou")
 
             hlSupplier.Text = supplierName
             hlSupplier.NavigateUrl = String.Format("~/supplier_details.aspx?id={0}", supplierId)
@@ -72,9 +71,7 @@ Partial Class manager_Default
             ' indicate their supplier
             If isLocked Then
                 deleteColumn.Visible = False
-                lblIsYou.Visible = True
             End If
-
 
             ' check for last or first item
             Dim itemIndex = e.Item.DataSetIndex

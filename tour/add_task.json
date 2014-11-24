@@ -1,0 +1,15 @@
+[{
+	"comment"   : "PHASE 0"
+},
+{
+	"comment"   : "PHASE 1"
+},
+{
+	"comment"   : "PHASE 2"
+},
+{
+	"comment"   : "PHASE 3",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport",
+	"blink" 	: ".button-create",
+	"content" 	: "<h2>Adding job Tasks</h2><p>For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu below.</p><p>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.</p><p>Once you're happy with your selected Tasks, scroll down and click the flashing 'Add Selected Tasks' button to continue.</p>"
+}]

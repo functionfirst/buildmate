@@ -1,0 +1,18 @@
+[{
+	"comment"   : "PHASE 0"
+},
+{
+	"comment"   : "PHASE 1"
+},{
+	"comment"   : "PHASE 2"
+},{
+	"comment"   : "PHASE 3",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: ".button-create",
+	"content" 	: "<h2>Adding job Tasks to your Build Element</h2><p>Here you can edit your Build Element details or access any job Tasks for this Build Element.</p> <p>Click the flashing 'Add Tasks' button below to add your first job Task.</p>"
+},{
+	"comment"   : "PHASE 4",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: "table tbody a",
+	"content" 	: "<h2>Adding Resources</h2><p>To add Resources to your newly created Task, click a Task in the Current Tasks list below.</p>"
+}]
