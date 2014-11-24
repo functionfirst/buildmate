@@ -24,7 +24,7 @@
      <!-- begin add ticket -->
     <div id="addTicket" class="md-window">
         <div class="md-content">
-            <h3>Submit a Support Ticket..</h3>
+            <h3>Submit a New Support Issue..</h3>
 
             <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSend">
                 <div class="md-details">
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="md-footer">
-                    <asp:Button ID="btnSend" runat="server" CssClass="button button-create" Text="Submit Ticket"
+                    <asp:Button ID="btnSend" runat="server" CssClass="button button-create" Text="Submit Issue"
                         OnClientClick="validateModal()" 
                         CausesValidation="true" CommandName="Insert" />
                             
@@ -80,7 +80,7 @@
     <div class="breadcrumb">
         <div class="breadcrumb-container">
             <ul class="breadcrumb-options">
-                <li><a href="#" data-target="addTicket" class="js-open-modal button button-create">New Ticket</a></li>
+                <li><a href="#" data-target="addTicket" class="js-open-modal button button-create">Submit a Support Issue</a></li>
             </ul>
             <ul class="breadcrumb-list">
                 <li class="active">Support</li>
@@ -95,9 +95,9 @@
                 runat="server"
                 RepeatDirection="Horizontal"
                 AutoPostBack="true">
-                <asp:ListItem Text="Open Tickets" Selected="True" />
-                <asp:ListItem Text="Closed Tickets"  />
-                <asp:ListItem Text="All Tickets" />
+                <asp:ListItem Text="Open Issues" Selected="True" />
+                <asp:ListItem Text="Closed Issues"  />
+                <asp:ListItem Text="All Issues" />
             </asp:RadioButtonList>
         </div>
 
@@ -112,7 +112,7 @@
             <MasterTableView
                 AutoGenerateColumns="False"
                 DataKeyNames="id"
-                NoMasterRecordsText="&nbsp;No Support Tickets were found."
+                NoMasterRecordsText="&nbsp;No Support Issues were found."
                 DataSourceID="ticketsDataSource">
                 <Columns>
                     <telerik:GridTemplateColumn

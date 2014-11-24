@@ -31,7 +31,7 @@
                     <span class="divider">/</span>
                 </li>
                 <li class="active">
-                    Ticket Details
+                    Issue Details
                 </li>
             </ul>
         </div>
