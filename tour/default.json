@@ -1,12 +1,12 @@
 [{
 	"comment"   : "PHASE 0",
-	"hide" 		: "#pMainPanel, #hlProjects, #hlSuppliers, #hlResources, #hlSupport",
+	"hide" 		: "#pMainPanel, #hlProjects, #hlSuppliers, #hlResources, #hlSupport, #hlHelp, #hlSettings",
 	"blink" 	: "#hlCustomers",
 	"content" 	: "<h2>Welcome to Buildmate - Estimating made simple</h2><h3>Tutorial :- Let’s get you estimating</h3><p>Add your first Customer. Click the Customers link above to begin.</p>"
 },
 {
 	"comment"   : "PHASE 1",
-	"hide" 		: "#MainContent_pMainPanel, #hlSuppliers, #hlResources, #hlSupport",
+	"hide" 		: "#pMainPanel, #hlSuppliers, #hlResources, #hlSupport, #hlHelp, #hlSettings",
 	"blink" 	: "#hlProjects",
 	"content" 	: "<h2><strong>Tutorial:</strong> Let’s get you estimating</h2><p>Create or Add your first project. Click the Projects link above to begin.</p>"
 },{

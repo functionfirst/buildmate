@@ -1,0 +1,16 @@
+[{
+	"comment"   : "PHASE 0"
+},
+{
+	"comment"   : "PHASE 1"
+},{
+	"comment"   : "PHASE 2",
+	"hide" 		: "#hlResources, #hlSupport, #hlHelp, #hlSettings, #hlSuppliers, .button-primary, .button-error, .button-default",
+	"blink" 	: ".button-create",
+	"content" 	: "<h2>Managing your Project</h2><p>Each Project needs at least one Build Element which allow Projects to be broken down into manageable elements.</p> <p>Click the 'Add a Build Element' button below to add your first Build Element.</p>"
+},{
+	"comment"   : "PHASE 3",
+	"hide" 		: "#hlResources, #hlSupport, #hlHelp, #hlSettings, #hlSuppliers, .button-primary, .button-error, .button-default",
+	"blink" 	: "#rgBuildElementsPanel table tbody a",
+	"content" 	: "<h2>Using Build Elements</h2><p>With a Build Element created you're now able to add job Tasks</p> <p>Scroll down to your listed Build Elements and click the flashing link to view the Build Element details page.</p>"
+}]

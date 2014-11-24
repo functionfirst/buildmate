@@ -286,6 +286,7 @@
                 runat="server"
                 EnableViewState="false"
                 DefaultMode="Insert"
+                Width="100%"
                 DataSourceID="AllSpacesDataSource"
                 DataKeyNames="id">
                 <InsertItemTemplate>
@@ -416,7 +417,7 @@
                     <a href="#" class="js-open-modal button button-primary" data-target="documents">Download a Document</a>
                 </li>
                 <li>
-                    <a href="#" class="js-open-modal button" data-target="projectLogs">View Project Logs</a>
+                    <a href="#" class="js-open-modal button button-default" data-target="projectLogs">View Project Logs</a>
                 </li>
                 <li>
                     <asp:Button ID="btnArchive" runat="server"
@@ -961,7 +962,7 @@
         <asp:Panel ID="BuildElementsPanel" runat="server" CssClass="box">
             <h3>Build Elements</h3>
 
-            <div class="boxcontent">
+            <div class="boxcontent" id="rgBuildElementsPanel">
                 <telerik:RadGrid ID="rgBuildElements" runat="server"
                     CssClass="clear"
                     DataSourceID="AllSpacesDataSource"

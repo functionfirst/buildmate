@@ -58,7 +58,7 @@
                 <div class="brand">Buildmate</div>
                 <div class="nav nav-right">
                     <ul class="nav-main">
-                        <li class="nav-menu" data-target="help">
+                        <li class="nav-menu" data-target="help" id="hlHelp">
                             <a href="#" data-toggle-menu="help">Help</a>
 
                             <ul>
