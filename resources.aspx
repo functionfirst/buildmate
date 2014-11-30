@@ -31,18 +31,11 @@
             <telerik:AjaxSetting AjaxControlId="Panel1">
                 <UpdatedControls>
                      <telerik:AjaxUpdatedControl ControlID="Panel1" />
-                     <telerik:AjaxUpdatedControl ControlID="rgResources" />
-                     <telerik:AjaxUpdatedControl ControlID="lblCount" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlId="rgResources">
+            <telerik:AjaxSetting AjaxControlId="rgUnresourced">
                 <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="rgResources" />
-                </UpdatedControls>
-            </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlId="btnApplyFilter">
-                <UpdatedControls>
-                     <telerik:AjaxUpdatedControl ControlID="rgResources" />
+                     <telerik:AjaxUpdatedControl ControlID="rgUnresourced" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>
@@ -147,80 +140,81 @@
                                 AutoPostBack="true" />
                         </div>
                     </div>
-
                     <div class="div33">
-                        <asp:RadioButtonList ID="rblResourceType" runat="server"
-                            RepeatDirection="Horizontal"
+                        <telerik:RadComboBox
+                            ID="rcbResourceType"
+                            runat="server"
                             DataSourceID="resourceTypesDataSource"
                             DataTextField="resourceType"
-                            DataValueField="id"
-                            AutoPostBack="true" />
+                            AutoPostBack="true"
+                            DataValueField="id" />
                     </div>
                     <div class="div33 div-last">
                         <asp:Button ID="btnApplyFilter" runat="server" Text="Search" Visible="true" CssClass="button" />
                     </div>
-                </asp:Panel>
 
-                <div class="clear"></div>
+                    <div class="clear"></div>
                 
-                <asp:Label ID="lblCount" runat="server" Visible="false">
-                    <div class="box-alert box-primary">We found more than 500 results matching your keywords, please be more specific with your search..</div>
-                </asp:Label>
+                    <asp:Label ID="lblCount" runat="server" Visible="false">
+                        <div class="box-alert box-primary">We found more than 500 results matching your keywords, please be more specific with your search..</div>
+                    </asp:Label>
 
-                <telerik:RadGrid
-                    ID="rgResources"
-                    runat="server"
-                    DataSourceID="allResourcesDataSource"
-                    AllowPaging="true"
-                    PageSize="20"
-                    PagerStyle-Mode="NextPrev"
-                    ShowGroupPanel="false"
-                    AllowSorting="true"
-                    GridLines="None"
-                    ShowStatusBar="true">
-                    <MasterTableView
-                        AutoGenerateColumns="False"
+                    <telerik:RadGrid
+                        ID="rgResources"
+                        runat="server"
                         DataSourceID="allResourcesDataSource"
-                        DataKeyNames="id"
-                        NoMasterRecordsText="&nbsp;No Resources were found.">
-                        <Columns>
-                            <telerik:GridHyperLinkColumn
-                                UniqueName="resourceName"
-                                HeaderText="Resource Name"
-                                SortExpression="resourceName"
-                                DataNavigateUrlFields="id"
-                                DataNavigateUrlFormatString="~/resource_details.aspx?rid={0}"
-                                DataTextField="resourceName" />
+                        AllowPaging="true"
+                        PageSize="20"
+                        PagerStyle-Mode="NextPrev"
+                        ShowGroupPanel="false"
+                        AllowSorting="true"
+                        GridLines="None"
+                        ShowStatusBar="true">
+                        <MasterTableView
+                            AutoGenerateColumns="False"
+                            DataSourceID="allResourcesDataSource"
+                            DataKeyNames="id"
+                            NoMasterRecordsText="&nbsp;No Resources were found.">
+                            <Columns>
+                                <telerik:GridHyperLinkColumn
+                                    UniqueName="resourceName"
+                                    HeaderText="Resource Name"
+                                    SortExpression="resourceName"
+                                    DataNavigateUrlFields="id"
+                                    DataNavigateUrlFormatString="~/resource_details.aspx?rid={0}"
+                                    DataTextField="resourceName" />
                         
-                            <telerik:GridBoundColumn
-                                UniqueName="manufacturer"
-                                HeaderText="Manufacturer"
-                                SortExpression="manufacturer"
-                                DataField="manufacturer"
-                                HeaderStyle-Width="15%"
-                                ItemStyle-HorizontalAlign="Center"
-                                HeaderStyle-HorizontalAlign="Center" />
+                                <telerik:GridBoundColumn
+                                    UniqueName="manufacturer"
+                                    HeaderText="Manufacturer"
+                                    SortExpression="manufacturer"
+                                    DataField="manufacturer"
+                                    HeaderStyle-Width="15%"
+                                    ItemStyle-HorizontalAlign="Center"
+                                    HeaderStyle-HorizontalAlign="Center" />
 
-                            <telerik:GridBoundColumn
-                                UniqueName="partId"
-                                HeaderText="Part Id"
-                                SortExpression="partId"
-                                DataField="partId"
-                                HeaderStyle-Width="15%"
-                                ItemStyle-HorizontalAlign="Center"
-                                HeaderStyle-HorizontalAlign="Center" />
+                                <telerik:GridBoundColumn
+                                    UniqueName="partId"
+                                    HeaderText="Part Id"
+                                    SortExpression="partId"
+                                    DataField="partId"
+                                    HeaderStyle-Width="15%"
+                                    ItemStyle-HorizontalAlign="Center"
+                                    HeaderStyle-HorizontalAlign="Center" />
                 
-                            <telerik:GridBoundColumn
-                                UniqueName="unit"
-                                HeaderText="Unit"
-                                SortExpression="unit"
-                                DataField="unit"
-                                HeaderStyle-Width="15%"
-                                ItemStyle-HorizontalAlign="Center"
-                                HeaderStyle-HorizontalAlign="Center" />
-                        </Columns>
-                    </MasterTableView>
-                </telerik:RadGrid>
+                                <telerik:GridBoundColumn
+                                    UniqueName="unit"
+                                    HeaderText="Unit"
+                                    SortExpression="unit"
+                                    DataField="unit"
+                                    HeaderStyle-Width="15%"
+                                    ItemStyle-HorizontalAlign="Center"
+                                    HeaderStyle-HorizontalAlign="Center" />
+                            </Columns>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+            
+                </asp:Panel>
             </div>
         </div>
     </div>
@@ -230,7 +224,7 @@
         SelectCommand="getResourcesByNameAndType" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:ControlParameter Name="resourceName" ControlID="rtbResourceName" PropertyName="Text" />
-            <asp:ControlParameter Name="resourceTypeId" ControlID="rblResourceType" PropertyName="SelectedValue" />
+            <asp:ControlParameter Name="resourceTypeId" ControlID="rcbResourceType" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
 
