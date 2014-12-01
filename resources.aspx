@@ -54,6 +54,7 @@
         <div class="tabs">
             <ul class="tab-nav">
                 <li class="active"><a href="#unresourced" id="unresourcedTabLink">Unresourced</a></li>
+                <li><a href="#your" id="yourTabLink">Your Resources</a></li>
                 <li><a href="#search" id="searchTabLink">Search all Resources</a></li>
             </ul>
             
@@ -126,6 +127,77 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tab-container" id="your">
+                <div class="div66">
+
+                <telerik:RadGrid
+                    ID="RadGrid1"
+                    runat="server"
+                    DataSourceID="yourResourcesDataSource"
+                    AllowPaging="true"
+                    PageSize="20"
+                    PagerStyle-Mode="NextPrev"
+                    ShowGroupPanel="false"
+                    AllowSorting="true"
+                    GridLines="None"
+                    ShowStatusBar="true">
+                    <MasterTableView
+                        AutoGenerateColumns="False"
+                        DataSourceID="yourResourcesDataSource"
+                        DataKeyNames="id"
+                        NoMasterRecordsText="&nbsp;You don't currently have any Resources in your Projects.">
+                        <Columns>
+                            <telerik:GridHyperLinkColumn
+                                UniqueName="resourceName"
+                                HeaderText="Resource Name"
+                                SortExpression="resourceName"
+                                DataNavigateUrlFields="id"
+                                DataNavigateUrlFormatString="~/resource_details.aspx?rid={0}"
+                                DataTextField="resourceName" />
+                        
+                            <telerik:GridBoundColumn
+                                UniqueName="manufacturer"
+                                HeaderText="Manufacturer"
+                                SortExpression="manufacturer"
+                                DataField="manufacturer"
+                                HeaderStyle-Width="15%"
+                                ItemStyle-HorizontalAlign="Center"
+                                HeaderStyle-HorizontalAlign="Center" />
+
+                            <telerik:GridBoundColumn
+                                UniqueName="partId"
+                                HeaderText="Part Id"
+                                SortExpression="partId"
+                                DataField="partId"
+                                HeaderStyle-Width="15%"
+                                ItemStyle-HorizontalAlign="Center"
+                                HeaderStyle-HorizontalAlign="Center" />
+                
+                            <telerik:GridBoundColumn
+                                UniqueName="unit"
+                                HeaderText="Unit"
+                                SortExpression="unit"
+                                DataField="unit"
+                                HeaderStyle-Width="15%"
+                                ItemStyle-HorizontalAlign="Center"
+                                HeaderStyle-HorizontalAlign="Center" />
+                        </Columns>
+                    </MasterTableView>
+                </telerik:RadGrid>
+                </div>
+                <div class="div33 div-last">
+                    <div class="box-alert box-primary">
+                        <h3>Your Resources</h3>
+
+                        <p>
+                            This page lists every Resource you have used across all of your Projects.
+                            This provides a convenient way for you to update pricing information for Resources you know you are using.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="tab-container" id="search">
                 <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
@@ -227,10 +299,18 @@
             <asp:ControlParameter Name="resourceTypeId" ControlID="rcbResourceType" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
-
+    
     <asp:SqlDataSource ID="unresourcedDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="getUnresourced" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:SessionParameter Name="UserId" SessionField="UserId" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="yourResourcesDataSource" runat="server"
+        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
+        SelectCommand="getYourResources" SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:SessionParameter Name="UserId" SessionField="UserId" />
         </SelectParameters>
