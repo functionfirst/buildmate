@@ -38,7 +38,10 @@
         <h3>Resource Supplier Details</h3>
         
         
-            <asp:FormView ID="fvCatalogueDetails" runat="server" DataKeyNames="id" DefaultMode="Edit" 
+            <asp:FormView ID="fvCatalogueDetails" runat="server"
+                DataKeyNames="id"
+                DefaultMode="Edit" 
+                Width="100%"
                 DataSourceID="catalogueDS">
                 <EditItemTemplate>
                     <div class="row">
@@ -124,7 +127,8 @@
                             Text='<%#String.Format("{0:f}", Container.DataItem("lastUpdated"))%> ' />
                     </div>
             
-                    <div class="form-actions">
+                    <div class="row">
+                        <label class="label">&nbsp;</label>
                         <asp:Button ID="UpdateButton" runat="server"
                             CausesValidation="True"
                             CssClass="button button-create"
