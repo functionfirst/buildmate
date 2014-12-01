@@ -48,6 +48,7 @@
                 runat="server"
                 EnableViewState="false"
                 DefaultMode="Insert"
+                Width="100%"
                 DataSourceID="catalogueDataSource"
                 DataKeyNames="id">
                 <InsertItemTemplate>
