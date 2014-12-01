@@ -38,6 +38,11 @@
                      <telerik:AjaxUpdatedControl ControlID="rgUnresourced" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlId="rgYourResources">
+                <UpdatedControls>
+                     <telerik:AjaxUpdatedControl ControlID="rgYourResources" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
@@ -132,7 +137,7 @@
                 <div class="div66">
 
                 <telerik:RadGrid
-                    ID="RadGrid1"
+                    ID="rgYourResources"
                     runat="server"
                     DataSourceID="yourResourcesDataSource"
                     AllowPaging="true"
