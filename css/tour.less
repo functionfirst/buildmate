@@ -34,33 +34,80 @@
     100% { opacity: 1.0; }
 }
 
+.tour-progress {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 100px;
+    background-color: #fff;
+}
+
+.tour-progress span {
+    display: block;
+    height: 5px;
+    width: 0;
+    background-color: #21759b;
+    position: relative;
+}
+
+.tour-progress span:before {
+    content : "Tour Progress";
+    position: absolute;
+    top: -25px;
+    text-align: center;
+    font-size: 12px;
+    width: 100px;
+}
+.tour-progress span:after {
+    content : " ";
+    position: absolute;
+    height: 16px;
+    right: 0;
+    top: -5px;
+    border-left: 1px solid #fff;
+}
+
+
+    .tour-0 span {
+        width: 0;
+    }
+
+    .tour-1 span {
+        width: 10%;
+    }
+
+    .tour-2  span {
+        width: 20%;
+    }
+
+    .tour-3 span {
+        width: 30%;
+    }
+
+    .tour-4 {
+        width: 40%;
+    }
+
+    .tour-5 span {
+
+    }
+
+    .tour-6 span {
+
+    }
+
+    .tour-7 span {
+
+    }
+
+    .tour-8 span {
+
+    }
+
+
 .tour-window {
-    /*position: fixed;
-    bottom: 10px;
-    left: 10px;
-    background-color: #111;*/
     padding: 15px;
     color: #fff;
-    /*max-width: 400px;
-    z-index: 1100;
-    -webkit-border-radius:  5px;
-    -moz-border-radius:     5px;
-    border-radius:          5px;*/
-    
-    /*-webkit-animation-name: tour-in;
-    -webkit-animation-duration: .4s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: 1;
-
-    -moz-animation-name: tour-in;
-    -moz-animation-duration: .4s;
-    -moz-animation-timing-function: linear;
-    -moz-animation-iteration-count: 1;
-
-    animation-name: tour-in;
-    animation-duration: .4s;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;*/
 
     margin-top: 53px;
     margin-bottom: -53px;
@@ -78,6 +125,7 @@
         background-position: left center;
         min-height: 140px;
         padding-left: 180px;
+        position: relative;
     }
 }
 

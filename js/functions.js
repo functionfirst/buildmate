@@ -154,5 +154,6 @@ bm.tour = {
         if (data.image) {
             elem.css('background-image', 'url(/tour/images/' + data.image + ')');
         }
+        elem.append('<div class="tour-progress tour-' + bm.tour.current_phase + '"><span></span></div>')
     }
 }

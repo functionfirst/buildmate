@@ -2,7 +2,7 @@
 	"comment"   : "PHASE 0"
 },{
 	"comment"   : "PHASE 1",
-    "hide"		: "#hlSuppliers, #hlResources, #hlSupport",
+    "hide"		: "#hlSuppliers, #hlResources, #hlSupport, #hlHelp, #hlSettings",
     "blink"		: "#hlProjects",
-	"content" 	: "<h2>Customer Details</h2><p>Here you can update your Customers contact information as well as see a convenient list of Projects for this Customer.</p>"
+	"content" 	: "<h2>Customer Details</h2><p>On this page you can manage your Customers contact information and also see a list of this Customers Projects.</p><p>Your next step will be to add a Project, click the flashing Projects link above to continue.</p>"
 }]
