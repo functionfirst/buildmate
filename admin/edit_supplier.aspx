@@ -89,11 +89,6 @@
                                     <label for="rtbPostcode" title="Postcode" class="label">Postcode:</label>
                                     <%#Eval("postcode")%>&nbsp;
                                 </div>
-                                                        
-                                <div class="row">
-                                    <label for="rcbCountry" title="Country" class="label">Country:</label>
-                                    <%#Eval("countryName")%>&nbsp;
-                                </div>
                                                                          
                                 <div class="row">
                                     <label for="btns" class="label">&nbsp;</label>
@@ -182,12 +177,6 @@
                                 </div>
                                                         
                                 <div class="row">
-                                    <label for="rcbCountry" title="Country" class="label">Country</label>
-                                    <telerik:RadComboBox ID="rcbCountry" runat="server" Height="140px" OnLoad="defaultCountry" SelectedValue='<%# Bind("countryId") %>'
-                                        DataSourceID="countryDataSource" DataTextField="countryName" DataValueField="id" />
-                                </div>
-                                                        
-                                <div class="row">
                                     <label for="btns" class="label">&nbsp;</label>
                                     <asp:Button ID="btnUpdate" runat="server" CommandName="Update"
                                         OnClick="Validate_OnClick" Text="Update" />
@@ -208,9 +197,9 @@
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         OldValuesParameterFormatString="original_{0}"
         SelectCommand="
-            SELECT Supplier.id, supplierName, tel, fax, email, url, address1, address2, address3, city, county, postcode, countryId, countryName, userId
-            FROM Supplier, Country
-            WHERE Country.id = countryId AND Supplier.id = @supplierId"
+            SELECT Supplier.id, supplierName, tel, fax, email, url, address1, address2, address3, city, county, postcode, userId
+            FROM Supplier
+            WHERE Supplier.id = @supplierId"
         UpdateCommand="UPDATE Supplier SET
                 supplierName = @supplierName,
                 address1 = @address1,
@@ -219,7 +208,6 @@
                  city = @city,
                  county = @county,
                  postcode = @postcode,
-                 countryId = @countryId,
                  tel = @tel,
                  fax = @fax,
                  email = @email,
@@ -228,9 +216,5 @@
         <SelectParameters>
             <asp:QueryStringParameter Name="SupplierId" QueryStringField="sid" />
         </SelectParameters>
-    </asp:SqlDataSource>
-    
-    <asp:SqlDataSource ID="countryDataSource" runat="server"
-        ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
-        SelectCommand="SELECT [id], [countryName] FROM Country" />
+    </asp:SqlDataSource>    
 </asp:Content>
