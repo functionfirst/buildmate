@@ -28,29 +28,30 @@
         <telerik:GridBoundColumn DataField="UserName" HeaderText="UserName" 
             SortExpression="UserName" UniqueName="UserName">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="LastActivityDate" 
+<%--        <telerik:GridBoundColumn DataField="LastActivityDate" 
             DataType="System.DateTime" HeaderText="LastActivityDate" 
             SortExpression="LastActivityDate" UniqueName="LastActivityDate">
-        </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="Email" HeaderText="Email" 
+        </telerik:GridBoundColumn>--%>
+        <%--<telerik:GridBoundColumn DataField="Email" HeaderText="Email" 
             SortExpression="Email" UniqueName="Email">
-        </telerik:GridBoundColumn>
-        <telerik:GridCheckBoxColumn DataField="IsApproved" DataType="System.Boolean" 
+        </telerik:GridBoundColumn>--%>
+<%--        <telerik:GridCheckBoxColumn DataField="IsApproved" DataType="System.Boolean" 
             HeaderText="IsApproved" SortExpression="IsApproved" UniqueName="IsApproved">
-        </telerik:GridCheckBoxColumn>
-        <telerik:GridCheckBoxColumn DataField="IsLockedOut" DataType="System.Boolean" 
-            HeaderText="IsLockedOut" SortExpression="IsLockedOut" UniqueName="IsLockedOut">
-        </telerik:GridCheckBoxColumn>
-        <telerik:GridBoundColumn DataField="CreateDate" DataType="System.DateTime" 
-            HeaderText="CreateDate" SortExpression="CreateDate" UniqueName="CreateDate">
+        </telerik:GridCheckBoxColumn>--%>
+        
+        <telerik:GridBoundColumn DataField="CreateDate" DataType="System.DateTime" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"
+            HeaderText="Sign-up Date" SortExpression="CreateDate" UniqueName="CreateDate">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="LastLoginDate" DataType="System.DateTime" 
-            HeaderText="LastLoginDate" SortExpression="LastLoginDate" 
+        <telerik:GridBoundColumn DataField="LastLoginDate" DataType="System.DateTime" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"
+            HeaderText="Last Logged-in" SortExpression="LastLoginDate" 
             UniqueName="LastLoginDate">
         </telerik:GridBoundColumn>
-        <telerik:GridBoundColumn DataField="Comment" HeaderText="Comment" 
-            SortExpression="Comment" UniqueName="Comment">
-        </telerik:GridBoundColumn>
+        <telerik:GridCheckBoxColumn DataField="notifyByEmail" DataType="System.Boolean" HeaderStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"
+            HeaderText="Notify by Email" SortExpression="notifyByEmail" UniqueName="notifyByEmail">
+        </telerik:GridCheckBoxColumn>
+        <telerik:GridCheckBoxColumn DataField="IsLockedOut" DataType="System.Boolean" HeaderStyle-Width="10%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"
+            HeaderText="Locked Out" SortExpression="IsLockedOut" UniqueName="IsLockedOut">
+        </telerik:GridCheckBoxColumn>
     </Columns>
 </MasterTableView>
     </telerik:RadGrid>
@@ -60,7 +61,9 @@
         SelectCommand="
             SELECT *
             FROM [aspnet_Users]
-            LEFT JOIN [aspnet_Membership] ON [aspnet_Users].userId = [aspnet_membership].UserId">
+            LEFT JOIN [aspnet_Membership] ON [aspnet_Users].userId = [aspnet_membership].UserId
+            LEFT JOIN [UserProfile] ON [UserProfile].userId= [aspnet_Users].userId
+            ORDER BY createDate DESC">
     </asp:SqlDataSource>
 
 </asp:Content>
