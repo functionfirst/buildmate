@@ -1037,7 +1037,7 @@
                                 ThumbsInteractionMode="Free" />
                             </td>
                                 <td>
-                                    <input type="text" style="width: 30px;" id="sliderValue" disabled="disabled" />
+                                    <input type="text" style="width: 40px;" id="sliderValue" disabled="disabled" />
                                 </td>
                             </tr>
                            </table>
@@ -1096,7 +1096,7 @@
                                 <asp:TextBox
                                     ID="TextBox1"
                                     runat="server"
-                                    Style="width: 30px"
+                                    Style="width: 40px"
                                     Text='<%#Eval("percentComplete", "{0}%") %>'
                                     Enabled="false" />
                                 </td>
