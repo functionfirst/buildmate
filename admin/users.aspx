@@ -24,9 +24,12 @@
 <HeaderStyle Width="20px"></HeaderStyle>
 </ExpandCollapseColumn>
     <Columns>
-
+        
         <telerik:GridBoundColumn DataField="UserName" HeaderText="UserName" 
             SortExpression="UserName" UniqueName="UserName">
+        </telerik:GridBoundColumn>
+        <telerik:GridBoundColumn DataField="tourPhase" HeaderText="Tour Phase" 
+            SortExpression="tourPhase" UniqueName="tourPhase">
         </telerik:GridBoundColumn>
 <%--        <telerik:GridBoundColumn DataField="LastActivityDate" 
             DataType="System.DateTime" HeaderText="LastActivityDate" 
