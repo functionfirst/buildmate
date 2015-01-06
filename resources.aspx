@@ -123,11 +123,13 @@
                 </div>
                 <div class="div33 div-last">
                     <div class="box-alert box-primary">
-                        <h3>Resources using Default Prices</h3>
+                        <h3>These resources are using Out of Date prices</h3>
 
                         <p>
-                            This is a list of all of your Resources that are currently using the default pricing from Buildmate's Unresourced supplier. If you wish to customise
-                            your Resources to use specific pricing you can click the Resource below to edit it.
+                            This is a list of all of your Resources that are using Buildmate's Unresourced supplier, these prices maybe out of date.
+                        </p>
+                        <p>
+                            You will need to add Suppliers to these unresourced Resources to ensure these prices are upto date.
                         </p>
                     </div>
                 </div>

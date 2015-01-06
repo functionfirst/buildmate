@@ -1,7 +1,0 @@
-[{
-	"comment"   : "PHASE 0",
-	"hide" 		: "#pMainPanel, #hlProjects, #hlSuppliers, #hlResources, #hlSupport",
-	"blink" 	: "#hlCustomers",
-	"image"		: "guide1.png",
-	"content" 	: "<h2>Welcome to Buildmate - Estimating made simple</h2><h3>Tutorial :- Let’s get you estimating</h3><p>Add your first Customer. Click the Customers link above to begin.</p>"
-}]

@@ -1,7 +1,11 @@
 [{
 	"comment"   : "PHASE 0"
-},
-{
+},,{
+	"comment"	: "PHASE 8",
+	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlResources",
+	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
+}{
 	"comment"   : "PHASE 1"
 },{
 	"comment"   : "PHASE 2",
@@ -13,4 +17,34 @@
 	"hide" 		: "#hlResources, #hlSupport, #hlHelp, #hlSettings, #hlSuppliers, .button-primary, .button-error, .button-default",
 	"blink" 	: "#rgBuildElementsPanel table tbody a",
 	"content" 	: "<h2>Using Build Elements</h2><p>With a Build Element created you're now able to add job Tasks</p> <p>Scroll down to your listed Build Elements and click the flashing link to view the Build Element details page.</p>"
+},{
+	"comment"   : "PHASE 4",
+	"hide" 		: "#hlResources, #hlSupport, #hlHelp, #hlSettings, #hlSuppliers, .button-primary, .button-error, .button-default",
+	"blink" 	: "#rgBuildElementsPanel table tbody a",
+	"content" 	: "<h2>Managing your Tasks</h2><p>You'll need to learn how to use Resources effectively in Tasks.</p> <p>Scroll down to your listed Build Elements and click the flashing link to view the Build Element details page.</p>"
+},{
+	"comment"   : "PHASE 5",
+	"hide" 		: "#hlResources, #hlSupport, #hlHelp, #hlSettings, #hlSuppliers, .button-primary, .button-error, .button-default",
+	"blink" 	: "#rgBuildElementsPanel table tbody a",
+	"content" 	: "<h2>Managing your Tasks</h2><p>You'll need to learn how to use Resources effectively in Tasks.</p> <p>Scroll down to your listed Build Elements and click the flashing link to view the Build Element details page.</p>"
+},{
+	"comment"   : "PHASE 6",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlSuppliers",
+	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
+},{
+	"comment"	: "PHASE 7",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlSuppliers",
+	"content" 	: "<h2>Your Suppliers</h2><p>Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier.</p>"
+},{
+	"comment"	: "PHASE 8",
+	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlResources",
+	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
+},{
+	"comment"   : "PHASE 9",
+	"hide" 		: "#hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlHome",
+	"content" 	: "<h2>Successfully linked a Supplier to a Resource</h2><p>You can now go back to the Dashboard by clicking the flashing Dashboard link above.</p>"
 }]

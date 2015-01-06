@@ -134,26 +134,31 @@ function toggleVisibility(elem, klassName, set) {
 // buildmate tour controls
 bm.tour = {
     get: function (data) {
-        var path = window.location.pathname.replace(".aspx", "");
-        path = path === '/' ? '/default' : path
-        var uri = "tour{0}.json".replace("{0}", path);
+        if (bm.tour.current_phase < 10) {
+            var path = window.location.pathname.replace(".aspx", "");
+            path = path === '/' ? '/default' : path
+            var uri = "tour{0}.json".replace("{0}", path);
 
-        $.getJSON(uri, function (json) {
-            bm.tour.process(json[bm.tour.current_phase]);
-        })
-        .fail(function () {
-            $('#tour').hide();
-        });
+            $.getJSON(uri, function (json) {
+                bm.tour.process(json[bm.tour.current_phase]);
+            })
+            .fail(function () {
+                $('#tour').hide();
+            });
+        }
     },
 
     process: function (data) {
-        var elem = $('#tour').find('.container');
-        $(data.hide).hide();
-        $(data.blink).addClass('blink-me');
-        elem.html(data.content);
-        if (data.image) {
-            elem.css('background-image', 'url(/tour/images/' + data.image + ')');
+        if (typeof data.content !== 'undefined') {
+            var elem = $('#tour').find('.container');
+            $(data.hide).hide();
+            $(data.blink).addClass('blink-me');
+            elem.html(data.content);
+            if (data.image) {
+                elem.css('background-image', 'url(/tour/images/' + data.image + ')');
+            }
+            elem.append('<div class="tour-progress tour-' + bm.tour.current_phase + '"><span></span></div>')
+            $('#tour').show();
         }
-        elem.append('<div class="tour-progress tour-' + bm.tour.current_phase + '"><span></span></div>')
     }
 }

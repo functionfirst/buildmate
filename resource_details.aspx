@@ -92,6 +92,7 @@
                         <telerik:RadTextBox ID="rtbSuffix" runat="server"
                             MaxLength="50"
                             Text='<%# Bind("suffix") %>'/>
+                            <small>This is the unit size you purchase this Resource in.</small>
                     </div>
 
                     <div class="row">
@@ -227,7 +228,7 @@
                             </div>
 
                             <div class="row">
-                                <label class="label">Unit</label>
+                                <label class="label">Unit of Usage</label>
                                 <asp:Label ID="unitIdLabel" runat="server" Text='<%# Bind("unit") %>' />
                             </div>
 

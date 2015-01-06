@@ -21,11 +21,12 @@
 },
 {
 	"comment"   : "PHASE 7"
-},{
+},
+{
 	"comment"   : "PHASE 8",
 	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "table td a",
-	"content" 	: "<h2>Linking Resources to your Suppliers</h2><p>Within the Unresourced tab you will see your recently added Resources.</p><p>Click one of the blinking Resources listed below to begin linking a Supplier.</p>"
+	"blink" 	: ".button-create",
+	"content" 	: "<h2>Add a Resource Supplier</h2><p>This page shows your Resource details along with a list of all Suppliers of this Resource.</p><p>Click the blinking New Supplier button to add your first Supplier to the Resource.</p>"
 },{
 	"comment"   : "PHASE 9",
 	"hide" 		: "#hlSupport, #hlHelp, #hlSettings",

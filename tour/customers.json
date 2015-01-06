@@ -10,7 +10,42 @@
 	"content" 	: "<h2>Managing Projects</h2><p>Now you've created your first Customer, the next step is to create a Project for them.</p><p>Click Projects in the top menu to get started.</p>"
 },{
 	"comment"   : "PHASE 2",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: "#hlProjects",
+	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
+},{
+	"comment"   : "PHASE 3",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: "#hlProjects",
+	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
+},{
+	"comment"   : "PHASE 4",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: "#hlProjects",
+	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
+},{
+	"comment"   : "PHASE 5",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
+	"blink" 	: "#hlProjects",
+	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
+},{
+	"comment"   : "PHASE 6",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
 	"blink" 	: "#hlSuppliers",
-	"content" 	: "<h2>Managing Suppliers</h2><p>With your Customers and Projects in place the next step is understanding more about Suppliers</p> <p>Click the Suppliers link above to begin.</p>"
+	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
+},{
+	"comment"	: "PHASE 7",
+	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlSuppliers",
+	"content" 	: "<h2>Your Suppliers</h2><p>Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier.</p>"
+},{
+	"comment"	: "PHASE 8",
+	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlResources",
+	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
+},{
+	"comment"   : "PHASE 9",
+	"hide" 		: "#hlSupport, #hlHelp, #hlSettings",
+	"blink" 	: "#hlHome",
+	"content" 	: "<h2>Successfully linked a Supplier to a Resource</h2><p>You can now go back to the Dashboard by clicking the flashing Dashboard link above.</p>"
 }]
