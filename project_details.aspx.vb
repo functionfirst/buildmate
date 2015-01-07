@@ -226,6 +226,15 @@ Partial Class manager_Default
         fvProjectCosts.DataBind()
         fvElementDetailsInsert.DataBind()
         FormView1.DataBind()
+
+        checkForFirstBuildElement()
+    End Sub
+
+    Protected Sub checkForFirstBuildElement()
+        Dim d As DataView = AllSpacesDataSource.Select(DataSourceSelectArguments.Empty)
+        If d.Count = 1 Then
+            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
+        End If
     End Sub
 
     Protected Sub Page_LoadComplete(sender As Object, e As System.EventArgs) Handles Me.LoadComplete
