@@ -1,11 +1,6 @@
 [{
 	"comment"   : "PHASE 0"
-},,{
-	"comment"	: "PHASE 8",
-	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlResources",
-	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
-}{
+},{
 	"comment"   : "PHASE 1"
 },{
 	"comment"   : "PHASE 2",
