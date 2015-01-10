@@ -193,6 +193,9 @@ Partial Class manager_task_details
 
         rgResources.DataBind()
         rebindSiblingData()
+
+        Trace.Write("Item inserted")
+        movetoPhaseSix()
     End Sub
 
     Protected Sub btnAddResources_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnAddResources.Click
@@ -287,17 +290,18 @@ Partial Class manager_task_details
     End Sub
 
     Protected Sub rgResources_ItemUpdated(ByVal source As Object, ByVal e As Telerik.Web.UI.GridUpdatedEventArgs) Handles rgResources.ItemUpdated
+        Trace.Write("Item update")
         rebindSiblingData()
     End Sub
 
     Protected Sub rgResources_ItemInserted(ByVal source As Object, ByVal e As Telerik.Web.UI.GridInsertedEventArgs) Handles rgResources.ItemInserted
         rebindSiblingData()
-
-        movetoPhaseSix()
     End Sub
 
     Protected Sub movetoPhaseSix()
+        Trace.Write("Do tour thing" + Session("tourPhase"))
         If Session("tourPhase") = 5 Then
+            Trace.Write("Correct phase")
             Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
         End If
     End Sub
