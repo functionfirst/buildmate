@@ -151,5 +151,13 @@ Partial Class manager_Default
 
     Protected Sub fvSupplierInsert_ItemInserted(sender As Object, e As FormViewInsertedEventArgs) Handles fvSupplierInsert.ItemInserted
         rgSuppliers.DataBind()
+
+        moveTourPhase()
+    End Sub
+
+    Protected Sub moveTourPhase()
+        If Session("tourPhase") = 7 Then
+            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
+        End If
     End Sub
 End Class
