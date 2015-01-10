@@ -104,6 +104,14 @@ Partial Class manager_task_details
     Protected Sub fvTaskAdjustments_ItemUpdated(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.FormViewUpdatedEventArgs) Handles fvTaskAdjustments.ItemUpdated
         fvTaskTotals.DataBind()
         rgResources.DataBind()
+
+        nextStepInTour()
+    End Sub
+
+    Protected Sub nextStepInTour()
+        If Session("tourPhase") = 4 Then
+            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
+        End If
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
