@@ -48,7 +48,6 @@ Partial Class manager_task_details
             " AND resourceTypeId = " + rblResourceType.SelectedValue + "" & _
             whereBy & _
             " ORDER BY resourceName"
-        Trace.Write(sqlSelectCommand)
         Try
             Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
             adapter.SelectCommand.Parameters.AddWithValue("@projectId", Request.QueryString("pid"))
@@ -194,7 +193,6 @@ Partial Class manager_task_details
         rgResources.DataBind()
         rebindSiblingData()
 
-        Trace.Write("Item inserted")
         movetoPhaseSix()
     End Sub
 
@@ -290,7 +288,6 @@ Partial Class manager_task_details
     End Sub
 
     Protected Sub rgResources_ItemUpdated(ByVal source As Object, ByVal e As Telerik.Web.UI.GridUpdatedEventArgs) Handles rgResources.ItemUpdated
-        Trace.Write("Item update")
         rebindSiblingData()
     End Sub
 
@@ -299,9 +296,7 @@ Partial Class manager_task_details
     End Sub
 
     Protected Sub movetoPhaseSix()
-        Trace.Write("Do tour thing" + Session("tourPhase"))
         If Session("tourPhase") = 5 Then
-            Trace.Write("Correct phase")
             Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
         End If
     End Sub
@@ -479,28 +474,6 @@ Partial Class manager_task_details
         fvAddAdhoc.DataBind()
         fvTaskTotals.DataBind()
     End Sub
-
-    'Protected Sub lbRefreshResources_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbRefreshResources.Click
-    '    ' resynchronise prices and useage for all resources
-    '    Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-    '    Dim sql As String = "resyncTask"
-
-    '    Using conn As New SqlConnection(connString)
-    '        Dim cmd As New SqlCommand(sql, conn)
-    '        cmd.CommandType = Data.CommandType.StoredProcedure
-    '        cmd.Parameters.AddWithValue("@userId", Session("userId"))
-    '        cmd.Parameters.AddWithValue("@taskId", Request.QueryString("tid"))
-    '        Try
-    '            conn.Open()
-    '            cmd.ExecuteScalar()
-
-    '            rgResources.DataBind()
-    '            fvTaskTotals.DataBind()
-    '        Catch ex As Exception
-    '            Trace.Write(ex.Message)
-    '        End Try
-    '    End Using
-    'End Sub
 
     Protected Sub additionsDataSource_Inserted(sender As Object, e As System.Web.UI.WebControls.SqlDataSourceStatusEventArgs) Handles additionsDataSource.Inserted
         rgAdditions.DataBind()

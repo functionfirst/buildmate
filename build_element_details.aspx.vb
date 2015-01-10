@@ -79,27 +79,6 @@ Partial Class manager_build_element_details
         hideNotification()
     End Sub
 
-    'Protected Sub lbRefreshResources_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lbRefreshResources.Click
-    '    ' resynchronise prices and useage for all resources
-    '    Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-    '    Dim sql As String = "resyncBuildElement"
-
-    '    Using conn As New SqlConnection(connString)
-    '        Dim cmd As New SqlCommand(sql, conn)
-    '        cmd.CommandType = Data.CommandType.StoredProcedure
-    '        cmd.Parameters.AddWithValue("@userId", Session("userId"))
-    '        cmd.Parameters.AddWithValue("@roomId", Request.QueryString("rid"))
-    '        Try
-    '            conn.Open()
-    '            cmd.ExecuteScalar()
-
-    '            fvElementDetails.DataBind()
-    '        Catch ex As Exception
-    '            Trace.Write(ex.Message)
-    '        End Try
-    '    End Using
-    'End Sub
-
     Protected Sub fvElementDetails_ItemUpdated(sender As Object, e As System.Web.UI.WebControls.FormViewUpdatedEventArgs) Handles fvElementDetails.ItemUpdated
         showNotification("Build Element Updated", "Your changes were saved successfully")
         completionBar.DataBind()

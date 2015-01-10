@@ -60,13 +60,6 @@ Partial Class view_resource
             cmd.Parameters.AddWithValue("@oldResourceId", Request.QueryString("id"))
             cmd.Parameters.AddWithValue("@resourceId", resourceId)
 
-            Trace.Write(Session("userId"))
-            Trace.Write(Request.QueryString("pid"))
-            Trace.Write(Request.QueryString("id"))
-            Trace.Write(resourceId)
-
-
-
             ' bind to data adapter
             Dim adapter As SqlDataAdapter = New SqlDataAdapter(cmd)
             Dim dt As DataTable = New DataTable

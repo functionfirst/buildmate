@@ -9,8 +9,6 @@ Partial Class login
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim sql As String = "aspnet_Membership_UnlockUser"
 
-        Trace.Write(username)
-
         Using conn As New SqlConnection(connString)
             Dim cmd As New SqlCommand(sql, conn)
             cmd.CommandType = Data.CommandType.StoredProcedure

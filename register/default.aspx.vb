@@ -53,7 +53,6 @@ Partial Class login
     End Sub
 
     Protected Sub CreateUserWizard1_SendMailError(sender As Object, e As SendMailErrorEventArgs) Handles CreateUserWizard1.SendMailError
-        Trace.Write("Error in email")
         System.Diagnostics.Trace.WriteLine(e.Exception.Message)
         e.Handled = True
     End Sub

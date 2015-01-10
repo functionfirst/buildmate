@@ -109,8 +109,6 @@ Partial Class manager_subscription
 
     Protected Sub confirmNewSubscription()
         Dim queryToken = Request.QueryString("token")
-        Trace.Write("Query Token = " + queryToken)
-        Trace.Write("Subscription.token = " + subscription.Token)
         If Not queryToken Is Nothing Then
             subscription.confirm(queryToken)
             'subscription.Token = queryToken
@@ -141,7 +139,6 @@ Partial Class manager_subscription
 
     Protected Sub btnReactivate_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim profileId As String = subscription.reactivate()
-        Trace.Write(profileId)
         'If Not profileId Is Nothing Then Response.Redirect("subscription.aspx")
     End Sub
 

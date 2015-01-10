@@ -83,7 +83,6 @@ Partial Class document
 
                 reportToExport.ReportParameters("TermsOfUse").Value = document.Terms
         End Select
-        Trace.Write("foo")
         reportToExport.ReportParameters("pid").Value = document.Id
 
         Dim filename As String = String.Format("{0} - {1}.{2}", document.Name, document.ReportName, document.Format)

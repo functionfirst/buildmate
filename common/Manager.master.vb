@@ -87,7 +87,6 @@ Partial Class Manager
                 End While
 
             Catch ex As Exception
-                Trace.Write(ex.ToString)
                 myConn.Close()
             End Try
         End If
