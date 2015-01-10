@@ -292,6 +292,14 @@ Partial Class manager_task_details
 
     Protected Sub rgResources_ItemInserted(ByVal source As Object, ByVal e As Telerik.Web.UI.GridInsertedEventArgs) Handles rgResources.ItemInserted
         rebindSiblingData()
+
+        movetoPhaseSix()
+    End Sub
+
+    Protected Sub movetoPhaseSix()
+        If Session("tourPhase") = 5 Then
+            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
+        End If
     End Sub
 
     Protected Sub rgResources_ItemDeleted(ByVal source As Object, ByVal e As Telerik.Web.UI.GridDeletedEventArgs) Handles rgResources.ItemDeleted
