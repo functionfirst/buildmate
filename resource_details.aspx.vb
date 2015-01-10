@@ -6,6 +6,14 @@
         fvResourceInsert.DataBind()
 
         showNotification("Resource Supplier Added", "Your suppler was added successfully")
+
+        moveTourPhase()
+    End Sub
+
+    Protected Sub moveTourPhase()
+        If Session("tourPhase") = 8 Then
+            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
+        End If
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
