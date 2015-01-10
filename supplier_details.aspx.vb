@@ -14,5 +14,13 @@ Partial Class manager_supplier_details
 
     Protected Sub fvSupplierDetails_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvSupplierDetails.ItemUpdated
         showNotification("Supplier Updated", "Your changes were saved successfully")
+
+        moveTourPhase()
+    End Sub
+
+    Protected Sub moveTourPhase()
+        If Session("tourPhase") = 6 Then
+            Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
+        End If
     End Sub
 End Class
