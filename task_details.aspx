@@ -136,13 +136,22 @@
                         CssClass="label"
                         AssociatedControlID="rblResourceType" />
             
-                    <asp:RadioButtonList ID="rblResourceType" runat="server"
+                    <%--<asp:RadioButtonList ID="rblResourceType" runat="server"
                         AutoPostBack="true"
                         RepeatDirection="Horizontal">
                         <asp:ListItem Value="1" Text="Labour" Selected="True" />
                         <asp:ListItem Value="2" Text="Material" />
                         <asp:ListItem Value="3" Text="Plant &amp; Equipment" />
-                    </asp:RadioButtonList>
+                    </asp:RadioButtonList>--%>
+
+                    <telerik:RadComboBox ID="rblResourceType" runat="server" 
+                        AutoPostBack="true">
+                        <Items>
+                            <telerik:RadComboBoxItem Value="1" Text="Labour" Selected="true" />
+                            <telerik:RadComboBoxItem Value="2" Text="Material" />
+                            <telerik:RadComboBoxItem Value="3" Text="Plant &amp; Equipment" />
+                        </Items>
+                    </telerik:RadComboBox>
                 </div>
 
                 <div class="row">
