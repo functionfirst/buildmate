@@ -105,7 +105,7 @@
         <div class="md-wrapper" title="Click or press Esc to cancel"></div>
 
         <div id="variationMode" class="variationMode">
-            <a href="#" class="openVariatonMode" title="You are in Variation Mode"><span>Variation Mode</span></a>
+            <a href="#" class="openVariatonMode"><span>Variation Mode</span></a>
             <div>
                 <p>
                     <strong>Variation Mode</strong><br />
