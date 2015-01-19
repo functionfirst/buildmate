@@ -46,6 +46,39 @@
                                 ControlToValidate="Username"  
                                 ErrorMessage="Your email address is not valid"></asp:RegularExpressionValidator> 
                         </div>
+                        
+                        <div class="row">
+                            <asp:Label ID="lblConfirmEmail" runat="server" Text="Label" CssClass="label" AssociatedControlID="tbUsername2">Confirm Email</asp:Label>
+                            <asp:TextBox ID="tbUsername2" runat="server" Width="210" AutoCompleteType="Disabled" autocomplete="off" />
+
+                            <asp:RequiredFieldValidator   
+                                ID="RequiredFieldValidator3"  
+                                ForeColor=""
+                                runat="server"
+                                CssClass="label-error"
+                                Display="Dynamic"
+                                ControlToValidate="tbUsername2"  
+                                Text="Please confirm your email address."></asp:RequiredFieldValidator>  
+
+                            <asp:RegularExpressionValidator   
+                                ID="RegularExpressionValidator2"  
+                                runat="server"
+                                ForeColor=""
+                                CssClass="label-error"
+                                Display="Dynamic"
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"  
+                                ControlToValidate="tbUsername2"  
+                                ErrorMessage="Your Confirmation Email address is not valid"></asp:RegularExpressionValidator>
+
+                            <asp:CompareValidator ID="CompareValidator1" runat="server"
+                                ForeColor=""
+                                CssClass="label-error"
+                                Display="Dynamic"
+                                ErrorMessage="Your Email address must match"
+                                ControlToValidate="Username"
+                                ControlToCompare="tbUsername2">
+                            </asp:CompareValidator>
+                        </div>
 
                         <div class="row">
                             <asp:Label ID="Label1" runat="server" Text="Label" CssClass="label" AssociatedControlID="Password">Password</asp:Label>
