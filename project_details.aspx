@@ -34,9 +34,7 @@
     function checkVariationMode(item) {
         var currentStatus = $("#hiddenStatusId").val();
         var newStatus = item._value;
-        if (newStatus <= 2 && currentStatus > 2) {
-            alert("Show message")
-        } else if (currentStatus <= 2 && newStatus >= 3) {
+        if (currentStatus <= 2 && newStatus >= 3) {
             showVariationMode();
         } else {
             hideVariationMode();
