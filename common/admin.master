@@ -37,25 +37,21 @@
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
 
-        <div class="container">
             <div class="topbar">
                 <div class="topbar-container">
                     <div class="brand"><strong>Buildmate</strong> Administration</div>
-
                     
-                        <asp:LoginView ID="LoginView2" runat="server">
-                            <LoggedInTemplate>
-                                <div class="nav nav-right">
-                                    <ul class="nav-main" data-target="options">
-                                        <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </LoggedInTemplate>
-                        </asp:LoginView>
+                    <asp:LoginView ID="LoginView2" runat="server">
+                        <LoggedInTemplate>
+                            <div class="nav nav-right">
+                                <ul class="nav-main" data-target="options">
+                                    <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
+                                </ul>
+                            </div>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
 
-                    
                     <div class="nav">
-
                     <ul id="nav" class="nav-main">
                         <li>
                             <asp:HyperLink ID="hlHome" runat="server"
@@ -106,13 +102,7 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="main_content">
-                <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
-            
-                <div class="clear"></div>
-            </div>     
-        </div>  
+        <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
     </form>
     
     <script type="text/javascript" src="/js/jquery.min.js"></script>

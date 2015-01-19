@@ -18,18 +18,26 @@
 
     <div class="breadcrumb">
         <div class="breadcrumb-container">
-            Manage System Resources
+            <ul class="breadcrumb-options">
+                <li>
+                    <asp:HyperLink ID="hlAddCatalogue" runat="server"
+                        CssClass="pull-right AddItem fullAddItem button button-create"
+                        NavigateUrl="~/admin/add_resource.aspx">
+                        <span></span>Add a Resource
+                    </asp:HyperLink>
+                </li>
+            </ul>
+
+            <ul class="breadcrumb-list">
+                <li>Manage System Resources</li>
+            </ul>
         </div>
     </div>
 
-    <div class="container">
+    <div class="main-container">
         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
             
-                <asp:HyperLink ID="hlAddCatalogue" runat="server"
-                    CssClass="pull-right AddItem fullAddItem button button-create"
-                    NavigateUrl="~/admin/add_resource.aspx">
-                    <span></span>Add a Resource
-                </asp:HyperLink>
+                
             <div class="sidebar">
                     <h3>Search Catalogue</h3>
                 
