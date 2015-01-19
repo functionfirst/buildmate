@@ -47,13 +47,20 @@
                             CssClass="label"
                             Text="Resource Type" />
 
-                        <telerik:RadComboBox ID="rcbResourceType" runat="server" AutoPostBack="true">
+
+                        <asp:RadioButtonList ID="rcbResourceType" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" RepeatLayout="Flow">
+                            <asp:ListItem Text="Labour" Value="1" Selected="True" />
+                            <asp:ListItem Text="Material" Value="2" />
+                            <asp:ListItem Text="Plant &amp; Equipment" Value="3" />
+                        </asp:RadioButtonList>
+
+                        <%--<telerik:RadComboBox ID="rcbResourceType" runat="server" AutoPostBack="true">
                             <Items>
                                 <telerik:RadComboBoxItem Text="Labour" Value="1" Selected="true" />
                                 <telerik:RadComboBoxItem Text="Material" Value="2" />
                                 <telerik:RadComboBoxItem Text="Plant &amp; Equipment" Value="3" />
                             </Items>
-                        </telerik:RadComboBox>
+                        </telerik:RadComboBox>--%>
                     </div>
                 
                     <div class="row">
@@ -71,7 +78,8 @@
                     </div>
 
                     <div class="row">
-                        <asp:Button ID="btnApplyFilter" runat="server" Text="Search" />
+                        <label class="label">&nbsp;</label>
+                        <asp:Button ID="btnApplyFilter" runat="server" Text="Search" CssClass="button" />
                     </div>
         
             </div>
