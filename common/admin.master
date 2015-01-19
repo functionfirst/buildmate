@@ -42,14 +42,19 @@
                 <div class="topbar-container">
                     <div class="brand"><strong>Buildmate</strong> Administration</div>
 
+                    
+                        <asp:LoginView ID="LoginView2" runat="server">
+                            <LoggedInTemplate>
+                                <div class="nav nav-right">
+                                    <ul class="nav-main" data-target="options">
+                                        <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+
+                    
                     <div class="nav">
-                    <asp:LoginView ID="LoginView2" runat="server">
-                        <LoggedInTemplate>
-                            <ul class="nav-options" data-target="options">
-                                <li><a class="options-icon options-logout" href="logout.aspx">Logout</a></li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
 
                     <ul id="nav" class="nav-main">
                         <li>

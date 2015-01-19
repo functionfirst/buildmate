@@ -24,9 +24,14 @@
 
     <div class="container">
         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnApplyFilter">
+            
+                <asp:HyperLink ID="hlAddCatalogue" runat="server"
+                    CssClass="pull-right AddItem fullAddItem button button-create"
+                    NavigateUrl="~/admin/add_resource.aspx">
+                    <span></span>Add a Resource
+                </asp:HyperLink>
             <div class="sidebar">
-                <fieldset>
-                    <legend title="Search Resources">Search Catalogue</legend>
+                    <h3>Search Catalogue</h3>
                 
                     <div class="row">
                         <asp:Label ID="Label1" runat="server"
@@ -60,13 +65,7 @@
                     <div class="row">
                         <asp:Button ID="btnApplyFilter" runat="server" Text="Search" />
                     </div>
-                </fieldset>
         
-                <asp:HyperLink ID="hlAddCatalogue" runat="server"
-                    CssClass="AddItem fullAddItem"
-                    NavigateUrl="~/admin/add_resource.aspx">
-                    <span></span>Add a Resource
-                </asp:HyperLink>
             </div>
 
 
