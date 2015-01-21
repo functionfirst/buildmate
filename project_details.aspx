@@ -172,7 +172,7 @@
 
 
     <!-- project logs -->
-    <div id="projectLogs" class="md-window">
+    <div id="projectLogs" class="md-window" data-modal="projectLogs">
         <div class="md-content">
             <h3>Project Logs</h3>
 
@@ -201,7 +201,7 @@
     </asp:SqlDataSource>
 
     <!-- documents -->
-    <div id="documents" class="md-window">
+    <div id="documents" class="md-window" data-modal="documents">
         <div class="md-content">
             <h3>Create a Document...</h3>
 
@@ -280,7 +280,7 @@
     </div>
 
     <!-- begin build element resources -->
-    <div id="addBuildElement" class="md-window">
+    <div id="addBuildElement" class="md-window" data-modal="addBuildElement">
         <div class="md-content">
             <h3>Adding a Build Element..</h3>
         

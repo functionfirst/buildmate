@@ -39,7 +39,7 @@
     </script>
 
     <!-- begin add resource -->
-    <div id="addResource" class="md-window">
+    <div id="addResource" class="md-window" data-modal="addResource">
         <div class="md-content">
             <h3>Adding a Resource Supplier..</h3>
             

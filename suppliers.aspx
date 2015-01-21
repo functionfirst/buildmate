@@ -44,7 +44,7 @@
     </telerik:RadAjaxManagerProxy>
 
      <!-- begin add resource -->
-    <div id="addSupplier" class="md-window">
+    <div id="addSupplier" class="md-window" data-modal="addSupplier">
         <div class="md-content">
             <h3>Adding a Supplier..</h3>
             

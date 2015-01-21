@@ -124,7 +124,7 @@
     </telerik:RadAjaxManagerProxy>
     
     <!-- add resources modal -->
-    <div id="addResources" class="md-window">
+    <div id="addResources" class="md-window" data-modal="addResources">
 
         <asp:Panel ID="pAddResources" runat="server" DefaultButton="btnAddResources" CssClass="md-content">
             <h3>Add a Resource</h3>
@@ -254,7 +254,7 @@
     </div>
     
     <!-- add adhoc modal -->
-    <div id="addAddition" class="md-window">
+    <div id="addAddition" class="md-window" data-modal="addAddition">
         <div class="md-content">
             <asp:FormView ID="fvAddAdhoc" runat="server"
                 DefaultMode="Insert"
@@ -375,7 +375,7 @@
     </div>
     
     <!-- calculator modal -->
-    <div id="calculator" class="md-window">
+    <div id="calculator" class="md-window" data-modal="calculator">
         <div class="md-content">
             <h3>Calculator</h3>
 

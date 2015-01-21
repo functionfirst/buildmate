@@ -28,7 +28,7 @@
 </script>
 
 
-    <div id="addCustomer" class="md-window">
+    <div id="addCustomer" class="md-window" data-modal="addCustomer">
         <div class="md-content">
             <h3>Add a Customer</h3>
 

@@ -31,7 +31,7 @@
     </telerik:RadAjaxManagerProxy>
   
     <!-- begin add customer -->
-    <asp:Panel ID="addCustomer" runat="server" class="md-window">
+    <asp:Panel ID="addCustomer" runat="server" class="md-window" data-modal="addCustomer">
         <div class="md-content">
             <h3>Adding a Customer..</h3>
 

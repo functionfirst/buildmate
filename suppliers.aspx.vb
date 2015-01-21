@@ -101,6 +101,7 @@ Partial Class manager_Default
     End Sub
 
     Protected Sub btnAddSupplier_Click(sender As Object, e As System.EventArgs) Handles btnAddSupplier.Click
+        Trace.Write("FOOO")
         btnAddSupplier.Enabled = False
         Dim supplierId = rcbSuppliers.SelectedValue
         If supplierId > 0 Then

@@ -6,7 +6,7 @@ $(document).ready(function () {
     // open the related modal window
     // pass the div id as the rel attribute
     $('body').on('click', '.js-open-modal', function () {
-        var target = "#" + $(this).data("target");
+        var target = "[data-modal='" + $(this).data("target") + "']";
         $('body, '+ target).addClass('md-show');
         return false;
     });

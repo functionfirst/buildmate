@@ -22,7 +22,7 @@
     </telerik:RadAjaxManagerProxy>
 
      <!-- begin add ticket -->
-    <div id="addTicket" class="md-window">
+    <div id="addTicket" class="md-window" data-modal="addTicket">
         <div class="md-content">
             <h3>Submit a New Support Issue..</h3>
 
