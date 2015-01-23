@@ -5,7 +5,9 @@ Partial Class login
     Inherits MyBaseClass
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim isTokenValid = validateToken()
+        Dim token As String = Request.QueryString("token")
+        Dim email As String = Request.QueryString("email")
+        Dim isTokenValid = validateToken(token, email)
         If isTokenValid Then
             pReset.Visible = True
         Else
@@ -13,8 +15,25 @@ Partial Class login
         End If
     End Sub
 
-    Function validateToken() As Boolean
-        Return True
+    Function validateToken(ByVal token As String, ByVal email As String) As Boolean
+        ' Check if the Code already exists in the database
+        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+        Dim myConn As New SqlConnection(connString)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT token FROM Token WHERE token = @token and email = @email", myConn)
+        cmd.Parameters.AddWithValue("@email", email)
+        cmd.Parameters.AddWithValue("@token", token)
+
+        Try
+            myConn.Open()
+            If cmd.ExecuteScalar IsNot Nothing Then
+                ' Token exists
+                Return True
+                myConn.Close()
+            End If
+        Catch ex As Exception
+            ' Do nothing
+        End Try
+        Return False
     End Function
 
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click

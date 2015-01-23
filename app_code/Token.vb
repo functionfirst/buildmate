@@ -5,7 +5,7 @@ Imports System.Data
 Namespace Buildmate
     Public Class Token
         Private _token As String
-        Private _userid As String
+        Private _email As String
         Private _ipaddress As String
 
         Property token As String
@@ -17,12 +17,12 @@ Namespace Buildmate
             End Set
         End Property
 
-        Property userid As String
+        Property email As String
             Get
-                Return _userid
+                Return _email
             End Get
             Set(ByVal value As String)
-                _userid = value
+                _email = value
             End Set
         End Property
 
@@ -59,8 +59,8 @@ Namespace Buildmate
             ' Update notifydate and add new subscription token for this user
             Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
             Dim myConn As New SqlConnection(connString)
-            Dim cmd As SqlCommand = New SqlCommand("DELETE token FROM Token WHERE userid = @userid; INSERT INTO Token (UserId, Token, IPAddress) VALUES(@userid, @token, @ipaddress);", myConn)
-            cmd.Parameters.AddWithValue("@userid", userid)
+            Dim cmd As SqlCommand = New SqlCommand("DELETE token FROM Token WHERE email = @email; INSERT INTO Token (email, Token, IPAddress) VALUES(@email, @token, @ipaddress);", myConn)
+            cmd.Parameters.AddWithValue("@email", email)
             cmd.Parameters.AddWithValue("@token", token)
             cmd.Parameters.AddWithValue("@ipaddress", ipaddress)
 
@@ -82,8 +82,8 @@ Namespace Buildmate
             ' Check if the Code already exists in the database
             Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
             Dim myConn As New SqlConnection(connString)
-            Dim cmd As SqlCommand = New SqlCommand("SELECT token FROM Token WHERE token = @token and UserId = @userid", myConn)
-            cmd.Parameters.AddWithValue("@userid", userid)
+            Dim cmd As SqlCommand = New SqlCommand("SELECT token FROM Token WHERE token = @token and email = @email", myConn)
+            cmd.Parameters.AddWithValue("@email", email)
             cmd.Parameters.AddWithValue("@token", token)
 
             Try

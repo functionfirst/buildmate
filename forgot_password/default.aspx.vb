@@ -12,11 +12,11 @@ Partial Class login
     Sub resetPassword(ByVal email As String)
         ' check if account exists
         Try
-            Dim userid As String = checkAccount(email)
-            If userid.Length > 0 Then
+            Dim accountExists As String = checkAccount(email)
+            If accountExists Then
                 ' Account exists, unlock it just in case it was locked
                 unlockAccount(email)
-                sendResetEmail(email, userid)
+                sendResetEmail(email)
 
                 pReset.Visible = False
                 pConfirmed.Visible = True
@@ -32,10 +32,9 @@ Partial Class login
     End Sub
 
     Function checkAccount(ByVal email As String) As String
-        Dim userid As String = ""
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim myConn As New SqlConnection(connString)
-        Dim cmd As SqlCommand = New SqlCommand("SELECT userid FROM aspnet_users WHERE username = @email", myConn)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT username FROM aspnet_users WHERE username = @email", myConn)
         cmd.Parameters.AddWithValue("@email", email)
         Dim reader As SqlDataReader
 
@@ -44,16 +43,14 @@ Partial Class login
             reader = cmd.ExecuteReader
 
             If reader.HasRows Then
-                While reader.Read
-                    userid = reader("userid").ToString
-                End While
+                Return True
             End If
         Catch ex As Exception
             ' Do nothing
             Trace.Write(ex.InnerException.ToString)
             Trace.Write(ex.Message)
         End Try
-        Return userid
+        Return False
     End Function
 
     Sub unlockAccount(ByVal email As String)
@@ -75,12 +72,12 @@ Partial Class login
         End Using
     End Sub
 
-    Sub sendResetEmail(ByVal email As String, ByVal userid As String)
-        Dim client_ip As String
-        client_ip = Request.UserHostAddress()
+    Sub sendResetEmail(ByVal email As String)
+        Dim domain As String = HttpContext.Current.Request.Url.Host
+        Dim client_ip As String = Request.UserHostAddress()
 
         Dim token As New Token()
-        token.userid = userid
+        token.email = email
         token.ipaddress = client_ip
 
         token.generateToken()
@@ -98,6 +95,7 @@ Partial Class login
             Dim replacements As ListDictionary = New ListDictionary
             replacements.Add("<% Token %>", newToken)
             replacements.Add("<% Email %>", email)
+            replacements.Add("<% Domain %>", domain)
 
             Dim fileMsg As System.Net.Mail.MailMessage
             fileMsg = md.CreateMailMessage(email, replacements, Me)
