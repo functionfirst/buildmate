@@ -53,7 +53,7 @@ Partial Class login
     Sub sendConfirmationEmail(ByVal email As String)
         Try
             Dim md As MailDefinition = New MailDefinition
-            md.BodyFileName = "~/email_templates/ResetPassword.html"
+            md.BodyFileName = "~/email_templates/PasswordChanged.html"
             md.From = "support@buildmateapp.com"
             md.Subject = "[Buildmate] Password Reset "
             md.Priority = MailPriority.Normal
