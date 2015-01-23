@@ -28,85 +28,83 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
     <div class="login-form">
-            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
+        <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
 
-        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" CssClass="login-form-inner">
+        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" CssClass="login-form-inner">            
+            <asp:Panel ID="pReset" runat="server" DefaultButton="btnRecover">
+                <h1>Forgotten your password?</h1>
 
-            <h1>Forgotten your password?</h1>
-            
-            <asp:PasswordRecovery ID="PasswordRecovery2" runat="server">
-                <UserNameTemplate>
-                    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnLogin">
-                        <p>
-                            To recover your password, enter your email address below. If we recognise your email address, we'll send an email confirmation to you straight away.
-                        </p>
+                <p>
+                    To recover your password, enter your email address below. If we recognise your email address, we'll send an email confirmation to you straight away.
+                </p>
 
-                        <div class="row">
-                            <asp:Label
-                                ID="Label1"
-                                runat="server"
-                                Text="Email"
-                                CssClass="label"
-                                AssociatedControlID="UserName" />
+                <div class="row">
+                    <asp:Label
+                        ID="Label1"
+                        runat="server"
+                        Text="Email"
+                        CssClass="label"
+                        AssociatedControlID="email" />
 
-                            <telerik:RadTextBox
-                                ID="UserName"
-                                runat="server"
-                                Width="210px"
-                                EmptyMessage="Enter your email..."
-                                TextMode="SingleLine" />
+                    <telerik:RadTextBox
+                        ID="email"
+                        runat="server"
+                        Width="210px"
+                        EmptyMessage="Enter your email..."
+                        TextMode="SingleLine" />
 
-                            <asp:RequiredFieldValidator
-                                ID="RequiredFieldValidator1"
-                                runat="server"
-                                ControlToValidate="UserName"
-                                Display="Dynamic"
-                                CssClass="required"
-                                ValidationGroup="PasswordRecovery1">
-                                An email address is required
-                            </asp:RequiredFieldValidator>
-                        </div>
+                    <asp:RequiredFieldValidator
+                        ID="RequiredFieldValidator1"
+                        runat="server"
+                        ControlToValidate="email"
+                        Display="Dynamic"
+                        CssClass="required"
+                        ValidationGroup="PasswordRecovery1">
+                        An email address is required
+                    </asp:RequiredFieldValidator>
+                </div>
 
-                        <asp:RegularExpressionValidator
-                                ID="RegularExpressionValidator1"
-                                runat="server"
-                                ControlToValidate="UserName"
-                                ValidationGroup="PasswordRecovery1"
-                                Display="Dynamic"
-                                CssClass="required"
-                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
-                                <div class="row">
-                                    <label class="label">&nbsp;</label>
-                                    <p class="error">This email isn't valid.</p>
-                                </div>
-                            </asp:RegularExpressionValidator>
-
-                            <asp:label
-                                ID="FailureText"
-                                runat="server"
-                                EnableViewState="False"
-                                CssClass="warning" style="color: Red" />
-
+                <asp:RegularExpressionValidator
+                        ID="RegularExpressionValidator1"
+                        runat="server"
+                        ControlToValidate="email"
+                        ValidationGroup="PasswordRecovery1"
+                        Display="Dynamic"
+                        CssClass="required"
+                        ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
                         <div class="row">
                             <label class="label">&nbsp;</label>
-
-                            <asp:Button ID="btnLogin" runat="server"
-                                CommandName="Submit"
-                                CssClass="button"
-                                ValidationGroup="PasswordRecovery1"
-                                Text="Recover your Password" />
+                            <p class="error">This email isn't valid.</p>
                         </div>
-                    </asp:Panel>
-                </UserNameTemplate>
-                <SuccessTemplate>
-                    <p>We've sent you an email confirming your password.</p>
-                </SuccessTemplate>
-                <MailDefinition
-                    From="support@buildmateapp.com"
-                    Subject="[Buildmate] Password Confirmation"
-                    IsBodyHtml="true"
-                    BodyFileName="~/email_templates/RecoverPassword.html" />
-            </asp:PasswordRecovery>
+                    </asp:RegularExpressionValidator>
+
+                    <asp:label
+                        ID="FailureText"
+                        runat="server"
+                        EnableViewState="False"
+                        CssClass="warning" style="color: Red" />
+
+                <div class="row">
+                    <label class="label">&nbsp;</label>
+
+                    <asp:Button ID="btnRecover" runat="server"
+                        CommandName="Submit"
+                        CssClass="button"
+                        ValidationGroup="PasswordRecovery1"
+                        Text="Recover your Password" />
+                </div>
+            </asp:Panel>
+            
+            <asp:Panel ID="pConfirmed" runat="server" Visible="false">
+                <h1>Your confirmation email has been sent!</h1>
+
+                <p>Check your email — we've sent you a message to confirm your request to reset your password. Please click the link in the email and follow the directions to finish resetting your password.</p>
+            </asp:Panel>
+
+            <asp:Panel ID="pUnconfirmed" runat="server" Visible="false">
+                <h1>Your confirmation email has been sent!</h1>
+                <p>Check your email - we've sent you a message confirming your password reset.</p>
+            </asp:Panel>
         </telerik:RadAjaxPanel>
 
                 
