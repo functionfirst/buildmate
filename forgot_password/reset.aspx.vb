@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Web.Mail
 
 Partial Class login
     Inherits MyBaseClass
@@ -18,13 +19,35 @@ Partial Class login
 
     Protected Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         If Page.IsValid Then
-            Dim username As String = Request.QueryString("email")
+            Dim email As String = Request.QueryString("email")
             ' reset password
-            Dim u As MembershipUser = Membership.GetUser(username)
+            Dim u As MembershipUser = Membership.GetUser(email)
             u.ChangePassword(u.ResetPassword(), rtbPassword.Text)
 
             pReset.Visible = False
             pConfirmed.Visible = True
+
+            sendConfirmationEmail(email)
         End If
+    End Sub
+
+    Sub sendConfirmationEmail(ByVal email As String)
+        Try
+            Dim md As MailDefinition = New MailDefinition
+            md.BodyFileName = "~/email_templates/ResetPassword.html"
+            md.From = "support@buildmateapp.com"
+            md.Subject = "[Buildmate] Password Reset "
+            md.Priority = MailPriority.Normal
+            md.IsBodyHtml = True
+            Dim replacements As ListDictionary = New ListDictionary
+
+            Dim fileMsg As System.Net.Mail.MailMessage
+            fileMsg = md.CreateMailMessage(email, replacements, Me)
+            Dim msg As System.Net.Mail.MailMessage = fileMsg
+            Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
+            obj.Send(msg)
+        Catch ex As Exception
+            ' Do nothing
+        End Try
     End Sub
 End Class
