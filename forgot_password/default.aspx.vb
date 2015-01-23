@@ -87,7 +87,7 @@ Partial Class login
             Dim md As MailDefinition = New MailDefinition
             md.BodyFileName = "~/email_templates/ResetPassword.html"
             md.From = "support@buildmateapp.com"
-            md.Subject = "[Buildmate] Password Reset "
+            md.Subject = "[Buildmate] Password Reset Instructions"
             md.Priority = MailPriority.Normal
             md.IsBodyHtml = True
 

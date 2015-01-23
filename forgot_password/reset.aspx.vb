@@ -55,7 +55,7 @@ Partial Class login
             Dim md As MailDefinition = New MailDefinition
             md.BodyFileName = "~/email_templates/PasswordChanged.html"
             md.From = "support@buildmateapp.com"
-            md.Subject = "[Buildmate] Password Reset "
+            md.Subject = "[Buildmate] Password Reset Success"
             md.Priority = MailPriority.Normal
             md.IsBodyHtml = True
             Dim replacements As ListDictionary = New ListDictionary
