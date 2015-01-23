@@ -28,82 +28,105 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
     <div class="login-form">
-            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
+        <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
 
         <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" CssClass="login-form-inner">
+            <asp:Panel ID="pReset" runat="server" Visible="false">
+                <h1>Password Reset</h1>
 
-            <h1>Forgotten your password?</h1>
-            
-            <asp:PasswordRecovery ID="PasswordRecovery2" runat="server">
-                <UserNameTemplate>
-                    <asp:Panel ID="Panel1" runat="server" DefaultButton="btnLogin">
-                        <p>
-                            To recover your password, enter your email address below. If we recognise your email address, we'll send an email confirmation to you straight away.
-                        </p>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server"
+                    DisplayMode="BulletList"
+                    ShowSummary="true"
+                    HeaderText="Your password must meet the following criteria"
+                    ValidationGroup="PasswordReset" />
 
-                        <div class="row">
-                            <asp:Label
-                                ID="Label1"
-                                runat="server"
-                                Text="Email"
-                                CssClass="label"
-                                AssociatedControlID="UserName" />
+                <div class="row">
+                    <asp:Label
+                        ID="Label1"
+                        runat="server"
+                        Text="Password"
+                        CssClass="label"
+                        AssociatedControlID="rtbPassword" />
 
-                            <telerik:RadTextBox
-                                ID="UserName"
-                                runat="server"
-                                Width="210px"
-                                EmptyMessage="Enter your email..."
-                                TextMode="SingleLine" />
+                    <telerik:RadTextBox
+                        ID="rtbPassword"
+                        runat="server"
+                        Width="210px"
+                        TextMode="Password" />
 
-                            <asp:RequiredFieldValidator
-                                ID="RequiredFieldValidator1"
-                                runat="server"
-                                ControlToValidate="UserName"
-                                Display="Dynamic"
-                                CssClass="required"
-                                ValidationGroup="PasswordRecovery1">
-                                An email address is required
-                            </asp:RequiredFieldValidator>
-                        </div>
+                    <asp:RequiredFieldValidator
+                        ID="RequiredFieldValidator1"
+                        runat="server"
+                        ControlToValidate="rtbPassword"
+                        Display="None"
+                        ErrorMessage="New Password is required"
+                        ValidationGroup="PasswordReset">
+                    </asp:RequiredFieldValidator>
+                    
+                    <asp:RegularExpressionValidator runat="server"
+                        ValidationGroup="PasswordReset"
+                        ControlToValidate="rtbPassword"
+                        Display="None"
+                        ErrorMessage="Password must be 6-12 nonblank characters."
+                        ValidationExpression="[^\s]{4,12}" />
+                </div>
+                <div class="row">
+                    <asp:Label
+                        ID="Label2"
+                        runat="server"
+                        Text="Confirm Password"
+                        CssClass="label"
+                        AssociatedControlID="rtbConfirmPassword" />
 
-                        <asp:RegularExpressionValidator
-                                ID="RegularExpressionValidator1"
-                                runat="server"
-                                ControlToValidate="UserName"
-                                ValidationGroup="PasswordRecovery1"
-                                Display="Dynamic"
-                                CssClass="required"
-                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
-                                <div class="row">
-                                    <label class="label">&nbsp;</label>
-                                    <p class="error">This email isn't valid.</p>
-                                </div>
-                            </asp:RegularExpressionValidator>
+                    <telerik:RadTextBox
+                        ID="rtbConfirmPassword"
+                        runat="server"
+                        Width="210px"
+                        TextMode="Password" />
 
-                            <asp:label
-                                ID="FailureText"
-                                runat="server"
-                                EnableViewState="False"
-                                CssClass="warning" style="color: Red" />
+                    <asp:RequiredFieldValidator
+                        ID="RequiredFieldValidator2"
+                        runat="server"
+                        ControlToValidate="rtbConfirmPassword"
+                        Display="None"
+                        ErrorMessage="Confirmation Password is required"
+                        ValidationGroup="PasswordReset">
+                        
+                    </asp:RequiredFieldValidator>
 
-                        <div class="row">
-                            <label class="label">&nbsp;</label>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server"
+                        ControlToCompare="rtbPassword"
+                        ControlToValidate="rtbConfirmPassword"
+                        ValidationGroup="PasswordReset"
+                        Display="None"
+                        ErrorMessage="Passwords must match">
+                    </asp:CompareValidator>
+                </div>
 
-                            <asp:Button ID="btnLogin" runat="server"
-                                CommandName="Submit"
-                                CssClass="button"
-                                ValidationGroup="PasswordRecovery1"
-                                Text="Recover your Password" />
-                        </div>
-                    </asp:Panel>
-                </UserNameTemplate>
-                <SuccessTemplate>
-                    <p>We've sent you an email confirming your password.</p>
-                </SuccessTemplate>
-            </asp:PasswordRecovery>
+                <div class="row">
+                    <label class="label">&nbsp;</label>
+
+                    <asp:Button ID="btnReset" runat="server"
+                        CommandName="Submit"
+                        CssClass="button"
+                        ValidationGroup="PasswordReset"
+                        Text="ChangePassword" />
+                </div>
+
+            </asp:Panel>
+
+            <asp:Panel ID="pInvalidToken" runat="server" Visible="false">
+                <h1>Reset link has expired</h1>
+
+                <p>This password reset link has expired. If you still wish to reset your password please goto the <a href="/forgotten_password/">Forgotten Password</a> page.</p>
+            </asp:Panel>
+
+            <asp:Panel ID="pConfirmed" runat="server" Visible="false">
+                <h1>Password reset successfully!</h1>
+
+                <p>Your Password has been reset succesfully, you should now be able to <a href="/">login</a>.</p>
+            </asp:Panel>
         </telerik:RadAjaxPanel>
-
                 
         <p class="centrealign">
             <a href="../">Go back to login the page</a>
