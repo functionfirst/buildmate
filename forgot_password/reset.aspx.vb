@@ -19,7 +19,7 @@ Partial Class login
         ' Check if the Code already exists in the database
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim myConn As New SqlConnection(connString)
-        Dim cmd As SqlCommand = New SqlCommand("SELECT token FROM Token WHERE token = @token and email = @email", myConn)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT token FROM Token WHERE token = @token and email = @email AND getdate() < DateAdd(day, 1, DateCreated)", myConn)
         cmd.Parameters.AddWithValue("@email", email)
         cmd.Parameters.AddWithValue("@token", token)
 
