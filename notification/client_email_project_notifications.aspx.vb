@@ -2,6 +2,7 @@ Imports System.Data.SqlClient
 Imports System.Data
 Imports System.Net.Mail
 Imports FollowupEmail
+Imports Buildmate
 
 Partial Class services_client_email_project_notifications
     Inherits System.Web.UI.Page
@@ -29,8 +30,16 @@ Partial Class services_client_email_project_notifications
                 Dim firstName As String = dr("firstname")
                 Dim email As String = dr("email")
 
+                Dim client_ip As String = Request.UserHostAddress()
 
-                Dim token As String = updateUserToken(Userid)
+                Dim newToken As New Token()
+                newToken.email = email
+                newToken.ipaddress = client_ip
+
+                newToken.generateToken()
+                Dim token = newToken.token
+
+                'Dim token As String = updateUserToken(Userid)
                 getProjectList(Userid, firstName, email, token)
             Next
         Catch ex As Exception
@@ -38,30 +47,30 @@ Partial Class services_client_email_project_notifications
         End Try
     End Sub
 
-    Protected Function updateUserToken(ByVal userid As String) As String
-        Dim token As String = generateToken()
+    'Protected Function updateUserToken(ByVal userid As String) As String
+    '    Dim token As String = generateToken()
 
-        ' Update notifydate and add new subscription token for this user
-        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-        Dim myConn As New SqlConnection(connString)
-        Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET notifyDate = GETDATE(), token = @token WHERE userId = @userId", myConn)
-        cmd.Parameters.AddWithValue("@userid", userid)
-        cmd.Parameters.AddWithValue("@token", token)
+    '    ' Update notifydate and add new subscription token for this user
+    '    Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+    '    Dim myConn As New SqlConnection(connString)
+    '    Dim cmd As SqlCommand = New SqlCommand("UPDATE UserProfile SET notifyDate = GETDATE(), token = @token WHERE userId = @userId", myConn)
+    '    cmd.Parameters.AddWithValue("@userid", userid)
+    '    cmd.Parameters.AddWithValue("@token", token)
 
-        Try
-            myConn.Open()
-            cmd.ExecuteScalar()
+    '    Try
+    '        myConn.Open()
+    '        cmd.ExecuteScalar()
 
-        Catch ex As Exception
-            Trace.Write(ex.ToString)
-        Finally
-            If myConn.State = ConnectionState.Open Then
-                myConn.Close()
-            End If
-        End Try
+    '    Catch ex As Exception
+    '        Trace.Write(ex.ToString)
+    '    Finally
+    '        If myConn.State = ConnectionState.Open Then
+    '            myConn.Close()
+    '        End If
+    '    End Try
 
-        Return token
-    End Function
+    '    Return token
+    'End Function
 
     Protected Sub getProjectList(ByVal userid As String, ByVal firstname As String, ByVal email As String, ByVal token As String)
         ' get project list for this user
