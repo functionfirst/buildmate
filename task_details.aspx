@@ -132,34 +132,25 @@
             <div class="md-details">
                 <div class="row">
                     <asp:Label ID="Label10" runat="server"
-                        Text="Type:"
+                        Text="Type"
                         CssClass="label"
                         AssociatedControlID="rblResourceType" />
             
-                    <%--<asp:RadioButtonList ID="rblResourceType" runat="server"
+                    <asp:RadioButtonList ID="rblResourceType" runat="server"
                         AutoPostBack="true"
                         RepeatDirection="Horizontal">
                         <asp:ListItem Value="1" Text="Labour" Selected="True" />
                         <asp:ListItem Value="2" Text="Material" />
                         <asp:ListItem Value="3" Text="Plant &amp; Equipment" />
-                    </asp:RadioButtonList>--%>
-
-                    <telerik:RadComboBox ID="rblResourceType" runat="server" 
-                        AutoPostBack="true">
-                        <Items>
-                            <telerik:RadComboBoxItem Value="1" Text="Labour" Selected="true" />
-                            <telerik:RadComboBoxItem Value="2" Text="Material" />
-                            <telerik:RadComboBoxItem Value="3" Text="Plant &amp; Equipment" />
-                        </Items>
-                    </telerik:RadComboBox>
+                    </asp:RadioButtonList>
                 </div>
 
                 <div class="row">
                     <asp:Label ID="Label9" runat="server"
-                        Text="Search in..."
+                        Text="Search"
                         CssClass="label"
                         AssociatedControlID="rcbSearchType" />
-
+                   
                     <telerik:RadComboBox ID="rcbSearchType" runat="server" 
                         AutoPostBack="true">
                         <Items>
@@ -172,7 +163,7 @@
             
                 <div class="row">
                     <asp:Label ID="Label12" runat="server"
-                        Text="Resource:"
+                        Text="Resource"
                         CssClass="label"
                         AssociatedControlID="rcbResources" />
 
@@ -231,7 +222,7 @@
 
                 <div class="row">
                     <asp:Label ID="Label14" runat="server"
-                        Text="Usage:"
+                        Text="Usage"
                         CssClass="label"
                         AssociatedControlID="rntbUses" />
 

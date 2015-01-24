@@ -215,14 +215,21 @@
                         Text="Document Type"
                         AssociatedControlID="rcbReportType" />
 
-                    <telerik:RadComboBox ID="rcbReportType" runat="server" 
+               <%--     <telerik:RadComboBox ID="rcbReportType" runat="server" 
                         AutoPostBack="true">
                         <Items>
                             <telerik:RadComboBoxItem Value="1" Text="Resource break-down" Selected="true" />
                             <telerik:RadComboBoxItem Value="2" Text="Acceptance Form" />
                             <telerik:RadComboBoxItem Value="3" Text="Offer Letter" />
-                        </Items>
-                    </telerik:RadComboBox>
+                        </Items>x
+                    </telerik:RadComboBox>--%>
+                    
+                    <asp:RadioButtonList ID="rcbReportType" runat="server" AutoPostBack="true">
+                        <asp:ListItem Text="Resource break-down" Value="1" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Acceptance Form" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Offer Letter" Value="3"></asp:ListItem>
+                    </asp:RadioButtonList>
+
                 </div>
 
                 <asp:panel class="row" runat="server" id="pTermsOfUse" Visible="false">
