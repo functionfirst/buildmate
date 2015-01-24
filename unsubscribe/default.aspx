@@ -13,9 +13,22 @@
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
     
-    <h1>Buildmate Email Subscriptions</h1>
+    <h1>Unsubscribe</h1>
 
-    <p>Enter your email address below to unsubscribe from all Buildmate email subscriptions.</p>
+    <p>
+        To stop receiving commercial and marketing related messages from us, enter your email address below and click 'Unsubscribe'.
+    </p>
+
+    <p>
+        Once unsubscribed, you may still receive transactional emails from us such as subscription related information.
+    </p>
+
+    <p>
+        Note: You'll need to enter the email address to which we sent the email message. If the email address you enter is not
+        recognised, we may be sending it to an old email address of yours, or an email alias that you're part of (for example, 'info@', 'sales@' and so on).
+    </p>
+
+    <strong>Please enter your email address</strong>
 
     <asp:Panel ID="pUnsubscribe" runat="server" DefaultButton="btnUnsubscribe">
         <div class="row">
@@ -34,7 +47,7 @@
 
 
         <div class="row">
-            <asp:Button ID="btnUnsubscribe" runat="server" Text="Unsubscribe" CssClass="button" />
+            <asp:Button ID="btnUnsubscribe" runat="server" Text="Unsubscribe" CssClass="button button-error" />
         </div>
     </asp:Panel>
 </asp:Content>

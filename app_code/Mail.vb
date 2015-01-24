@@ -3,8 +3,6 @@ Imports System.Net.Mail
 
 Namespace Buildmate
     Public Class Mail
-        Dim token As Token = New Token
-
         Private _toAdd As String
         Private _fromAdd As String
         Private _fromName As String
@@ -87,7 +85,6 @@ Namespace Buildmate
             md.Subject = subject
             md.Priority = MailPriority.Normal
             md.IsBodyHtml = True
-            replacements.Add("<% token %>", token.token)
 
             Dim fileMsg As System.Net.Mail.MailMessage
             fileMsg = md.CreateMailMessage(toAdd, replacements, New System.Web.UI.Control)
