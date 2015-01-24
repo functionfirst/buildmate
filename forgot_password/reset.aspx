@@ -67,8 +67,8 @@
                         ValidationGroup="PasswordReset"
                         ControlToValidate="rtbPassword"
                         Display="None"
-                        ErrorMessage="Password must be 6-12 nonblank characters."
-                        ValidationExpression="[^\s]{4,12}" />
+                        ErrorMessage="Password must be between 6-12 characters long."
+                        ValidationExpression="[^\s]{6,12}" />
                 </div>
                 <div class="row">
                     <asp:Label
