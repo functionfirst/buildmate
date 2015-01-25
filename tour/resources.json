@@ -23,12 +23,12 @@
 	"comment"   : "PHASE 7"
 },{
 	"comment"   : "PHASE 8",
-	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "table td a",
 	"content" 	: "<h2>Linking Resources to your Suppliers</h2><p>Within the Unresourced tab you will see your recently added Resources.</p><p>Click one of the blinking Resources listed below to begin linking a Supplier.</p>"
 },{
 	"comment"   : "PHASE 9",
-	"hide" 		: "#hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlHome",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlHome",
 	"content" 	: "<h2>Successfully linked a Supplier to a Resource</h2><p>You can now go back to the Dashboard by clicking the flashing Dashboard link above.</p>"
 }]

@@ -5,42 +5,42 @@
 	"comment"   : "PHASE 1"
 },{
 	"comment"   : "PHASE 2",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
-	"blink" 	: "#hlProjects",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 3",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
-	"blink" 	: "#hlProjects",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 4",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
-	"blink" 	: "#hlProjects",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 5",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlSuppliers, #hlHelp, #hlSettings",
-	"blink" 	: "#hlProjects",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 6",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlSuppliers",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
 },{
 	"comment"	: "PHASE 7",
-	"hide" 		: "#MainContent_pMainPanel, #hlResources, #hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlSuppliers",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Your Suppliers</h2><p>Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier.</p>"
 },{
 	"comment"	: "PHASE 8",
-	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlResources",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlResources",
 	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
 },{
 	"comment"   : "PHASE 9",
-	"hide" 		: "#hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlHome",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlHome",
 	"content" 	: "<h2>Successfully linked a Supplier to a Resource</h2><p>You can now go back to the Dashboard by clicking the flashing Dashboard link above.</p>"
 }]

@@ -24,12 +24,12 @@
 },
 {
 	"comment"   : "PHASE 8",
-	"hide" 		: "#MainContent_pMainPanel, #hlSupport, #hlHelp, #hlSettings",
+	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: ".button-create",
 	"content" 	: "<h2>Add a Resource Supplier</h2><p>This page shows your Resource details along with a list of all Suppliers of this Resource.</p><p>Click the blinking New Supplier button to add your first Supplier to the Resource.</p>"
 },{
 	"comment"   : "PHASE 9",
-	"hide" 		: "#hlSupport, #hlHelp, #hlSettings",
-	"blink" 	: "#hlHome",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"blink" 	: "#ctl00_hlHome",
 	"content" 	: "<h2>Successfully linked a Supplier to a Resource</h2><p>You can now go back to the Dashboard by clicking the flashing Dashboard link above.</p>"
 }]
