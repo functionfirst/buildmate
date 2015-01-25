@@ -234,11 +234,18 @@
                         Type="Number"
                         MinValue="0"
                         NumberFormat-DecimalDigits="2" />
+
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                        ControlToValidate="rntbUses"
+                        ValidationGroup="AddResource"
+                        Display="Dynamic"
+                        ValidationExpression="^[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*$" SetFocusOnError="true"
+                        ErrorMessage="Please enter a Usage greater than 0."></asp:RegularExpressionValidator>
                 </div>
             </div>
 
             <div class="md-footer">
-                <asp:Button ID="btnAddResources" runat="server" Text="Add Resource" CssClass="button button-create" />
+                <asp:Button ID="btnAddResources" runat="server" Text="Add Resource" ValidationGroup="AddResource" CssClass="button button-create" />
                 <a href="#" class="button md-close">Close</a>
             </div>
         </asp:Panel>
@@ -1301,7 +1308,7 @@
                                     </div>
                                     
                                     <div class="row">
-                                        <label title="Useage" class="label">Useage</label>
+                                        <label title="Useage" class="label">Usage</label>
                                         
                                         <telerik:RadNumericTextBox ID="rntbUses" runat="server"
                                             dbvalue='<%# Bind("uses") %>'
@@ -1309,6 +1316,13 @@
                                             Width="80px"
                                             Type="Number" />
                                             <%#Eval("unit")%>
+
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                            ControlToValidate="rntbUses"
+                                            ValidationGroup="EditResource"
+                                            Display="Dynamic"
+                                            ValidationExpression="^[1-9][0-9]*(\.[0-9]+)?|0+\.[0-9]*[1-9][0-9]*$" SetFocusOnError="true"
+                                            ErrorMessage="Please enter a Usage greater than 0."></asp:RegularExpressionValidator>
                                     </div>
                                     
                                     <div class="row">
@@ -1331,6 +1345,7 @@
 
                                         <asp:Button ID="btnUpdate" runat="server"
                                             Text="Update"
+                                            ValidationGroup="EditResource"
                                             CssClass="button button-create"
                                             CommandName="Update" />
 
