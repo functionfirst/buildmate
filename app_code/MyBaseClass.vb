@@ -60,5 +60,32 @@ Public Class MyBaseClass
         Dim notification = CType(Master.FindControl("notification"), Panel)
         notification.Visible = False
     End Sub
+
+    Protected Sub checkPermissions()
+        Dim hasPermissions As Boolean = False
+        Dim pid As String = Request.QueryString("pid")
+
+        ' Check if the Code already exists in the database
+        Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+        Dim myConn As New SqlConnection(connString)
+        Dim cmd As SqlCommand = New SqlCommand("SELECT id FROM Project WHERE id = @pid and userid = @userid", myConn)
+        cmd.Parameters.AddWithValue("@pid", pid)
+        cmd.Parameters.AddWithValue("@userid", Session("userid"))
+
+        Try
+            myConn.Open()
+            If cmd.ExecuteScalar IsNot Nothing Then
+                ' Project belongs to this user
+                hasPermissions = True
+                myConn.Close()
+            End If
+        Catch ex As Exception
+            ' Do nothing
+        End Try
+
+        If Not hasPermissions Then
+            Response.Redirect("no_permissions.aspx")
+        End If
+    End Sub
 End Class
 

@@ -3,7 +3,7 @@ Imports Telerik.Web.UI
 Imports System.Data
 
 Partial Class manager_task_details
-    Inherits System.Web.UI.Page
+    Inherits MyBaseClass
 
     Dim isLocked As Boolean = False
     Private Const ItemsPerRequest As Integer = 100
@@ -111,6 +111,10 @@ Partial Class manager_task_details
         If Session("tourPhase") = 4 Then
             Response.Redirect(HttpContext.Current.Request.Url.AbsoluteUri)
         End If
+    End Sub
+
+    Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
+        checkPermissions()
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

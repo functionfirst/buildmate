@@ -196,8 +196,9 @@ Partial Class manager_Default
         'pViewLogs.Visible = setVisible
         BuildElementsPanel.Visible = setVisible
         fvProjectCosts.Visible = setVisible
-    End Sub
 
+        checkPermissions()
+    End Sub
 
     Protected Sub rgBuildElements_ItemDataBound(ByVal sender As Object, ByVal e As Telerik.Web.UI.GridItemEventArgs) Handles rgBuildElements.ItemDataBound
         ' hide delete option for build elements that were created before variation mode
