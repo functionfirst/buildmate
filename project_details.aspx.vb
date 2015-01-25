@@ -197,7 +197,7 @@ Partial Class manager_Default
         BuildElementsPanel.Visible = setVisible
         fvProjectCosts.Visible = setVisible
 
-        checkPermissions()
+        checkPermissions("Project")
     End Sub
 
     Protected Sub rgBuildElements_ItemDataBound(ByVal sender As Object, ByVal e As Telerik.Web.UI.GridItemEventArgs) Handles rgBuildElements.ItemDataBound

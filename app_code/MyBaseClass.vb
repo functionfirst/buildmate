@@ -61,21 +61,49 @@ Public Class MyBaseClass
         notification.Visible = False
     End Sub
 
-    Protected Sub checkPermissions()
+    Protected Sub checkPermissions(ByVal type As String)
         Dim hasPermissions As Boolean = False
-        Dim pid As String = Request.QueryString("pid")
 
         ' Check if the Code already exists in the database
         Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
         Dim myConn As New SqlConnection(connString)
-        Dim cmd As SqlCommand = New SqlCommand("SELECT id FROM Project WHERE id = @pid and userid = @userid", myConn)
-        cmd.Parameters.AddWithValue("@pid", pid)
+        Dim cmd As SqlCommand
+
+        ' check object type
+        Select Case type
+            Case "UserContact"
+                Dim id As String = Request.QueryString("id")
+                cmd = New SqlCommand("SELECT id FROM UserContact WHERE id = @id and userid = @userid", myConn)
+                cmd.Parameters.AddWithValue("@id", id)
+
+            Case "Supplier"
+                Dim id As String = Request.QueryString("id")
+                cmd = New SqlCommand("SELECT id FROM Supplier WHERE id = @id and userid = @userid", myConn)
+                cmd.Parameters.AddWithValue("@id", id)
+
+            Case "SupportTickets"
+                Dim id As String = Request.QueryString("id")
+                cmd = New SqlCommand("SELECT id FROM SupportTickets WHERE id = @id and userid = @userid", myConn)
+                cmd.Parameters.AddWithValue("@id", id)
+
+            Case "CatalogueUseage"
+                Dim id As String = Request.QueryString("id")
+                cmd = New SqlCommand("select * FROM CatalogueUseage LEFT JOIN Catalogue ON Catalogue.id = CatalogueUseage.catalogueId LEFT JOIN Supplier ON Supplier.id = Catalogue.supplierId where CatalogueUseage.id = @id and userId = @userid", myConn)
+                cmd.Parameters.AddWithValue("@id", id)
+
+            Case Else
+                Dim pid As String = Request.QueryString("pid")
+                cmd = New SqlCommand("SELECT id FROM Project WHERE id = @pid and userid = @userid", myConn)
+                cmd.Parameters.AddWithValue("@pid", pid)
+
+        End Select
+
         cmd.Parameters.AddWithValue("@userid", Session("userid"))
 
         Try
             myConn.Open()
             If cmd.ExecuteScalar IsNot Nothing Then
-                ' Project belongs to this user
+                ' UserID was found matching this object
                 hasPermissions = True
                 myConn.Close()
             End If

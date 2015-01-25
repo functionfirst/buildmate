@@ -18,4 +18,8 @@
 
         showNotification("Note Added", "Your note was successfully added")
     End Sub
+
+    Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
+        checkPermissions("SupportTickets")
+    End Sub
 End Class

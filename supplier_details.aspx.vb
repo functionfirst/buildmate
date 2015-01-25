@@ -7,6 +7,10 @@ Partial Class manager_supplier_details
         Page.Validate("editGroup")
     End Sub
 
+    Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
+        checkPermissions("Supplier")
+    End Sub
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlSuppliers"), HyperLink)
         activeLink.CssClass = "active"

@@ -5,6 +5,10 @@ Imports System.Data
 Partial Class manager_customer_details
     Inherits MyBaseClass
 
+    Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
+        checkPermissions("UserContact")
+    End Sub
+
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Dim activeLink As HyperLink = CType(Master.FindControl("hlCustomers"), HyperLink)
         activeLink.CssClass = "active"

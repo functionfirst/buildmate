@@ -3,6 +3,8 @@
 
     Protected Sub Page_Init(sender As Object, e As System.EventArgs) Handles Me.Init
         hlResource.NavigateUrl = String.Format("resource_details.aspx?rid={0}", Request.QueryString("rid"))
+
+        checkPermissions("CatalogueUseage")
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load

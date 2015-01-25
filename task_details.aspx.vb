@@ -114,7 +114,7 @@ Partial Class manager_task_details
     End Sub
 
     Protected Sub Page_Init(sender As Object, e As EventArgs) Handles Me.Init
-        checkPermissions()
+        checkPermissions("Project")
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

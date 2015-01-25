@@ -26,7 +26,7 @@ Partial Class manager_build_element_details
             pTasks.Visible = True
         End If
 
-        checkPermissions()
+        checkPermissions("Project")
     End Sub
 
     Protected Sub rntbCompletion_OnTextChanged(ByVal sender As Object, ByVal e As EventArgs)
