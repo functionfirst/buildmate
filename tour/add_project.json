@@ -8,37 +8,37 @@
     "content" 	: "<h2>Project Wizard</h2><p>This wizard will guide you through the 4-step process for creating a New Project.</p><p>1. Start by selecting the Estimate Type for your new project.</p><p>2. For your first Project click the 'Create a Blank Project' button.</p><p>3. Select the Customer you just created then click the 'Use the selected Customer' button.</p><p>4. Add the rest of your Project details, ensuring all required fields are filled in.</p>"
 },{
 	"comment"   : "PHASE 2",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 3",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 4",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 5",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 6",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
 },{
 	"comment"	: "PHASE 7",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Your Suppliers</h2><p>Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier.</p>"
 },{
 	"comment"	: "PHASE 8",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: " #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlResources",
 	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
 },{

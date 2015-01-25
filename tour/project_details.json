@@ -24,17 +24,17 @@
 	"content" 	: "<h2>Managing your Tasks</h2><p>You'll need to learn how to use Resources effectively in Tasks.</p> <p>Scroll down to your listed Build Elements and click the flashing link to view the Build Element details page.</p>"
 },{
 	"comment"   : "PHASE 6",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
 },{
 	"comment"	: "PHASE 7",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Your Suppliers</h2><p>Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier.</p>"
 },{
 	"comment"	: "PHASE 8",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlResources",
 	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
 },{

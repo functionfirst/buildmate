@@ -24,7 +24,7 @@
 },
 {
 	"comment"   : "PHASE 8",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: ".button-create",
 	"content" 	: "<h2>Add a Resource Supplier</h2><p>This page shows your Resource details along with a list of all Suppliers of this Resource.</p><p>Click the blinking New Supplier button to add your first Supplier to the Resource.</p>"
 },{

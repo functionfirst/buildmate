@@ -9,32 +9,32 @@
 },
 {
 	"comment"   : "PHASE 3",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport",
 	"blink" 	: ".button-create",
 	"content" 	: "<h2>Adding job Tasks</h2><p>For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu below.</p><p>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.</p><p>Once you're happy with your selected Tasks, scroll down and click the flashing 'Add Selected Tasks' button to continue.</p>"
 },{
 	"comment"   : "PHASE 4",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 5",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlProjects",
 	"content" 	: "<h2>Select your Project</h2><p>With your Customers in place the next step is understanding more about your Project</p> <p>Click the flashing Projects link above.</p>"
 },{
 	"comment"   : "PHASE 6",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Managing your Suppliers</h2><p>Now that you've added your first Resource, it's important you understand how Suppliers work.</p><p>Click the flashing Suppliers link above to begin.</p>"
 },{
 	"comment"	: "PHASE 7",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlSuppliers",
 	"content" 	: "<h2>Your Suppliers</h2><p>Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier.</p>"
 },{
 	"comment"	: "PHASE 8",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "#ctl00_hlResources",
 	"content"   : "<h2>Managing Resources</h2><p>Now that you've setup some Suppliers lets link your Resources to your Suppliers.</p><p>Click the Resources link above to begin.</p>"
 },{

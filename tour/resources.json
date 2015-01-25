@@ -23,7 +23,7 @@
 	"comment"   : "PHASE 7"
 },{
 	"comment"   : "PHASE 8",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
+	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "table td a",
 	"content" 	: "<h2>Linking Resources to your Suppliers</h2><p>Within the Unresourced tab you will see your recently added Resources.</p><p>Click one of the blinking Resources listed below to begin linking a Supplier.</p>"
 },{
