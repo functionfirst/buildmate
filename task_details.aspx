@@ -876,7 +876,7 @@
                         </div>
                     
                         <div class="row">
-                            <label title="Task Time" class="label">Task Time</label>
+                            <label title="Suggested Time" class="label">Suggested Time</label>
                             <asp:Label ID="Label4" runat="server" Text='<%# Eval("minutes") & " minutes per " & Eval("unit") %>' />
                         </div>
                         
@@ -963,7 +963,7 @@
                     </div>
                     
                     <div class="row">
-                        <label title="Task Time" class="label">Task Time</label>
+                        <label title="Suggested Time" class="label">Suggested Time</label>
                         <asp:Label ID="taskTimeLabel" runat="server" Text='<%# Eval("minutes") & " minutes per " & Eval("unit") %>' />
                     </div>
                         
