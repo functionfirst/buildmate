@@ -20,7 +20,9 @@
        
 
     <p class="breadcrumb">
-        Users
+        <a href="/admin/users.aspx">Users</a>
+        &raquo;
+        User Detail
     </p>
 
     <asp:FormView ID="FormView1" runat="server" DefaultMode="Edit"
