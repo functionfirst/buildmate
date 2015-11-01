@@ -5,6 +5,15 @@ Partial Class controls_projects_Template
 
     Dim projectId As String
 
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        ' Hide Buildmate projects if in phase 1
+
+        If Session("tourPhase") = 1 Then
+            rblBuildmateProjects.Enabled = false
+            rblBuildmateProjects.Attributes.Add("Style", "display: none;")
+        End If
+    End Sub
+
     Protected Sub ToggleRowSelection(ByVal sender As Object, ByVal e As EventArgs)
         ToggleTemplateButton(sender.checked)
         CheckSelectedItem(sender)

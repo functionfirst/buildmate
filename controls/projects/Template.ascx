@@ -29,7 +29,7 @@
 
 <asp:RadioButtonList ID="rblProjectSource" runat="server" RepeatDirection="Horizontal" AutoPostBack="true">
     <asp:ListItem Text="My Projects" Value="1" Selected="True" />
-    <asp:ListItem Text="Buildmate Projects" Value="2" />
+    <asp:ListItem Text="Buildmate Projects" Value="2" id="rblBuildmateProjects" />
 </asp:RadioButtonList>
 
 <telerik:RadGrid
