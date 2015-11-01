@@ -37,6 +37,15 @@
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
 
+        <asp:Panel ID="notification" runat="server" CssClass="flash" Visible="false">
+            <a href="#" class="flash-close">&times;</a>
+            <h3><asp:Literal ID="notificationTitle" runat="server">Message</asp:Literal></h3>
+
+            <p>
+                <asp:Literal ID="notificationMessage" runat="server">Message content</asp:Literal>
+            </p>
+        </asp:Panel>
+
             <div class="topbar">
                 <div class="topbar-container">
                     <div class="brand"><strong>Buildmate</strong> Administration</div>

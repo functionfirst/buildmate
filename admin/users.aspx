@@ -24,10 +24,14 @@
 <HeaderStyle Width="20px"></HeaderStyle>
 </ExpandCollapseColumn>
     <Columns>
-        
-        <telerik:GridBoundColumn DataField="UserName" HeaderText="UserName" 
-            SortExpression="UserName" UniqueName="UserName">
-        </telerik:GridBoundColumn>
+        <telerik:GridHyperLinkColumn
+            UniqueName="username"
+            HeaderText="Username"
+            SortExpression="Username"
+            DataNavigateUrlFields="userid"
+            DataTextField="username"
+            DataNavigateUrlFormatString="/admin/users/details/index.aspx?userid={0}" />
+
         <telerik:GridBoundColumn DataField="tourPhase" HeaderText="Tour Phase" 
             SortExpression="tourPhase" UniqueName="tourPhase">
         </telerik:GridBoundColumn>
