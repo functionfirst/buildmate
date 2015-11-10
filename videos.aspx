@@ -11,11 +11,17 @@
 
     <div class="main-container">
         <div class="tour-inner">
-            <h1>How to Video's </h1>
-
             <div class="tour-nav" data-tour="menu">
-                <ul>
-                    <li class="active"><a href="#" data-tab="step1">1. Tour</a></li>
+                <h4>Tutorial</h4>
+
+                <ul class="js-tour-links">
+                    <li class="active"><a href="#" data-tab="step16">1. Tutorial Help</a></li>
+                </ul>
+
+                <h4>How to Video's </h4>
+
+                <ul class="js-tour-links">
+                    <li><a href="#" data-tab="step1">1. Tour</a></li>
                     <li><a href="#" data-tab="step2">2. Dashboard</a></li>
                     <li><a href="#" data-tab="step3">3. Navigation</a></li>
                     <li><a href="#" data-tab="step4">4. Help</a></li>
@@ -34,64 +40,68 @@
             </div>
 
             <div class="tour-content">
-                <div data-target="step1">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/As_8TH8wwHM" frameborder="0" allowfullscreen></iframe>
+                <div data-target="step16">
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/QxhB-S1UoG4" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <div data-target="step1" class="hide">
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/As_8TH8wwHM" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step2" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/WS9IRaYryg8" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/WS9IRaYryg8" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step3" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/SH5ik7orZZw" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step4" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/5VdfodBie2o" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/5VdfodBie2o" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step5" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/oB15uiihBO4" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/oB15uiihBO4" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step6" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/vR0tY0_HuhE" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/vR0tY0_HuhE" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step7" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/V40sfqKKmEU" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/V40sfqKKmEU" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step8" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/w7qJyXVeSBA" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/w7qJyXVeSBA" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step9" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/KqLtuhRMCmA" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/KqLtuhRMCmA" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step10" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/6B5RhtE_dOw" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/6B5RhtE_dOw" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step11" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/sP6F9wvzFgg" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/sP6F9wvzFgg" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step12" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/hFtee57N7_4" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/hFtee57N7_4" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step13" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/lFoRphIIcmQ" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/lFoRphIIcmQ" frameborder="0" allowfullscreen></iframe>
                 </div>
                 
                 <div data-target="step14" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/HZVaNAClGGg" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/HZVaNAClGGg" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <div data-target="step15" class="hide">
-                    <iframe width="640" height="480" src="//www.youtube.com/embed/_5G47Bx2sPQ" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="//www.youtube.com/embed/_5G47Bx2sPQ" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
             

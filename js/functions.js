@@ -12,12 +12,15 @@ $(document).ready(function () {
     });
 
     // tabs for tour
-    $('[data-tour="menu"]').find('a[data-tab]').click(function () {
+    $('[data-tour="menu"]').find('a[data-tab]').on('click', changeTourVideo);
+
+    function changeTourVideo(){
         var target = $(this).data('tab');
-        $(this).parent().addClass('active').siblings().removeClass('active');
+        $('.js-tour-links').find('li').removeClass('active');
+        $(this).parent().addClass('active');
         $('[data-target="' + target + '"]').removeClass('hide').siblings().addClass('hide');
         return false;
-    });
+    }
 
     // shortcut for tour tabs
     $('[data-tab-control]').click(function () {
