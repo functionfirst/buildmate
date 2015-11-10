@@ -160,6 +160,7 @@ bm.tour = {
             if (data.image) {
                 elem.css('background-image', 'url(/tour/images/' + data.image + ')');
             }
+            elem.prepend('<a class="tour-button button button-large" href="https://youtu.be/QxhB-S1UoG4" target="_blank">Watch Tutorial Help</a>')
             elem.append('<div class="tour-progress tour-' + bm.tour.current_phase + '"><span></span></div>')
             $('#tour').show();
         }

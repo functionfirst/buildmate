@@ -34,6 +34,32 @@
     100% { opacity: 1.0; }
 }
 
+.tour-button.tour-button {
+    float: right;
+    /*position: absolute;*/
+    /*top: 20px;*/
+    /*right: 20px;*/
+    margin-left: 20px;
+    background: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #00adef;
+    position: relative;
+    padding-left: 30px;
+}
+.tour-button:before {
+    position: absolute;
+    left: 15px;
+    margin-top: 2px;
+    content: "";
+    border: 10px solid #00adef;
+    border-width: 8px 10px;
+    border-color: transparent transparent transparent #00adef;
+}
+.tour-button:hover {
+    color: #00adef;
+}
+
 .tour-progress {
     position: absolute;
     bottom: 20px;

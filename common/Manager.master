@@ -51,7 +51,9 @@
             </p>
         </asp:Panel>
 
-        <div id="tour" class="tour-window"><div class="container"></div></div>
+        <div id="tour" class="tour-window">
+            <div class="container"></div>
+        </div>
 
         <div class="topbar">
             <div class="topbar-container">
