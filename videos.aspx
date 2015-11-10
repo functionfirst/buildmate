@@ -18,7 +18,7 @@
                     <li class="active"><a href="#" data-tab="step16">1. Tutorial Help</a></li>
                 </ul>
 
-                <h4>How to Video's </h4>
+                <h4>How to Videos </h4>
 
                 <ul class="js-tour-links">
                     <li><a href="#" data-tab="step1">1. Tour</a></li>

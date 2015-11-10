@@ -126,10 +126,10 @@
                         <h3>These resources are using Out of Date prices</h3>
 
                         <p>
-                            This is a list of all of your Resources that are using Buildmate's Unresourced supplier, these prices maybe out of date.
+                            This is a list of all of your Resources that are using Buildmate's Unresourced supplier, these prices may be out of date.
                         </p>
                         <p>
-                            You will need to add Suppliers to these unresourced Resources to ensure these prices are upto date.
+                            You will need to add Suppliers to these unresourced Resources to ensure these prices are up to date.
                         </p>
                     </div>
                 </div>
