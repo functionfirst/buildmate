@@ -102,13 +102,13 @@
                             CssClass="label"
                             AssociatedControlID="rntbUseage"
                             Text="Useage" />
-
                         <telerik:RadNumericTextBox ID="rntbUseage" runat="server"
                             Type="Number"
                             Width="60px"
                             MaxValue="999999"
                             NumberFormat-DecimalDigits="2"
                             dbValue='<%# Bind("useage") %>'/>
+                        <%# Eval("unit") %>
                     </div>
                     
                     <div class="row">
