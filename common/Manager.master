@@ -135,6 +135,20 @@
     </form>
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+
+        <!-- mouseflow -->
+        <script type="text/javascript">
+            var _mfq = _mfq || [];
+
+            _mfq.push(["setVariable", "email", "<%= user_email %>"]);
+
+            (function () {
+                var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+                mf.src = "//cdn.mouseflow.com/projects/14253c8b-9914-4c12-9ff3-e5e56ce2c250.js";
+                document.getElementsByTagName("head")[0].appendChild(mf);
+            })();
+        </script>
+
         <!-- Begin Inspectlet Embed Code -->
         <script type="text/javascript" id="inspectletjs">
         window.insp = window.insp || [];
