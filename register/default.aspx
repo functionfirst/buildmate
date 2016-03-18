@@ -131,11 +131,6 @@
                     </ContentTemplate>
                 </asp:CompleteWizardStep>
             </WizardSteps>
-            <MailDefinition
-                From="support@buildmateapp.com"
-                Subject="[Buildmate] Welcome to Buildmate"
-                IsBodyHtml="true"
-                BodyFileName="~/email_templates/Welcome.html" />
         </asp:CreateUserWizard>
     </asp:Panel>
 </asp:Content>

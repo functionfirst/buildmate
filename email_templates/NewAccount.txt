@@ -1,0 +1,2 @@
+﻿New Account
+A new user has registered an account <%Username%>

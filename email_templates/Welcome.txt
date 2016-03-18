@@ -1,0 +1,15 @@
+﻿Welcome to Buildmate
+
+As part of the Buildmate service we include the Buildmate Digest, an opt-in email service that allows you to receive advanced warnings of imminent project deadlines, such as estimates due to be returned or that are already overdue. To opt-in you'll need to tick "Receive email Notifications" from the Buildmate settings (https://buildmateapp.com/settings.aspx) page. To help prevent your Buildmate Digest defaulting to your email spam folder we recommend adding support@buildmateapp.com to your contact list.
+
+If you do not wish to Opt-in please delete this email but avoid marking it as spam. If it has already been placed in your spam folder please transfer it to your inbox before deleting.
+
+Login to Buildmate at https://buildmateapp.com
+
+Getting Help
+If you need any help you can use Buildmate’s built-in Support system (https://buildmateapp.com/support.aspx) where you can ask questions or request help. Alternatively you contact me directly by emailing steve@buildmateapp.com.
+
+I pride myself on Buildmate being the only Estimating system that supports you personally. Please let me know if you have any feedback, I value, review and respond to all experiences and comments.
+
+Steve,
+Managing Director
