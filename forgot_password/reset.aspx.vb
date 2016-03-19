@@ -4,6 +4,8 @@ Imports System.Web.Mail
 Partial Class login
     Inherits MyBaseClass
 
+    Dim mailRegister As New Buildmate.MailRegister
+
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim token As String = Request.QueryString("token")
         Dim email As String = Request.QueryString("email")
@@ -46,27 +48,8 @@ Partial Class login
             pReset.Visible = False
             pConfirmed.Visible = True
 
-            sendConfirmationEmail(email)
+            ' Send email to User confirming their password was reset
+            mailRegister.resetConfirmation(email)
         End If
-    End Sub
-
-    Sub sendConfirmationEmail(ByVal email As String)
-        Try
-            Dim md As MailDefinition = New MailDefinition
-            md.BodyFileName = "~/email_templates/PasswordChanged.html"
-            md.From = "support@buildmateapp.com"
-            md.Subject = "[Buildmate] Password Reset Success"
-            md.Priority = MailPriority.Normal
-            md.IsBodyHtml = True
-            Dim replacements As ListDictionary = New ListDictionary
-
-            Dim fileMsg As System.Net.Mail.MailMessage
-            fileMsg = md.CreateMailMessage(email, replacements, Me)
-            Dim msg As System.Net.Mail.MailMessage = fileMsg
-            Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
-            obj.Send(msg)
-        Catch ex As Exception
-            ' Do nothing
-        End Try
     End Sub
 End Class

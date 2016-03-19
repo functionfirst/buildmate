@@ -5,6 +5,8 @@ Imports System.Net.Mail
 Partial Class login
     Inherits MyBaseClass
 
+    Dim mailRegister As New Buildmate.MailRegister
+
     Protected Sub btnRecover_Click(sender As Object, e As EventArgs) Handles btnRecover.Click
         resetPassword(email.Text)
     End Sub
@@ -79,31 +81,8 @@ Partial Class login
         Dim token As New Token()
         token.email = email
         token.ipaddress = client_ip
-
         token.generateToken()
-        Dim newToken = token.token
 
-        Try
-            Dim md As MailDefinition = New MailDefinition
-            md.BodyFileName = "~/email_templates/ResetPassword.html"
-            md.From = "support@buildmateapp.com"
-            md.Subject = "[Buildmate] Password Reset Instructions"
-            md.Priority = MailPriority.Normal
-            md.IsBodyHtml = True
-
-            ' append additional information to the email template
-            Dim replacements As ListDictionary = New ListDictionary
-            replacements.Add("<% Token %>", newToken)
-            replacements.Add("<% Email %>", email)
-            replacements.Add("<% Domain %>", domain)
-
-            Dim fileMsg As System.Net.Mail.MailMessage
-            fileMsg = md.CreateMailMessage(email, replacements, Me)
-            Dim msg As System.Net.Mail.MailMessage = fileMsg
-            Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
-            obj.Send(msg)
-        Catch ex As Exception
-            ' Do nothing
-        End Try
+        mailRegister.resetPassword(email, token.token, domain)
     End Sub
 End Class

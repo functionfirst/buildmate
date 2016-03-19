@@ -1,0 +1,8 @@
+﻿Your password has been changed
+
+You have successfully reset your account password for Buildmate.
+
+If you did not recently request or authorise this password reset, please contact our support team immediately. You can email our support team at support@buildmateapp.com
+
+Kind Regards,
+The Buildmate Team
