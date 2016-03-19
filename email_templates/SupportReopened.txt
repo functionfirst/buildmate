@@ -4,4 +4,4 @@ Hi {FIRSTNAME},
 
 Your Support Ticket ID: {ID} has been re-opened.
 
-http://buildmateapp.com/support/view/?id={ID}
+https://buildmateapp.com/support/view/?id={ID}

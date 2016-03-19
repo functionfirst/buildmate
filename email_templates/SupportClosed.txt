@@ -6,4 +6,4 @@ Just to let you know, your Support Ticket ID: {ID} has now been closed.
 
 If your issue has not been resolved to your satisfaction you can reply to your ticket, we'll automatically re-open it for you.
 
-http://buildmateapp.com/support/view/?id={ID}
+https://buildmateapp.com/support/view/?id={ID}

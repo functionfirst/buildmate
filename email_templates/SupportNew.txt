@@ -6,4 +6,4 @@ The following new ticket has been submitted:
 
 {CONTENT}
 
-http://buildmateapp.com/support/view/?id={ID}
+https://buildmateapp.com/support/view/?id={ID}

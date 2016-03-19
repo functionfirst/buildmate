@@ -5,4 +5,4 @@ Thank you for reaching out to us regarding your issue. Our support team have rec
 
 {CONTENT}
 
-http://buildmateapp.com/support/view/?id={ID}
+https://buildmateapp.com/support/view/?id={ID}
