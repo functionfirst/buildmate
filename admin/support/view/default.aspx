@@ -67,7 +67,7 @@
                             runat="server"
                             CausesValidation="false"
                             Text="Re-open this Ticket"
-                            CssClass="floatright"
+                            CssClass="floatright button button-create"
                             Visible='<%# iif(Eval("isLocked"), true, false) %>' />
                         
                         <asp:Image
