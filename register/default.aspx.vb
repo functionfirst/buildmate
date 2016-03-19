@@ -20,7 +20,7 @@ Partial Class login
         mail.toAdd = "Buildmate <alan@functionfirst.co.uk>"
         mail.subject = "[Buildmate] New User Sign-up"
         mail.template = "NewAccount"
-        mail.replacements.Add("<%Username%>", CreateUserWizard1.UserName)
+        mail.replacements.Add("{USERNAME}", CreateUserWizard1.UserName)
         mail.send()
     End Sub
 

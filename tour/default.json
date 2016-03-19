@@ -48,5 +48,5 @@
 	"comment"   : "PHASE 9",
 	"hide" 		: "#ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
 	"blink" 	: "",
-	"content" 	: "<h2>Congratulations!</h2><p>You have now successfully completed all areas of the Buildmate Tutorial and should now have everything you need to get started.</p><p>For further help or assistance please visit our <a target='_blank' href='http://getbuildmate.com/knowledgebase' class='lnk'>Knowledge Base</a> or you can request help using our <a href='support.aspx' class='lnk'>Support</a> page.</p><p><a href='end_tutorial.aspx' class='button button-create'>Start Estimating..</a></p>"
+	"content" 	: "<h2>Congratulations!</h2><p>You have now successfully completed all areas of the Buildmate Tutorial and should now have everything you need to get started.</p><p>For further help or assistance please visit our <a target='_blank' href='http://getbuildmate.com/knowledgebase' class='lnk'>Knowledge Base</a> or you can request help using our <a href='support/' class='lnk'>Support</a> page.</p><p><a href='end_tutorial.aspx' class='button button-create'>Start Estimating..</a></p>"
 }]

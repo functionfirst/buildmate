@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="support.aspx.vb" Inherits="manager_Default" title="Support - Buildmate" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="manager_support" title="Support - Buildmate" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -132,7 +132,7 @@
 
                     <telerik:GridHyperLinkColumn
                         HeaderText="Subject"
-                        DataNavigateUrlFormatString="view_ticket.aspx?id={0}"
+                        DataNavigateUrlFormatString="view/?id={0}"
                         DataNavigateUrlFields="id"
                         SortExpression="subject"
                         UniqueName="subject"

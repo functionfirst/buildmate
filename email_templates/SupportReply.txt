@@ -1,0 +1,9 @@
+﻿Buildmate Support have replied to your Ticket
+
+Hi {FIRSTNAME},
+
+Your Support Ticket has been updated:
+
+{CONTENT}
+
+http://buildmateapp.com/support/view/?id={ID}

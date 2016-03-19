@@ -21,7 +21,7 @@
         <h2>Permission Error!</h2>
 
         <p>
-            You do not have permission to view the previous page. If you believe you should be able to see this page, please contact the <a href="support.aspx">Support team</a>.
+            You do not have permission to view the previous page. If you believe you should be able to see this page, please contact the <a href="support/">Support team</a>.
         </p>
      </div>
 </asp:Content>

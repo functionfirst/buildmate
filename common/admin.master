@@ -84,7 +84,7 @@
                         </li>
                         <li>
                             <asp:HyperLink ID="hlSupport" runat="server"
-                                NavigateUrl="~/admin/support.aspx"><span></span>Support</asp:HyperLink>
+                                NavigateUrl="~/admin/support/"><span></span>Support</asp:HyperLink>
                         </li>
                         <li>
                             <asp:HyperLink ID="hlKnowledgeBase" runat="server"

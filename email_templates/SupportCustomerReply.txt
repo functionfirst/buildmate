@@ -1,0 +1,7 @@
+﻿A Customer has replied to a Ticket
+
+The Support Ticket has been updated.
+
+{CONTENT}
+
+http://buildmateapp.com/admin/support/view/?id={ID}

@@ -72,18 +72,6 @@ Namespace Buildmate
         End Sub
 
         Protected Function getTemplate(ByVal fileType As String) As String
-            'Dim templateFile As String = ""
-
-            ' Identify location of email template
-            'Select Case template
-            '    Case "NewAccount"
-            '        templateFile = "~/email_templates/NewAccount"
-            '    Case "Followup"
-            '        templateFile = "~/email_templates/Followup"
-            '    Case "Welcome"
-            '        templateFile = "~/email_templates/Welcome"
-            'End Select
-
             ' get template file content
             Dim templateFile As String = HttpContext.Current.Server.MapPath("~/email_templates/" + template + fileType)
             Dim templateContent As String

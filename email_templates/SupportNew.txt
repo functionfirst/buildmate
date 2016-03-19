@@ -1,0 +1,9 @@
+New Support Ticket has been submitted
+
+The following new ticket has been submitted:
+
+{SUBJECT}
+
+{CONTENT}
+
+http://buildmateapp.com/support/view/?id={ID}

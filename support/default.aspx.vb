@@ -1,8 +1,10 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 
-Partial Class manager_Default
+Partial Class manager_support
     Inherits MyBaseClass
+
+    Dim mailSupport As New Buildmate.MailSupport
 
     Protected Sub rbTickets_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles rbTickets.SelectedIndexChanged
         setTicketFilter()
@@ -32,22 +34,10 @@ Partial Class manager_Default
         Dim newID = cmd.ExecuteScalar()
         dbCon.Close()
 
-        ' send email notification to customer
-        Try
-            Dim obj As System.Net.Mail.SmtpClient = New System.Net.Mail.SmtpClient
-            Dim Mailmsg As New System.Net.Mail.MailMessage
-            Mailmsg.To.Clear()
-            Mailmsg.To.Add(New System.Net.Mail.MailAddress(Session("email")))
-            'Mailmsg.Bcc.Add(New System.Net.Mail.MailAddress("support@buildmateapp.com"))
-            Mailmsg.From = New System.Net.Mail.MailAddress("support@buildmateapp.com")
-            Mailmsg.Subject = String.Format("[Buildmate - Ticket ID: {0} - {1}]", newID, rtbSubject.Text)
-            Mailmsg.IsBodyHtml = True
-            Mailmsg.Body = String.Format("<h1>Your ticket has been created</h1><h3>{0}</h3><p>{1}</p><p><a href=""http://buildmateapp.com/view_ticket.aspx?id={2}"">http://buildmateapp.com/view_ticket.aspx?id={2}</a></p><p>Thank you for your email, our support team have received your request for assistance. You should receive a reply shortly.</p>", rtbSubject.Text, rtbContent.Text, newID)
-            obj.Send(Mailmsg)
+        ' Send email notification to customer
+        mailSupport.confirmIssue(newID, rtbSubject.Text, rtbContent.Text, Session("email"))
 
-            Response.Redirect(String.Format("view_ticket.aspx?id={0}", newID))
-        Catch ex As Exception
-            Trace.Write(ex.ToString)
-        End Try
+        Response.Redirect(String.Format("view/?id={0}", newID))
     End Sub
 End Class
+

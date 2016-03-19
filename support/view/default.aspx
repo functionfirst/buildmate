@@ -1,4 +1,4 @@
-﻿<%@ Page Title="View Ticket - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="view_ticket.aspx.vb" Inherits="view_ticket" %>
+﻿<%@ Page Title="View Ticket - Buildmate" Language="VB" MasterPageFile="~/common/Manager.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="view_ticket" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -27,7 +27,7 @@
         <div class="breadcrumb-container">
             <ul class="breadcrumb-list">
                 <li>
-                    <a href="support.aspx">Support</a>
+                    <a href="../">Support</a>
                     <span class="divider">/</span>
                 </li>
                 <li class="active">

@@ -1,0 +1,8 @@
+Your Support Ticket has been created
+Thank you for reaching out to us regarding your issue. Our support team have received your request for assistance and will be in touch shortly.
+
+{SUBJECT}
+
+{CONTENT}
+
+http://buildmateapp.com/support/view/?id={ID}

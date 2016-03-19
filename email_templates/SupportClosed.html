@@ -1,70 +1,76 @@
-﻿<style>
-body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12px; color: #2c2c2c; background: #efefea; }
-hr { border: 0; border-top: 1px solid #ccc; margin: 10px 0 20px; }
-a { color: #21759B; text-decoration: none;}
-</style>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+</head>
+<body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #2c2c2c; background-color: #efefea;" bgcolor="#efefea"><table border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #efefea;" bgcolor="#efefea">
 
-<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<table border="0" cellspacing="0" cellpadding="0" width="100%" style="background:#efefea">
     <tr>
         <td>
+            <table border="0" cellspacing="0" cellpadding="5" width="600" align="center">
+                <tr>
+                    <td style="padding-top: 10px; padding-bottom: 20px;"><a href='http://www.getbuildmate.com/'><img src='https://buildmateapp.com/images/logo_black.png' width='121' height='26' border='0' /></a></td>
+                </tr>
+            </table>
             
-            <table border="0" cellspacing="0" cellpadding="0" width="820" align="center">
-                <tr>
-                    <td width="580" valign="top" style="font-size: 14px">
-                        <h2>Closed Support Ticket</h2>
-                        <p>Hey <strong><% firstName %></strong>,</p>
 
-                        <p>Just to let you know, your Support Ticket ID: <% id %> has now been closed.</p>
-						
-						<p><em>If your issue has not been resolved just reply to your ticket and we'll automatically re-open it for you.</em></p>
-                    
-						<p>&bull; <a href='http://buildmateapp.com/view_ticket.aspx?id=<% id %>'>View your Support Ticket</a></p>
-					</td>
-                    <td width="40"></td>
-                    <td width="200" valign="top">
-						<p><a href='http://www.buildmateapp.com/'><img src='http://www.buildmateapp.com/images/logo_s.png' width='180' border='0' /></a></p>
-                    
-						<h4>Customer Service and Support</h4>
-					
-						<p>Have a question about our system?</p>
-					
-						<ul>
-							<li><a href="http://www.buildmateapp.com/knowledgebase/">Visit our Knowledge Base</a>.</li>
-							<li>or <a href="mailto:support@buildmateapp.com">Send us an email</a></li>
-						</ul>
-						
-						<h4>Our address</h4>
+            <center style="width: 100%">
+                <table style="padding: 20px;background: #fff;border:1px solid #ddd">
+                    <tr>
+                        <td>
+                            <table border="0" cellspacing="0" cellpadding="0" width="540" align="center">
+                                <tr>
+                                    <td valign="top" style="font-size: 14px">
+										<h2 style="font-size: 29px;line-height: 36px;font-weight: 400;color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom:0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">Support Ticket Closed</h2>
 
-						<ul>
-							<li>
-								<p>
-									<strong>Buildmate Software Ltd</strong><br>
-									Exchange Building,<br>
-									66 Church Street,<br>
-									Hartlepool,<br>
-									TS24 7DN
-								</p>
-								
-								<p>
-									<a href="mailto:support@buildmateapp.com">support@buildmateapp.com</a>
-								</p>
-							</li>
-						</ul>
-                    </td>
-                </tr>
-            </table>
+										<p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;">Hi <strong>{FIRSTNAME}</strong>,</p>
 
-            <table border="0" cellspacing="0" cellpadding="0" width="600" align="center">
-                <tr>
-                    <td colspan="2">
-                        <p style="font-size: 11px; text-align: center; margin: 20px 0 40px">
-                            You received this email because you're accepting notifications from Buildmate.<br />
-                            Click <a href="http://buildmateapp.com/settings.aspx">here</a> to turn notifications off.
-                        </p>
-                    </td>
-                </tr>
-            </table>
+										<p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;">Just to let you know, your Support Ticket ID: {ID} has now been closed.</p>
 
+										<p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 14px;line-height: 24px;"><em>If your issue has not been resolved to your satisfaction you can reply to your ticket, we'll automatically re-open it for you.</em></p>
+
+                                        <center width="100%">
+                                            <p>
+                                                <a href="http://buildmateapp.com/support/view/?id={ID}" style="color:#21759b;text-decoration:none!important;display:inline-block;font-size:14px;background:#00adef;color:#fff;padding:21px 33px">View this Ticket</a>
+                                            </p>
+                                        </center>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+            <center style="width: 100%; background: #dddddd; margin-top: 20px">
+                <table style="border-spacing: 0;border-collapse: collapse;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;vertical-align: top;text-align: left;margin-top: 0;margin-bottom: 0;margin-right: auto;margin-left: auto;width: 580px;">
+                    <tr>
+                        <td style="padding-top:15px;padding-bottom:15px;padding-right:0;padding-left:0">
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                <strong>Buildmate Software Ltd</strong>,<br />Exchange Building,<br />66 Church Street,<br />Hartlepool,<br />TS24 7DN 
+                            </p>
+
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                <strong>Company Registration No:</strong> 06536041. Registered in England.
+                            </p>
+
+                            <p style="font-size: 12px;color: #777;margin-top:5px;margin-bottom:5px;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                &copy; 2014 Buildmate Software Ltd &bull;
+                                <a href="http://www.getbuildmate.com/contact/" style="color:#21759b;text-decoration:none!important;">Contact</a> &bull;
+                                <a href="http://www.getbuildmate.com/privacy/" style="color:#21759b;text-decoration:none!important;">Privacy</a><br />
+                            </p>
+
+
+                            <p style="font-size: 11px;color: #777;margin-top:5px;margin-bottom:5px;padding-top:0;padding-bottom:0;padding-right: 0;padding-left: 0;word-break: break-word;border-collapse: collapse!important;vertical-align: top;text-align:left;">
+                                By using Buildmate you agree to the <a href="http://www.getbuildmate.com/terms/" style="color:#21759b;text-decoration:none!important;">terms and conditions</a> that govern it's use.    
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </center>
         </td>
     </tr>
 </table>
+</body>
+</html>

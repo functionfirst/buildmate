@@ -1,2 +1,3 @@
 ﻿New Account
-A new user has registered an account <%Username%>
+
+A new user has registered an account {USERNAME}

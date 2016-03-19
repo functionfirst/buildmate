@@ -1,4 +1,4 @@
-﻿<%@ Page Title="View Ticket - Buildmate" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="view_ticket.aspx.vb" Inherits="view_ticket" %>
+﻿<%@ Page Title="View Ticket - Buildmate" Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="view_ticket" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -22,12 +22,20 @@
         </AjaxSettings>
     </telerik:RadAjaxManagerProxy>
 
-    <p class="breadcrumb">
-        <a href="support.aspx">Support</a>
-        &raquo;
-        Ticket Details
-    </p>
-
+    <div class="breadcrumb">
+        <div class="breadcrumb-container">
+            <ul class="breadcrumb-list">
+                <li>
+                    <a href="../">Support</a>
+                    <span class="divider">/</span>
+                </li>
+                <li class="active">
+                    Issue Details
+                </li>
+            </ul>
+        </div>
+    </div>
+<div class="main-container">
     <asp:FormView
         ID="fvViewTicket"
         runat="server"
@@ -50,7 +58,7 @@
                             runat="server"
                             CausesValidation="false"
                             Text="Close this Ticket"
-                            CssClass="floatright"
+                            CssClass="floatright button button-error"
                             Visible='<%# iif( Eval("isLocked"), false, true) %>' />
                         
                         <asp:Button
@@ -117,13 +125,16 @@
                     Height="60px"
                     MaxLength="1000"
                     Width="680px" />
+            </p>
 
+            <div class="form-actions">
                 <asp:Button
                     ID="btnAddReply"
                     runat="server"
+                    CssClass="button button-create"
                     CausesValidation="True"
                     Text="Add Note" />
-            </p>
+            </div>
                     
             <asp:RequiredFieldValidator
                 ID="RequiredFieldValidator1"
@@ -171,7 +182,7 @@
             </table>
         </FooterTemplate>
     </asp:Repeater>
-    
+    </div>
     <asp:SqlDataSource ID="viewTicketDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="

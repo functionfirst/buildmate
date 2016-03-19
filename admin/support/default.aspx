@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="support.aspx.vb" Inherits="support" title="Support - My PyramidEstimator" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/common/admin.master" AutoEventWireup="false" CodeFile="default.aspx.vb" Inherits="support" title="Support - My PyramidEstimator" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -19,8 +19,6 @@
         Support
     </p>
 
-
-
         <telerik:RadGrid ID="rgTickets" runat="server" DataSourceID="ticketsDataSource" AllowPaging="true"
                     PagerStyle-Mode="NextPrev" PageSize="10"
                     AllowSorting="true"
@@ -38,7 +36,7 @@
 
                             <telerik:GridHyperLinkColumn
                                 HeaderText="Subject"
-                                DataNavigateUrlFormatString="view_ticket.aspx?id={0}"
+                                DataNavigateUrlFormatString="view/?id={0}"
                                 DataNavigateUrlFields="id"
                                 SortExpression="subject"
                                 UniqueName="subject"
