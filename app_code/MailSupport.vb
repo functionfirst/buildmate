@@ -66,7 +66,6 @@ Namespace Buildmate
             mail.send()
         End Sub
 
-
         ' Email customer informing them of a new Reply from Support
         Public Sub supportReply(ByVal id As Integer, ByVal firstname As String, ByVal content As String, ByVal email As String)
             Dim mail As New Buildmate.Mailgun
@@ -79,6 +78,5 @@ Namespace Buildmate
             mail.replacements.Add("{CONTENT}", content)
             mail.send()
         End Sub
-
     End Class
 End Namespace
