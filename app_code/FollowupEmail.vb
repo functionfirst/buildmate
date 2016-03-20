@@ -2,88 +2,56 @@
 Imports System.Net.Mail
 Imports System.Data.SqlClient
 Imports System.Data
-Imports System.Diagnostics
 
-Public Class FollowupEmail
+Namespace Buildmate
+    Public Class FollowupEmail
+        Dim mailDigest As New Buildmate.MailDigest
 
-    Public Sub Send()
-        CheckNewUsers()
-    End Sub
-
-    Protected Sub CheckNewUsers()
-        Dim sqlSelectCommand As String = "SELECT aspnet_Membership.userid, firstname, aspnet_Membership.email" & _
-            " FROM aspnet_Membership" & _
-            " LEFT JOIN UserProfile ON aspnet_Membership.UserId = UserProfile.userid" & _
-            " WHERE aspnet_Membership.Email Is Not null" & _
-            " AND datediff(DD, createDate, getdate()) > 1" & _
-            " AND notifyByEmail=1" & _
-            " AND NOT EXISTS(" & _
-            " 	SELECT * FROM EmailNotification WHERE userid = aspnet_Membership.UserId AND EmailType='FOLLOWUP'" & _
+        Public Sub introduction()
+            Dim sqlSelectCommand As String = "SELECT aspnet_Membership.userid, firstname, aspnet_Membership.email" &
+            " FROM aspnet_Membership" &
+            " LEFT JOIN UserProfile ON aspnet_Membership.UserId = UserProfile.userid" &
+            " WHERE aspnet_Membership.Email Is Not null" &
+            " AND datediff(DD, createDate, getdate()) > 1" &
+            " AND notifyByEmail=1" &
+            " AND NOT EXISTS(" &
+            " 	SELECT * FROM EmailNotification WHERE userid = aspnet_Membership.UserId AND EmailType='FOLLOWUP'" &
             " )"
-        Try
-            Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
-            Dim dataTable As New DataTable()
-            adapter.Fill(dataTable)
-
-            For Each dr In dataTable.Rows
-                Dim Userid As String = dr("UserId").ToString()
-                Dim firstName As String = dr("firstname").ToString()
-                Dim email As String = dr("email").ToString()
-
-                ' email the daily digest for this user
-                SendMessage(email, firstName, Userid)
-            Next
-        Catch ex As Exception
-            Trace.Write(ex.ToString)
-        End Try
-    End Sub
-
-    Protected Sub SendMessage(ByVal toAddr As String, ByVal firstName As String, ByVal userid As String)
-        If toAddr.Length > 1 Then
-            Dim msg As System.Net.Mail.MailMessage = CreateMessage(toAddr, firstName)
-
             Try
-                Dim sc As SmtpClient
-                sc = New SmtpClient()
-                sc.Send(msg)
+                Dim adapter As New SqlDataAdapter(sqlSelectCommand, System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString)
+                Dim dataTable As New DataTable()
+                adapter.Fill(dataTable)
 
-                FollowupSent(userid)
+                For Each dr In dataTable.Rows
+                    Dim userid As String = dr("UserId").ToString()
+                    Dim firstname As String = dr("firstname").ToString()
+                    Dim email As String = dr("email").ToString()
+
+                    ' email the daily digest for this user
+                    mailDigest.introduction(email, firstname)
+                    FollowupSent(userid)
+                Next
             Catch ex As Exception
-                ' do nothing
+                'Trace.Write(ex.ToString)
             End Try
-        End If
-    End Sub
+        End Sub
 
-    Protected Function CreateMessage(ByVal toAddr As String, ByVal firstName As String) As System.Net.Mail.MailMessage
-        Dim md As MailDefinition = New MailDefinition
-        md.BodyFileName = "~/email_templates/Followup.html"
-        md.From = "steve@buildmateapp.com"
-        md.Subject = "[Buildmate] - Introduction"
-        md.Priority = MailPriority.Normal
-        md.IsBodyHtml = True
+        Protected Sub FollowupSent(ByVal userid As String)
+            Try
+                Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
+                Dim myConn As New SqlConnection(connString)
+                Dim myCmd As New SqlCommand("INSERT INTO EmailNotification(UserId, EmailType) VALUES(@userId, 'FOLLOWUP');", myConn)
+                myCmd.Parameters.AddWithValue("@UserId", userid)
 
-        Dim replacements As ListDictionary = New ListDictionary
-        replacements.Add("<% Firstname %>", firstName)
-        Dim fileMsg As System.Net.Mail.MailMessage
-        fileMsg = md.CreateMailMessage(toAddr, replacements, New System.Web.UI.Control)
-        Return fileMsg
-    End Function
+                myConn.Open()
+                myCmd.ExecuteScalar()
+                myConn.Close()
 
-    Protected Sub FollowupSent(ByVal userid As String)
-        Try
-            Dim connString As String = System.Configuration.ConfigurationManager.ConnectionStrings("LocalSqlServer").ConnectionString
-            Dim myConn As New SqlConnection(connString)
-            Dim myCmd As New SqlCommand("INSERT INTO EmailNotification(UserId, EmailType) VALUES(@userId, 'FOLLOWUP');", myConn)
-            myCmd.Parameters.AddWithValue("@UserId", userid)
-
-            myConn.Open()
-            myCmd.ExecuteScalar()
-            myConn.Close()
-
-            myCmd.Dispose()
-            myConn.Dispose()
-        Catch Ex As Exception
-            'Response.End()
-        End Try
-    End Sub
-End Class
+                myCmd.Dispose()
+                myConn.Dispose()
+            Catch Ex As Exception
+                'Response.End()
+            End Try
+        End Sub
+    End Class
+End Namespace

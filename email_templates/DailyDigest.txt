@@ -1,0 +1,9 @@
+﻿Project Daily Digest
+Good morning {FIRSTNAME},
+
+We've identified a list of projects that need your attention below.
+
+Project Name                        Return Date             Status
+{PLAINBODY}
+
+You received this email because you're registered at Buildmate. Click to unsubscribe: https://buildmateapp.com/unsubscribe/?token={TOKEN}

@@ -1,6 +1,8 @@
-﻿<style>
-body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 12px; color: #2c2c2c; background: #efefea; }
-</style>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+</head>
+<body style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: #2c2c2c; background-color: #efefea;" bgcolor="#efefea"><table border="0" cellspacing="0" cellpadding="0" width="100%" style="background-color: #efefea;" bgcolor="#efefea">
 
 <table border="0" cellspacing="0" cellpadding="0" width="100%" style="background:#efefea">
     <tr>
@@ -20,7 +22,7 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
                                     <td width="580" valign="top">
                                         <h2 style="font-size: 29px;line-height: 36px;font-weight: 400;color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;padding-top: 0;padding-bottom: 0;padding-right: 0;padding-left: 0;margin-top: 0;margin-bottom: 0;margin-right: 0;margin-left: 0;text-align: left;word-break: normal;">Project Daily Digest</h2>
                                         
-                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 16px;line-height: 24px;">Good morning <strong><% firstName %></strong>,</p>
+                                        <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 16px;line-height: 24px;">Good morning <strong>{FIRSTNAME}</strong>,</p>
                                         
                                         <p style="color: #222222;display: block;font-family: 'Helvetica','Arial',sans-serif;font-weight: normal;padding-top: 0;padding-right: 0;padding-left: 0;text-align: left;padding-bottom: 0;font-size: 16px;line-height: 24px;">We've identified a list of projects that need your attention below.</p>
 
@@ -33,7 +35,7 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                <% bodyText %>
+                                                {BODYTEXT}
                                             </tbody>
                                         </table>
                                     </td>
@@ -50,7 +52,7 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
                         <td>
                             <p style="color:#777;font-size:12px;margin-top:10px;margin-bottom:10px;margin-right:0;margin-left:0;display:block;font-family:'Helvetica','Arial',sans-serif;font-weight:normal;padding-top:0;padding-right:0;padding-left:0;text-align:left;padding-bottom:0;line-height:20px">
                                 You received this email because you're registered at Buildmate.
-                                <a href="https://buildmateapp.com/unsubscribe/?token=<% token %>" style="text-decoration:none!important;color:#21759b" target="_blank">Click to unsubscribe</a>.
+                                <a href="https://buildmateapp.com/unsubscribe/?token={TOKEN}" style="text-decoration:none!important;color:#21759b" target="_blank">Click to unsubscribe</a>.
                             </p>
                         </td>
                     </tr>
@@ -86,3 +88,6 @@ body {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 
         </td>
     </tr>
 </table>
+
+</body>
+</html>
