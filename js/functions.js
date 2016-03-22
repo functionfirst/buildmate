@@ -11,8 +11,14 @@ $(document).ready(function () {
         return false;
     });
 
+    window.addEventListener('resize', bm.tour.reposition);
+
+    $('body').on('click', '.tour-tooltip-video a', launchVideo);
+    $('body').on('click', '.video-modal', closeVideo);
+
     // tabs for tour
     $('[data-tour="menu"]').find('a[data-tab]').on('click', changeTourVideo);
+    
 
     function changeTourVideo(){
         var target = $(this).data('tab');
@@ -66,6 +72,7 @@ $(document).ready(function () {
         //toggleVisibility('.nav-options', 'nav-options-active', false);
         toggleVisibility('[data-target]', 'active', false);
         hideTooltips();
+        closeVideo();
     });
 
     $('.main-container').on('click', function () {
@@ -101,6 +108,19 @@ $(document).ready(function () {
         return false;
     });
 });
+
+function launchVideo() {
+    var id = $(this).data('id');
+    console.log(id);
+    $('#videoFrame').attr('src', '//www.youtube.com/embed/' + id);
+    $('#videoModal').addClass('show-video');
+    return false;
+}
+
+function closeVideo() {
+    $('#videoModal').removeClass('show-video');
+    $('#videoFrame').attr('src', '')
+}
 
 
 
@@ -151,18 +171,68 @@ bm.tour = {
         }
     },
 
+    target: '',
+
+    reposition: function () {
+        position(bm.tour.target);
+    },
+
     process: function (data) {
-        if (typeof data.content !== 'undefined') {
-            var elem = $('#tour').find('.container');
-            $(data.hide).hide();
-            $(data.blink).addClass('blink-me');
-            elem.html(data.content);
-            if (data.image) {
-                elem.css('background-image', 'url(/tour/images/' + data.image + ')');
+        var source = $("#tour-tooltip").html(),
+            template = Handlebars.compile(source),
+            html = template(data.tooltip);
+
+        
+        $('body').append(html);
+
+        $('.tour-tooltip').find('.tour-close').on('click', function () {
+            $(this).parents('.tour-tooltip').fadeOut();
+        });
+
+        //position($(data.target));
+        bm.tour.target = $(data.target);
+        bm.tour.reposition();
+
+        var li = $('#tour').find('li'),
+            i = 0;
+        li.each(function () {
+            if (i < data.progress) {
+                $(this).addClass('done');
+            } else if (i === data.progress) {
+                $(this).addClass('progress');
             }
-            elem.prepend('<a class="tour-button button button-large" href="https://youtu.be/QxhB-S1UoG4" target="_blank">Watch Tutorial Help</a>')
-            elem.append('<div class="tour-progress tour-' + bm.tour.current_phase + '"><span></span></div>')
-            $('#tour').show();
-        }
+            i++;
+        });
+
+        $('#tour').show();
     }
 }
+
+function position(elem) {
+    var height = elem.height(),
+        width =  elem.width(),
+        top =  elem.offset().top,
+        left = elem.offset().left,
+        t = top + height +20,
+        l = left + (width / 2) - 25;
+
+    $("#tourTip").css({
+        top: t,
+        left: l
+    });
+}
+
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};

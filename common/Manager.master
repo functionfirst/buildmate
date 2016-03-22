@@ -51,10 +51,6 @@
             </p>
         </asp:Panel>
 
-        <div id="tour" class="tour-window">
-            <div class="container"></div>
-        </div>
-
         <div class="topbar">
             <div class="topbar-container">
                 <div class="brand">Buildmate</div>
@@ -86,10 +82,10 @@
                             <asp:HyperLink ID="hlHome" runat="server" NavigateUrl="~/">Dashboard</asp:HyperLink>
                         </li>
                         <li>
-                            <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx">Projects</asp:HyperLink>
+                            <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx">Customers</asp:HyperLink>
                         </li>
                         <li>
-                            <asp:HyperLink ID="hlCustomers" runat="server" NavigateUrl="~/customers.aspx">Customers</asp:HyperLink>
+                            <asp:HyperLink ID="hlProjects" runat="server" NavigateUrl="~/projects.aspx">Projects</asp:HyperLink>
                         </li>
                         <li>
                             <asp:HyperLink ID="hlSuppliers" runat="server" NavigateUrl="~/suppliers.aspx">Suppliers</asp:HyperLink>
@@ -99,6 +95,17 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+
+        <div id="tour" class="tour-window">
+            <div class="container">
+                <ul>
+                    <li>Customers</li>
+                    <li>Projects</li>
+                    <li>Suppliers</li>
+                    <li>Resources</li>
+                </ul>
             </div>
         </div>
 
@@ -131,11 +138,31 @@
         
         <!-- js -->
         <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="/js/handlebars-v4.0.5.js"></script>
         <script type="text/javascript" src="/js/functions.js"></script>
+        <script id="tour-tooltip" type="text/x-handlebars-template">
+        <div class="tour-tooltip" id="tourTip">
+            <div class="tour-tooltip-content">
+                <a href="#close" class="tour-close">&times;</a>
+                <h1>{{title}}</h1>
+
+                <p>{{content}}</p>
+            </div>
+            <div class="tour-tooltip-video">
+                <a href="https://youtu.be/{{videoId}}" data-id="{{videoId}}">Watch a Video</a>
+            </div>
+        </div>
+        </script>
     </form>
 
     <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
 
+
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <iframe id="videoFrame" width="640" height="360" src="//www.youtube.com/embed/QxhB-S1UoG4" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
         <!-- mouseflow -->
         <script type="text/javascript">
             var _mfq = _mfq || [];

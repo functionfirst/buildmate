@@ -1,8 +1,11 @@
 [{
-	"comment"   : "PHASE 0",
-	"hide" 		: "#ctl00_MainContent_pMainPanel, #ctl00_hlProjects, #ctl00_hlSuppliers, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
-	"blink" 	: "#ctl00_hlCustomers",
-	"content" 	: "<h2>Welcome to Buildmate - Estimating made simple</h2><h3>Tutorial :- Let’s get you estimating</h3><p>Add your first Customer. Click the Customers link above to begin.</p>"
+	"target" 	: "#ctl00_hlCustomers",
+	"progress"  : 0,
+	"tooltip" : {
+		"title"   : "Welcome to Buildmate",
+		"content" : "Add your first Customer. Click the Customers link above to begin.",
+		"videoId"   : "QxhB-S1UoG4"
+	}
 },
 {
 	"comment"   : "PHASE 1",
