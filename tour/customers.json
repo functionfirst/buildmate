@@ -1,4 +1,14 @@
 [{
+	"target"   : "#newCustomer",
+	"progress" : 0,
+	"tooltip"  : {
+		"direction" : "right",
+		"title"   : "Create a New Customer record",
+		"content" : "To add a customer click the New Customer button to the right.",
+		"videoId"   : "QxhB-S1UoG4"
+	}
+},
+{
 	"comment"   : "PHASE 0",
 	"hide"		: "#ctl00_MainContent_pMainPanel, #ctl00_hlProjects, #ctl00_hlSuppliers, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
     "blink"		: ".button-create",

@@ -141,7 +141,7 @@
         <script type="text/javascript" src="/js/handlebars-v4.0.5.js"></script>
         <script type="text/javascript" src="/js/functions.js"></script>
         <script id="tour-tooltip" type="text/x-handlebars-template">
-        <div class="tour-tooltip" id="tourTip">
+        <div class="tour-tooltip {{direction}}" id="tourTip">
             <div class="tour-tooltip-content">
                 <a href="#close" class="tour-close">&times;</a>
                 <h1>{{title}}</h1>

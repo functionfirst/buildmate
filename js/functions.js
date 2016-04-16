@@ -182,16 +182,13 @@ bm.tour = {
             template = Handlebars.compile(source),
             html = template(data.tooltip);
 
-        
         $('body').append(html);
 
-        $('.tour-tooltip').find('.tour-close').on('click', function () {
+        $('.tour-tooltip').on('click', '.tour-close', function () {
             $(this).parents('.tour-tooltip').fadeOut();
         });
 
-        //position($(data.target));
         bm.tour.target = $(data.target);
-        bm.tour.reposition();
 
         var li = $('#tour').find('li'),
             i = 0;
@@ -205,16 +202,28 @@ bm.tour = {
         });
 
         $('#tour').show();
+        bm.tour.reposition();
     }
 }
 
 function position(elem) {
-    var height = elem.height(),
-        width =  elem.width(),
-        top =  elem.offset().top,
-        left = elem.offset().left,
-        t = top + height +20,
+    var height, width, top, left, t, l,
+        posRight = $('#tourTip').hasClass('right');
+
+    height = elem.height();
+    width = elem.width();
+    top = elem.offset().top;
+    left = elem.offset().left;
+    t = top + height + 20;
+    l = left + (width / 2) - 25;
+
+    if (posRight) {
+        t = top-20;
+        l = left - 290;
+    } else {
+        t = top + height + 20;
         l = left + (width / 2) - 25;
+    }
 
     $("#tourTip").css({
         top: t,

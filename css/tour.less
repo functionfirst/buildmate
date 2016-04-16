@@ -62,11 +62,20 @@
 
     &:before {
         content: "";
-        top: -30px;
+        top: -20px;
         left: 20px;
         position: absolute;
-        border: 15px solid #fff;
+        border: 10px solid #fff;
         border-color: transparent transparent #fff transparent;
+    }
+}
+
+.tour-tooltip.right {
+    &:before {
+        top: 20px;
+        right: -20px;
+        left: auto;
+        border-color: transparent transparent transparent #fff;
     }
 }
 
