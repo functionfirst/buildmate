@@ -1,24 +1,23 @@
 ﻿// set blinker for highlighting tour items
 
 .tour-tooltip {
-    zoom: 1;
-    filter: alpha(opacity=95);
-    opacity: 0.95;
     position: absolute;
     z-index: 100;
     top: 30px;
     left: 30px;
     width: 280px;
-    background-color: #fff;
-    -webkit-border-radius:  3px;
-    -moz-border-radius:     3px;
-    border-radius:          3px;
     -webkit-box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
     -moz-box-shadow:    1px 1px 8px rgba(0,0,0,0.2);
     box-shadow:         1px 1px 8px rgba(0,0,0,0.2);
    
     .tour-tooltip-content {
         padding: 20px;
+        position: relative;
+        z-index: 110;
+        background-color: #fff;
+        -webkit-border-radius:  3px 3px 0 0;
+        -moz-border-radius:     3px 3px 0 0;
+        border-radius:          3px 3px 0 0;
 
         .tour-close {
             padding: 4px 8px;
@@ -46,6 +45,7 @@
     .tour-tooltip-video {
         border-top: 1px solid #ddd;
         background-color: #f3f3f3;
+        border-radius: 0 0 3px 3px;
 
         a {
             display: block;
@@ -61,21 +61,23 @@
     }
 
     &:before {
-        content: "";
-        top: -20px;
+        transform: scaleX(2.5);
+        color: #fff;
+        content: "▲";
+        top: -15px;
         left: 20px;
         position: absolute;
-        border: 10px solid #fff;
-        border-color: transparent transparent #fff transparent;
+        text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
     }
 }
 
 .tour-tooltip.right {
     &:before {
+        transform: scaleX(1) scaleY(2.5);
+        content: "▶";
         top: 20px;
-        right: -20px;
+        right: -8px;
         left: auto;
-        border-color: transparent transparent transparent #fff;
     }
 }
 
