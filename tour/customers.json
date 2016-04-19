@@ -1,4 +1,5 @@
 [{
+	"comment"   : "PHASE 0",
 	"target"   : "#newCustomer",
 	"progress" : 0,
 	"tooltip"  : {
@@ -8,15 +9,13 @@
 	}
 },
 {
-	"comment"   : "PHASE 0",
-	"hide"		: "#ctl00_MainContent_pMainPanel, #ctl00_hlProjects, #ctl00_hlSuppliers, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
-    "blink"		: ".button-create",
-    "content" 	: "<h2>Customer Management</h2><p>On this page you will manage all of your Customer information such as contact details and addresses. This is also where you'll add New Customers which is the next step on this Tour.</p><p>To add a Customer click the flashing green <strong>New Customer</strong> button below and right of this message (This will pop open a new window).</p>"
-}, {
 	"comment"   : "PHASE 1",
-    "hide"		: "#ctl00_hlSuppliers, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
-    "blink"		: "#ctl00_hlProjects",
-	"content" 	: "<h2>Managing Projects</h2><p>Now you've created your first Customer, the next step is to create a Project for them.</p><p>Click Projects in the top menu to get started.</p>"
+    "target"	: "#ctl00_hlProjects",
+    "progress" 	: 1,
+    "tooltip" 	: {
+    	"title" : "Managing Projects",
+    	"content" 	: "Now you've created your first Customer, the next step is to create a Project for them.  Click Projects in the top menu to get started."
+    }
 },{
 	"comment"   : "PHASE 2",
 	"hide" 		: "#ctl00_hlResources, #ctl00_hlSupport, #ctl00_hlSuppliers, #hlHelp, #ctl00_hlSettings",

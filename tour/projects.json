@@ -2,6 +2,15 @@
 	"comment"   : "PHASE 0"
 },{
 	"comment"   : "PHASE 1",
+	"target"   : ".button-create",
+	"progress" : 0,
+	"tooltip"  : {
+		"direction" : "right",
+		"title"   : "Creating a Project",
+		"content" : "Add your first Project, click the green New Project button to the right."
+	}
+},{
+	"comment"   : "PHASE 1",
     "hide"		: "#ctl00_MainContent_pMainPanel, #ctl00_hlSuppliers, #ctl00_hlResources, #ctl00_hlSupport, #hlHelp, #ctl00_hlSettings",
     "blink"		: ".button-create",
     "content" 	: "<h2>Creating a Project</h2><p>Here you can manage all of your Projects, as well as create New Projects.</p><p>To add your first Project click the flashing green <strong>New Project</strong> button to the right.</p>"
