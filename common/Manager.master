@@ -148,9 +148,11 @@
 
                 <p>{{content}}</p>
             </div>
+            {{#if videoId}}
             <div class="tour-tooltip-video">
                 <a href="https://youtu.be/{{videoId}}" data-id="{{videoId}}">Watch a Video</a>
             </div>
+            {{/if}}
         </div>
         </script>
     </form>
