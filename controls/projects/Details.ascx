@@ -209,3 +209,18 @@
 <asp:SqlDataSource ID="tenderTypeDataSource" runat="server"
     ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
     SelectCommand="getProjectTenderTypes" SelectCommandType="StoredProcedure" />
+
+
+<telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+    <script type="text/javascript">
+        var data = {
+            target: '#ctl00_MainContent_bmDetails_fvCreateProject_btnCreate',
+            tooltip: {
+                title: 'Step 4 - Project Details',
+                content: "Add the rest of your Project details, ensuring all required fields are filled in.<br /><br />Click Create Project when ready."
+            }
+        };
+
+        manualTourStep(data);
+    </script>
+</telerik:RadScriptBlock>

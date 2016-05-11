@@ -7,7 +7,7 @@
 	"tooltip"  : {
 		"direction" : "right",
 		"title"   : "Project Wizard",
-		"content" : "This wizard will guide you through the 4-step process for creating a New Project.   1. Start by selecting the Estimate Type for your new project.   2. For your first Project click the 'Create a Blank Project' button.   3. Select the Customer you just created then click the 'Use the selected Customer' button.   4. Add the rest of your Project details, ensuring all required fields are filled in."
+		"content" : "This wizard will guide you through the 4-step process for creating a New Project. <br /><br />1. Start by selecting the Estimate Type for your new project.<br /><br />2. For your first Project click the 'Create a Blank Project' button.<br /><br />3. Select the Customer you just created then click the 'Use the selected Customer' button.<br /><br />4. Add the rest of your Project details, ensuring all required fields are filled in."
 	}
 },{
 	"comment"   : "PHASE 1",

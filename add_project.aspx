@@ -46,6 +46,22 @@ function validateModal() {
     return false;
 }
 </script>
+
+    <telerik:RadScriptBlock ID="rsbPhase1" runat="server">
+    <script type="text/javascript">
+        var data = {
+            target: '#ctl00_MainContent_bmEstimate_lbTemplate',
+            progress: 1,
+            tooltip: {
+                title: 'Step 1 - Select an Estimate Type',
+                content: "Start by selecting the Estimate Type for your new project."
+            }
+        };
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">

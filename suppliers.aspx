@@ -10,6 +10,105 @@
             });
         </script>
     </asp:Panel>
+
+    <telerik:RadScriptBlock ID="rsbPhase0" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlCustomers",
+            progress: 0,
+            tooltip: {
+                title: "Welcome to Buildmate",
+                content: "Add your first Customer. Click the Customers link above to begin.",
+                videoId: "QxhB-S1UoG4"
+            }
+        };
+        manualTourStep(data);
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase1" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlProjects",
+            progress: 1,
+            tooltip: {
+                title: "Managing Projects",
+                content: "Now you've created your first Customer, the next step is to create a Project for them.<br /><br />Click Projects in the top menu to get started."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase6" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_MainContent_rgSuppliers_ctl00 td:first-child a",
+            progress: 2,
+            tooltip: {
+                title: "Using Suppliers",
+                content: "Suppliers are the names of the companies you use for Labour, Materials or Plant.<br /><br />You'll already see a Supplier in this list called 'Your Company', this represents you.<br /><br />Click a company name in the list to update Your Company."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase7" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: ".breadcrumb .button-create",
+            progress: 2,
+            tooltip: {
+                title: "Adding a New Supplier",
+                content: "To add your local Builders Merchant or online shop, such as Screwfix, click the 'New Supplier' button.<br /><br />Once the pop-up window appears, enter your Supplier details then click 'Add Supplier to save your changes.",
+                direction: "right"
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+
+            $('.breadcrumb .button-create').on('click', function () {
+
+                var data = {
+                    target: "#ctl00_MainContent_fvSupplierInsert_btnInsert",
+                    progress: 2,
+                    tooltip: {
+                        title: "Supplier Details",
+                        content: "Enter your Supplier details then click 'Add Supplier' to save your changes.",
+                        direction: "right"
+                    }
+                };
+
+                manualTourStep(data);
+            });
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase8" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlResources",
+            progress: 2,
+            tooltip: {
+                title: "Managing Resources",
+                content: "Now that you've setup some Suppliers lets link your Resources to your Suppliers.<br /><br />Click the Resources link above to begin."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">

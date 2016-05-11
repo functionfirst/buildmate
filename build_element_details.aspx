@@ -3,7 +3,39 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <telerik:RadScriptBlock ID="rsbPhase3" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: ".button-create",
+            progress: 1,
+            tooltip: {
+                title: "Adding job Tasks to your Build Element",
+                content: "Here you can edit your Build Element details or access any job Tasks for this Build Element.<br/><br/>Click the 'Add Tasks' button to add your first job Task.",
+                direction: "right"
+            }
+        };
 
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
+    <telerik:RadScriptBlock ID="rsbPhase4" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "table tbody a",
+            progress: 1,
+            tooltip: {
+                title: "Adding Resources",
+                content: "To add Resources to your newly created Task, click a Task in the Current Tasks list."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 

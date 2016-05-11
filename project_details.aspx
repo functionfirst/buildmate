@@ -41,6 +41,53 @@
         }
     }
 </script>
+    
+    <telerik:RadScriptBlock ID="rsbPhase2" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: '#ctl00_MainContent_addBuildElementLink',
+            progress: 1,
+            tooltip: {
+                title: 'Managing your Project',
+                content: "Each Project needs at least one Build Element which allow Projects to be broken down into manageable elements.<br /><br />Click the 'Add a Build Element' button above to add your first Build Element."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+
+            $('#ctl00_MainContent_addBuildElementLink').on('click', function () {
+                var data = {
+                    target: "#ctl00_MainContent_fvElementDetailsInsert_btnInsert",
+                    progress: 0,
+                    tooltip: {
+                        title: "Creating a Build Element",
+                        content: "Complete the required fields then click Add Build Element"
+                    }
+                };
+
+                manualTourStep(data);
+            })
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase3" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#rgBuildElementsPanel table tbody a",
+            progress: 1,
+            tooltip: {
+                title: "Using Build Elements",
+                content: "With a Build Element created you're now able to add job Tasks.<br /><br />Click the Build Element name to view the Build Element details page."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="Server">

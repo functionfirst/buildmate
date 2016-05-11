@@ -4,6 +4,53 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="head" ContentPlaceHolderID="head" Runat="Server">
+    <telerik:RadScriptBlock ID="rsbPhase8" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: ".breadcrumb .button-create",
+            progress: 3,
+            tooltip: {
+                title: "Add a Resource Supplier",
+                content: "This page shows your Resource details along with a list of all Suppliers of this Resource.<br/><br/>Click the New Supplier button to add your first Supplier to the Resource.",
+                direction: "right"
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+
+            $('.breadcrumb .button-create').on('click', function () {
+                var data = {
+                    target: "#ctl00_MainContent_fvResourceInsert_btnInsert",
+                    progress: 3,
+                    tooltip: {
+                        title: "Add a Resource Supplier",
+                        content: "You will need to enter a Resource Price and Useage to create the Supplier link.<br/><br/>Click the Add Resource button when you're ready to add the Resource.",
+                        direction: "right"
+                    }
+                };
+
+                manualTourStep(data);
+            });
+        });
+    </script>
+    </telerik:RadScriptBlock>
+    <telerik:RadScriptBlock ID="rsbPhase9" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlHome",
+            progress: 4,
+            tooltip: {
+                title: "Successfully linked a Supplier to a Resource",
+                content: "You can now go back to the Dashboard by clicking the Dashboard link above."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 

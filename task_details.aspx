@@ -16,6 +16,93 @@
         return true;
     }
 </script>
+
+    <telerik:RadScriptBlock ID="rsbPhase4" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_MainContent_fvTaskAdjustments_btnEdit",
+            progress: 1,
+            tooltip: {
+                title: "Managing your Task",
+                content: "To start using Resources effectively you'll need to first add a Quantity to this Task.<br /><br />Click the 'Edit Task Details' button to edit your Task."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+
+        var pageRequestManager = Sys.WebForms.PageRequestManager.getInstance();
+        pageRequestManager.add_endRequest(tourEditTask);
+
+        function tourEditTask(sender, args) {
+            var activeElement = sender._activeElement.id,
+                valid = false,
+                data = {};
+            
+            data.progress = 1;
+
+            if (activeElement == "ctl00_MainContent_fvTaskAdjustments_btnEdit") {
+                valid = true;
+                data.target= "#ctl00_MainContent_fvTaskAdjustments_rntbQuantity";
+                data.tooltip = {
+                    title: "Enter a Quantity",
+                    content: "Enter a Quantity then click 'Update' to save your changes.",
+                    direction: "right"
+                }
+            }
+
+            if(valid) {
+                manualTourStep(data);
+            }
+        }
+    </script>
+    </telerik:RadScriptBlock>
+    <telerik:RadScriptBlock ID="rsbPhase5" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_MainContent_fvDefaultResources_HyperLink1",
+            progress: 1,
+            tooltip: {
+                title: "Add a Resource to your Task",
+                content: "To start adding Resources, click the 'Add a Resource' button.",
+                direction: "right"
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+
+            $('#ctl00_MainContent_fvDefaultResources_HyperLink1').on('click', function () {
+                var data = {
+                    target: "#ctl00_MainContent_btnAddResources",
+                    progress: 1,
+                    tooltip: {
+                        title: "Search Resources",
+                        content: "Search for a Resource by typing into the Resource field above.<br /><br />Set your Quantity and Usage then click the 'Add Resource' button."
+                    }
+                };
+                manualTourStep(data);
+            });
+        });
+    </script>
+    </telerik:RadScriptBlock>
+    <telerik:RadScriptBlock ID="rsbPhase6" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlSuppliers",
+            progress: 2,
+            tooltip: {
+                title: "Managing your Suppliers",
+                content: "Now that you've added your first Resource, it's important you understand how Suppliers work.<br /><br />Click the Suppliers link above to begin."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>  
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">       
@@ -994,6 +1081,9 @@
                             CausesValidation="false"
                             Text="Cancel" />
                     </div>
+                    <script>
+                        tourEditTask();
+                    </script>
                 </EditItemTemplate>
             </asp:FormView>
 

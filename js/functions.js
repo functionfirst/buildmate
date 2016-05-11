@@ -11,6 +11,8 @@ $(document).ready(function () {
         return false;
     });
 
+    $('body').on('click', '.js-move-tour', manualTourStep);
+
     window.addEventListener('resize', bm.tour.reposition);
 
     $('body').on('click', '.tour-tooltip-video a', launchVideo);
@@ -42,7 +44,7 @@ $(document).ready(function () {
         return false;
     });
 
-    bm.tour.get();
+    //bm.tour.get();
 
     // close options menu after clicking
     $('.options-icon').click(function () {
@@ -111,7 +113,6 @@ $(document).ready(function () {
 
 function launchVideo() {
     var id = $(this).data('id');
-    console.log(id);
     $('#videoFrame').attr('src', '//www.youtube.com/embed/' + id);
     $('#videoModal').addClass('show-video');
     return false;
@@ -204,6 +205,11 @@ bm.tour = {
         $('#tour').show();
         bm.tour.reposition();
     }
+}
+
+function manualTourStep(data) {
+    $('#tourTip').remove();
+    bm.tour.process(data);
 }
 
 function position(elem) {

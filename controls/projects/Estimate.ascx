@@ -22,3 +22,19 @@
     <asp:SqlDataSource ID="projectTypeDataSource" runat="server" 
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>" 
         SelectCommand="SELECT id, projectType FROM ProjectType" />
+
+<telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+<script type="text/javascript">
+    var data = {
+        target: '#ctl00_MainContent_bmEstimate_lbTemplate',
+        progress: 1,
+        tooltip: {
+            title: 'Step 1 - Select an Estimate Type',
+            content: "Start by selecting the Estimate Type for your new project."
+        }
+    };
+    $(document).ready(function () {
+        manualTourStep(data);
+    });
+</script>
+</telerik:RadScriptBlock>

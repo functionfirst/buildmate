@@ -14,6 +14,24 @@ function ClientNodeClicked(sender, eventArgs) {
     }
 }
 </script>
+
+    <telerik:RadScriptBlock ID="rsbPhase3" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: ".button-create",
+            progress: 1,
+            tooltip: {
+                title: "Adding job Tasks",
+                content: "For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu below.<br/><br/>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.<br/><br/>Once you're happy with your selected Tasks, click the 'Add Selected Tasks' button to continue.",
+                direction: "right"
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <telerik:RadAjaxManagerProxy ID="RadAjaxManagerProxy1" runat="server">

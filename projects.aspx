@@ -21,6 +21,86 @@
             $('a[href="' + tabId + '"]').parent().addClass('active').siblings().removeClass('active');
         }
     </script>
+
+    <telerik:RadScriptBlock ID="rsbPhase0" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlCustomers",
+            progress: 0,
+            tooltip: {
+                title: "Welcome to Buildmate",
+                content: "Add your first Customer. Click the Customers link above to begin.",
+                videoId: "QxhB-S1UoG4"
+            }
+        };
+        manualTourStep(data);
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase1" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: ".button-create",
+            progress: 1,
+            tooltip: {
+                title: "Creating a Project",
+                content: "Here you can manage all of your Projects, as well as create New Projects.<br/><br/>To add your first Project click the flashing green <strong>New Project</strong> button to the right.",
+                direction: "right"
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+
+            $('#newCustomer').on('click', function () {
+                var data = {
+                    target: "#ctl00_MainContent_fvCustomerInsert_btnInsert",
+                    progress: 1,
+                    tooltip: {
+                        title: "Creating a Customer",
+                        content: "Complete the required Customer Detail fields then click Add Customer"
+                    }
+                };
+
+                manualTourStep(data);
+            })
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase6" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlSuppliers",
+            progress: 2,
+            tooltip: {
+                title: "Managing your Suppliers",
+                content: "Now that you've added your first Resource, it's important you understand how Suppliers work.<br /><br />Click the Suppliers link above to begin."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase8" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlResources",
+            progress: 2,
+            tooltip: {
+                title: "Managing Resources",
+                content: "Now that you've setup some Suppliers lets link your Resources to your Suppliers.<br /><br />Click the Resources link above to begin."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" Runat="Server">

@@ -65,17 +65,12 @@ Partial Class Manager
     End Sub
 
     Protected Sub setTour()
-        ' Define the name and type of the client scripts on the page.
-        Dim csname1 As String = "TourScript"
-        Dim cstype As Type = Me.GetType()
+        If Session("tourPhase") < 10 Then
+            Dim target = "rsbPhase" + Session("tourPhase")
 
-        ' Get a ClientScriptManager reference from the Page class.
-        Dim cs As ClientScriptManager = Page.ClientScript
-
-        ' Check to see if the startup script is already registered.
-        If (Not cs.IsStartupScriptRegistered(cstype, csname1)) Then
-            Dim cstext1 As String = "bm.tour.current_phase = " + Session("tourPhase") + ";"
-            cs.RegisterStartupScript(cstype, csname1, cstext1, True)
+            If head.FindControl(target) IsNot Nothing Then
+                head.FindControl(target).Visible = True
+            End If
         End If
     End Sub
 End Class

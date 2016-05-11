@@ -139,3 +139,17 @@
         
     </FilterParameters>
 </asp:SqlDataSource>
+
+<telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+    <script type="text/javascript">
+        var data = {
+            target: '#ctl00_MainContent_bmTemplate_lbBlankTemplate',
+            tooltip: {
+                title: 'Step 2 - Select a Template',
+                content: "For your first Project click the 'Create a Blank Project' button."
+            }
+        };
+
+        manualTourStep(data);
+    </script>
+</telerik:RadScriptBlock>

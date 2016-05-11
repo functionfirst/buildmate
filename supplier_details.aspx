@@ -3,6 +3,39 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <telerik:RadScriptBlock ID="rsbPhase6" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: ".button-create",
+            progress: 2,
+            tooltip: {
+                title: "Editing a Supplier",
+                content: "Here you can manage the name and contact information of each of your Suppliers. If you're editing 'Your Company', we strongly recommend renaming this to your Company name.<br/><br/>Click Save Changes when you're ready."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
+
+    <telerik:RadScriptBlock ID="rsbPhase7" runat="server" Visible="false">
+    <script type="text/javascript">
+        var data = {
+            target: "#ctl00_hlSuppliers",
+            progress: 2,
+            tooltip: {
+                title: "Your Suppliers",
+                content: "Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier."
+            }
+        };
+
+        $(document).ready(function () {
+            manualTourStep(data);
+        });
+    </script>
+    </telerik:RadScriptBlock>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">

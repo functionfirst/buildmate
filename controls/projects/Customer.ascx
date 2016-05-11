@@ -226,3 +226,17 @@
     <asp:SqlDataSource ID="paymentDataSource" runat="server"
         ConnectionString="<%$ ConnectionStrings:LocalSqlServer %>"
         SelectCommand="SELECT [id], [paymentTerm] FROM ProjectPaymentTerm" />
+
+<telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+    <script type="text/javascript">
+        var data = {
+            target: '#ctl00_MainContent_bmCustomer_lbDetails',
+            tooltip: {
+                title: 'Step 3 - Select your Customer',
+                content: "Tick the checkbox next to the Customer you created then click the 'Use the selected Customer' button."
+            }
+        };
+
+        manualTourStep(data);
+    </script>
+</telerik:RadScriptBlock>
