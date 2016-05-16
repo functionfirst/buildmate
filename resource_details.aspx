@@ -138,8 +138,11 @@
 
                         <telerik:RadTextBox ID="rtbSuffix" runat="server"
                             MaxLength="50"
-                            Text='<%# Bind("suffix") %>'/>
-                            <small>This is the unit size you purchase this Resource in.</small>
+                            Text='<%# Bind("suffix") %>'/><br />
+
+                        
+                        <label class="label">&nbsp;</label>
+                        <small>This is the unit size you purchase this Resource in.</small>
                     </div>
 
                     <div class="row">
@@ -190,28 +193,31 @@
                         </asp:RequiredFieldValidator>
                     </div>
 
-                    <div class="row">
-                        <asp:Label ID="Label9" runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rntbUseage"
-                            Text="Useage*" />
+                        <div class="row">
+                            <asp:Label ID="Label9" runat="server"
+                                CssClass="label"
+                                AssociatedControlID="rntbUseage"
+                                Text="Useage*" />
 
-                        <telerik:RadNumericTextBox ID="rntbUseage" runat="server"
-                            Type="Number"
-                            Width="60px"
-                            NumberFormat-DecimalDigits="2"
-                            dbValue='<%# Bind("useage") %>'/>
+                            <telerik:RadNumericTextBox ID="rntbUseage" runat="server"
+                                Type="Number"
+                                Width="60px"
+                                NumberFormat-DecimalDigits="2"
+                                dbValue='<%# Bind("useage") %>'/><br />
+                        
 
-                        <asp:RequiredFieldValidator
-                            ID="RequiredFieldValidator4"
-                            runat="server"
-                            ControlToValidate="rntbUseage"
-                            ValidationGroup="insertValidation"
-                            Display="Dynamic"
-                            ErrorMessage="Useage">
-                            <span class="req"></span>
-                        </asp:RequiredFieldValidator>
-                    </div>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator4"
+                                runat="server"
+                                ControlToValidate="rntbUseage"
+                                ValidationGroup="insertValidation"
+                                Display="Dynamic"
+                                ErrorMessage="Useage">
+                                <span class="req"></span>
+                            </asp:RequiredFieldValidator>
+                            <label class="label">&nbsp;</label>
+                            <small>Add the number of times this Resource can be used.</small>
+                        </div>
                     </div>
             
                     <div class="md-footer">

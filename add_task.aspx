@@ -22,7 +22,7 @@ function ClientNodeClicked(sender, eventArgs) {
             progress: 1,
             tooltip: {
                 title: "Adding job Tasks",
-                content: "For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu below.<br/><br/>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.<br/><br/>Once you're happy with your selected Tasks, click the 'Add Selected Tasks' button to continue.",
+                content: "For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu above.<br/><br/>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.<br/><br/>More than one task can be selected. Once you're happy with your selected Tasks, click the 'Add Selected Tasks' button to continue.",
                 direction: "right"
             }
         };

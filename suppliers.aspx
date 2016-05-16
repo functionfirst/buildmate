@@ -50,7 +50,7 @@
             progress: 2,
             tooltip: {
                 title: "Using Suppliers",
-                content: "Suppliers are the names of the companies you use for Labour, Materials or Plant.<br /><br />You'll already see a Supplier in this list called 'Your Company', this represents you.<br /><br />Click a company name in the list to update Your Company."
+                content: "Suppliers are the names of the companies you use for Labour, Materials or Plant.<br /><br />You'll already see a Supplier in this list called 'Your Company', this represents you.<br /><br />Click 'Your Company' in the list to update your company name."
             }
         };
 

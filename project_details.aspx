@@ -40,6 +40,14 @@
             hideVariationMode();
         }
     }
+
+    $(document).ready(function () {
+        $('.js-lump-sum').on('change', toggleLumpSum)
+    })
+
+    function toggleLumpSum() {
+        $('#ctl00_MainContent_fvElementDetailsInsert_panelLumpSum').toggle();
+    }
 </script>
     
     <telerik:RadScriptBlock ID="rsbPhase2" runat="server" Visible="false">
@@ -337,7 +345,7 @@
     <div id="addBuildElement" class="md-window" data-modal="addBuildElement">
         <div class="md-content">
             <h3>Adding a Build Element..</h3>
-        
+
             <asp:FormView
                 ID="fvElementDetailsInsert"
                 runat="server"
@@ -349,98 +357,113 @@
                 <InsertItemTemplate>
                 <asp:Panel ID="Panel4" runat="server" DefaultButton="btnInsert">
                     <div class="md-details">
-                    <div class="row">
-                        <asp:Label ID="Label3" runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rtbSpaceName"
-                            Text="Name*" />
+                        <div class="box">
+                            <h4>Build Element Details (required)</h4>                            <div class="boxcontent">
+                                <div class="row">
+                                    <asp:Label ID="Label3" runat="server"
+                                        CssClass="label"
+                                        AssociatedControlID="rtbSpaceName"
+                                        Text="Name*" />
                         
-                        <telerik:RadTextBox ID="rtbSpaceName" runat="server"
-                            Text='<%#Bind ("spaceName") %>'
-                            Width="200px"
-                            MaxLength="80"
-                            EmptyMessage="Name" />
+                                    <telerik:RadTextBox ID="rtbSpaceName" runat="server"
+                                        Text='<%#Bind ("spaceName") %>'
+                                        Width="200px"
+                                        MaxLength="80"
+                                        EmptyMessage="Name" />
 
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                            ControlToValidate="rtbSpaceName"
-                            ValidationGroup="insertValidation"
-                            Display="Dynamic"
-                            ErrorMessage="Name">
-                            <span class="req"></span>
-                        </asp:RequiredFieldValidator>                   
-                    </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
+                                        ControlToValidate="rtbSpaceName"
+                                        ValidationGroup="insertValidation"
+                                        Display="Dynamic"
+                                        ErrorMessage="Name">
+                                        <span class="req"></span>
+                                    </asp:RequiredFieldValidator>                   
+                                </div>
                         
-                    <div class="row">
-                        <asp:Label ID="Label2" runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rtbSpaceType"
-                            Text="Type" />
+                                <div class="row">
+                                    <asp:Label ID="Label2" runat="server"
+                                        CssClass="label"
+                                        AssociatedControlID="rtbSpaceType"
+                                        Text="Type" />
                             
-                        <telerik:RadComboBox ID="rtbSpaceType" runat="server"
-                            SelectedValue='<%# Bind("buildElementTypeId") %>'
-                            DataSourceID="spaceTypeDataSource"
-                            DataTextField="spaceType"
-                            DataValueField="buildElementTypeId" />
-                    </div>
+                                    <telerik:RadComboBox ID="rtbSpaceType" runat="server"
+                                        SelectedValue='<%# Bind("buildElementTypeId") %>'
+                                        DataSourceID="spaceTypeDataSource"
+                                        DataTextField="spaceType"
+                                        DataValueField="buildElementTypeId" />
+                                </div>
 
-                    <h4>Additional Costs</h4>
-                    
-                    <div class="row">
-                        <asp:Label ID="Label4" runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rcbSubcontractType"
-                            Text="Sundry Items" />
+                                <div class="row">
+                                    <asp:Label Text="&nbsp;" CssClass="label" runat="server" />
+
+                                    <label>
+                                        <input type="checkbox" class="js-lump-sum" /> 
+                                        Is this a Lump Sum or Ad-hoc Cost?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <asp:Panel CssClass="box hide" ID="panelLumpSum" runat="server">
+                            <h4>Lump Sum or Ad-hoc Costs (Optional)</h4>
+
+                            <div class="boxcontent">
+                            <div class="row">
+                                <asp:Label ID="Label4" runat="server"
+                                    CssClass="label"
+                                    AssociatedControlID="rcbSubcontractType"
+                                    Text="Sundry Items" />
                             
-                        <telerik:RadComboBox
-                            ID="rcbSubcontractType"
-                            runat="server"
-                            width="110px"
-                            SelectedValue='<%# Bind("subcontractTypeId")%>'
-                            DataSourceID="subcontractTypesDataSource"
-                            DataTextField="subcontractType"
-                            DataValueField="id" />
-                    </div>
+                                <telerik:RadComboBox
+                                    ID="rcbSubcontractType"
+                                    runat="server"
+                                    width="110px"
+                                    SelectedValue='<%# Bind("subcontractTypeId")%>'
+                                    DataSourceID="subcontractTypesDataSource"
+                                    DataTextField="subcontractType"
+                                    DataValueField="id" />
+                            </div>
                     
-                    <div class="row">
-                        <asp:Label
-                            ID="Label5"
-                            runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rntbSpacePrice"
-                            Text="Cost" />
+                            <div class="row">
+                                <asp:Label
+                                    ID="Label5"
+                                    runat="server"
+                                    CssClass="label"
+                                    AssociatedControlID="rntbSpacePrice"
+                                    Text="Cost" />
 
-                        <telerik:RadNumericTextBox
-                            ID="rntbSpacePrice"
-                            runat="server"
-                            DBValue='<%# Bind("spacePrice") %>'
-                            Type="Currency"
-                            NumberFormat-DecimalDigits="2"
-                            Width="70px"
-                            EmptyMessage="£ (GBP)" />
-                    </div>
+                                <telerik:RadNumericTextBox
+                                    ID="rntbSpacePrice"
+                                    runat="server"
+                                    DBValue='<%# Bind("spacePrice") %>'
+                                    Type="Currency"
+                                    NumberFormat-DecimalDigits="2"
+                                    Width="70px"
+                                    EmptyMessage="£ (GBP)" />
+                            </div>
                     
-                    <div class="row">
-                        <asp:Label
-                            ID="Label6"
-                            runat="server"
-                            CssClass="label"
-                            AssociatedControlID="rntbSubcontractPercent"
-                            Text="Adjustment" />
+                            <div class="row">
+                                <asp:Label
+                                    ID="Label6"
+                                    runat="server"
+                                    CssClass="label"
+                                    AssociatedControlID="rntbSubcontractPercent"
+                                    Text="Adjustment" />
                             
-                        <telerik:RadNumericTextBox
-                            ID="rntbSubcontractPercent"
-                            runat="server"
-                            Width="60px"
-                            EmptyMessage="0 %"
-                            ShowSpinButtons="true"
-                            dbValue='<%#Bind("subcontractPercent") %>'
-                            MinValue="0"
-                            MaxValue="100"
-                            Type="Percent"
-                            NumberFormat-DecimalDigits="0" />
-                    </div>
-
-                    </div>
+                                <telerik:RadNumericTextBox
+                                    ID="rntbSubcontractPercent"
+                                    runat="server"
+                                    Width="60px"
+                                    EmptyMessage="0 %"
+                                    ShowSpinButtons="true"
+                                    dbValue='<%#Bind("subcontractPercent") %>'
+                                    MinValue="0"
+                                    MaxValue="100"
+                                    Type="Percent"
+                                    NumberFormat-DecimalDigits="0" />
+                            </div>
+                        </div>
+                        </asp:Panel>
                     <div class="md-footer">
                         <asp:Button ID="btnInsert"
                             runat="server"
