@@ -44,7 +44,7 @@
             progress: 1,
             tooltip: {
                 title: "Creating a Project",
-                content: "Here you can manage all of your Projects, as well as create New Projects.<br/><br/>To add your first Project click the flashing green <strong>New Project</strong> button to the right.",
+                content: "Here you can manage all of your Projects, as well as create New Projects.<br/><br/>To add your first Project click the green <strong>New Project</strong> button to the right.",
                 direction: "right"
             }
         };

@@ -47,6 +47,9 @@
 
     function toggleLumpSum() {
         $('#ctl00_MainContent_fvElementDetailsInsert_panelLumpSum').toggle();
+        if (buildElementPhase) {
+            callBuildElementPhase();
+        }
     }
 </script>
     
@@ -65,6 +68,8 @@
             manualTourStep(data);
 
             $('#ctl00_MainContent_addBuildElementLink').on('click', function () {
+                $('#isLumpSumCheckbox').hide();
+
                 var data = {
                     target: "#ctl00_MainContent_fvElementDetailsInsert_btnInsert",
                     progress: 0,
@@ -358,7 +363,9 @@
                 <asp:Panel ID="Panel4" runat="server" DefaultButton="btnInsert">
                     <div class="md-details">
                         <div class="box">
-                            <h4>Build Element Details (required)</h4>                            <div class="boxcontent">
+                            <h4>Build Element Details (required)</h4>
+
+                            <div class="boxcontent">
                                 <div class="row">
                                     <asp:Label ID="Label3" runat="server"
                                         CssClass="label"
@@ -393,7 +400,7 @@
                                         DataValueField="buildElementTypeId" />
                                 </div>
 
-                                <div class="row">
+                                <div class="row" id="isLumpSumCheckbox">
                                     <asp:Label Text="&nbsp;" CssClass="label" runat="server" />
 
                                     <label>
@@ -407,7 +414,8 @@
                         <asp:Panel CssClass="box hide" ID="panelLumpSum" runat="server">
                             <h4>Lump Sum or Ad-hoc Costs (Optional)</h4>
 
-                            <div class="boxcontent">
+                            <div class="boxcontent">
+
                             <div class="row">
                                 <asp:Label ID="Label4" runat="server"
                                     CssClass="label"

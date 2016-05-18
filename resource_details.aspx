@@ -41,8 +41,8 @@
             target: "#ctl00_hlHome",
             progress: 4,
             tooltip: {
-                title: "Successfully linked a Supplier to a Resource",
-                content: "You can now go back to the Dashboard by clicking the Dashboard link above."
+                title: "Supplier Resources",
+                content: "You have successfully linked a Supplier to a Resource.<br /><br />You can now go back to the Dashboard by clicking the Dashboard link above."
             }
         };
 

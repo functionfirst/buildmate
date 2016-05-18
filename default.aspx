@@ -10,8 +10,7 @@
             progress: 0,
             tooltip: {
                 title: "Welcome to Buildmate",
-                content: "Add your first Customer. Click the Customers link above to begin.",
-                videoId: "QxhB-S1UoG4"
+                content: "Add your first Customer. Click the Customers link above to begin."
             }
         };
         manualTourStep(data);
