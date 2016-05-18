@@ -214,7 +214,8 @@ function manualTourStep(data) {
 
 function position(elem) {
     var height, width, top, left, t, l,
-        posRight = $('#tourTip').hasClass('right');
+        posRight = $('#tourTip').hasClass('right'),
+        posNone = $('#tourTip').hasClass('none');
 
     height = elem.height();
     width = elem.width();
@@ -223,12 +224,9 @@ function position(elem) {
     t = top + height + 20;
     l = left + (width / 2) - 25;
 
-    if (posRight) {
+    if (posRight || posNone) {
         t = top-20;
         l = left - 290;
-    } else {
-        t = top + height + 20;
-        l = left + (width / 2) - 25;
     }
 
     $("#tourTip").css({

@@ -18,12 +18,12 @@ function ClientNodeClicked(sender, eventArgs) {
     <telerik:RadScriptBlock ID="rsbPhase3" runat="server" Visible="false">
     <script type="text/javascript">
         var data = {
-            target: ".button-create",
+            target: "#toolHook",
             progress: 1,
             tooltip: {
                 title: "Adding job Tasks",
                 content: "For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu above.<br/><br/>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.<br/><br/>More than one task can be selected. Once you're happy with your selected Tasks, click the 'Add Selected Tasks' button to continue.",
-                direction: "right"
+                direction: "none"
             }
         };
 
@@ -75,6 +75,7 @@ function ClientNodeClicked(sender, eventArgs) {
     </div>
 
     <div class="main-container">
+        <div id="toolHook" class="floatright"></div>
         <asp:Panel ID="pAddTasks" runat="server" Visible="false">
             <telerik:RadTreeView runat="server" ID="RadTreeView1"
                 OnClientNodeClicked="ClientNodeClicked"
