@@ -17,14 +17,14 @@
             target: "#newCustomer",
             progress: 0,
             tooltip: {
-                title: "Create a New Customer record",
-                content: "To add a customer click the New Customer button to the right.",
+                title: "Customer Manager",
+                content: "<strong>This is where you will find a list of all your customers.</strong><br/><br/>To 'Add a Customer' - Click on the green button 'New Customer' located to the right.<br/><br/><em>Help: As you have not yet added any customers there are no customer details to display.</em>",
                 direction: "right"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
 
             $('#newCustomer').on('click', function () {
                 var data = {
@@ -32,11 +32,12 @@
                     progress: 0,
                     tooltip: {
                         title: "Creating a Customer",
-                        content: "Complete the required Customer Detail fields then click Add Customer"
+                        content: "Enter your customer/client details and then click the green button 'Add Customer' located at the bottom of the form.<br><br><em>Help: 'NAME', 'ADDRESS' AND 'POSTCODE' are required fields; you will also need to select a payment method from the drop down menu ‘PAYMENT TERMS’. ‘COMPANY NAME’ is the name of the customer’s company if they have one and 'TITLE' is their company title.</em>",
+                        direction: "right"
                     }
                 };
 
-                manualTourStep(data);
+                bm.tour(data);
             })
         });
     </script>
@@ -49,12 +50,12 @@
             progress: 1,
             tooltip: {
                 title: "Managing Projects",
-                content: "Now you've created your first Customer, the next step is to create a Project for them.<br /><br />Click Projects in the top menu to get started."
+                content: "To 'Add a Project/Estimate' - Click 'Projects' located on the tool bar above.<br><br><em>Help: Now that you have added a customer you can create a Project/Estimate for them.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -71,7 +72,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -88,7 +89,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

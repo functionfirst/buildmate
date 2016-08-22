@@ -21,14 +21,14 @@ function ClientNodeClicked(sender, eventArgs) {
             target: "#toolHook",
             progress: 1,
             tooltip: {
-                title: "Adding job Tasks",
-                content: "For this tutorial we'll begin by selecting from the <strong>'Existing site/buildings/services'</strong> menu above.<br/><br/>Simply drill-down through each level of the job Task until you find the Task you want, then click the checkbox next to it.<br/><br/>More than one task can be selected. Once you're happy with your selected Tasks, click the 'Add Selected Tasks' button to continue.",
+                title: "Job Tasks",
+                content: "<strong>Job tasks are grouped under 23 main section headings.</strong><br><br>1. For the purposes of this tutorial click the section heading 'Existing/site/building/services' (blue text) from the list located on the left.<br><br>2. With the section heading open drill down and build-up a job task description then click the check box found at the end of the description. <br><br>3. With a Job Task checked navigate to the bottom of the page and click 'Add Selected Tasks'<br><br><em>Help: Opening 'Add tasks' accesses Buildmate’s current Job Task database of over 1,000,000 Individual Job Tasks. These are accessed by clicking on a main section heading and then drilling down through the options provided to create individual Job Tasks. More than one Job Task can be selected and added simultaneously. </em>",
                 direction: "none"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

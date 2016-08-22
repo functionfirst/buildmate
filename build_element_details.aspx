@@ -9,14 +9,14 @@
             target: ".button-create",
             progress: 1,
             tooltip: {
-                title: "Adding job Tasks to your Build Element",
-                content: "Here you can edit your Build Element details or access any job Tasks for this Build Element.<br/><br/>Click the 'Add Tasks' button to add your first job Task.",
+                title: "Job Tasks",
+                content: "To Add a 'Job Task' to a Build Element click the green button ‘Add Tasks’ located on the right.<br><br><em>Help: Opening the Build Element Details allows you to edit or change its function. For now the Build Element will be used to hold a job task that can be priced. Click the green button 'Add Tasks' to add a job task.</em>",
                 direction: "right"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -26,13 +26,13 @@
             target: "table tbody a",
             progress: 1,
             tooltip: {
-                title: "Adding Resources",
-                content: "To add Resources to your newly created Task, click a Task in the Current Tasks list."
+                title: "Current Tasks",
+                content: "<strong>Job tasks added to a Build Element will be listed here.</strong><br><br>To 'Add Resources' to a Job Task (labour, materials or plant click the 'Task Name' in the blue text (Task description).<br><br><em>Help: Selecting the ‘Task Description’ blue text will open the Job task to allow the Job Taskto be priced.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

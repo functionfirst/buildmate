@@ -9,13 +9,13 @@
             target: ".button-create",
             progress: 2,
             tooltip: {
-                title: "Editing a Supplier",
-                content: "Here you can manage the name and contact information of each of your Suppliers. If you're editing 'Your Company', we strongly recommend renaming this to your Company name.<br/><br/>Click Save Changes when you're ready."
+                title: "Add your Company as a Supplier",
+                content: "Click on the name 'My Company' and change this to your company name, then enter your 'ADDRESS' and 'POSTCODE'. Click the green button 'Save Changes' located at the bottom of the form to update the changes.<br><br><em>Help: Click the Supplier Name 'Your Company' in blue text to open the Supplier Details. Click the SUPPLIER NAME field to change the name and then add your COMPANY ADDRESS and POSTCODE. All other details are optional.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -26,13 +26,13 @@
             target: "#ctl00_hlSuppliers",
             progress: 2,
             tooltip: {
-                title: "Your Suppliers",
-                content: "Now you've succesfully updated Your Company click the Supplier link above to add a New Supplier."
+                title: "With your Company setup as a Supplier you will need to setup one more supplier.",
+                content: "To 'Add a Supplier' click 'Suppliers' on the main menu above.<br><br><em>Help: For the tutorial you will need to add one of your Suppliers you can add additional suppliers at anytime.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

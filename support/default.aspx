@@ -15,7 +15,7 @@
             }
         };
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -33,7 +33,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -50,7 +50,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -67,7 +67,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

@@ -22,7 +22,7 @@
                 videoId: "QxhB-S1UoG4"
             }
         };
-        manualTourStep(data);
+        bm.tour(data);
     </script>
     </telerik:RadScriptBlock>
 
@@ -38,7 +38,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -49,13 +49,13 @@
             target: "#ctl00_MainContent_rgSuppliers_ctl00 td:first-child a",
             progress: 2,
             tooltip: {
-                title: "Using Suppliers",
-                content: "Suppliers are the names of the companies you use for Labour, Materials or Plant.<br /><br />You'll already see a Supplier in this list called 'Your Company', this represents you.<br /><br />Click 'Your Company' in the list to update your company name."
+                title: "Suppliers Manager",
+                content: "<strong>This is where you will find a list of all your suppliers.</strong><br><br>To Add 'Your Company Name' click the default Supplier Name blue text 'Your Company' located above. <em>Help: Suppliers provide all your resources and up to date prices. Buildmate has already set up your company as a default supplier called 'Your Company' but you will need to change this to your company name. Your Company will provide the labour and one or more Builders Merchants and Plant hire companies will provide you with the materials and plant for each project.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -66,14 +66,13 @@
             target: ".breadcrumb .button-create",
             progress: 2,
             tooltip: {
-                title: "Adding a New Supplier",
-                content: "To add your local Builders Merchant or online shop, such as Screwfix, click the 'New Supplier' button.<br /><br />Once the pop-up window appears, enter your Supplier details then click 'Add Supplier to save your changes.",
-                direction: "right"
+                title: "Suppliers",
+                content: "Click on the green button 'New Supplier' located on the right.<br><br><em>Help: You can add unlimited suppliers and prioritise their use within each estimate.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
 
             $('.breadcrumb .button-create').on('click', function () {
 
@@ -81,13 +80,12 @@
                     target: "#ctl00_MainContent_fvSupplierInsert_btnInsert",
                     progress: 2,
                     tooltip: {
-                        title: "Supplier Details",
-                        content: "Enter your Supplier details then click 'Add Supplier' to save your changes.",
-                        direction: "right"
+                        title: "Adding a Supplier",
+                        content: "Enter the supplier's details and click the green button 'Add Supplier' located at the bottom of the form to update the changes.<br><br><em>Help: You will need to add an 'ADDRESS' and a 'POSTCODE'. All other details are optional. On completion of the tutorial you can add unlimited suppliers and prioritise their use.</em>"
                     }
                 };
 
-                manualTourStep(data);
+                bm.tour(data);
             });
         });
     </script>
@@ -99,13 +97,13 @@
             target: "#ctl00_hlResources",
             progress: 2,
             tooltip: {
-                title: "Managing Resources",
-                content: "Now that you've setup some Suppliers lets link your Resources to your Suppliers.<br /><br />Click the Resources link above to begin."
+                title: "Now that you have a supplier you will need to link the resource you added to your job task to your supplier",
+                content: "<strong>Resources</strong><br>To Add a 'Resource to a Supplier' click 'Resources' on the tool bar above.<br><br><em>Help: Price maintenance - due to the variance in resource prices from region to region and the amount of trade discount your company receives. Buildmate is unable to provide you with accurate up to date prices for resources that are used within your estimates. To ensure you are using up to date prices you will need to link all the resources and their up to date prices you have used in your estimates to your suppliers.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

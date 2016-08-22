@@ -33,7 +33,7 @@
                 videoId: "QxhB-S1UoG4"
             }
         };
-        manualTourStep(data);
+        bm.tour(data);
     </script>
     </telerik:RadScriptBlock>
 
@@ -44,13 +44,13 @@
             progress: 1,
             tooltip: {
                 title: "Creating a Project",
-                content: "Here you can manage all of your Projects, as well as create New Projects.<br/><br/>To add your first Project click the green <strong>New Project</strong> button to the right.",
+                content: "<strong>This is where you will find a list of all your projects</strong><br><br>To 'Add a Project' - Click the green button 'New Project' located on the right.<br><br><em>Help: As you have not yet added any projects there are no projects to display.</em>",
                 direction: "right"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
 
             $('#newCustomer').on('click', function () {
                 var data = {
@@ -62,7 +62,7 @@
                     }
                 };
 
-                manualTourStep(data);
+                bm.tour(data);
             })
         });
     </script>
@@ -80,7 +80,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -97,7 +97,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

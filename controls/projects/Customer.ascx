@@ -232,11 +232,11 @@
         var data = {
             target: '#ctl00_MainContent_bmCustomer_lbDetails',
             tooltip: {
-                title: 'Step 3 - Select your Customer',
-                content: "Tick the checkbox next to the Customer you created then click the 'Use the selected Customer' button."
+                title: 'Creating a Project - Step 3',
+                content: "Click the check box to the left of your customer. Then click the blue button 'Use the Selected Customer' located above.<br><br><em>Help: Your customer is listed as an existing Customer. As this is your first project you will need to link the customer you created to this project. When you click the check box to the left of the customer name a blue button 'Use the Selected Customer' will appear for you to click. When you create future projects you can either select a customer from your existing list or a new customer can be added to a project at this point in the wizard by clicking the green button ‘New Customer’.</em>"
             }
         };
 
-        manualTourStep(data);
+        bm.tour(data);
     </script>
 </telerik:RadScriptBlock>

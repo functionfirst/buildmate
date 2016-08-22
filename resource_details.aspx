@@ -10,27 +10,25 @@
             target: ".breadcrumb .button-create",
             progress: 3,
             tooltip: {
-                title: "Add a Resource Supplier",
-                content: "This page shows your Resource details along with a list of all Suppliers of this Resource.<br/><br/>Click the New Supplier button to add your first Supplier to the Resource.",
-                direction: "right"
+                title: "Linkings Resources to a Supplier",
+                content: "To 'Add a Resource to a Supplier' click the 'Resource' blue text listed under 'Unresourced' that you added to your estimate.<br><br><em>Help: You can see three tabs 'Unresourced', 'Your Resources' and 'Search all Resources'. Under Unresourced you will find a list all the resources you have used in your estimates that do not have one of your Suppliers providing the price (Unresourced is Buildmate's default supplier). To ensure all resources are provided by one or more of your Suppliers this list should be empty. 'Your Resources' will list all the resources used in your estimates, when you need to update a resource price you will find the resource listed here. 'Search all Resources' enables you to search for a specific resource listed in 'Your Resources'.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
 
             $('.breadcrumb .button-create').on('click', function () {
                 var data = {
                     target: "#ctl00_MainContent_fvResourceInsert_btnInsert",
                     progress: 3,
                     tooltip: {
-                        title: "Add a Resource Supplier",
-                        content: "You will need to enter a Resource Price and Useage to create the Supplier link.<br/><br/>Click the Add Resource button when you're ready to add the Resource.",
-                        direction: "right"
+                        title: "Add a Supplier to this Resource",
+                        content: "Enter your 'Suppliers Resource Purchase Details ' and then click the green button 'Add Resource' located at the bottom of the form.<br><br><em>Help: 'SUPPLIER' will open a drop down menu with a list of all your suppliers. If the resource is Labour select your company otherwise select the other supplier you added under suppliers.<br><br>'PRODUCT CODE' is the supplier's reference product code, not the manufacturer's product reference code. Having the Supplier's Product Code will prevent any ambiguity when ordering the product from the Suppler.<br><br>'SUFFIX' is the unit size of the resource: how you would order the resource/product from your supplier. I.e. Labour is purchased by the hour so the Suffix is hour, Nails are ordered by weight 0.5kg, 1kg, 2.5kg pack or 20kg or 25kg box so the suffix is 0.5kg/pack and 20kg/box. A pack of ten bolts would be 10/nr or 10/pack.<br><br>'PRICE' is the purchase cost of the resource, net of Vat. Buildmate will calculate Vat for you. <br><br>'LEAD TIME' is the number of days it will take from order to delivery, usually set at 1. Specialist materials can take 30 days plus from order to delivery. <br><br>'USAGE' is the number of times a resource can be used; Labour is purchased by the hour so there are 60 minutes of use per hour. A box of 200 screws has a usage of 200 per box and a bag of ten bolts has 10 uses per pack before another hour’s labour, box of 200 screws or bag of 10 bolts needs to be repurchased.</em>"
                     }
                 };
 
-                manualTourStep(data);
+                bm.tour(data);
             });
         });
     </script>
@@ -41,13 +39,13 @@
             target: "#ctl00_hlHome",
             progress: 4,
             tooltip: {
-                title: "Supplier Resources",
-                content: "You have successfully linked a Supplier to a Resource.<br /><br />You can now go back to the Dashboard by clicking the Dashboard link above."
+                title: "You have successfully linked a Resource to a Supplier",
+                content: "Click 'Dashboard' on the main tool bar.<br><br><em>Help: Selecting ‘Dashboard’ will return you to your Dashboard.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

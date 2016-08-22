@@ -145,11 +145,11 @@
         var data = {
             target: '#ctl00_MainContent_bmTemplate_lbBlankTemplate',
             tooltip: {
-                title: 'Step 2 - Select a Template',
-                content: "For your first Project click the 'Create a Blank Project' button."
+                title: 'Creating a Project - Step 2',
+                content: "Click the blue button 'Create a Blank Project' located above.<br><br><em>Help: As this is your first project there are no templates to copy so you will need to create a blank project. Once you have created a project you will be able to copy it as a template to create new projects.</em>"
             }
         };
 
-        manualTourStep(data);
+        bm.tour(data);
     </script>
 </telerik:RadScriptBlock>

@@ -59,13 +59,13 @@
             target: '#ctl00_MainContent_addBuildElementLink',
             progress: 1,
             tooltip: {
-                title: 'Managing your Project',
-                content: "Each Project needs at least one Build Element which allow Projects to be broken down into manageable elements.<br /><br />Click the 'Add a Build Element' button above to add your first Build Element."
+                title: 'Project Details',
+                content: "<strong>You have successfully created your estimates details and linked your customer to their project/estimate.</strong><br><br><strong>Build Elements</strong><br>To 'Add a Build Element' click on the green button 'Add a Build Element' located above.<br><br><em>Help: ‘Build Elements’ are used to break large project into smaller manageable sections, they can either be a lump sum or have individual 'Job tasks' linked to it. Your projects can have unlimited Build Elements (sections) but each project must have at least one.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
 
             $('#ctl00_MainContent_addBuildElementLink').on('click', function () {
                 $('#isLumpSumCheckbox').hide();
@@ -75,11 +75,12 @@
                     progress: 0,
                     tooltip: {
                         title: "Creating a Build Element",
-                        content: "Complete the required fields then click Add Build Element"
+                        content: "Add a descriptive name for the Build Element and select a 'TYPE' of work. Then click the green button 'Add Build Element' located at the bottom of the form.<br><br><em>Help: Each 'BUILD ELEMENT' should be given a unique name based on your criteria e.g. by trade Joiner, Plasterer etc or by location Kitchen, Hall, First floor or work type External walls, Windows and doors or Decoration etc. 'TYPE' enables similar work to be grouped together in large projects.</em>",
+                        direction: 'right'
                     }
                 };
 
-                manualTourStep(data);
+                bm.tour(data);
             })
         });
     </script>
@@ -91,13 +92,13 @@
             target: "#rgBuildElementsPanel table tbody a",
             progress: 1,
             tooltip: {
-                title: "Using Build Elements",
-                content: "With a Build Element created you're now able to add job Tasks.<br /><br />Click the Build Element name to view the Build Element details page."
+                title: "Job Tasks",
+                content: "<strong>Now that you have added a Build Element to your project you can add a job task.</strong><br><br>To 'Add a Job Task to a Build Element' click the name of the Build Element (blue text) you just created to open it.<br><br><em>Help: You will see your Build Elements listed under the Project Details. Build Element must be either a lump sum or contain at least one Job Task. Job Tasks are individual elements of work that can be priced to build-up your estimate. For the tutorial you will need to add at least one Job Task to your Build Element. To open a Build Element click the Build Element name blue text.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

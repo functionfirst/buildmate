@@ -23,13 +23,13 @@
             target: "#ctl00_MainContent_fvTaskAdjustments_btnEdit",
             progress: 1,
             tooltip: {
-                title: "Managing your Task",
-                content: "To start using Resources effectively you'll need to first add a Quantity to this Task.<br /><br />Click the 'Edit Task Details' button to edit your Task."
+                title: "Resources",
+                content: "<strong>Pricing and managing job tasks</strong><br><br>To 'Add a Quantity' click the grey button 'Edit Task Details' located above.<br><br><em>Help: Before a job task can be priced the task needs to be provided with a quantity. Adding a quantity prevents Tasks from having a zero cost.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
 
         var pageRequestManager = Sys.WebForms.PageRequestManager.getInstance();
@@ -46,14 +46,14 @@
                 valid = true;
                 data.target= "#ctl00_MainContent_fvTaskAdjustments_rntbQuantity";
                 data.tooltip = {
-                    title: "Enter a Quantity",
-                    content: "Enter a Quantity then click 'Update' to save your changes.",
+                    title: "Adding a Quantity to a Task",
+                    content: "To 'Add a Quantity' click the 'QUANTITY' field and enter a quantity then click the green button 'Update' located at the bottom of the form to save changes.<br><br><em>Help: Add a quantity first prevents Tasks from having a zero cost. For now just enter a quantity. You can also use the calculator to calculate the quantity, to calculate the quantity click the calculator icon.</em>",
                     direction: "right"
                 }
             }
 
             if(valid) {
-                manualTourStep(data);
+                bm.tour(data);
             }
         }
     </script>
@@ -65,24 +65,23 @@
             progress: 1,
             tooltip: {
                 title: "Add a Resource to your Task",
-                content: "To start adding Resources, click the 'Add a Resource' button.",
-                direction: "right"
+                content: "To 'Add a Resource to a Task' click the green button 'Add a Resource' located to the right.<br><br><em>Help: Adding a quantity enables resources to be added to the Job Task. Selecting 'Add a Resource' will access Buildmate's Resource Database of over 100,000 Labour, Material and Plant resources.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
 
             $('#ctl00_MainContent_fvDefaultResources_HyperLink1').on('click', function () {
                 var data = {
                     target: "#ctl00_MainContent_btnAddResources",
                     progress: 1,
                     tooltip: {
-                        title: "Search Resources",
-                        content: "Search for a Resource by typing into the Resource field above.<br /><br />Set your Quantity and Usage then click the 'Add Resource' button."
+                        title: "Selecting Resources to add to a job task",
+                        content: "Enter the relevant resource details, then click the green button 'Add Resource'.<br><br><em>Help: 'TYPE' selects the resource database to search (Labour, Material or Plant). <br><br>‘SEARCH’ leave search set at 'All Resources'; search is used to search one of three databases 'All Resources' searches Buildmate's default database or to limit a search for a resource you have previously added to your estimates either 'Current Project' or 'All Projects'<br><br>'RESOURCE' is a search field enter a description of the resource to search for then click on the resource required from the dropdown list. Leave quantity set at 1 the quantity is used to multiply the resource i.e. the task needs 2 tradesmen or 2 coats of paint.<br><br>'USAGE' is how much of the resource is needed to complete one unit of the task e.g. a tradesman has a usage of 60 minutes an hour and a box of 200 screws has a usage of two hundred and a brick has a usage of 1. One m2 of stretcher bond brickwork would need 60 bricks so has a usage of 60. The usage unit will be indicated once a resource has been selected i.e. selecting labour resources will indicate the usage is minutes. If you need a guide to how much labour to use a 'SUGGESTED TIME' for labour has been provided within the task details. When you enter a labour item the Resource Manager will calculate the duration and update the Task Details above.</em>"
                     }
                 };
-                manualTourStep(data);
+                bm.tour(data);
             });
         });
     </script>
@@ -93,13 +92,13 @@
             target: "#ctl00_hlSuppliers",
             progress: 2,
             tooltip: {
-                title: "Managing your Suppliers",
-                content: "Now that you've added your first Resource, it's important you understand how Suppliers work.<br /><br />Click the Suppliers link above to begin."
+                title: "With a Resource added to your estimate you will need to link the Resource to a Supplier.",
+                content: "To 'Add a Supplier' click 'Suppliers' on the main tool bar above.<br><br><em>Help: If a Job Task resource does not have one of your Suppliers providing the purchase cost, Buildmate will use a default Supplier called 'Unresourced'. The 'Unresourced' default cost may be out of date. You will need to add one or more of your suppliers to ensure that resources you use have an up to date purchase cost.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

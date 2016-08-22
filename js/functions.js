@@ -11,9 +11,9 @@ $(document).ready(function () {
         return false;
     });
 
-    $('body').on('click', '.js-move-tour', manualTourStep);
+    $('#tourTip').on('click', '.tour-close', closeTour);
 
-    window.addEventListener('resize', bm.tour.reposition);
+    $('body').on('click', '.js-move-tour', bm.tour);
 
     $('body').on('click', '.tour-tooltip-video a', launchVideo);
     $('body').on('click', '.video-modal', closeVideo);
@@ -43,8 +43,6 @@ $(document).ready(function () {
         toggleVisibility('[data-target="'+target+'"]', 'active');
         return false;
     });
-
-    //bm.tour.get();
 
     // close options menu after clicking
     $('.options-icon').click(function () {
@@ -111,6 +109,12 @@ $(document).ready(function () {
     });
 });
 
+function closeTour() {
+    $('body').removeClass('has-tour');
+
+    $(this).parents('.tour-tooltip').css({ 'right': '-320px' });
+}
+
 function launchVideo() {
     var id = $(this).data('id');
     $('#videoFrame').attr('src', '//www.youtube.com/embed/' + id);
@@ -156,83 +160,13 @@ function toggleVisibility(elem, klassName, set) {
 
 
 // buildmate tour controls
-bm.tour = {
-    get: function (data) {
-        if (bm.tour.current_phase < 10) {
-            var path = window.location.pathname.replace(".aspx", "");
-            path = path === '/' ? '/default' : path
-            var uri = "tour{0}.json".replace("{0}", path);
+bm.tour = function (data) {
+    var source = $("#tour-tooltip").html(),
+        template = Handlebars.compile(source),
+        html = template(data.tooltip);
 
-            $.getJSON(uri, function (json) {
-                bm.tour.process(json[bm.tour.current_phase]);
-            })
-            .fail(function () {
-                $('#tour').hide();
-            });
-        }
-    },
-
-    target: '',
-
-    reposition: function () {
-        position(bm.tour.target);
-    },
-
-    process: function (data) {
-        var source = $("#tour-tooltip").html(),
-            template = Handlebars.compile(source),
-            html = template(data.tooltip);
-
-        $('body').append(html);
-
-        $('.tour-tooltip').on('click', '.tour-close', function () {
-            $(this).parents('.tour-tooltip').fadeOut();
-        });
-
-        bm.tour.target = $(data.target);
-
-        var li = $('#tour').find('li'),
-            i = 0;
-        li.each(function () {
-            if (i < data.progress) {
-                $(this).addClass('done');
-            } else if (i === data.progress) {
-                $(this).addClass('progress');
-            }
-            i++;
-        });
-
-        $('#tour').show();
-        bm.tour.reposition();
-    }
-}
-
-function manualTourStep(data) {
-    $('#tourTip').remove();
-    bm.tour.process(data);
-}
-
-function position(elem) {
-    var height, width, top, left, t, l,
-        posRight = $('#tourTip').hasClass('right'),
-        posNone = $('#tourTip').hasClass('none');
-
-    height = elem.height();
-    width = elem.width();
-    top = elem.offset().top;
-    left = elem.offset().left;
-    t = top + height + 20;
-    l = left + (width / 2) - 25;
-
-    if (posRight || posNone) {
-        t = top-20;
-        l = left - 290;
-    }
-
-    $("#tourTip").css({
-        top: t,
-        left: l
-    });
+    $('#tourTip').html(html);
+    $('body').addClass('has-tour');
 }
 
 function debounce(func, wait, immediate) {

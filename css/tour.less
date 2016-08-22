@@ -1,20 +1,42 @@
-﻿// set blinker for highlighting tour items
+﻿.topbar,
+.breadcrumb,
+.main-container {
+    margin: 0;
+    -webkit-transition: margin ease-out .3s;
+    -moz-transition:    margin ease-out .3s;
+    -o-transition:      margin ease-out .3s;
+    transition:         margin ease-out .3s;
+}
+
+.has-tour {
+    .topbar,
+    .breadcrumb,
+    .main-container {
+        margin-right: 320px;
+    }
+}
+
+.tour-tooltip + .breadcrumb + .main-container {
+    padding: 20px;
+}
 
 .tour-tooltip {
-    position: absolute;
-    z-index: 3100;
-    top: 30px;
-    left: 30px;
-    width: 280px;
-    -webkit-box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
-    -moz-box-shadow:    1px 1px 8px rgba(0,0,0,0.2);
-    box-shadow:         1px 1px 8px rgba(0,0,0,0.2);
-   
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    background: #0078e7;
+    overflow: auto;
+    z-index: 1100;
+    -webkit-transition: right ease-out .3s;
+    -moz-transition:    right ease-out .3s;
+    -o-transition:      right ease-out .3s;
+    transition:         right ease-out .3s;
+
     .tour-tooltip-content {
         padding: 20px;
         position: relative;
-        z-index: 3200;
-        background-color: #fff;
         -webkit-border-radius:  3px 3px 0 0;
         -moz-border-radius:     3px 3px 0 0;
         border-radius:          3px 3px 0 0;
@@ -25,20 +47,30 @@
             right: 5px;
             top: 5px;
             font-size: 18px;
-            color: #999;
+            color: #fff;
             &:hover {
-                color: #333;
+                color: #eee;
             }
         }
 
         h1 {
             border: 0;
-            color: #444;
-            font-size: 14px;
-            text-transform: uppercase;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 300;
         }
         p {
-            color: #999;
+            color: #fff;
+            margin-bottom: 0;
+        }
+
+        a.lnk {
+            color: #eee;
+            text-decoration: underline;
+
+            &:hover {
+                color: #ddd;
+            }
         }
     }
 
@@ -60,30 +92,6 @@
         }
     }
 
-    &:before {
-        transform: scaleX(2.5);
-        color: #fff;
-        content: "▲";
-        top: -15px;
-        left: 20px;
-        position: absolute;
-        text-shadow: 1px 1px 8px rgba(0,0,0,0.2);
-    }
-}
-
-.tour-tooltip.right {
-    &:before {
-        transform: scaleX(1) scaleY(2.5);
-        content: "▶";
-        top: 20px;
-        right: -8px;
-        left: auto;
-    }
-}
-.tour-tooltip.none {
-    &:before {
-        display: none;
-    }
 }
 
 .video-modal {

@@ -53,12 +53,12 @@ function validateModal() {
             target: '#ctl00_MainContent_bmEstimate_lbTemplate',
             progress: 1,
             tooltip: {
-                title: 'Step 1 - Select an Estimate Type',
-                content: "Start by selecting the Estimate Type for your new project."
+                title: 'Create a Project - Step 1',
+                content: "Click the 'Estimate Type' you want to create. Then click the blue button 'Next' located at bottom of the list.<br><br><em>Help: Projects/Estimates are creating using a four step wizard. 'Estimate type' is used to analyse your projects by their respective group heading. All of the details entered using the Project Wizard can be edited after the Project is completed.</em>"
             }
         };
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

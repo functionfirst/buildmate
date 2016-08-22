@@ -10,10 +10,10 @@
             progress: 0,
             tooltip: {
                 title: "Welcome to Buildmate",
-                content: "Add your first Customer. Click the Customers link above to begin."
+                content: "<strong>Let's get you estimating; follow the on screen instructions to complete this 15 minute tutorial.</strong><br /><br /><strong>CUSTOMERS</strong><br />To 'Add a Customer' - Click 'Customers' located on the tool bar above.<br /><br /><em>Help: Your account currently does not contain any data to display. This tutorial will guide you through the basic steps to create estimates. All of the managers required to create estimates are located on the main tool bar.</em>"
             }
         };
-        manualTourStep(data);
+        bm.tour(data);
     </script>
     </telerik:RadScriptBlock>
 
@@ -29,7 +29,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -45,7 +45,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -62,7 +62,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -72,13 +72,13 @@
             target: "#ctl00_hlHome",
             progress: 4,
             tooltip: {
-                title: "Congratulations!",
-                content: "You have now successfully completed all areas of the Buildmate Tutorial and should now have everything you need to get started.<br /><br />For further help or assistance please visit our <a target='_blank' href='http://getbuildmate.com/knowledgebase' class='lnk'>Knowledge Base</a> or you can request help using our <a href='support/' class='lnk'>Support</a> page.<br /><br /><a href='end_tutorial.aspx' class='button button-create'>Start Estimating..</a>"
+                title: "You have completed the basic introduction to estimating with Buildmate",
+                content: "To End the Tutorial click the green button 'Start Estimating' located below.<br><br><em>Help: The 'Dashboard' and Managers have been updated with your estimate data. Additional navigation can be found by selecting Blue Text, blue text will act as either a hyper jump to a specific place, reorder a list or provides additional information. To understand Buildmate's innovative and unique method of estimating, when you have time we would recommend that you watch the help videos that can be accessed from the main tool bar. Full support is also provided 24/7 from within the application by accessing ‘Support’ on the main tool bar.</em><br /><br /><a href='end_tutorial.aspx' class='button button-create'>Start Estimating..</a>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>

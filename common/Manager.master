@@ -51,6 +51,8 @@
             </p>
         </asp:Panel>
 
+        <div id="tourTip"></div>
+
         <div class="topbar">
             <div class="topbar-container">
                 <div class="brand">Buildmate</div>
@@ -98,17 +100,6 @@
             </div>
         </div>
 
-        <div id="tour" class="tour-window">
-            <div class="container">
-                <ul>
-                    <li>Customers</li>
-                    <li>Projects</li>
-                    <li>Suppliers</li>
-                    <li>Resources</li>
-                </ul>
-            </div>
-        </div>
-
         <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
             
         <div class="md-wrapper" title="Click or press Esc to cancel"></div>
@@ -141,7 +132,7 @@
         <script type="text/javascript" src="/js/handlebars-v4.0.5.js"></script>
         <script type="text/javascript" src="/js/functions.js"></script>
         <script id="tour-tooltip" type="text/x-handlebars-template">
-        <div class="tour-tooltip {{direction}}" id="tourTip">
+        <div class="tour-tooltip {{direction}}">
             <div class="tour-tooltip-content">
                 <a href="#close" class="tour-close">&times;</a>
                 <h1>{{title}}</h1>

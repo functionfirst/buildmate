@@ -35,7 +35,7 @@
             }
         };
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -52,7 +52,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -69,7 +69,7 @@
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
@@ -80,13 +80,13 @@
             target: "table td a",
             progress: 3,
             tooltip: {
-                title: "Link Resources to your Suppliers",
-                content: "Within the Unresourced tab you will see your recently added Resources.<br /><br />Click one of the Resources listed to begin linking a Supplier."
+                title: "Resource Details",
+                content: "To Add a 'Resource to a Supplier' click the green button 'New Supplier' on the left.<br><br><em>Help: To save you time Buildmate has already set up some default data under 'Resource Details' on the left. Any suppliers that provide this resource are listed under 'Suppliers for this Resource'. There are currently no Suppliers providing this resource, each resource can have unlimited suppliers providing the resource and each resource can have more than one quantity. This is referred to as stacking i.e. nails can be listed under the same resource - in 0.5kg, 1kg, 5kg, 20kg and 25kg quantities. If you invest the time to add multiple pack sizes, Buildmate's Resource Manager will calculate which is the most cost effect quantity to use.</em>"
             }
         };
 
         $(document).ready(function () {
-            manualTourStep(data);
+            bm.tour(data);
         });
     </script>
     </telerik:RadScriptBlock>
