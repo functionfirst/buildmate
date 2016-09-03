@@ -78,7 +78,7 @@ Partial Class settings
     End Sub
 
     Protected Sub fvNotifications_ItemUpdated(sender As Object, e As FormViewUpdatedEventArgs) Handles fvNotifications.ItemUpdated
-        showNotification("Notification Settings Updated", "Your changes have been saved successfully")
+        showNotification("Notifications &amp; Help Center", "Your settings have been saved successfully")
     End Sub
 
     Protected Sub updateHelpSettings()

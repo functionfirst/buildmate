@@ -134,13 +134,11 @@
                 <li><a href="#company">Company Details</a></li>
                 <li><a href="#logo">Company Logo</a></li>
                 <li><a href="#password">Change Password</a></li>
-                <li><a href="#notifications">Notification Settings</a></li>
+                <li><a href="#notifications">Notifications & Help Center</a></li>
                 <li><a href="#subscription">Subscription</a></li>
             </ul>
             
             <div class="tab-container tab-container-active" id="contact">
-                <h3>Contact Details</h3>
-
                 <asp:FormView ID="fvContactDetails" runat="server"
                             DefaultMode="Edit"
                     Width="100%"
@@ -256,8 +254,6 @@
             </div>
 
             <div class="tab-container" id="company">
-                <h3>Company Details</h3>
-    
                 <asp:FormView ID="fvCompanyDetails" runat="server"
                     DefaultMode="Edit"
                     Width="100%"
@@ -334,8 +330,6 @@
             </div>
             
             <div class="tab-container" id="logo">
-                <h3>Company Logo</h3>
-        
                 <asp:FormView ID="fvCompanyLogo" runat="server"
                     DataSourceID="updateImageDataSource">
                     <ItemTemplate>
@@ -373,7 +367,6 @@
             </div>
             
             <div class="tab-container" id="password">
-                <h3>Change Password</h3>
 
                 <asp:ChangePassword ID="ChangePassword1" runat="server">
                     <ChangePasswordTemplate>
@@ -433,7 +426,6 @@
             </div>
             
             <div class="tab-container" id="notifications">
-                <h3>Notification Settings</h3>
             
                 <asp:FormView DefaultMode="Edit"
                     ID="fvNotifications"
@@ -441,12 +433,26 @@
                     DataSourceID="dsNotifications">
                     <EditItemTemplate>
                         <div class="row">
-                            <label for="cbNotifyByEmail">
+                            <asp:Label ID="Label4" runat="server" AssociatedControlID="cbNotifyByEmail">
                                 <asp:CheckBox
                                     ID="cbNotifyByEmail"
                                     runat="server"
                                     checked='<%#Bind("notifyByEmail") %>' />
-                            Receive email Notifications</label>
+                                Receive email Notifications<br />
+                                <small>While enabled you will receive email notifications from our Project manager tool when your project deadlines are due.</small>
+                            </asp:Label>
+                        </div>
+
+                        <div class="row">
+                            <asp:Label ID="Label5" runat="server" AssociatedControlID="cbEnableHelpCenter">
+                                <asp:CheckBox
+                                    ID="cbEnableHelpCenter"
+                                    runat="server"
+                                    checked='<%#Bind("enableHelpCenter") %>' />
+
+                                Enable Help Center<br />
+                                <small>This is the blue bar that appears to the right of Buildmate and offers you help based on the page you're viewing.</small>
+                            </asp:Label>
                         </div>
                     
                         <div class="form-actions">
@@ -462,7 +468,6 @@
             </div>
             
             <div class="tab-container" id="subscription">
-                <h3>Your Subscription</h3>
 
                 <div class="row">
                     <label class="label">Expires on</label>

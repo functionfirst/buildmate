@@ -107,12 +107,21 @@ $(document).ready(function () {
         $(this).remove();
         return false;
     });
+
+    $('body').on('click', '#DisplayHelpCenter', enableTour);
 });
+
+function enableTour() {
+    $('body').addClass('has-tour');
+    return false;
+}
 
 function closeTour() {
     $('body').removeClass('has-tour');
 
-    $(this).parents('.tour-tooltip').css({ 'right': '-320px' });
+    //$(this).parents('.tour-tooltip').css({ 'right': '-320px' });
+    return false;
+    //$.ajax
 }
 
 function launchVideo() {
