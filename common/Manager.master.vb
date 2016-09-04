@@ -54,7 +54,8 @@ Partial Class Manager
                     Session("email") = reader("email").ToString
                     Session("vatnumber") = reader("vatnumber").ToString
                     user_email = Session("email")
-                    help_state = Session("help").ToString.ToLower()
+
+                    addHelpScriptBlock(Session("help"))
                 End While
 
             Catch ex As Exception
@@ -62,6 +63,15 @@ Partial Class Manager
             End Try
         End If
     End Sub
+
+    Protected Sub addHelpScriptBlock(helpState As String)
+        Dim strScript As New StringBuilder
+
+        strScript.Append("var showHelp = " + helpState.ToString.ToLower() + ";")
+
+        Page.ClientScript.RegisterClientScriptBlock(Me.GetType, "MyScript", strScript.ToString, True)
+    End Sub
+
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         setTour()
