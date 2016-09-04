@@ -9,6 +9,7 @@ Partial Class Manager
     Dim subscriptionDate As Date
     Dim paypalPayerId As String
     Public user_email As String
+    Public help_state As String
 
     Protected Sub Page_Init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
         user = Membership.GetUser
@@ -43,6 +44,7 @@ Partial Class Manager
 
                 While reader.Read
                     Session("tooltips") = reader("tooltips").ToString
+                    Session("help") = reader("help").ToString
                     Session("subscriptionDate") = reader("subscription").ToString
                     subscriptionDate = Session("subscriptionDate")
                     Session("paypalPayerId") = reader("paypalPayerId").ToString
@@ -52,6 +54,7 @@ Partial Class Manager
                     Session("email") = reader("email").ToString
                     Session("vatnumber") = reader("vatnumber").ToString
                     user_email = Session("email")
+                    help_state = Session("help").ToString.ToLower()
                 End While
 
             Catch ex As Exception

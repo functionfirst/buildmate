@@ -112,16 +112,21 @@ $(document).ready(function () {
 });
 
 function enableTour() {
+    $.ajax({
+        url: 'toggle_help.aspx?show=true'
+    });
+    showHelp = true;
+    bm.tour(data);
     $('body').addClass('has-tour');
     return false;
 }
 
 function closeTour() {
     $('body').removeClass('has-tour');
-
-    //$(this).parents('.tour-tooltip').css({ 'right': '-320px' });
+    $.ajax({
+        url: 'toggle_help.aspx?show=false'
+    });
     return false;
-    //$.ajax
 }
 
 function launchVideo() {
@@ -170,6 +175,11 @@ function toggleVisibility(elem, klassName, set) {
 
 // buildmate tour controls
 bm.tour = function (data) {
+    if (!showHelp) {
+        //$("#tour-tooltip").hide()
+        return;
+    }
+
     var source = $("#tour-tooltip").html(),
         template = Handlebars.compile(source),
         html = template(data.tooltip);

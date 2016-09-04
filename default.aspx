@@ -6,8 +6,6 @@
     <telerik:RadScriptBlock ID="rsbPhase0" runat="server" Visible="false">
     <script type="text/javascript">
         var data = {
-            target: "#ctl00_hlCustomers",
-            progress: 0,
             tooltip: {
                 title: "Welcome to Buildmate",
                 content: "<strong>Let's get you estimating; follow the on screen instructions to complete this 15 minute tutorial.</strong><br /><br /><strong>CUSTOMERS</strong><br />To 'Add a Customer' - Click 'Customers' located on the tool bar above.<br /><br /><em>Help: Your account currently does not contain any data to display. This tutorial will guide you through the basic steps to create estimates. All of the managers required to create estimates are located on the main tool bar.</em>"
@@ -20,8 +18,6 @@
     <telerik:RadScriptBlock ID="rsbPhase1" runat="server" Visible="false">
     <script type="text/javascript">
         var data = {
-            target: "#ctl00_hlProjects",
-            progress: 1,
             tooltip: {
                 title: "Managing Projects",
                 content: "Now you've created your first Customer, the next step is to create a Project for them.<br /><br />Click Projects in the top menu to get started."

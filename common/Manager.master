@@ -52,10 +52,7 @@
         </asp:Panel>
 
         <div id="tourTip">
-            xxxx
             <div class="tour-tooltip"></div>
-
-
         </div>
 
         <div class="topbar">
@@ -63,25 +60,18 @@
                 <div class="brand">Buildmate</div>
                 <div class="nav nav-right">
                     <ul class="nav-main">
-                        <li>
-                            <asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support/">Support</asp:HyperLink>
-                        </li>
                         <li class="nav-menu" data-target="help" id="hlHelp">
-                            <a href="#" data-toggle-menu="help">Help</a>
+                            <a href="#" data-toggle-menu="help">Options</a>
 
                             <ul>
-                                <li class="nav-header">Help</li>
-                                <li><a href="#" id="DisplayHelpCenter">Display Help Center</a></li>
-                                <li><a href="/videos.aspx">How to Videos</a></li>
-                                <li><a target="_blank" href="http://getbuildmate.com/knowledgebase/">Knowledge Base</a></li>
+                                <li><asp:HyperLink ID="hlSettings" runat="server" NavigateUrl="~/settings.aspx">Settings <small>Customise your Buildmate settings.</small></asp:HyperLink></li>
+                                <li><asp:HyperLink ID="hlSupport" runat="server" NavigateUrl="~/support/">Contact Support <small>Send a message to our support team.</small></asp:HyperLink></li>
+                                <li><a href="/videos.aspx">How to Videos <small>Watch tutorial videos for various features of the system.</small></a></li>
+                                <li><a target="_blank" href="http://getbuildmate.com/knowledgebase/">Knowledge Base <small>Read some online help articles</small></a></li>
+                                <li><asp:HyperLink ID="hlLogout" runat="server" NavigateUrl="~/logout.aspx">Logout <small>Securely logout from Buildmate</small></asp:HyperLink></li>
                             </ul>
                         </li>
-                        <li>
-                            <asp:HyperLink ID="hlSettings" runat="server" NavigateUrl="~/settings.aspx">Settings</asp:HyperLink>
-                        </li>
-                        <li>
-                            <asp:HyperLink ID="hlLogout" runat="server" NavigateUrl="~/logout.aspx">Logout</asp:HyperLink>
-                        </li>
+                        <li><a href="#" class="help-icon" id="DisplayHelpCenter">Help</a></li>
                     </ul>
                 </div>
                 <div class="nav">
@@ -131,11 +121,13 @@
                 </ul>
             </div>
         </div>
-
         
         <!-- js -->
         <script type="text/javascript" src="https://ajax.microsoft.com/ajax/jQuery/jquery-2.1.0.min.js"></script>
         <script type="text/javascript" src="/js/handlebars-v4.0.5.js"></script>
+        <script>
+            var showHelp = <%= help_state %>;
+        </script>
         <script type="text/javascript" src="/js/functions.js"></script>
         <script id="tour-tooltip" type="text/x-handlebars-template">
         <div class="tour-tooltip {{direction}}">
@@ -154,14 +146,14 @@
         </script>
     </form>
 
-    <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
-
-
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal-content">
-            <iframe id="videoFrame" width="640" height="360" src="//www.youtube.com/embed/QxhB-S1UoG4" frameborder="0" allowfullscreen></iframe>
+        <asp:ContentPlaceHolder id="head" runat="server"></asp:ContentPlaceHolder>
+    
+        <div class="video-modal" id="videoModal">
+            <div class="video-modal-content">
+                <iframe id="videoFrame" width="640" height="360" src="//www.youtube.com/embed/QxhB-S1UoG4" frameborder="0" allowfullscreen></iframe>
+            </div>
         </div>
-    </div>
+
         <!-- mouseflow -->
         <script type="text/javascript">
             var _mfq = _mfq || [];
@@ -176,14 +168,14 @@
         </script>
 
         <!-- Begin Inspectlet Embed Code -->
-<script type="text/javascript" id="inspectletjs">
-window.__insp = window.__insp || [];
-__insp.push(['wid', 1587999144]);
-(function() {
-function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
-setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
-})();
-</script>
-<!-- End Inspectlet Embed Code -->
+        <script type="text/javascript" id="inspectletjs">
+        window.__insp = window.__insp || [];
+        __insp.push(['wid', 1587999144]);
+        (function() {
+        function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+        setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+        })();
+        </script>
+        <!-- End Inspectlet Embed Code -->
     </body>
 </html>

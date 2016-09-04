@@ -20,20 +20,20 @@
     </script>
 
     <telerik:RadScriptBlock ID="rsbPhase0" runat="server" Visible="false">
-    <script type="text/javascript">
-        var data = {
-            target: "#ctl00_hlCustomers",
-            progress: 0,
-            tooltip: {
-                title: "Welcome to Buildmate",
-                content: "Add your first Customer. Click the Customers link above to begin.",
-                videoId: "QxhB-S1UoG4"
-            }
-        };
-        $(document).ready(function () {
-            bm.tour(data);
-        });
-    </script>
+        <script type="text/javascript">
+            var data = {
+                target: "#ctl00_hlCustomers",
+                progress: 0,
+                tooltip: {
+                    title: "Welcome to Buildmate",
+                    content: "Add your first Customer. Click the Customers link above to begin.",
+                    videoId: "QxhB-S1UoG4"
+                }
+            };
+            $(document).ready(function () {
+                bm.tour(data);
+            });
+        </script>
     </telerik:RadScriptBlock>
 
     <telerik:RadScriptBlock ID="rsbPhase1" runat="server" Visible="false">
