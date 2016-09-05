@@ -214,10 +214,9 @@
 <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
     <script type="text/javascript">
         var data = {
-            target: '#ctl00_MainContent_bmDetails_fvCreateProject_btnCreate',
             tooltip: {
                 title: 'Step 4 - Project Details',
-                content: "Add the rest of your Project details, ensuring all required fields are filled in.<br /><br />Click Create Project when ready."
+                content: "Enter your 'Project Details ' and then click the green button 'Create Project' located at the bottom of the form.<br><br><em>Help: 'PROJECT NAME' AND 'RETURN DATE' are required all other fields are optional. 'PROJECT NAME' enter a unique name for your project/estimate. 'RETURN DATE' this is the latest date the customer/client expects to receive your offer. Click the calendar icon to the right of the 'RETURN DATE' field to open a calendar. You will also need to select a 'TENDER TYPE' from the drop down menu. 'TENDER TYPE' is used to analyse your projects. All the 'Project Details' can be added or edited once the project is completed."
             }
         };
 

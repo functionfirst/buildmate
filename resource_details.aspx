@@ -10,8 +10,8 @@
             target: ".breadcrumb .button-create",
             progress: 3,
             tooltip: {
-                title: "Linkings Resources to a Supplier",
-                content: "To 'Add a Resource to a Supplier' click the 'Resource' blue text listed under 'Unresourced' that you added to your estimate.<br><br><em>Help: You can see three tabs 'Unresourced', 'Your Resources' and 'Search all Resources'. Under Unresourced you will find a list all the resources you have used in your estimates that do not have one of your Suppliers providing the price (Unresourced is Buildmate's default supplier). To ensure all resources are provided by one or more of your Suppliers this list should be empty. 'Your Resources' will list all the resources used in your estimates, when you need to update a resource price you will find the resource listed here. 'Search all Resources' enables you to search for a specific resource listed in 'Your Resources'.</em>"
+                title: "Resource Details",
+                content: "To Add a 'Resource to a Supplier' click the green button 'New Supplier' on the left.<br><br><em>Help: To save you time Buildmate has already set up some default data under 'Resource Details' on the left. Any suppliers that provide this resource are listed under 'Suppliers for this Resource'. There are currently no Suppliers providing this resource, each resource can have unlimited suppliers providing the resource and each resource can have more than one quantity. This is referred to as stacking i.e. nails can be listed under the same resource - in 0.5kg, 1kg, 5kg, 20kg and 25kg quantities. If you invest the time to add multiple pack sizes, Buildmate's Resource Manager will calculate which is the most cost effect quantity to use.</em>"
             }
         };
 
