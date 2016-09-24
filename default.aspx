@@ -7,8 +7,8 @@
     <script type="text/javascript">
         var data = {
             tooltip: {
-                title: "Welcome to Buildmate",
-                content: "<strong>Let's get you estimating; follow the on screen instructions to complete this 15 minute tutorial.</strong><br /><br /><strong>CUSTOMERS</strong><br />To 'Add a Customer' - Click 'Customers' located on the tool bar above.<br /><br /><em>Help: Your account currently does not contain any data to display. This tutorial will guide you through the basic steps to create estimates. All of the managers required to create estimates are located on the main tool bar.</em>"
+                title: "How to start Estimating",
+                content: "<strong>Let's get you estimating. Complete a quick 15 minute tutorial on how to estimate by following the instructions that appear in this blue panel on the right side of each page.</strong><br /><br /><strong>CUSTOMERS</strong><br />To 'Add a Customer' - Click 'Customers' located on the tool bar above.<br /><br /><em>Help: Your account currently does not contain any data to display. This tutorial will guide you through the basic steps to create estimates. All of the managers required to create estimates are located on the main tool bar.</em>"
             }
         };
         bm.tour(data);
