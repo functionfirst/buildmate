@@ -14,7 +14,7 @@
     </telerik:RadAjaxManagerProxy>
     
     <asp:Panel ID="pRegister" runat="server">
-        <h1>Register for your free 30 day trial</h1>
+        <h1>Register for your free 12 month trial</h1>
 
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" RequireEmail="false"
             CreateUserButtonStyle-CssClass="button button-create button-large"
