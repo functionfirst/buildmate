@@ -34,15 +34,14 @@
             <div class="inner_container"></div>
         </telerik:RadAjaxLoadingPanel>
 
-        
-        <div class="login-form">
-            <div class="logo logo-black"><a href="http://www.getbuildmate.com" title="Buildmate">Buildmate</a></div>
-
-            <div class="login-form-inner">
-
-                <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
-                
+        <div class="topbar">
+            <div class="topbar-container">
+                <div class="brand"><a href="http://getbuildmate.com">Buildmate</a></div>
             </div>
+        </div>
+        
+        <div class="container login-form">
+              <asp:ContentPlaceHolder id="MainContent" runat="server"></asp:ContentPlaceHolder>
         </div>
 
         <asp:Panel ID="notification" runat="server" CssClass="flash" Visible="false">
